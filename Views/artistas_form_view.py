@@ -1,32 +1,62 @@
+"""
+Módulo de Formulario de Artistas
+================================
+
+Este módulo define :class:`ArtistaFormView`, la interfaz dedicada a la creación 
+y edición de perfiles de artistas o bandas, permitiendo gestionar su imagen, 
+categoría y biografía.
+"""
+
 import tkinter as tk
 from tkinter import ttk
 from PIL import Image, ImageTk
 import os
 
 class ArtistaFormView(tk.Frame):
-    def __init__(self, parent, controlador): 
+    """
+    Vista de formulario para la gestión de artistas.
+
+    Hereda de :class:`tk.Frame`. Utiliza un diseño de cuadrícula (grid) para 
+    organizar tres secciones principales: previsualización de imagen, 
+    campos de texto básicos y un área de biografía enriquecida.
+    """
+
+    def __init__(self, parent, controlador):
+        """
+        Inicializa el formulario de artista.
+
+        Args:
+            parent (tk.Widget): Contenedor padre.
+            controlador: Referencia al controlador encargado de la persistencia.
+        """
         super().__init__(parent, bg="#d9d9d9")
         self.controlador = controlador
         self.crear_widgets()
 
     def crear_widgets(self):
-        # 1. Título Superior
+        """
+        Construye la arquitectura del formulario. 
+        
+        Organiza los elementos en un 'master_container' usando el gestor de 
+        geometría ``grid`` para mantener la alineación de las tres columnas.
+        """
+        # 1. TÍTULO SUPERIOR
         tk.Label(
             self, text="Ficha del Artista", 
             font=("Segoe UI", 18, "bold"), bg="#d9d9d9"
         ).pack(pady=(40, 30))
 
-        # 2. CONTENEDOR MAESTRO
+        # 2. CONTENEDOR MAESTRO (Diseño de 3 columnas)
         master_container = tk.Frame(self, bg="#d9d9d9")
         master_container.pack(expand=True, padx=50)
 
-        # --- COLUMNA 1: IMAGEN ---
+        # --- COLUMNA 1: IMAGEN DE PERFIL ---
         self.frame_izquierda = tk.Frame(master_container, bg="#d9d9d9")
         self.frame_izquierda.grid(row=0, column=0, padx=(0, 30), sticky="n")
 
         self.container_foto = tk.Frame(self.frame_izquierda, bg="#bbb", width=250, height=250)
         self.container_foto.pack()
-        self.container_foto.pack_propagate(False) 
+        self.container_foto.pack_propagate(False) # Evita que el frame colapse al tamaño de la etiqueta
 
         self.lbl_foto = tk.Label(
             self.container_foto, text="Sin Imagen", 
@@ -38,23 +68,23 @@ class ArtistaFormView(tk.Frame):
         self.btn_foto = ttk.Button(self.frame_izquierda, text="Seleccionar Imagen")
         self.btn_foto.pack(pady=15, fill="x")
 
-        # --- COLUMNA 2: FORMULARIO ---
+        # --- COLUMNA 2: FORMULARIO DE DATOS ---
         self.frame_datos = tk.Frame(master_container, bg="#d9d9d9")
         self.frame_datos.grid(row=0, column=1, padx=30, sticky="n")
 
         estilo_lbl = {"bg": "#d9d9d9", "font": ("Segoe UI", 10, "bold")}
         
-        # 1. Campo ID
+        # ID (Solo lectura)
         tk.Label(self.frame_datos, text="ID:", **estilo_lbl).pack(anchor="w", pady=(0, 5))
         self.id_var = tk.StringVar(value="-")
         ttk.Entry(self.frame_datos, textvariable=self.id_var, width=35, state="readonly", font=("Segoe UI", 11)).pack(pady=(0, 20))
 
-        # 2. Campo Nombre del Artista
+        # Nombre
         tk.Label(self.frame_datos, text="Nombre del Artista / Banda:", **estilo_lbl).pack(anchor="w", pady=(0, 5))
         self.nombre_var = tk.StringVar()
         ttk.Entry(self.frame_datos, textvariable=self.nombre_var, width=35, font=("Segoe UI", 11)).pack(pady=(0, 20))
 
-        # 3. Campo Tipo de Artista
+        # Tipo (Combobox)
         tk.Label(self.frame_datos, text="Tipo de Artista:", **estilo_lbl).pack(anchor="w", pady=(0, 5))
         self.tipo_var = tk.StringVar(value="Solista")
         self.combo_tipo = ttk.Combobox(self.frame_datos, textvariable=self.tipo_var, 
@@ -62,7 +92,7 @@ class ArtistaFormView(tk.Frame):
                                      state="readonly", width=33, font=("Segoe UI", 10))
         self.combo_tipo.pack()
 
-        # --- COLUMNA 3: BIOGRAFÍA ---
+        # --- COLUMNA 3: ÁREA DE BIOGRAFÍA ---
         self.frame_info = tk.Frame(master_container, bg="#d9d9d9")
         self.frame_info.grid(row=0, column=2, padx=(30, 0), sticky="n")
 
@@ -71,8 +101,9 @@ class ArtistaFormView(tk.Frame):
         text_scroll_frame = tk.Frame(self.frame_info, bg="#d9d9d9")
         text_scroll_frame.pack()
 
+        #: Widget de texto para información detallada o biografía.
         self.txt_info = tk.Text(text_scroll_frame, width=35, height=18, font=("Segoe UI", 10), 
-                               relief="flat", highlightthickness=1, highlightbackground="#ccc")
+                                relief="flat", highlightthickness=1, highlightbackground="#ccc")
         
         scroll_y = ttk.Scrollbar(text_scroll_frame, orient="vertical", command=self.txt_info.yview)
         self.txt_info.configure(yscrollcommand=scroll_y.set)
@@ -91,34 +122,46 @@ class ArtistaFormView(tk.Frame):
         self.btn_cancelar.pack(side="left", padx=15, ipadx=20, ipady=5)
 
     def set_foto(self, path):
+        """
+        Actualiza la imagen de perfil del artista en el formulario.
+
+        Args:
+            path (str): Ruta al archivo de imagen.
+        """
         if path and os.path.exists(path):
             img = Image.open(path)
             img = img.resize((250, 250), Image.Resampling.LANCZOS)
             foto = ImageTk.PhotoImage(img)
             self.lbl_foto.config(image=foto, text="")
+            # Referencia necesaria para evitar el recolector de basura
             self.lbl_foto.image = foto
             self.foto_path = path
         else:
             self.lbl_foto.config(image="", text="Sin Imagen", font=("Segoe UI", 12, "italic"))
             self.foto_path = None
 
-
     def cargar_datos(self, artista):
-        """Rellena los campos para editar un artista existente"""
+        """
+        Carga la información de un objeto Artista en los widgets del formulario.
+
+        Args:
+            artista: Instancia del modelo Artista.
+        """
         self.id_var.set(str(artista.id))
         self.nombre_var.set(artista.nombre)
         self.tipo_var.set(artista.tipo)
         
+        # Los widgets de texto requieren limpieza e inserción manual
         self.txt_info.delete("1.0", tk.END)
         self.txt_info.insert("1.0", artista.info if artista.info else "")
 
         self.foto_path = artista.foto
-        if hasattr(self, 'set_foto'):
-            self.set_foto(artista.foto)
+        self.set_foto(artista.foto)
 
     def limpiar_campos(self):
-        """Prepara el formulario para un nuevo artista"""
+        """Restablece el formulario para la creación de un nuevo registro."""
+        self.id_var.set("-")
         self.nombre_var.set("")
         self.tipo_var.set("Solista")
         self.txt_info.delete("1.0", tk.END)
-        self.foto_path = None
+        self.set_foto(None)

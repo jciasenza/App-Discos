@@ -1,106 +1,128 @@
+"""
+Módulo del Controlador Principal
+================================
+
+Este módulo define la clase :class:`DiscoController`, que actúa como el mediador
+entre la interfaz gráfica (Tkinter) y la persistencia de datos (Peewee).
+Gestiona el flujo de información para artistas, discos y canciones.
+"""
+
 from tkinter import messagebox, filedialog
 import tkinter as tk
 from peewee import IntegrityError
 from model import Artista
 
 class DiscoController:
+    """
+    Controlador principal de la aplicación.
+    
+    Se encarga de reaccionar a los eventos de la vista, solicitar datos a los 
+    modelos y actualizar la interfaz en consecuencia.
+    """
+
     def __init__(self, model, cancion_model, artista_model, view):
+        """
+        Inicializa el controlador y establece los vínculos con la vista.
+
+        Args:
+            model (DiscoModel): Instancia para la gestión de discos.
+            cancion_model (CancionModel): Instancia para la gestión de canciones.
+            artista_model (ArtistaModel): Instancia para la gestión de artistas.
+            view (View): Instancia de la fachada de la interfaz gráfica.
+        """
         self.model = model
         self.cancion_model = cancion_model
         self.artista_model = artista_model
         self.view = view
 
+        # --- ESTADOS TEMPORALES DE EDICIÓN ---
+        #: ID del disco que se está editando actualmente (None si es nuevo).
         self.disco_actual_id = None
+        #: ID del artista en edición.
         self.artista_actual_id = None 
+        #: Ruta temporal de la imagen seleccionada para el disco/artista.
         self.imagen_actual_path = None
+        #: ID de la canción que se está modificando en el formulario.
         self.cancion_en_edicion_id = None
 
+        # Inyección de comportamiento en la vista
         self.view.al_buscar = self.ejecutar_busqueda
+        
         self._configurar_botones()
         self.inicializar_datos()
         self.view.mostrar("home")
 
     def inicializar_datos(self):
-        """Carga inicial de datos en todas las vistas"""
+        """
+        Realiza la carga inicial de información desde la base de datos 
+        hacia todos los componentes de la vista.
+        """
         self.refrescar_datos_silencioso()
         artistas = self.artista_model.listar()
         self.view.lista_artistas_view.cargar_datos(artistas)
         
-        # Sincroniza el listado general de canciones
         todas_canciones = self.cancion_model.listar_todas_con_disco()
         self.view.canciones_view.cargar_datos(todas_canciones)
 
     def refrescar_datos_silencioso(self):
+        """Actualiza la tabla principal de discos sin cambiar la pantalla actual."""
         self.view.limpiar_tabla()
         for d in self.model.listar():
             self.view.insertar_en_tabla(d.id, d.artista.nombre, d.titulo, d.anio, d.formato, d.portada)
 
     def _configurar_botones(self):
+        """Vincula los métodos del controlador con los comandos de los botones en la vista."""
+        # Navegación principal
         self.view.btn_nav_discos.config(command=self.refrescar)
         self.view.btn_nav_artistas.config(command=self.refrescar_artistas)
         self.view.btn_nav_canciones.config(command=self.mostrar_listado_canciones)
 
+        # Acciones de Discos
         lista_d = self.view.lista_discos_view
         lista_d.btn_nuevo.config(command=self.nuevo)
         lista_d.btn_editar.config(command=self.editar)
         lista_d.btn_eliminar.config(command=self.eliminar)
 
+        # Formulario de Discos
         form_d = self.view.form_view
         form_d.btn_guardar.config(command=self.guardar)
         form_d.btn_cancelar.config(command=self.refrescar)
         form_d.btn_imagen.config(command=self.seleccionar_imagen)
-        
         form_d.btn_agregar_cancion.config(command=self.agregar_cancion)
         form_d.btn_editar_cancion.config(command=self.preparar_edicion_cancion)
         form_d.btn_eliminar_cancion.config(command=self.eliminar_cancion)
 
+        # Acciones de Artistas
         lista_a = self.view.lista_artistas_view
         lista_a.btn_agregar.config(command=self.nuevo_artista)
         lista_a.btn_editar.config(command=self.editar_artista)
         lista_a.btn_eliminar.config(command=self.eliminar_artista_accion)
     
+        # Eventos de búsqueda (Triggers)
         lista_a.buscar_var.trace_add("write", lambda *args: self.ejecutar_busqueda_artistas())
         self.view.canciones_view.buscar_var.trace_add(
             "write", lambda *args: self.ejecutar_busqueda_canciones()
         )
 
+        # Formulario de Artistas
         form_a = self.view.form_artista_view
         form_a.btn_guardar.config(command=self.guardar_artista)
         form_a.btn_cancelar.config(command=self.refrescar_artistas)
         form_a.btn_foto.config(command=self.seleccionar_foto_artista)
 
     # --- LÓGICA DE ARTISTAS ---
+
     def refrescar_artistas(self):
+        """Recarga la lista de artistas y cambia la pantalla a la vista de artistas."""
         artistas = self.artista_model.listar()
         self.view.lista_artistas_view.cargar_datos(artistas)
         self.view.mostrar("artistas")
 
-    def nuevo_artista(self):
-        self.artista_actual_id = None
-        self.view.form_artista_view.limpiar_campos()
-        self.view.mostrar("form_artista")
-
-    def seleccionar_foto_artista(self):
-        path = filedialog.askopenfilename(filetypes=[("Imágenes", "*.png *.jpg *.jpeg")])
-        if path: self.view.form_artista_view.set_foto(path)
-
-    def editar_artista(self):
-        id_sel = self.view.lista_artistas_view.obtener_seleccionado()
-        if not id_sel:
-            messagebox.showwarning("Aviso", "Seleccione un artista.")
-            return
-        artista = self.artista_model.obtener(id_sel)
-        self.artista_actual_id = artista.id
-        self.view.form_artista_view.cargar_datos(artista)
-        self.view.mostrar("form_artista")
-
-    def eliminar_artista_accion(self):
-        id_sel = self.view.lista_artistas_view.obtener_seleccionado()
-        if id_sel and messagebox.askyesno("Confirmar", "¿Eliminar artista?"):
-            self.artista_model.eliminar(id_sel)
-            self.refrescar_artistas()
-
     def guardar_artista(self):
+        """
+        Extrae datos del formulario de artistas y los persiste en la DB.
+        Maneja errores de duplicados (IntegrityError).
+        """
         form = self.view.form_artista_view
         data = {
             "nombre": form.nombre_var.get().strip(),
@@ -121,26 +143,13 @@ class DiscoController:
         except IntegrityError:
             messagebox.showerror("Error", "El artista ya existe.")
 
-    def ejecutar_busqueda_artistas(self):
-        texto = self.view.lista_artistas_view.buscar_var.get().strip()
-        resultados = self.artista_model.buscar(texto) 
-        self.view.lista_artistas_view.cargar_datos(resultados)
-
     # --- LÓGICA DE DISCOS ---
-    def refrescar(self):
-        self.refrescar_datos_silencioso()
-        self.view.mostrar("lista")
-
-    def nuevo(self):
-        self.disco_actual_id = None
-        self.imagen_actual_path = None
-        self.view.form_view.limpiar_campos()
-        self.actualizar_dropdown_artistas()
-        self.view.form_view.artista_var.set("Artista")
-        self.cargar_canciones() # Limpia la lista de canciones
-        self.view.mostrar("form", "Nuevo Disco")
 
     def editar(self):
+        """
+        Prepara el formulario de discos con los datos de un disco seleccionado
+        para su modificación.
+        """
         disco_id = self.view.lista_discos_view.obtener_id_seleccionado()
         if not disco_id:
             messagebox.showwarning("Aviso", "Seleccione un disco de la lista.")
@@ -155,12 +164,14 @@ class DiscoController:
         self.imagen_actual_path = disco.portada
         self.actualizar_dropdown_artistas()
         self.view.form_view.cargar_datos(disco)
-        
-        # Cargar canciones después de setear el ID
         self.cargar_canciones()
         self.view.mostrar("form", "Editar Disco")
 
     def guardar(self):
+        """
+        Valida y guarda los datos de un disco. 
+        Si el disco es nuevo, recupera el ID generado para permitir añadir canciones.
+        """
         nombre_artista = self.view.form_view.artista_var.get().strip()
         if nombre_artista == "Artista" or not nombre_artista:
             messagebox.showwarning("Error", "Debe seleccionar un artista.")
@@ -180,7 +191,6 @@ class DiscoController:
         }
         try:
             if self.disco_actual_id is None:
-                # Al agregar nuevo, recuperamos el objeto para tener su ID
                 nuevo_disco = self.model.agregar(data)
                 self.disco_actual_id = nuevo_disco.id
             else:
@@ -189,44 +199,15 @@ class DiscoController:
             messagebox.showinfo("Éxito", "Disco guardado correctamente.")
             self.refrescar()
         except Exception as e:
-            # FIX: Convertir e a string evita el error "unknown option" de la imagen
             messagebox.showerror("Error", f"Error al guardar: {str(e)}")
 
-    def eliminar(self):
-        disco_id = self.view.lista_discos_view.obtener_id_seleccionado()
-        if disco_id and messagebox.askyesno("Confirmar", "¿Eliminar disco?"):
-            self.model.eliminar(disco_id)
-            self.refrescar()
-
-    def seleccionar_imagen(self):
-        path = filedialog.askopenfilename(filetypes=[("Imágenes", "*.png *.jpg *.jpeg")])
-        if path:
-            self.imagen_actual_path = path
-            self.view.form_view.set_imagen(path)
-
-    def ejecutar_busqueda(self):
-        texto = self.view.buscar_var.get().strip()
-        self.view.limpiar_tabla()
-        for d in self.model.buscar(texto):
-            self.view.insertar_en_tabla(d.id, d.artista.nombre, d.titulo, d.anio, d.formato, d.portada)
-
-    def actualizar_dropdown_artistas(self):
-        artistas = self.artista_model.listar()
-        nombres = [a.nombre for a in artistas]
-        self.view.form_view.combo_artista['values'] = nombres if nombres else ["Artista"]
-
     # --- LÓGICA DE CANCIONES ---
-    def mostrar_listado_canciones(self):
-        todas = self.cancion_model.listar_todas_con_disco()
-        self.view.mostrar("canciones")
-        self.view.canciones_view.cargar_datos(todas)
-
-    def ejecutar_busqueda_canciones(self):
-        texto = self.view.canciones_view.buscar_var.get().strip()
-        resultados = self.cancion_model.buscar(texto) 
-        self.view.canciones_view.cargar_datos(resultados)
 
     def agregar_cancion(self):
+        """
+        Añade una canción al disco actual. 
+        Requiere que el disco haya sido guardado previamente para tener un ID de referencia.
+        """
         if not self.disco_actual_id:
             messagebox.showwarning("Aviso", "Primero guarde el disco.")
             return
@@ -253,10 +234,9 @@ class DiscoController:
             else:
                 self.cancion_model.agregar(data)
             
-            # ACTUALIZACIÓN DE AMBAS LISTAS
-            self.cargar_canciones() # Lista pequeña
+            self.cargar_canciones()
             todas = self.cancion_model.listar_todas_con_disco()
-            self.view.canciones_view.cargar_datos(todas) # Lista grande (Treeview)
+            self.view.canciones_view.cargar_datos(todas)
             
             self.view.form_view.numero_pista_var.set("")
             self.view.form_view.input_cancion.delete(0, "end")
@@ -265,32 +245,10 @@ class DiscoController:
             messagebox.showerror("Error", f"Error en canción: {str(e)}")
 
     def cargar_canciones(self):
-        """Refresca la lista de canciones en el formulario (Listbox)"""
+        """Refresca visualmente el Listbox de canciones dentro del formulario de discos."""
         self.view.form_view.lista_canciones.delete(0, tk.END)
         if not self.disco_actual_id: return
         canciones = self.cancion_model.listar_por_disco(self.disco_actual_id)
         for c in canciones:
             texto = f"{c.numero_pista:02d} - {c.titulo} ({c.duracion})"
             self.view.form_view.lista_canciones.insert(tk.END, texto)
-
-    def preparar_edicion_cancion(self):
-        seleccion = self.view.form_view.lista_canciones.curselection()
-        if not seleccion: return
-        canciones = list(self.cancion_model.listar_por_disco(self.disco_actual_id))
-        cancion = canciones[seleccion[0]]
-        self.cancion_en_edicion_id = cancion.id
-        self.view.form_view.numero_pista_var.set(cancion.numero_pista)
-        self.view.form_view.input_cancion.delete(0, "end")
-        self.view.form_view.input_cancion.insert(0, cancion.titulo)
-        self.view.form_view.duracion_var.set(cancion.duracion)
-        self.view.form_view.btn_agregar_cancion.config(text="💾")
-
-    def eliminar_cancion(self):
-        seleccion = self.view.form_view.lista_canciones.curselection()
-        if not seleccion: return
-        if messagebox.askyesno("Confirmar", "¿Eliminar pista?"):
-            canciones = list(self.cancion_model.listar_por_disco(self.disco_actual_id))
-            self.cancion_model.eliminar(canciones[seleccion[0]].id)
-            self.cargar_canciones()
-            # Sincronizar también el listado general
-            self.mostrar_listado_canciones()

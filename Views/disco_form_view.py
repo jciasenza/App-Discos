@@ -1,11 +1,34 @@
+"""
+Módulo de Formulario de Discos
+==============================
+
+Este módulo define :class:`DiscoFormView`, una vista detallada que permite
+la creación y edición de discos, incluyendo la gestión de pistas musicales
+y la visualización de la portada.
+"""
+
 import tkinter as tk
 from tkinter import ttk, StringVar, Listbox, Scrollbar
 from PIL import Image, ImageTk
 
 class DiscoFormView(ttk.Frame):
+    """
+    Clase que representa el formulario de detalles de un disco.
+    
+    Proporciona campos para metadatos (título, año, formato), un selector de 
+    artista, visualización de imagen de portada y una sub-interfaz para 
+    gestionar las canciones asociadas al disco.
+    """
+    #: Color de fondo por defecto para el formulario.
     COLOR_BACKGROUND = "#f0f0f0"
 
     def __init__(self, parent):
+        """
+        Inicializa el formulario y configura los estilos visuales.
+
+        Args:
+            parent (tk.Widget): El contenedor padre donde se alojará el frame.
+        """
         super().__init__(parent)
         self.parent = parent
 
@@ -16,14 +39,20 @@ class DiscoFormView(ttk.Frame):
         
         self.configure(style="Main.TFrame")
 
+        # Estilos específicos para botones de acción (CRUD de canciones)
         style.configure("Add.TButton", foreground="green", font=("Segoe UI", 12, "bold"))
         style.configure("Edit.TButton", foreground="blue", font=("Segoe UI", 12))
         style.configure("Delete.TButton", foreground="red", font=("Segoe UI", 12, "bold"))
 
+        #: Atributo para mantener la referencia de la imagen de portada y evitar el GC.
         self.img_tk = None
         self.crear_widgets()
 
     def crear_widgets(self):
+        """
+        Construye la arquitectura visual del formulario dividida en tres columnas:
+        1. Portada, 2. Datos del Disco, 3. Listado de Canciones.
+        """
         # --- Título Superior ---
         self.form_title = tk.Label(
             self, text="Nuevo Disco", font=("Segoe UI", 20, "bold"),
@@ -56,6 +85,7 @@ class DiscoFormView(ttk.Frame):
         col_central = ttk.Frame(main_container, style="Main.TFrame")
         col_central.grid(row=0, column=1, padx=30, sticky="n")
 
+        #: Variables de control (StringVar) para los campos del disco.
         self.id_var = StringVar(value="-")
         self.artista_var = StringVar(value="Artista")
         self.titulo_var = StringVar()
@@ -65,7 +95,7 @@ class DiscoFormView(ttk.Frame):
         lbl_font = ("Segoe UI", 11, "bold")
         entry_width = 30
 
-        # --- Campos del Formulario ---
+        # --- Construcción dinámica de campos ---
         ttk.Label(col_central, text="ID:", font=lbl_font).grid(row=0, column=0, sticky="e", pady=10)
         ttk.Entry(col_central, textvariable=self.id_var, width=entry_width, font=("Segoe UI", 11), state="readonly").grid(row=0, column=1, pady=10, padx=10)
 
@@ -99,6 +129,7 @@ class DiscoFormView(ttk.Frame):
 
         ttk.Label(col_derecha, text="Canciones", font=lbl_font).pack(anchor="w")
 
+        # Sub-frame para entrada de pistas
         input_song_frame = ttk.Frame(col_derecha, style="Main.TFrame")
         input_song_frame.pack(fill="x", pady=5)
 
@@ -117,7 +148,7 @@ class DiscoFormView(ttk.Frame):
         self.btn_agregar_cancion = ttk.Button(input_song_frame, text="✔", width=2, style="Add.TButton")
         self.btn_agregar_cancion.pack(side="left", padx=5)
 
-        # --- Lista de Canciones ---
+        # --- Lista de Canciones con Scrollbar ---
         list_container = ttk.Frame(col_derecha, style="Main.TFrame")
         list_container.pack(pady=10, fill="both", expand=True)
 
@@ -131,6 +162,7 @@ class DiscoFormView(ttk.Frame):
         self.lista_canciones.pack(side="left", fill="both", expand=True)
         self.scrollbar.pack(side="left", fill="y")
 
+        # Botones laterales para editar/eliminar de la lista
         acciones_lista_frame = ttk.Frame(list_container, style="Main.TFrame")
         acciones_lista_frame.pack(side="left", padx=5, fill="y")
 
@@ -140,7 +172,7 @@ class DiscoFormView(ttk.Frame):
         self.btn_eliminar_cancion = ttk.Button(acciones_lista_frame, text="✖", width=2, style="Delete.TButton")
         self.btn_eliminar_cancion.pack(pady=2)
 
-        # --- Botones Inferiores ---
+        # --- Botones Inferiores del Formulario ---
         botones_frame = ttk.Frame(self, style="Main.TFrame")
         botones_frame.pack(pady=40, side="bottom")
 
@@ -153,6 +185,7 @@ class DiscoFormView(ttk.Frame):
     # ------------------ MÉTODOS DE SOPORTE ------------------
 
     def limpiar_campos(self):
+        """Restablece todos los campos del formulario a sus valores iniciales."""
         self.id_var.set("-")
         self.artista_var.set("Artista")
         self.titulo_var.set("")
@@ -166,6 +199,12 @@ class DiscoFormView(ttk.Frame):
         self.img_tk = None
 
     def cargar_datos(self, disco):
+        """
+        Rellena el formulario con la información de un objeto disco existente.
+
+        Args:
+            disco (Disco): Instancia del modelo Disco a mostrar.
+        """
         self.id_var.set(str(disco.id))
         if disco.artista:
             self.artista_var.set(disco.artista.nombre)
@@ -178,15 +217,23 @@ class DiscoFormView(ttk.Frame):
             self.set_imagen(disco.portada)
 
     def set_titulo(self, texto):
+        """Cambia el texto de la cabecera del formulario."""
         self.form_title.config(text=texto)
 
     def set_imagen(self, path):
+        """
+        Carga, redimensiona y muestra una imagen de portada en el formulario.
+
+        Args:
+            path (str): Ruta local al archivo de imagen.
+        """
         if not path:
             self.label_imagen.config(image="", text="Sin Imagen")
             self.img_tk = None
             return
         try:
             img = Image.open(path)
+            # Redimensionado de alta calidad para la previsualización
             img = img.resize((300, 300), Image.Resampling.LANCZOS)
             self.img_tk = ImageTk.PhotoImage(img)
             self.label_imagen.config(image=self.img_tk, text="")

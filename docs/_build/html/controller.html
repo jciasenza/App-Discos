@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html class="no-js" lang="es" data-content_root="./">
+<head>
+    <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+        <title>Modulo Controlador &mdash; documentación de GestionMusical - 4.5.0</title>
+    
+    <link rel="stylesheet" type="text/css" href="_static/dist/fontawesome.css" />
+      <link rel="stylesheet" type="text/css" href="_static/dist/theme.css?v=310cf088" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+            <link rel="index" title="Índice" href="genindex.html" />
+            <link rel="search" title="Búsqueda" href="search.html" />
+            <link rel="top" title="documentación de GestionMusical - 4.5.0" href="#" />
+            <link rel="up" title="App Discos" href="modules.html" />
+            <link rel="next" title="Modulo Principal" href="main.html" />
+            <link rel="prev" title="App Discos" href="modules.html" />
+    </head>
+<body>
+    <script type="text/javascript" src="_static/dist/blocking.js"></script>
+    <header class="container-fluid bg-primary">
+        <a class="btn btn-sm btn-light skip-to-content-link" href="#main">Skip to content</a>
+        <div class="container-fluid">
+            <div class="navbar navbar-expand-lg navbar-dark font-weight-bold">
+                    <a href="index.html"
+                        title="Wagtail"
+                        class="logo navbar-brand"
+                    >
+                        <img src="_static/img/icono.ico" width="45" height="59" alt="Wagtail"
+                            class="logo-img"
+                        />
+                        Gestión Musical
+                    </a>
+                
+                
+                <button class="navbar-toggler btn btn-primary d-lg-none" type="button" data-toggle="collapse" data-target="#collapseSidebar" aria-expanded="false" aria-controls="collapseExample">
+                    <span class="navbar-toggler-icon"></span>
+                    <span class="sr-only">menu</span>
+                </button>
+            </div>
+        </div>
+    </header>
+    <div class="container-fluid">
+        <div class="row">
+            <aside class="col-12 col-lg-3 sidebar-container">
+                <div id="collapseSidebar" class="collapse sticky-top d-lg-block pt-5 pr-lg-4">
+<div id="searchbox" class="searchbox mb-6 px-1" role="search">
+    <form id="search-form" action="search.html" autocomplete="off" method="get" role="search">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text border-right-0 bg-white py-3 pl-3 pr-2"><span class="fas fa-search"></span></div>
+            </div>
+            <input class="form-control py-3 pr-3 pl-1 h-100 border-left-0" type="search" name="q" placeholder="Buscar documentación" aria-label="Buscar documentación" id="searchinput" />
+        </div>
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div><div class="site-toc">
+    <nav class="toc mt-3" aria-label="Main menu">
+        <p class="caption" role="heading"><span class="caption-text">Contenidos:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">App Discos</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Modulo Controlador</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html">Modulo Principal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model.html">Módulo de Modelos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="validations.html">Módulo de Validaciones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="views.html">Módulo de Vistas</a></li>
+</ul>
+</li>
+</ul>
+
+    </nav>
+    <template data-toggle-item-template>
+        <button class="btn btn-sm btn-link toctree-expand" type="button">
+            <span class="sr-only">Toggle menu contents</span>
+        </button>
+    </template>
+</div>
+                    <div class="d-lg-none border-bottom">
+                        
+                    </div>
+                </div>
+            </aside>
+            <div class="col-12 col-lg-9 pt-5">
+                <header class="row align-items-baseline">
+                    <div class="col">
+                        <nav aria-label="breadcrumb">
+    <ol class="breadcrumb m-0 p-0 bg-transparent">
+        <li class="breadcrumb-item"><a href="index.html">Docs</a></li>
+            <li class="breadcrumb-item"><a href="modules.html">App Discos</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Modulo Controlador</li>
+    </ol>
+</nav>
+                    </div>
+                    <div class="col-sm-12 col-lg-auto mt-3 mt-lg-3">
+                        <noscript>
+                            <p>JavaScript is required to toggle light/dark mode..</p>
+                        </noscript>
+                        <button id="wagtail-theme" class="btn btn-sm btn-light text-decoration-none" type="button">
+                            <span class="dark-only"><i class="fas fa-sun"></i> Light mode</span>
+                            <span class="light-only"><i class="fas fa-moon"></i> Dark mode</span>
+                        </button>
+    <a class="btn btn-sm btn-light text-decoration-none" href="https://github.com/jciasenza/App-Discos/docs/controller.rst" rel="nofollow">
+        <span class="btn-icon"><span class="fab fa-github"></span></span>
+        <span class="btn-text">Edit on GitHub</span>
+    </a>
+    <a class="btn btn-sm btn-light text-decoration-none" href="_sources/controller.rst.txt" rel="nofollow">
+        <span class="btn-icon"><span class="fas fa-code"></span></span>
+        <span class="btn-text">View source</span>
+    </a>
+                        
+                    </div>
+                </header>
+                <div class="row" >
+                    <div class="col-12">
+                        <hr class="w-100 my-4">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-lg-9 order-last order-lg-first rst-content">
+                        <main role="main" id="main">
+    <section id="module-controller">
+<span id="controller-module"></span><h1>Modulo Controlador<a class="headerlink" href="#module-controller" title="Link to this heading">¶</a></h1>
+<section id="modulo-del-controlador-principal">
+<h2>Módulo del Controlador Principal<a class="headerlink" href="#modulo-del-controlador-principal" title="Link to this heading">¶</a></h2>
+<p>Este módulo define la clase <a class="reference internal" href="#controller.DiscoController" title="controller.DiscoController"><code class="xref py py-class docutils literal notranslate"><span class="pre">DiscoController</span></code></a>, que actúa como el mediador
+entre la interfaz gráfica (Tkinter) y la persistencia de datos (Peewee).
+Gestiona el flujo de información para artistas, discos y canciones.</p>
+</section>
+<dl class="py class">
+<dt class="sig sig-object py" id="controller.DiscoController">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">controller.</span></span><span class="sig-name descname"><span class="pre">DiscoController</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cancion_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">artista_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">view</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller.html#DiscoController"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.DiscoController" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Controlador principal de la aplicación.</p>
+<p>Se encarga de reaccionar a los eventos de la vista, solicitar datos a los 
+modelos y actualizar la interfaz en consecuencia.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="controller.DiscoController.agregar_cancion">
+<span class="sig-name descname"><span class="pre">agregar_cancion</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller.html#DiscoController.agregar_cancion"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.DiscoController.agregar_cancion" title="Link to this definition">¶</a></dt>
+<dd><p>Añade una canción al disco actual. 
+Requiere que el disco haya sido guardado previamente para tener un ID de referencia.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="controller.DiscoController.artista_actual_id">
+<span class="sig-name descname"><span class="pre">artista_actual_id</span></span><a class="headerlink" href="#controller.DiscoController.artista_actual_id" title="Link to this definition">¶</a></dt>
+<dd><p>ID del artista en edición.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="controller.DiscoController.cancion_en_edicion_id">
+<span class="sig-name descname"><span class="pre">cancion_en_edicion_id</span></span><a class="headerlink" href="#controller.DiscoController.cancion_en_edicion_id" title="Link to this definition">¶</a></dt>
+<dd><p>ID de la canción que se está modificando en el formulario.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="controller.DiscoController.cargar_canciones">
+<span class="sig-name descname"><span class="pre">cargar_canciones</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller.html#DiscoController.cargar_canciones"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.DiscoController.cargar_canciones" title="Link to this definition">¶</a></dt>
+<dd><p>Refresca visualmente el Listbox de canciones dentro del formulario de discos.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="controller.DiscoController.disco_actual_id">
+<span class="sig-name descname"><span class="pre">disco_actual_id</span></span><a class="headerlink" href="#controller.DiscoController.disco_actual_id" title="Link to this definition">¶</a></dt>
+<dd><p>ID del disco que se está editando actualmente (None si es nuevo).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="controller.DiscoController.editar">
+<span class="sig-name descname"><span class="pre">editar</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller.html#DiscoController.editar"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.DiscoController.editar" title="Link to this definition">¶</a></dt>
+<dd><p>Prepara el formulario de discos con los datos de un disco seleccionado
+para su modificación.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="controller.DiscoController.guardar">
+<span class="sig-name descname"><span class="pre">guardar</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller.html#DiscoController.guardar"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.DiscoController.guardar" title="Link to this definition">¶</a></dt>
+<dd><p>Valida y guarda los datos de un disco. 
+Si el disco es nuevo, recupera el ID generado para permitir añadir canciones.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="controller.DiscoController.guardar_artista">
+<span class="sig-name descname"><span class="pre">guardar_artista</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller.html#DiscoController.guardar_artista"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.DiscoController.guardar_artista" title="Link to this definition">¶</a></dt>
+<dd><p>Extrae datos del formulario de artistas y los persiste en la DB.
+Maneja errores de duplicados (IntegrityError).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="controller.DiscoController.imagen_actual_path">
+<span class="sig-name descname"><span class="pre">imagen_actual_path</span></span><a class="headerlink" href="#controller.DiscoController.imagen_actual_path" title="Link to this definition">¶</a></dt>
+<dd><p>Ruta temporal de la imagen seleccionada para el disco/artista.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="controller.DiscoController.inicializar_datos">
+<span class="sig-name descname"><span class="pre">inicializar_datos</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller.html#DiscoController.inicializar_datos"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.DiscoController.inicializar_datos" title="Link to this definition">¶</a></dt>
+<dd><p>Realiza la carga inicial de información desde la base de datos 
+hacia todos los componentes de la vista.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="controller.DiscoController.refrescar_artistas">
+<span class="sig-name descname"><span class="pre">refrescar_artistas</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller.html#DiscoController.refrescar_artistas"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.DiscoController.refrescar_artistas" title="Link to this definition">¶</a></dt>
+<dd><p>Recarga la lista de artistas y cambia la pantalla a la vista de artistas.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="controller.DiscoController.refrescar_datos_silencioso">
+<span class="sig-name descname"><span class="pre">refrescar_datos_silencioso</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller.html#DiscoController.refrescar_datos_silencioso"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.DiscoController.refrescar_datos_silencioso" title="Link to this definition">¶</a></dt>
+<dd><p>Actualiza la tabla principal de discos sin cambiar la pantalla actual.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+</main>
+                        <nav aria-label="Page navigation" class="py-4 my-5 clearfix font-weight-bold border-top">
+    <a class="float-left" href="modules.html" title="Previous">
+        <span aria-hidden="true">←&nbsp;</span>App Discos
+    </a>
+    <a class="float-right" href="main.html" title="Next">
+        Modulo Principal <span aria-hidden="true">&nbsp;→</span>
+    </a>
+</nav>
+                    </div>
+                    
+                    <nav class="col-12 col-lg-3 pb-4">
+                        <div class="sticky-top toc page-toc" aria-labelledby="page-toc-heading">
+                            <p class="font-weight-bold" id="page-toc-heading">Page contents</p>
+                            <ul>
+<li><a class="reference internal" href="#">Modulo Controlador</a><ul>
+<li><a class="reference internal" href="#modulo-del-controlador-principal">Módulo del Controlador Principal</a></li>
+<li><a class="reference internal" href="#controller.DiscoController"><code class="docutils literal notranslate"><span class="pre">DiscoController</span></code></a><ul>
+<li><a class="reference internal" href="#controller.DiscoController.agregar_cancion"><code class="docutils literal notranslate"><span class="pre">DiscoController.agregar_cancion()</span></code></a></li>
+<li><a class="reference internal" href="#controller.DiscoController.artista_actual_id"><code class="docutils literal notranslate"><span class="pre">DiscoController.artista_actual_id</span></code></a></li>
+<li><a class="reference internal" href="#controller.DiscoController.cancion_en_edicion_id"><code class="docutils literal notranslate"><span class="pre">DiscoController.cancion_en_edicion_id</span></code></a></li>
+<li><a class="reference internal" href="#controller.DiscoController.cargar_canciones"><code class="docutils literal notranslate"><span class="pre">DiscoController.cargar_canciones()</span></code></a></li>
+<li><a class="reference internal" href="#controller.DiscoController.disco_actual_id"><code class="docutils literal notranslate"><span class="pre">DiscoController.disco_actual_id</span></code></a></li>
+<li><a class="reference internal" href="#controller.DiscoController.editar"><code class="docutils literal notranslate"><span class="pre">DiscoController.editar()</span></code></a></li>
+<li><a class="reference internal" href="#controller.DiscoController.guardar"><code class="docutils literal notranslate"><span class="pre">DiscoController.guardar()</span></code></a></li>
+<li><a class="reference internal" href="#controller.DiscoController.guardar_artista"><code class="docutils literal notranslate"><span class="pre">DiscoController.guardar_artista()</span></code></a></li>
+<li><a class="reference internal" href="#controller.DiscoController.imagen_actual_path"><code class="docutils literal notranslate"><span class="pre">DiscoController.imagen_actual_path</span></code></a></li>
+<li><a class="reference internal" href="#controller.DiscoController.inicializar_datos"><code class="docutils literal notranslate"><span class="pre">DiscoController.inicializar_datos()</span></code></a></li>
+<li><a class="reference internal" href="#controller.DiscoController.refrescar_artistas"><code class="docutils literal notranslate"><span class="pre">DiscoController.refrescar_artistas()</span></code></a></li>
+<li><a class="reference internal" href="#controller.DiscoController.refrescar_datos_silencioso"><code class="docutils literal notranslate"><span class="pre">DiscoController.refrescar_datos_silencioso()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+                        </div>
+                    </nav>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="container-fluid bg-primary text-light">
+        <div class="container">
+            <div class="row">
+        <div class="col p-4">
+            
+                <nav aria-label="Footer">
+                    <ul class="nav justify-content-center mb-2">
+                            <li class="nav-item"><a class="nav-link text-light"  href="https://github.com/jciasenza"><span class="fab fa-github"></span></a></li>
+                            <li class="nav-item"><a class="nav-link text-light"  href="https://www.linkedin.com/in/juan-carlos-iasenza-8119501a9/"><span class="fab fa-linkedin"></span></a></li>
+                            <li class="nav-item"><a class="nav-link text-light"  href="mailto:iasenzajuancarlos@gmail.com"><span class="fas fa-envelope"></span></a></li>
+                    </ul>
+                </nav>
+            
+            <div class="text-center">
+                    &copy; Copyright 2026, Juan Carlos Iasenza
+            </div>
+            <div class="text-center text-white-50 font-italic mt-3">
+                <small>
+                    Created using
+                    <a class="text-white" href="https://github.com/wagtail/sphinx_wagtail_theme" rel="nofollow" target="_blank">
+                        Sphinx Wagtail Theme 6.5.0
+                    </a>
+                    and
+                    <a class="text-white" href="https://www.sphinx-doc.org/" rel="nofollow" target="_blank">
+                        Sphinx 8.1.3
+                    </a>
+                </small>
+            </div>
+        </div>
+    </div>
+        </div>
+    </footer>
+        <script src="_static/documentation_options.js?v=e56700d4"></script>
+        <script src="_static/doctools.js?v=9bcbadda"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="_static/copybutton.js?v=f281be69"></script>
+        <script src="_static/translations.js?v=f85f4cfb"></script>
+        <script type="text/javascript" src="_static/dist/theme.js"></script>
+        <script type="text/javascript" src="_static/dist/vendor.js"></script>
+        <script type="text/javascript" src="_static/searchtools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', function() { Search.loadIndex("searchindex.js"); });
+        </script>
+        <script type="text/javascript" id="searchindexloader"></script>
+    </body>
+</html>
