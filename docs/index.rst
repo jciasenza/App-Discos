@@ -4,7 +4,7 @@
    contain the root `toctree` directive.
 
 Documentación Gestión Musical
-============================
+=============================
 
 .. toctree::
    :maxdepth: 2

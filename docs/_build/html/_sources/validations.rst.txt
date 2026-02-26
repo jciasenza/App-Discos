@@ -1,5 +1,5 @@
 Módulo de Validaciones
-==================
+=======================
 
 .. automodule:: validations
    :members:

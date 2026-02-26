@@ -1,5 +1,5 @@
-Modulo Controlador
-=================
+Módulo Controlador
+==================
 
 .. automodule:: controller
    :members:

@@ -1,5 +1,5 @@
-Modulo Principal
-===========
+Módulo Principal
+==================
 
 .. automodule:: main
    :members:

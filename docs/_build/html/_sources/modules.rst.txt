@@ -1,5 +1,5 @@
 App Discos
-==========
+==================
 
 .. toctree::
    :maxdepth: 4
