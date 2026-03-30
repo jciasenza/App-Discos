@@ -3,6 +3,40 @@ import tkinter as tk
 from peewee import IntegrityError
 from model import Artista
 
+def log_alta(func):
+    def wrapper(self, *args, **kwargs):
+        es_alta = self.disco_actual_id is None
+        if es_alta:
+            print("ALTA de disco en proceso...")
+        resultado = func(self, *args, **kwargs)
+        if es_alta:
+            print("Disco creado correctamente")
+        return resultado
+    return wrapper
+
+
+def log_actualizacion(func):
+    def wrapper(self, *args, **kwargs):
+        es_update = self.disco_actual_id is not None
+        if es_update:
+            print(f"Actualizando disco ID {self.disco_actual_id}...")
+        resultado = func(self, *args, **kwargs)
+        if es_update:
+            print(f"Disco ID {self.disco_actual_id} actualizado")
+        return resultado
+    return wrapper
+
+def log_eliminacion(func):
+    def wrapper(self, *args, **kwargs):
+        disco_id = self.view.lista_discos_view.obtener_id_seleccionado()
+        if not disco_id:
+            return func(self, *args, **kwargs)
+        print(f"Eliminando disco ID {disco_id}...")
+        resultado = func(self, *args, **kwargs)
+        print(f"Disco ID {disco_id} eliminado")
+        return resultado
+    return wrapper
+
 class DiscoController:
     def __init__(self, model, cancion_model, artista_model, view):
         self.model = model
@@ -160,6 +194,8 @@ class DiscoController:
         self.cargar_canciones()
         self.view.mostrar("form", "Editar Disco")
 
+    @log_alta
+    @log_actualizacion
     def guardar(self):
         nombre_artista = self.view.form_view.artista_var.get().strip()
         if nombre_artista == "Artista" or not nombre_artista:
@@ -191,7 +227,8 @@ class DiscoController:
         except Exception as e:
             # FIX: Convertir e a string evita el error "unknown option" de la imagen
             messagebox.showerror("Error", f"Error al guardar: {str(e)}")
-
+    
+    @log_eliminacion
     def eliminar(self):
         disco_id = self.view.lista_discos_view.obtener_id_seleccionado()
         if disco_id and messagebox.askyesno("Confirmar", "¿Eliminar disco?"):
