@@ -1,0 +1,4 @@
+2026-04-15 23:27:15 - WARNING - Evento: disco_actualizado | Datos: {'id': 6, 'data': {'artista': 2, 'titulo': 'Cancion Animal', 'anio': '1990', 'formato': 'Vinilo', 'portada': 'C:/Users/curej/Desktop/UTN/App Discos/img/SS_CA.jpg'}}
+2026-04-15 23:28:51 - INFO - Evento: disco_agregado | Datos: 9
+2026-04-15 23:31:46 - ERROR - Evento: disco_eliminado | Datos: 9
+2026-04-15 23:34:51 - WARNING - Evento: artista_actualizado | Datos: {'id': 2, 'data': {'nombre': 'Soda Stereo', 'tipo': 'Banda', 'info': 'Soda Stereo: Banda Argentina', 'foto': 'C:/Users/curej/Desktop/UTN/App Discos/img/SS.jpg'}}
