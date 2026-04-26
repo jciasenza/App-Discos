@@ -1,0 +1,33 @@
+2026-04-26 12:12:14 - INFO - Servidor iniciado en localhost:5000
+2026-04-26 12:12:29 - INFO - Servidor iniciado en localhost:5000
+2026-04-26 12:13:32 - INFO - Cliente conectado desde ('127.0.0.1', 50437)
+2026-04-26 12:13:32 - ERROR - JSON inválido recibido de ('127.0.0.1', 50437)
+2026-04-26 12:13:32 - INFO - Cliente conectado desde ('127.0.0.1', 60712)
+2026-04-26 12:13:32 - INFO - Cliente conectado desde ('127.0.0.1', 60405)
+2026-04-26 12:14:53 - INFO - Servidor iniciado en localhost:5000
+2026-04-26 12:15:02 - INFO - Cliente conectado desde ('127.0.0.1', 52287)
+2026-04-26 12:15:14 - INFO - Cliente conectado desde ('127.0.0.1', 60403)
+2026-04-26 12:15:14 - ERROR - JSON inválido recibido de ('127.0.0.1', 60403)
+2026-04-26 12:15:14 - INFO - Cliente conectado desde ('127.0.0.1', 50463)
+2026-04-26 12:15:14 - INFO - Cliente conectado desde ('127.0.0.1', 49671)
+2026-04-26 12:15:55 - WARNING - [App-Discos] Evento: disco_actualizado | Datos: {'id': 2, 'data': {'artista': 1, 'titulo': 'Songs of a lost world', 'anio': '2024', 'formato': 'Vinilo', 'portada': 'C:/Users/curej/Desktop/UTN/App Discos/img/TC_SOALW.jpg'}}
+2026-04-26 12:16:45 - INFO - Cliente desconectado: ('127.0.0.1', 50463)
+2026-04-26 12:16:45 - INFO - Cliente desconectado: ('127.0.0.1', 49671)
+2026-04-26 12:20:31 - INFO - Cliente desconectado: ('127.0.0.1', 52287)
+2026-04-26 12:20:44 - INFO - Servidor iniciado en localhost:5000
+2026-04-26 12:21:31 - INFO - Servidor detenido
+2026-04-26 12:22:41 - INFO - Servidor iniciado en localhost:5000
+2026-04-26 12:23:13 - INFO - Cliente conectado desde ('127.0.0.1', 56882)
+2026-04-26 12:23:13 - INFO - Cliente conectado desde ('127.0.0.1', 53414)
+2026-04-26 12:23:13 - ERROR - JSON inválido recibido de ('127.0.0.1', 56882)
+2026-04-26 12:23:13 - INFO - Cliente conectado desde ('127.0.0.1', 59056)
+2026-04-26 12:24:17 - INFO - Cliente desconectado: ('127.0.0.1', 53414)
+2026-04-26 12:24:17 - INFO - Cliente desconectado: ('127.0.0.1', 59056)
+2026-04-26 12:24:39 - INFO - Cliente conectado desde ('127.0.0.1', 63861)
+2026-04-26 12:24:39 - INFO - [App-Discos] Evento: disco_agregado | Datos: {'id': 9, 'artista': '3', 'titulo': 'dsdsds', 'anio': '1954', 'formato': 'CD', 'portada': None}
+2026-04-26 12:26:01 - ERROR - [App-Discos] Evento: disco_eliminado | Datos: 9
+2026-04-26 12:28:01 - INFO - Cliente desconectado: ('127.0.0.1', 56882)
+2026-04-26 12:31:42 - INFO - Cliente desconectado: ('127.0.0.1', 63861)
+2026-04-26 12:32:28 - INFO - Servidor iniciado en localhost:5000
+2026-04-26 12:32:37 - INFO - Cliente conectado desde ('127.0.0.1', 52705)
+2026-04-26 12:32:52 - INFO - [App-Discos] Evento: artista_agregado | Datos: {'id': 4, 'nombre': 'Queen', 'tipo': 'Banda', 'info': '', 'foto': None}

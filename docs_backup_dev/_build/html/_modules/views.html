@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html class="no-js" lang="es" data-content_root="../">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+        <title>views &mdash; documentación de GestionMusical - 4.5.0</title>
+    
+    <link rel="stylesheet" type="text/css" href="../_static/dist/fontawesome.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/dist/theme.css?v=310cf088" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+            <link rel="index" title="Índice" href="../genindex.html" />
+            <link rel="search" title="Búsqueda" href="../search.html" />
+            <link rel="top" title="documentación de GestionMusical - 4.5.0" href="#" />
+            <link rel="up" title="Código de módulo" href="index.html" />
+    </head>
+<body>
+    <script type="text/javascript" src="../_static/dist/blocking.js"></script>
+    <header class="container-fluid bg-primary">
+        <a class="btn btn-sm btn-light skip-to-content-link" href="#main">Skip to content</a>
+        <div class="container-fluid">
+            <div class="navbar navbar-expand-lg navbar-dark font-weight-bold">
+                    <a href="../index.html"
+                        title="Wagtail"
+                        class="logo navbar-brand"
+                    >
+                        <img src="_static/img/icono.ico" width="45" height="59" alt="Wagtail"
+                            class="logo-img"
+                        />
+                        Gestión Musical
+                    </a>
+                
+                
+                <button class="navbar-toggler btn btn-primary d-lg-none" type="button" data-toggle="collapse" data-target="#collapseSidebar" aria-expanded="false" aria-controls="collapseExample">
+                    <span class="navbar-toggler-icon"></span>
+                    <span class="sr-only">menu</span>
+                </button>
+            </div>
+        </div>
+    </header>
+    <div class="container-fluid">
+        <div class="row">
+            <aside class="col-12 col-lg-3 sidebar-container">
+                <div id="collapseSidebar" class="collapse sticky-top d-lg-block pt-5 pr-lg-4">
+<div id="searchbox" class="searchbox mb-6 px-1" role="search">
+    <form id="search-form" action="../search.html" autocomplete="off" method="get" role="search">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text border-right-0 bg-white py-3 pl-3 pr-2"><span class="fas fa-search"></span></div>
+            </div>
+            <input class="form-control py-3 pr-3 pl-1 h-100 border-left-0" type="search" name="q" placeholder="Buscar documentación" aria-label="Buscar documentación" id="searchinput" />
+        </div>
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div><div class="site-toc">
+    <nav class="toc mt-3" aria-label="Main menu">
+        <p class="caption" role="heading"><span class="caption-text">Contenidos:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">App Discos</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../controller.html">Modulo Controlador</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../main.html">Modulo Principal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model.html">Módulo de Modelos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../validations.html">Módulo de Validaciones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../views.html">Módulo de Vistas</a></li>
+</ul>
+</li>
+</ul>
+
+    </nav>
+    <template data-toggle-item-template>
+        <button class="btn btn-sm btn-link toctree-expand" type="button">
+            <span class="sr-only">Toggle menu contents</span>
+        </button>
+    </template>
+</div>
+                    <div class="d-lg-none border-bottom">
+                        
+                    </div>
+                </div>
+            </aside>
+            <div class="col-12 col-lg-9 pt-5">
+                <header class="row align-items-baseline">
+                    <div class="col">
+                        <nav aria-label="breadcrumb">
+    <ol class="breadcrumb m-0 p-0 bg-transparent">
+        <li class="breadcrumb-item"><a href="../index.html">Docs</a></li>
+            <li class="breadcrumb-item"><a href="index.html">Código de módulo</a></li>
+        <li class="breadcrumb-item active" aria-current="page">views</li>
+    </ol>
+</nav>
+                    </div>
+                    <div class="col-sm-12 col-lg-auto mt-3 mt-lg-3">
+                        <noscript>
+                            <p>JavaScript is required to toggle light/dark mode..</p>
+                        </noscript>
+                        <button id="wagtail-theme" class="btn btn-sm btn-light text-decoration-none" type="button">
+                            <span class="dark-only"><i class="fas fa-sun"></i> Light mode</span>
+                            <span class="light-only"><i class="fas fa-moon"></i> Dark mode</span>
+                        </button>
+    <a class="btn btn-sm btn-light text-decoration-none" href="https://github.com/jciasenza/App-Discos/tree/dev/docs/_modules/views" rel="nofollow">
+        <span class="btn-icon"><span class="fab fa-github"></span></span>
+        <span class="btn-text">Edit on GitHub</span>
+    </a>
+                        
+                    </div>
+                </header>
+                <div class="row" >
+                    <div class="col-12">
+                        <hr class="w-100 my-4">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-lg-9 order-last order-lg-first rst-content">
+                        <main role="main" id="main">
+    <h1>Código fuente para views</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Módulo de la Vista Principal (Fachada)</span>
+<span class="sd">=======================================</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Este módulo define la clase :class:`View`, que actúa como el orquestador central </span>
+<span class="sd">de la interfaz gráfica. Centraliza el acceso a las sub-vistas (artistas, discos, canciones)</span>
+<span class="sd">y expone los widgets necesarios para que el controlador pueda vincular eventos.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tk</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dotenv</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_dotenv</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">Views.disco_view</span><span class="w"> </span><span class="kn">import</span> <span class="n">DiscoView</span>
+
+<span class="c1"># Carga las variables de entorno para la configuración de la UI</span>
+<span class="n">load_dotenv</span><span class="p">()</span>
+
+<div class="viewcode-block" id="View">
+<a class="viewcode-back" href="../views.html#views.View">[documentos]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">View</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Clase principal de la interfaz de usuario.</span>
+<span class="sd">    </span>
+<span class="sd">    Esta clase implementa el patrón Facade para simplificar la comunicación</span>
+<span class="sd">    entre el Controlador y las múltiples sub-vistas del sistema.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Inicializa la vista principal y configura las sub-vistas.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            root (tk.Tk): La instancia principal de Tkinter.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="n">root</span>
+        
+        <span class="c1"># --- 1. CONFIGURACIÓN DE LA VENTANA (MVC) ---</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">configurar_ventana</span><span class="p">()</span>
+        
+        <span class="c1"># --- 2. INSTANCIAMOS EL ORQUESTADOR PRINCIPAL ---</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">main_view</span> <span class="o">=</span> <span class="n">DiscoView</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+        
+        <span class="c1"># --- 3. REFERENCIAS DIRECTAS A LAS SUB-VISTAS ---</span>
+        <span class="c1">#: Referencia a la vista de inicio.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">home_view</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">main_view</span><span class="o">.</span><span class="n">vistas</span><span class="p">[</span><span class="s2">&quot;home&quot;</span><span class="p">]</span>
+        <span class="c1">#: Referencia a la lista de discos.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lista_discos_view</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">main_view</span><span class="o">.</span><span class="n">vistas</span><span class="p">[</span><span class="s2">&quot;discos&quot;</span><span class="p">]</span>
+        <span class="c1">#: Referencia a la lista de artistas.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lista_artistas_view</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">main_view</span><span class="o">.</span><span class="n">vistas</span><span class="p">[</span><span class="s2">&quot;artistas&quot;</span><span class="p">]</span>
+        <span class="c1">#: Referencia al formulario de discos.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">form_view</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">main_view</span><span class="o">.</span><span class="n">vistas</span><span class="p">[</span><span class="s2">&quot;formulario&quot;</span><span class="p">]</span>
+        <span class="c1">#: Referencia al listado de canciones.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">canciones_view</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">main_view</span><span class="o">.</span><span class="n">vistas</span><span class="p">[</span><span class="s2">&quot;listado_canciones&quot;</span><span class="p">]</span>
+        <span class="c1">#: Referencia al formulario de artistas.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">form_artista_view</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">main_view</span><span class="o">.</span><span class="n">vistas</span><span class="p">[</span><span class="s2">&quot;form_artista&quot;</span><span class="p">]</span>
+
+        <span class="c1"># --- 4. EXPOSICIÓN DE WIDGETS PARA EL CONTROLADOR ---</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">btn_nav_discos</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">home_view</span><span class="o">.</span><span class="n">btn_discos</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">btn_nav_artistas</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">home_view</span><span class="o">.</span><span class="n">btn_artistas</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">btn_nav_canciones</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">home_view</span><span class="o">.</span><span class="n">btn_canciones</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">btn_nuevo_disco</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lista_discos_view</span><span class="o">.</span><span class="n">btn_nuevo</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">btn_editar_disco</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lista_discos_view</span><span class="o">.</span><span class="n">btn_editar</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">btn_eliminar_disco</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lista_discos_view</span><span class="o">.</span><span class="n">btn_eliminar</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">entry_buscar_disco</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lista_discos_view</span><span class="o">.</span><span class="n">entry_buscar</span>
+        
+        <span class="c1"># --- 5. VARIABLE DE BÚSQUEDA ---</span>
+        <span class="c1">#: Variable de control de Tkinter para el motor de búsqueda.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">buscar_var</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">StringVar</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">entry_buscar_disco</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">textvariable</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">buscar_var</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">buscar_var</span><span class="o">.</span><span class="n">trace_add</span><span class="p">(</span><span class="s2">&quot;write&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">al_buscar</span><span class="p">())</span>
+
+<div class="viewcode-block" id="View.configurar_ventana">
+<a class="viewcode-back" href="../views.html#views.View.configurar_ventana">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">configurar_ventana</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Configura los parámetros estéticos de la ventana principal.</span>
+<span class="sd">        </span>
+<span class="sd">        Extrae el título, versión y colores desde el archivo de configuración </span>
+<span class="sd">        ``.env``. Si no existen, utiliza valores por defecto.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">app_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;APP_NAME&quot;</span><span class="p">,</span> <span class="s2">&quot;Gestión Musical&quot;</span><span class="p">)</span>
+        <span class="n">version</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;APP_VERSION&quot;</span><span class="p">,</span> <span class="s2">&quot;1.0&quot;</span><span class="p">)</span>
+        <span class="n">bg_color</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;APP_BG_COLOR&quot;</span><span class="p">,</span> <span class="s2">&quot;#d9d9d9&quot;</span><span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">app_name</span><span class="si">}</span><span class="s2"> - v</span><span class="si">{</span><span class="n">version</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">state</span><span class="p">(</span><span class="s1">&#39;zoomed&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">bg</span><span class="o">=</span><span class="n">bg_color</span><span class="p">)</span>
+
+        <span class="c1"># Manejo del Icono</span>
+        <span class="n">icon_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s2">&quot;icono.ico&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">icon_path</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">iconbitmap</span><span class="p">(</span><span class="n">icon_path</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="View.al_buscar">
+<a class="viewcode-back" href="../views.html#views.View.al_buscar">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">al_buscar</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Método &#39;placeholder&#39; para la acción de búsqueda.</span>
+<span class="sd">        </span>
+<span class="sd">        .. note::</span>
+<span class="sd">           Este método está diseñado para ser sobreescrito por el controlador</span>
+<span class="sd">           durante la inicialización de la app.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="View.mostrar">
+<a class="viewcode-back" href="../views.html#views.View.mostrar">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">mostrar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nombre</span><span class="p">,</span> <span class="n">titulo_form</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Gestiona el cambio de pantallas en la aplicación.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            nombre (str): Clave de la vista a mostrar (e.g., &#39;home&#39;, &#39;lista&#39;, &#39;form&#39;).</span>
+<span class="sd">            titulo_form (str, optional): Título dinámico si la vista es un formulario.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">mapa</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;home&quot;</span><span class="p">:</span> <span class="s2">&quot;home&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;lista&quot;</span><span class="p">:</span> <span class="s2">&quot;discos&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;artistas&quot;</span><span class="p">:</span> <span class="s2">&quot;artistas&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;form&quot;</span><span class="p">:</span> <span class="s2">&quot;formulario&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;canciones&quot;</span><span class="p">:</span> <span class="s2">&quot;listado_canciones&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;form_artista&quot;</span><span class="p">:</span> <span class="s2">&quot;form_artista&quot;</span>
+        <span class="p">}</span>
+        
+        <span class="n">vista_destino</span> <span class="o">=</span> <span class="n">mapa</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">nombre</span><span class="p">,</span> <span class="s2">&quot;home&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">nombre</span> <span class="o">==</span> <span class="s2">&quot;form&quot;</span> <span class="ow">and</span> <span class="n">titulo_form</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">form_view</span><span class="p">,</span> <span class="s1">&#39;set_titulo&#39;</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">form_view</span><span class="o">.</span><span class="n">set_titulo</span><span class="p">(</span><span class="n">titulo_form</span><span class="p">)</span>
+            
+        <span class="bp">self</span><span class="o">.</span><span class="n">main_view</span><span class="o">.</span><span class="n">mostrar_vista</span><span class="p">(</span><span class="n">vista_destino</span><span class="p">)</span></div>
+
+
+    <span class="c1"># --- MÉTODOS PUENTE PARA DISCOS ---</span>
+<div class="viewcode-block" id="View.limpiar_tabla">
+<a class="viewcode-back" href="../views.html#views.View.limpiar_tabla">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">limpiar_tabla</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> 
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Elimina todos los elementos visuales de la tabla de discos.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lista_discos_view</span><span class="o">.</span><span class="n">limpiar_tabla</span><span class="p">()</span></div>
+
+        
+<div class="viewcode-block" id="View.insertar_en_tabla">
+<a class="viewcode-back" href="../views.html#views.View.insertar_en_tabla">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">insertar_en_tabla</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span> 
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Inserta una nueva fila en la tabla de discos.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lista_discos_view</span><span class="o">.</span><span class="n">insertar_en_tabla</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span></div>
+
+        
+<div class="viewcode-block" id="View.obtener_id_seleccionado">
+<a class="viewcode-back" href="../views.html#views.View.obtener_id_seleccionado">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">obtener_id_seleccionado</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> 
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retorna el ID del disco seleccionado en la interfaz.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">lista_discos_view</span><span class="o">.</span><span class="n">obtener_id_seleccionado</span><span class="p">()</span></div>
+
+
+    <span class="c1"># --- MÉTODOS PUENTE PARA ARTISTAS Y CANCIONES ---</span>
+<div class="viewcode-block" id="View.cargar_datos_artistas">
+<a class="viewcode-back" href="../views.html#views.View.cargar_datos_artistas">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">cargar_datos_artistas</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">artistas</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Actualiza visualmente la lista de artistas.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            artistas (list): Lista de objetos de tipo Artista.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lista_artistas_view</span><span class="o">.</span><span class="n">cargar_datos</span><span class="p">(</span><span class="n">artistas</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="View.cargar_datos_canciones">
+<a class="viewcode-back" href="../views.html#views.View.cargar_datos_canciones">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">cargar_datos_canciones</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">canciones</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Actualiza visualmente la lista de canciones.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            canciones (list): Lista de objetos de tipo Cancion.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">canciones_view</span><span class="o">.</span><span class="n">cargar_datos</span><span class="p">(</span><span class="n">canciones</span><span class="p">)</span></div>
+</div>
+
+</pre></div>
+</main>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="container-fluid bg-primary text-light">
+        <div class="container">
+            <div class="row">
+        <div class="col p-4">
+            
+                <nav aria-label="Footer">
+                    <ul class="nav justify-content-center mb-2">
+                            <li class="nav-item"><a class="nav-link text-light"  href="https://github.com/jciasenza"><span class="fab fa-github"></span></a></li>
+                            <li class="nav-item"><a class="nav-link text-light"  href="https://www.linkedin.com/in/juan-carlos-iasenza-8119501a9/"><span class="fab fa-linkedin"></span></a></li>
+                            <li class="nav-item"><a class="nav-link text-light"  href="mailto:iasenzajuancarlos@gmail.com"><span class="fas fa-envelope"></span></a></li>
+                    </ul>
+                </nav>
+            
+            <div class="text-center">
+                    &copy; Copyright 2026, Juan Carlos Iasenza
+            </div>
+            <div class="text-center text-white-50 font-italic mt-3">
+                <small>
+                    Created using
+                    <a class="text-white" href="https://github.com/wagtail/sphinx_wagtail_theme" rel="nofollow" target="_blank">
+                        Sphinx Wagtail Theme 6.5.0
+                    </a>
+                    and
+                    <a class="text-white" href="https://www.sphinx-doc.org/" rel="nofollow" target="_blank">
+                        Sphinx 8.1.3
+                    </a>
+                </small>
+            </div>
+        </div>
+    </div>
+        </div>
+    </footer>
+        <script src="../_static/documentation_options.js?v=e56700d4"></script>
+        <script src="../_static/doctools.js?v=9bcbadda"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+        <script src="../_static/translations.js?v=f85f4cfb"></script>
+        <script type="text/javascript" src="../_static/dist/theme.js"></script>
+        <script type="text/javascript" src="../_static/dist/vendor.js"></script>
+        <script type="text/javascript" src="../_static/searchtools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', function() { Search.loadIndex("../searchindex.js"); });
+        </script>
+        <script type="text/javascript" id="searchindexloader"></script>
+    </body>
+</html>

@@ -1,0 +1,30 @@
+2026-04-15 23:27:15 - WARNING - Evento: disco_actualizado | Datos: {'id': 6, 'data': {'artista': 2, 'titulo': 'Cancion Animal', 'anio': '1990', 'formato': 'Vinilo', 'portada': 'C:/Users/curej/Desktop/UTN/App Discos/img/SS_CA.jpg'}}
+2026-04-15 23:28:51 - INFO - Evento: disco_agregado | Datos: 9
+2026-04-15 23:31:46 - ERROR - Evento: disco_eliminado | Datos: 9
+2026-04-15 23:34:51 - WARNING - Evento: artista_actualizado | Datos: {'id': 2, 'data': {'nombre': 'Soda Stereo', 'tipo': 'Banda', 'info': 'Soda Stereo: Banda Argentina', 'foto': 'C:/Users/curej/Desktop/UTN/App Discos/img/SS.jpg'}}
+2026-04-26 12:05:46 - ERROR - Error conectando al servidor: [WinError 10061] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+2026-04-26 12:07:10 - INFO - Evento: cancion_agregada | Datos: 15
+2026-04-26 12:07:12 - WARNING - Evento: disco_actualizado | Datos: {'id': 7, 'data': {'artista': 2, 'titulo': 'Dinamo', 'anio': '1992', 'formato': 'Vinilo', 'portada': 'C:/Users/curej/Desktop/UTN/App Discos/img/SS_D.jpg'}}
+2026-04-26 12:09:41 - INFO - Evento: cancion_agregada | Datos: 16
+2026-04-26 12:09:52 - WARNING - Evento: disco_actualizado | Datos: {'id': 6, 'data': {'artista': 2, 'titulo': 'Cancion Animal', 'anio': '1990', 'formato': 'Vinilo', 'portada': 'C:/Users/curej/Desktop/UTN/App Discos/img/SS_CA.jpg'}}
+2026-04-26 12:15:02 - INFO - Conectado al servidor en localhost:5000
+2026-04-26 12:15:53 - INFO - Evento: cancion_agregada | Datos: 17
+2026-04-26 12:15:53 - ERROR - Error enviando log: Object of type set is not JSON serializable
+2026-04-26 12:15:55 - WARNING - Evento: disco_actualizado | Datos: {'id': 2, 'data': {'artista': 1, 'titulo': 'Songs of a lost world', 'anio': '2024', 'formato': 'Vinilo', 'portada': 'C:/Users/curej/Desktop/UTN/App Discos/img/TC_SOALW.jpg'}}
+2026-04-26 12:15:55 - INFO - Log enviado: disco_actualizado
+2026-04-26 12:20:31 - INFO - Desconectado del servidor
+2026-04-26 12:21:31 - INFO - Conectado al servidor en localhost:5000
+2026-04-26 12:22:14 - INFO - Evento: cancion_agregada | Datos: 18
+2026-04-26 12:22:14 - ERROR - Conexión perdida con el servidor
+2026-04-26 12:22:15 - WARNING - Evento: disco_actualizado | Datos: {'id': 8, 'data': {'artista': 1, 'titulo': "Boys Don't Cry", 'anio': '1986', 'formato': 'Vinilo', 'portada': 'C:/Users/curej/Desktop/UTN/App Discos/img/TC_BDC.jpg'}}
+2026-04-26 12:22:17 - ERROR - Error conectando al servidor: [WinError 10061] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+2026-04-26 12:22:17 - ERROR - No se puede enviar log disco_actualizado - no conectado
+2026-04-26 12:24:39 - INFO - Evento: disco_agregado | Datos: 9
+2026-04-26 12:24:39 - INFO - Conectado al servidor en localhost:5000
+2026-04-26 12:24:39 - INFO - Log enviado: disco_agregado
+2026-04-26 12:26:01 - ERROR - Evento: disco_eliminado | Datos: 9
+2026-04-26 12:26:01 - INFO - Log enviado: disco_eliminado
+2026-04-26 12:31:42 - INFO - Desconectado del servidor
+2026-04-26 12:32:37 - INFO - Conectado al servidor en localhost:5000
+2026-04-26 12:32:52 - INFO - Evento: artista_agregado | Datos: 4
+2026-04-26 12:32:52 - INFO - Log enviado: artista_agregado

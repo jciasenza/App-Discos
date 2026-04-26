@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html class="no-js" lang="es" data-content_root="./">
+<head>
+    <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+        <title>Módulo de Vistas &mdash; documentación de GestionMusical - 4.5.0</title>
+    
+    <link rel="stylesheet" type="text/css" href="_static/dist/fontawesome.css" />
+      <link rel="stylesheet" type="text/css" href="_static/dist/theme.css?v=310cf088" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+            <link rel="index" title="Índice" href="genindex.html" />
+            <link rel="search" title="Búsqueda" href="search.html" />
+            <link rel="top" title="documentación de GestionMusical - 4.5.0" href="#" />
+            <link rel="up" title="App Discos" href="modules.html" />
+            <link rel="prev" title="Módulo de Validaciones" href="validations.html" />
+    </head>
+<body>
+    <script type="text/javascript" src="_static/dist/blocking.js"></script>
+    <header class="container-fluid bg-primary">
+        <a class="btn btn-sm btn-light skip-to-content-link" href="#main">Skip to content</a>
+        <div class="container-fluid">
+            <div class="navbar navbar-expand-lg navbar-dark font-weight-bold">
+                    <a href="index.html"
+                        title="Wagtail"
+                        class="logo navbar-brand"
+                    >
+                        <img src="_static/img/icono.ico" width="45" height="59" alt="Wagtail"
+                            class="logo-img"
+                        />
+                        Gestión Musical
+                    </a>
+                
+                
+                <button class="navbar-toggler btn btn-primary d-lg-none" type="button" data-toggle="collapse" data-target="#collapseSidebar" aria-expanded="false" aria-controls="collapseExample">
+                    <span class="navbar-toggler-icon"></span>
+                    <span class="sr-only">menu</span>
+                </button>
+            </div>
+        </div>
+    </header>
+    <div class="container-fluid">
+        <div class="row">
+            <aside class="col-12 col-lg-3 sidebar-container">
+                <div id="collapseSidebar" class="collapse sticky-top d-lg-block pt-5 pr-lg-4">
+<div id="searchbox" class="searchbox mb-6 px-1" role="search">
+    <form id="search-form" action="search.html" autocomplete="off" method="get" role="search">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text border-right-0 bg-white py-3 pl-3 pr-2"><span class="fas fa-search"></span></div>
+            </div>
+            <input class="form-control py-3 pr-3 pl-1 h-100 border-left-0" type="search" name="q" placeholder="Search documentation" aria-label="Search documentation" id="searchinput" />
+        </div>
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div><div class="site-toc">
+    <nav class="toc mt-3" aria-label="Main menu">
+        <p class="caption" role="heading"><span class="caption-text">Contenidos:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">App Discos</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="controller.html">Módulo Controlador</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html">Módulo Principal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model.html">Módulo de Modelos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="validations.html">Módulo de Validaciones</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Módulo de Vistas</a></li>
+</ul>
+</li>
+</ul>
+
+    </nav>
+    <template data-toggle-item-template>
+        <button class="btn btn-sm btn-link toctree-expand" type="button">
+            <span class="sr-only">Toggle menu contents</span>
+        </button>
+    </template>
+</div>
+                    <div class="d-lg-none border-bottom">
+                        
+                    </div>
+                </div>
+            </aside>
+            <div class="col-12 col-lg-9 pt-5">
+                <header class="row align-items-baseline">
+                    <div class="col">
+                        <nav aria-label="breadcrumb">
+    <ol class="breadcrumb m-0 p-0 bg-transparent">
+        <li class="breadcrumb-item"><a href="index.html">Docs</a></li>
+            <li class="breadcrumb-item"><a href="modules.html">App Discos</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Módulo de Vistas</li>
+    </ol>
+</nav>
+                    </div>
+                    <div class="col-sm-12 col-lg-auto mt-3 mt-lg-3">
+                        <noscript>
+                            <p>JavaScript is required to toggle light/dark mode..</p>
+                        </noscript>
+                        <button id="wagtail-theme" class="btn btn-sm btn-light text-decoration-none" type="button">
+                            <span class="dark-only"><i class="fas fa-sun"></i> Light mode</span>
+                            <span class="light-only"><i class="fas fa-moon"></i> Dark mode</span>
+                        </button>
+    <a class="btn btn-sm btn-light text-decoration-none" href="https://github.com/jciasenza/App-Discos/tree/dev/docs/views.rst" rel="nofollow">
+        <span class="btn-icon"><span class="fab fa-github"></span></span>
+        <span class="btn-text">Edit on GitHub</span>
+    </a>
+    <a class="btn btn-sm btn-light text-decoration-none" href="_sources/views.rst.txt" rel="nofollow">
+        <span class="btn-icon"><span class="fas fa-code"></span></span>
+        <span class="btn-text">View source</span>
+    </a>
+                        
+                    </div>
+                </header>
+                <div class="row" >
+                    <div class="col-12">
+                        <hr class="w-100 my-4">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-lg-9 order-last order-lg-first rst-content">
+                        <main role="main" id="main">
+    <section id="module-views">
+<span id="modulo-de-vistas"></span><h1>Módulo de Vistas<a class="headerlink" href="#module-views" title="Link to this heading">¶</a></h1>
+<section id="modulo-de-la-vista-principal-fachada">
+<h2>Módulo de la Vista Principal (Fachada)<a class="headerlink" href="#modulo-de-la-vista-principal-fachada" title="Link to this heading">¶</a></h2>
+</section>
+<dl class="py class">
+<dt class="sig sig-object py" id="views.View">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">views.</span></span><span class="sig-name descname"><span class="pre">View</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/views.html#View"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#views.View" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Clase principal de la interfaz de usuario.</p>
+<p>Esta clase implementa el patrón Facade para simplificar la comunicación
+entre el Controlador y las múltiples sub-vistas del sistema.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="views.View.al_buscar">
+<span class="sig-name descname"><span class="pre">al_buscar</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/views.html#View.al_buscar"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#views.View.al_buscar" title="Link to this definition">¶</a></dt>
+<dd><p>Método “placeholder” para la acción de búsqueda.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Este método está diseñado para ser sobreescrito por el controlador
+durante la inicialización de la app.</p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="views.View.buscar_var">
+<span class="sig-name descname"><span class="pre">buscar_var</span></span><a class="headerlink" href="#views.View.buscar_var" title="Link to this definition">¶</a></dt>
+<dd><p>Variable de control de Tkinter para el motor de búsqueda.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="views.View.canciones_view">
+<span class="sig-name descname"><span class="pre">canciones_view</span></span><a class="headerlink" href="#views.View.canciones_view" title="Link to this definition">¶</a></dt>
+<dd><p>Referencia al listado de canciones.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="views.View.cargar_datos_artistas">
+<span class="sig-name descname"><span class="pre">cargar_datos_artistas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">artistas</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/views.html#View.cargar_datos_artistas"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#views.View.cargar_datos_artistas" title="Link to this definition">¶</a></dt>
+<dd><p>Actualiza visualmente la lista de artistas.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>artistas (list): Lista de objetos de tipo Artista.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="views.View.cargar_datos_canciones">
+<span class="sig-name descname"><span class="pre">cargar_datos_canciones</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">canciones</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/views.html#View.cargar_datos_canciones"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#views.View.cargar_datos_canciones" title="Link to this definition">¶</a></dt>
+<dd><p>Actualiza visualmente la lista de canciones.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>canciones (list): Lista de objetos de tipo Cancion.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="views.View.configurar_ventana">
+<span class="sig-name descname"><span class="pre">configurar_ventana</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/views.html#View.configurar_ventana"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#views.View.configurar_ventana" title="Link to this definition">¶</a></dt>
+<dd><p>Configura los parámetros estéticos de la ventana principal.</p>
+<p>Extrae el título, versión y colores desde el archivo de configuración 
+<code class="docutils literal notranslate"><span class="pre">.env</span></code>. Si no existen, utiliza valores por defecto.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="views.View.form_artista_view">
+<span class="sig-name descname"><span class="pre">form_artista_view</span></span><a class="headerlink" href="#views.View.form_artista_view" title="Link to this definition">¶</a></dt>
+<dd><p>Referencia al formulario de artistas.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="views.View.form_view">
+<span class="sig-name descname"><span class="pre">form_view</span></span><a class="headerlink" href="#views.View.form_view" title="Link to this definition">¶</a></dt>
+<dd><p>Referencia al formulario de discos.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="views.View.home_view">
+<span class="sig-name descname"><span class="pre">home_view</span></span><a class="headerlink" href="#views.View.home_view" title="Link to this definition">¶</a></dt>
+<dd><p>Referencia a la vista de inicio.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="views.View.insertar_en_tabla">
+<span class="sig-name descname"><span class="pre">insertar_en_tabla</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/views.html#View.insertar_en_tabla"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#views.View.insertar_en_tabla" title="Link to this definition">¶</a></dt>
+<dd><p>Inserta una nueva fila en la tabla de discos.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="views.View.limpiar_tabla">
+<span class="sig-name descname"><span class="pre">limpiar_tabla</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/views.html#View.limpiar_tabla"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#views.View.limpiar_tabla" title="Link to this definition">¶</a></dt>
+<dd><p>Elimina todos los elementos visuales de la tabla de discos.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="views.View.lista_artistas_view">
+<span class="sig-name descname"><span class="pre">lista_artistas_view</span></span><a class="headerlink" href="#views.View.lista_artistas_view" title="Link to this definition">¶</a></dt>
+<dd><p>Referencia a la lista de artistas.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="views.View.lista_discos_view">
+<span class="sig-name descname"><span class="pre">lista_discos_view</span></span><a class="headerlink" href="#views.View.lista_discos_view" title="Link to this definition">¶</a></dt>
+<dd><p>Referencia a la lista de discos.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="views.View.mostrar">
+<span class="sig-name descname"><span class="pre">mostrar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nombre</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">titulo_form</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/views.html#View.mostrar"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#views.View.mostrar" title="Link to this definition">¶</a></dt>
+<dd><p>Gestiona el cambio de pantallas en la aplicación.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>nombre (str): Clave de la vista a mostrar (e.g., “home”, “lista”, “form”).
+titulo_form (str, optional): Título dinámico si la vista es un formulario.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="views.View.obtener_id_seleccionado">
+<span class="sig-name descname"><span class="pre">obtener_id_seleccionado</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/views.html#View.obtener_id_seleccionado"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#views.View.obtener_id_seleccionado" title="Link to this definition">¶</a></dt>
+<dd><p>Retorna el ID del disco seleccionado en la interfaz.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+</main>
+                        <nav aria-label="Page navigation" class="py-4 my-5 clearfix font-weight-bold border-top">
+    <a class="float-left" href="validations.html" title="Previous">
+        <span aria-hidden="true">←&nbsp;</span>Módulo de Validaciones
+    </a>
+</nav>
+                    </div>
+                    
+                    <nav class="col-12 col-lg-3 pb-4">
+                        <div class="sticky-top toc page-toc" aria-labelledby="page-toc-heading">
+                            <p class="font-weight-bold" id="page-toc-heading">Page contents</p>
+                            <ul>
+<li><a class="reference internal" href="#">Módulo de Vistas</a><ul>
+<li><a class="reference internal" href="#modulo-de-la-vista-principal-fachada">Módulo de la Vista Principal (Fachada)</a></li>
+<li><a class="reference internal" href="#views.View"><code class="docutils literal notranslate"><span class="pre">View</span></code></a><ul>
+<li><a class="reference internal" href="#views.View.al_buscar"><code class="docutils literal notranslate"><span class="pre">View.al_buscar()</span></code></a></li>
+<li><a class="reference internal" href="#views.View.buscar_var"><code class="docutils literal notranslate"><span class="pre">View.buscar_var</span></code></a></li>
+<li><a class="reference internal" href="#views.View.canciones_view"><code class="docutils literal notranslate"><span class="pre">View.canciones_view</span></code></a></li>
+<li><a class="reference internal" href="#views.View.cargar_datos_artistas"><code class="docutils literal notranslate"><span class="pre">View.cargar_datos_artistas()</span></code></a></li>
+<li><a class="reference internal" href="#views.View.cargar_datos_canciones"><code class="docutils literal notranslate"><span class="pre">View.cargar_datos_canciones()</span></code></a></li>
+<li><a class="reference internal" href="#views.View.configurar_ventana"><code class="docutils literal notranslate"><span class="pre">View.configurar_ventana()</span></code></a></li>
+<li><a class="reference internal" href="#views.View.form_artista_view"><code class="docutils literal notranslate"><span class="pre">View.form_artista_view</span></code></a></li>
+<li><a class="reference internal" href="#views.View.form_view"><code class="docutils literal notranslate"><span class="pre">View.form_view</span></code></a></li>
+<li><a class="reference internal" href="#views.View.home_view"><code class="docutils literal notranslate"><span class="pre">View.home_view</span></code></a></li>
+<li><a class="reference internal" href="#views.View.insertar_en_tabla"><code class="docutils literal notranslate"><span class="pre">View.insertar_en_tabla()</span></code></a></li>
+<li><a class="reference internal" href="#views.View.limpiar_tabla"><code class="docutils literal notranslate"><span class="pre">View.limpiar_tabla()</span></code></a></li>
+<li><a class="reference internal" href="#views.View.lista_artistas_view"><code class="docutils literal notranslate"><span class="pre">View.lista_artistas_view</span></code></a></li>
+<li><a class="reference internal" href="#views.View.lista_discos_view"><code class="docutils literal notranslate"><span class="pre">View.lista_discos_view</span></code></a></li>
+<li><a class="reference internal" href="#views.View.mostrar"><code class="docutils literal notranslate"><span class="pre">View.mostrar()</span></code></a></li>
+<li><a class="reference internal" href="#views.View.obtener_id_seleccionado"><code class="docutils literal notranslate"><span class="pre">View.obtener_id_seleccionado()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+                        </div>
+                    </nav>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="container-fluid bg-primary text-light">
+        <div class="container">
+            <div class="row">
+        <div class="col p-4">
+            
+                <nav aria-label="Footer">
+                    <ul class="nav justify-content-center mb-2">
+                            <li class="nav-item"><a class="nav-link text-light"  href="https://github.com/jciasenza"><span class="fab fa-github"></span></a></li>
+                            <li class="nav-item"><a class="nav-link text-light"  href="https://www.linkedin.com/in/juan-carlos-iasenza-8119501a9/"><span class="fab fa-linkedin"></span></a></li>
+                            <li class="nav-item"><a class="nav-link text-light"  href="mailto:iasenzajuancarlos@gmail.com"><span class="fas fa-envelope"></span></a></li>
+                    </ul>
+                </nav>
+            
+            <div class="text-center">
+                    &copy; Copyright 2026, Juan Carlos Iasenza
+            </div>
+            <div class="text-center text-white-50 font-italic mt-3">
+                <small>
+                    Created using
+                    <a class="text-white" href="https://github.com/wagtail/sphinx_wagtail_theme" rel="nofollow" target="_blank">
+                        Sphinx Wagtail Theme 6.5.0
+                    </a>
+                    and
+                    <a class="text-white" href="https://www.sphinx-doc.org/" rel="nofollow" target="_blank">
+                        Sphinx 8.1.3
+                    </a>
+                </small>
+            </div>
+        </div>
+    </div>
+        </div>
+    </footer>
+        <script src="_static/documentation_options.js?v=e56700d4"></script>
+        <script src="_static/doctools.js?v=9bcbadda"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="_static/copybutton.js?v=f281be69"></script>
+        <script src="_static/translations.js?v=f85f4cfb"></script>
+        <script type="text/javascript" src="_static/dist/theme.js"></script>
+        <script type="text/javascript" src="_static/dist/vendor.js"></script>
+        <script type="text/javascript" src="_static/searchtools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', function() { Search.loadIndex("searchindex.js"); });
+        </script>
+        <script type="text/javascript" id="searchindexloader"></script>
+    </body>
+</html>
