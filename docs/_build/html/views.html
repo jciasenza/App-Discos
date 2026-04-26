@@ -14,8 +14,9 @@
             <link rel="index" title="Índice" href="genindex.html" />
             <link rel="search" title="Búsqueda" href="search.html" />
             <link rel="top" title="documentación de GestionMusical - 4.5.0" href="#" />
-            <link rel="up" title="App Discos" href="modules.html" />
-            <link rel="prev" title="Módulo de Validaciones" href="validations.html" />
+            <link rel="up" title="App Discos - Módulos del Sistema" href="modules.html" />
+            <link rel="next" title="Módulo de Validaciones" href="validations.html" />
+            <link rel="prev" title="Módulo Controlador" href="controller.html" />
     </head>
 <body>
     <script type="text/javascript" src="_static/dist/blocking.js"></script>
@@ -60,14 +61,21 @@
     <nav class="toc mt-3" aria-label="Main menu">
         <p class="caption" role="heading"><span class="caption-text">Contenidos:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="modules.html">App Discos</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="controller.html">Módulo Controlador</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">App Discos - Módulos del Sistema</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="main.html">Módulo Principal</a></li>
-<li class="toctree-l2"><a class="reference internal" href="model.html">Módulo de Modelos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="validations.html">Módulo de Validaciones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model.html">Módulo de Modelos y Patrón Observador</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controller.html">Módulo Controlador</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Módulo de Vistas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="validations.html">Módulo de Validaciones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cliente_logs.html">cliente_logs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="servidor_logs.html">servidor_logs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_logs.html">config_logs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_logs.html#configuracion-centralizada-del-sistema-de-logs">Configuración Centralizada del Sistema de Logs</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="sistema_logs.html">Sistema de Logs Cliente-Servidor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="patrones_dise%C3%B1o.html">Patrones de Diseño Implementados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guia_uso.html">Guía de Uso - App Discos</a></li>
 </ul>
 
     </nav>
@@ -88,7 +96,7 @@
                         <nav aria-label="breadcrumb">
     <ol class="breadcrumb m-0 p-0 bg-transparent">
         <li class="breadcrumb-item"><a href="index.html">Docs</a></li>
-            <li class="breadcrumb-item"><a href="modules.html">App Discos</a></li>
+            <li class="breadcrumb-item"><a href="modules.html">App Discos - Módulos del Sistema</a></li>
         <li class="breadcrumb-item active" aria-current="page">Módulo de Vistas</li>
     </ol>
 </nav>
@@ -101,7 +109,7 @@
                             <span class="dark-only"><i class="fas fa-sun"></i> Light mode</span>
                             <span class="light-only"><i class="fas fa-moon"></i> Dark mode</span>
                         </button>
-    <a class="btn btn-sm btn-light text-decoration-none" href="https://github.com/jciasenza/App-Discos/tree/dev/docs/views.rst" rel="nofollow">
+    <a class="btn btn-sm btn-light text-decoration-none" href="https://github.com/wagtail/sphinx_wagtail_theme/blob/main/docs/views.rst" rel="nofollow">
         <span class="btn-icon"><span class="fab fa-github"></span></span>
         <span class="btn-text">Edit on GitHub</span>
     </a>
@@ -244,12 +252,356 @@ titulo_form (str, optional): Título dinámico si la vista es un formulario.</p>
 
 </dd></dl>
 
+<section id="arquitectura-de-vistas">
+<h2>Arquitectura de Vistas<a class="headerlink" href="#arquitectura-de-vistas" title="Link to this heading">¶</a></h2>
+<p>El módulo implementa la interfaz gráfica usando Tkinter con arquitectura MVC.</p>
+<section id="homeview">
+<h3>HomeView<a class="headerlink" href="#homeview" title="Link to this heading">¶</a></h3>
+<p>Vista principal que coordina todas las demás vistas.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">HomeView</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="p">,</span> <span class="n">controlador</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="n">root</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">controlador</span> <span class="o">=</span> <span class="n">controlador</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">controlador</span><span class="o">.</span><span class="n">set_view</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+        <span class="c1"># Crear frames para diferentes secciones</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">frame_artistas</span> <span class="o">=</span> <span class="n">ArtistasView</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">controlador</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">frame_discos</span> <span class="o">=</span> <span class="n">DiscosView</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">controlador</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">frame_canciones</span> <span class="o">=</span> <span class="n">CancionesView</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">controlador</span><span class="p">)</span>
+
+        <span class="c1"># Configurar navegación</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setup_navigation</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Responsabilidades:</strong>
+- Coordinar entre diferentes vistas
+- Gestionar navegación entre secciones
+- Configurar ventana principal
+- Manejar eventos de cierre</p>
+</section>
+</section>
+<section id="vista-de-artistas">
+<h2>Vista de Artistas<a class="headerlink" href="#vista-de-artistas" title="Link to this heading">¶</a></h2>
+<section id="artistasview">
+<h3>ArtistasView<a class="headerlink" href="#artistasview" title="Link to this heading">¶</a></h3>
+<p>Vista para gestión de artistas.</p>
+<p><strong>Componentes principales:</strong></p>
+<ul class="simple">
+<li><p><strong>Lista de artistas:</strong> Treeview con columnas (ID, Nombre, Tipo)</p></li>
+<li><p><strong>Formulario de artista:</strong> Campos para nombre, tipo, info, foto</p></li>
+<li><p><strong>Botones de acción:</strong> Nuevo, Editar, Eliminar, Buscar</p></li>
+</ul>
+<p><strong>Métodos clave:</strong></p>
+<section id="mostrar-artistas">
+<h4>mostrar_artistas()<a class="headerlink" href="#mostrar-artistas" title="Link to this heading">¶</a></h4>
+<p>Muestra la lista de artistas en el Treeview.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">mostrar_artistas</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="c1"># Limpiar lista actual</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">tree_artistas</span><span class="o">.</span><span class="n">get_children</span><span class="p">():</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tree_artistas</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+
+    <span class="c1"># Obtener artistas del controlador</span>
+    <span class="n">artistas</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">controlador</span><span class="o">.</span><span class="n">listar_artistas</span><span class="p">()</span>
+
+    <span class="c1"># Agregar a Treeview</span>
+    <span class="k">for</span> <span class="n">artista</span> <span class="ow">in</span> <span class="n">artistas</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tree_artistas</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;end&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="p">(</span>
+            <span class="n">artista</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+            <span class="n">artista</span><span class="o">.</span><span class="n">nombre</span><span class="p">,</span>
+            <span class="n">artista</span><span class="o">.</span><span class="n">tipo</span> <span class="ow">or</span> <span class="s1">&#39;&#39;</span>
+        <span class="p">))</span>
+</pre></div>
+</div>
+</section>
+<section id="nuevo-artista">
+<h4>nuevo_artista()<a class="headerlink" href="#nuevo-artista" title="Link to this heading">¶</a></h4>
+<p>Abre el formulario para crear un nuevo artista.</p>
+</section>
+<section id="editar-artista">
+<h4>editar_artista()<a class="headerlink" href="#editar-artista" title="Link to this heading">¶</a></h4>
+<p>Carga datos del artista seleccionado en el formulario para edición.</p>
+</section>
+<section id="guardar-artista">
+<h4>guardar_artista()<a class="headerlink" href="#guardar-artista" title="Link to this heading">¶</a></h4>
+<p>Guarda los datos del formulario (crear o actualizar).</p>
+</section>
+<section id="eliminar-artista">
+<h4>eliminar_artista()<a class="headerlink" href="#eliminar-artista" title="Link to this heading">¶</a></h4>
+<p>Elimina el artista seleccionado después de confirmación.</p>
+</section>
+<section id="buscar-artistas">
+<h4>buscar_artistas()<a class="headerlink" href="#buscar-artistas" title="Link to this heading">¶</a></h4>
+<p>Filtra la lista de artistas según el texto de búsqueda.</p>
+</section>
+</section>
+</section>
+<section id="vista-de-discos">
+<h2>Vista de Discos<a class="headerlink" href="#vista-de-discos" title="Link to this heading">¶</a></h2>
+<section id="discosview">
+<h3>DiscosView<a class="headerlink" href="#discosview" title="Link to this heading">¶</a></h3>
+<p>Vista para gestión de discos.</p>
+<p><strong>Componentes:</strong></p>
+<ul class="simple">
+<li><p><strong>Lista de discos:</strong> Treeview con (ID, Título, Artista, Año, Formato)</p></li>
+<li><p><strong>Formulario de disco:</strong> Campos para título, artista, año, formato, portada</p></li>
+<li><p><strong>Botones:</strong> Nuevo, Editar, Eliminar, Buscar, Ver Canciones</p></li>
+</ul>
+<p><strong>Funcionalidades especiales:</strong></p>
+<ul class="simple">
+<li><p><strong>Selector de artista:</strong> Combobox con lista de artistas disponibles</p></li>
+<li><p><strong>Vista de canciones:</strong> Botón para ver canciones del disco seleccionado</p></li>
+<li><p><strong>Validación de artista:</strong> Verifica que el artista seleccionado existe</p></li>
+</ul>
+</section>
+</section>
+<section id="vista-de-canciones">
+<h2>Vista de Canciones<a class="headerlink" href="#vista-de-canciones" title="Link to this heading">¶</a></h2>
+<section id="cancionesview">
+<h3>CancionesView<a class="headerlink" href="#cancionesview" title="Link to this heading">¶</a></h3>
+<p>Vista para gestión de canciones.</p>
+<p><strong>Componentes:</strong></p>
+<ul class="simple">
+<li><p><strong>Lista de canciones:</strong> Treeview con (ID, Pista, Título, Duración, Disco)</p></li>
+<li><p><strong>Formulario de canción:</strong> Campos para número de pista, título, duración, disco</p></li>
+<li><p><strong>Filtros:</strong> Por disco específico o todas las canciones</p></li>
+</ul>
+<p><strong>Características:</strong></p>
+<ul class="simple">
+<li><p><strong>Modo contextual:</strong> Puede mostrar solo canciones de un disco o todas</p></li>
+<li><p><strong>Validación de pistas:</strong> Evita números de pista duplicados en el mismo disco</p></li>
+<li><p><strong>Selector de disco:</strong> Combobox con discos disponibles</p></li>
+</ul>
+</section>
+</section>
+<section id="formularios-especializados">
+<h2>Formularios Especializados<a class="headerlink" href="#formularios-especializados" title="Link to this heading">¶</a></h2>
+<section id="artistasformview">
+<h3>ArtistasFormView<a class="headerlink" href="#artistasformview" title="Link to this heading">¶</a></h3>
+<p>Vista especializada para el formulario de artistas.</p>
+<p><strong>Campos del formulario:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">nombre</span></code>: Entry obligatorio</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tipo</span></code>: Combobox con opciones [“Solista”, “Banda”, “Dúo”]</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">info</span></code>: Text para información biográfica</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">foto</span></code>: Entry con botón para seleccionar archivo</p></li>
+</ul>
+<p><strong>Métodos:</strong></p>
+<section id="seleccionar-foto">
+<h4>seleccionar_foto()<a class="headerlink" href="#seleccionar-foto" title="Link to this heading">¶</a></h4>
+<p>Abre diálogo para seleccionar archivo de imagen.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">seleccionar_foto</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="n">filedialog</span><span class="o">.</span><span class="n">askopenfilename</span><span class="p">(</span>
+        <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Seleccionar foto&quot;</span><span class="p">,</span>
+        <span class="n">filetypes</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;Archivos de imagen&quot;</span><span class="p">,</span> <span class="s2">&quot;*.jpg *.jpeg *.png *.gif *.bmp&quot;</span><span class="p">)]</span>
+    <span class="p">)</span>
+    <span class="k">if</span> <span class="n">filename</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">entry_foto</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">entry_foto</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="validar-formulario">
+<h4>validar_formulario()<a class="headerlink" href="#validar-formulario" title="Link to this heading">¶</a></h4>
+<p>Valida que todos los campos requeridos estén completos.</p>
+</section>
+</section>
+<section id="discoformview">
+<h3>DiscoFormView<a class="headerlink" href="#discoformview" title="Link to this heading">¶</a></h3>
+<p>Vista especializada para el formulario de discos.</p>
+<p><strong>Campos:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">titulo</span></code>: Entry obligatorio</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">artista</span></code>: Combobox con artistas disponibles</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">anio</span></code>: Entry numérico opcional</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">formato</span></code>: Combobox con formatos disponibles</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">portada</span></code>: Entry con selector de archivo</p></li>
+</ul>
+</section>
+<section id="discolistview">
+<h3>DiscoListView<a class="headerlink" href="#discolistview" title="Link to this heading">¶</a></h3>
+<p>Vista de lista especializada para discos.</p>
+<p><strong>Características:</strong></p>
+<ul class="simple">
+<li><p><strong>Columnas expandibles:</strong> Ajusta automáticamente al contenido</p></li>
+<li><p><strong>Ordenamiento:</strong> Click en headers para ordenar</p></li>
+<li><p><strong>Selección múltiple:</strong> Para operaciones masivas</p></li>
+<li><p><strong>Contexto menú:</strong> Menú derecho con opciones</p></li>
+</ul>
+</section>
+</section>
+<section id="navegacion-y-layout">
+<h2>Navegación y Layout<a class="headerlink" href="#navegacion-y-layout" title="Link to this heading">¶</a></h2>
+<section id="setup-navigation">
+<h3>setup_navigation()<a class="headerlink" href="#setup-navigation" title="Link to this heading">¶</a></h3>
+<p>Configura el sistema de navegación entre vistas.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">setup_navigation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="c1"># Crear botones de navegación</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">btn_artistas</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Artistas&quot;</span><span class="p">,</span>
+                                <span class="n">command</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mostrar_artistas</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">btn_discos</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Discos&quot;</span><span class="p">,</span>
+                              <span class="n">command</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mostrar_discos</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">btn_canciones</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Canciones&quot;</span><span class="p">,</span>
+                                 <span class="n">command</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mostrar_canciones</span><span class="p">)</span>
+
+    <span class="c1"># Posicionar botones</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">btn_artistas</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">TOP</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">X</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">btn_discos</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">TOP</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">X</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">btn_canciones</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">TOP</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Navegación implementada:</strong>
+- Botones en la parte superior
+- Ocultar/mostrar frames según la selección
+- Mantener estado entre navegaciones</p>
+</section>
+</section>
+<section id="manejo-de-eventos">
+<h2>Manejo de Eventos<a class="headerlink" href="#manejo-de-eventos" title="Link to this heading">¶</a></h2>
+<p><strong>Eventos del Treeview:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;&lt;TreeviewSelect&gt;&gt;</span></code>: Selección de elemento</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;Double-1&gt;</span></code>: Doble click para editar</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;Button-3&gt;</span></code>: Menú contextual</p></li>
+</ul>
+<p><strong>Eventos de formulario:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;Return&gt;</span></code>: Enter en campos para guardar</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;FocusOut&gt;</span></code>: Validación al salir de campos</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;KeyRelease&gt;</span></code>: Búsqueda en tiempo real</p></li>
+</ul>
+</section>
+<section id="validacion-en-interfaz">
+<h2>Validación en Interfaz<a class="headerlink" href="#validacion-en-interfaz" title="Link to this heading">¶</a></h2>
+<p><strong>Validaciones implementadas:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Campos requeridos:</strong> Resaltados en rojo si están vacíos</p></li>
+<li><p><strong>Tipos de datos:</strong> Validación numérica para años y pistas</p></li>
+<li><p><strong>Referencias foráneas:</strong> Verificación de existencia de artistas/discos</p></li>
+<li><p><strong>Unicidad:</strong> Verificación de nombres únicos y pistas únicas</p></li>
+<li><p><strong>Formatos:</strong> Validación de duraciones y rutas de archivo</p></li>
+</ol>
+<p><strong>Feedback al usuario:</strong></p>
+<ul class="simple">
+<li><p><strong>Colores:</strong> Verde para válido, rojo para inválido</p></li>
+<li><p><strong>Mensajes:</strong> Labels con mensajes de error descriptivos</p></li>
+<li><p><strong>Estados:</strong> Habilitar/deshabilitar botones según validez</p></li>
+</ul>
+</section>
+<section id="gestion-de-imagenes">
+<h2>Gestión de Imágenes<a class="headerlink" href="#gestion-de-imagenes" title="Link to this heading">¶</a></h2>
+<p><strong>Funcionalidades de imagen:</strong></p>
+<ul class="simple">
+<li><p><strong>Selección de archivo:</strong> Diálogos nativos del sistema</p></li>
+<li><p><strong>Vista previa:</strong> Miniaturas en la interfaz (futuro)</p></li>
+<li><p><strong>Validación:</strong> Verificación de existencia y formato</p></li>
+<li><p><strong>Rutas relativas:</strong> Conversión a rutas relativas al proyecto</p></li>
+</ul>
+<p><strong>Formatos soportados:</strong>
+- JPG, JPEG, PNG, GIF, BMP</p>
+</section>
+<section id="manejo-de-errores">
+<h2>Manejo de Errores<a class="headerlink" href="#manejo-de-errores" title="Link to this heading">¶</a></h2>
+<p><strong>Estrategias de manejo:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Try-catch en operaciones:</strong> Captura errores de base de datos</p></li>
+<li><p><strong>Mensajes de error:</strong> Diálogos informativos para el usuario</p></li>
+<li><p><strong>Logging:</strong> Registro de errores en sistema de logs</p></li>
+<li><p><strong>Recuperación:</strong> Estado consistente después de errores</p></li>
+</ol>
+<p><strong>Ejemplo:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">controlador</span><span class="o">.</span><span class="n">agregar_artista</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">messagebox</span><span class="o">.</span><span class="n">showinfo</span><span class="p">(</span><span class="s2">&quot;Éxito&quot;</span><span class="p">,</span> <span class="s2">&quot;Artista agregado correctamente&quot;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">mostrar_artistas</span><span class="p">()</span>  <span class="c1"># Actualizar lista</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error agregando artista: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">messagebox</span><span class="o">.</span><span class="n">showerror</span><span class="p">(</span><span class="s2">&quot;Error&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;No se pudo agregar el artista: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="consideraciones-de-ui-ux">
+<h2>Consideraciones de UI/UX<a class="headerlink" href="#consideraciones-de-ui-ux" title="Link to this heading">¶</a></h2>
+<p><strong>Principios aplicados:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Intuitivo:</strong> Layouts lógicos y consistentes</p></li>
+<li><p><strong>Responsive:</strong> Ajuste automático a diferentes tamaños</p></li>
+<li><p><strong>Accesible:</strong> Labels descriptivos, tab order correcto</p></li>
+<li><p><strong>Feedback:</strong> Indicadores visuales de estado y progreso</p></li>
+</ol>
+<p><strong>Buenas prácticas:</strong></p>
+<ul class="simple">
+<li><p><strong>Navegación clara:</strong> Siempre visible dónde está el usuario</p></li>
+<li><p><strong>Estados consistentes:</strong> Botones habilitados/deshabilitados apropiadamente</p></li>
+<li><p><strong>Confirmaciones:</strong> Diálogos para operaciones destructivas</p></li>
+<li><p><strong>Atajos de teclado:</strong> Soporte para usuarios avanzados</p></li>
+</ul>
+</section>
+<section id="integracion-con-controlador">
+<h2>Integración con Controlador<a class="headerlink" href="#integracion-con-controlador" title="Link to this heading">¶</a></h2>
+<p><strong>Patrón de comunicación:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Vista notifica al controlador</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">guardar_artista</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">obtener_datos_formulario</span><span class="p">()</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">controlador</span><span class="o">.</span><span class="n">agregar_artista</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">limpiar_formulario</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mostrar_artistas</span><span class="p">()</span>
+
+<span class="c1"># Controlador actualiza la vista</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">actualizar_vista_artistas</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="p">:</span>
+        <span class="n">artistas</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">listar_artistas</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">actualizar_lista_artistas</span><span class="p">(</span><span class="n">artistas</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Beneficios:</strong>
+- Separación clara de responsabilidades
+- Fácil testing de lógica de negocio
+- Reutilización de vistas con diferentes controladores
+- Mantenibilidad del código</p>
+</section>
+<section id="rendimiento-y-optimizacion">
+<h2>Rendimiento y Optimización<a class="headerlink" href="#rendimiento-y-optimizacion" title="Link to this heading">¶</a></h2>
+<p><strong>Optimizaciones implementadas:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Lazy loading:</strong> Cargar datos solo cuando necesario</p></li>
+<li><p><strong>Paginación:</strong> Para listas grandes (futuro)</p></li>
+<li><p><strong>Cache:</strong> Mantener datos en memoria cuando posible</p></li>
+<li><p><strong>Actualizaciones selectivas:</strong> Refrescar solo lo necesario</p></li>
+</ol>
+<p><strong>Recomendaciones:</strong></p>
+<ul class="simple">
+<li><p>Implementar virtualización para listas muy grandes</p></li>
+<li><p>Usar hilos para operaciones que puedan bloquear la UI</p></li>
+<li><p>Optimizar consultas de base de datos</p></li>
+<li><p>Considerar compresión para imágenes grandes</p></li>
+</ul>
+</section>
+<section id="extensibilidad">
+<h2>Extensibilidad<a class="headerlink" href="#extensibilidad" title="Link to this heading">¶</a></h2>
+<p><strong>Arquitectura extensible:</strong></p>
+<ul class="simple">
+<li><p><strong>Vistas modulares:</strong> Fácil agregar nuevas secciones</p></li>
+<li><p><strong>Formularios genéricos:</strong> Base común para diferentes entidades</p></li>
+<li><p><strong>Eventos desacoplados:</strong> Sistema de eventos para comunicación</p></li>
+<li><p><strong>Configuración externa:</strong> Layouts y estilos configurables</p></li>
+</ul>
+<p><strong>Posibles extensiones:</strong></p>
+<ul class="simple">
+<li><p><strong>Temas:</strong> Soporte para diferentes temas visuales</p></li>
+<li><p><strong>Plugins:</strong> Sistema de plugins para funcionalidades adicionales</p></li>
+<li><p><strong>Multi-ventana:</strong> Soporte para múltiples ventanas</p></li>
+<li><p><strong>Internacionalización:</strong> Soporte para múltiples idiomas</p></li>
+</ul>
+</section>
 </section>
 
 </main>
                         <nav aria-label="Page navigation" class="py-4 my-5 clearfix font-weight-bold border-top">
-    <a class="float-left" href="validations.html" title="Previous">
-        <span aria-hidden="true">←&nbsp;</span>Módulo de Validaciones
+    <a class="float-left" href="controller.html" title="Previous">
+        <span aria-hidden="true">←&nbsp;</span>Módulo Controlador
+    </a>
+    <a class="float-right" href="validations.html" title="Next">
+        Módulo de Validaciones <span aria-hidden="true">&nbsp;→</span>
     </a>
 </nav>
                     </div>
@@ -278,6 +630,52 @@ titulo_form (str, optional): Título dinámico si la vista es un formulario.</p>
 <li><a class="reference internal" href="#views.View.obtener_id_seleccionado"><code class="docutils literal notranslate"><span class="pre">View.obtener_id_seleccionado()</span></code></a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#arquitectura-de-vistas">Arquitectura de Vistas</a><ul>
+<li><a class="reference internal" href="#homeview">HomeView</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#vista-de-artistas">Vista de Artistas</a><ul>
+<li><a class="reference internal" href="#artistasview">ArtistasView</a><ul>
+<li><a class="reference internal" href="#mostrar-artistas">mostrar_artistas()</a></li>
+<li><a class="reference internal" href="#nuevo-artista">nuevo_artista()</a></li>
+<li><a class="reference internal" href="#editar-artista">editar_artista()</a></li>
+<li><a class="reference internal" href="#guardar-artista">guardar_artista()</a></li>
+<li><a class="reference internal" href="#eliminar-artista">eliminar_artista()</a></li>
+<li><a class="reference internal" href="#buscar-artistas">buscar_artistas()</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#vista-de-discos">Vista de Discos</a><ul>
+<li><a class="reference internal" href="#discosview">DiscosView</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#vista-de-canciones">Vista de Canciones</a><ul>
+<li><a class="reference internal" href="#cancionesview">CancionesView</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#formularios-especializados">Formularios Especializados</a><ul>
+<li><a class="reference internal" href="#artistasformview">ArtistasFormView</a><ul>
+<li><a class="reference internal" href="#seleccionar-foto">seleccionar_foto()</a></li>
+<li><a class="reference internal" href="#validar-formulario">validar_formulario()</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#discoformview">DiscoFormView</a></li>
+<li><a class="reference internal" href="#discolistview">DiscoListView</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#navegacion-y-layout">Navegación y Layout</a><ul>
+<li><a class="reference internal" href="#setup-navigation">setup_navigation()</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#manejo-de-eventos">Manejo de Eventos</a></li>
+<li><a class="reference internal" href="#validacion-en-interfaz">Validación en Interfaz</a></li>
+<li><a class="reference internal" href="#gestion-de-imagenes">Gestión de Imágenes</a></li>
+<li><a class="reference internal" href="#manejo-de-errores">Manejo de Errores</a></li>
+<li><a class="reference internal" href="#consideraciones-de-ui-ux">Consideraciones de UI/UX</a></li>
+<li><a class="reference internal" href="#integracion-con-controlador">Integración con Controlador</a></li>
+<li><a class="reference internal" href="#rendimiento-y-optimizacion">Rendimiento y Optimización</a></li>
+<li><a class="reference internal" href="#extensibilidad">Extensibilidad</a></li>
 </ul>
 </li>
 </ul>

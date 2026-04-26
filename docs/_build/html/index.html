@@ -6,7 +6,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-        <title>Documentación Gestión Musical &mdash; documentación de GestionMusical - 4.5.0</title>
+        <title>Gestión Musical - App Discos &mdash; documentación de GestionMusical - 4.5.0</title>
     
     <link rel="stylesheet" type="text/css" href="_static/dist/fontawesome.css" />
       <link rel="stylesheet" type="text/css" href="_static/dist/theme.css?v=310cf088" />
@@ -14,7 +14,7 @@
             <link rel="index" title="Índice" href="genindex.html" />
             <link rel="search" title="Búsqueda" href="search.html" />
             <link rel="top" title="documentación de GestionMusical - 4.5.0" href="#" />
-            <link rel="next" title="App Discos" href="modules.html" />
+            <link rel="next" title="App Discos - Módulos del Sistema" href="modules.html" />
     </head>
 <body>
     <script type="text/javascript" src="_static/dist/blocking.js"></script>
@@ -22,7 +22,7 @@
         <a class="btn btn-sm btn-light skip-to-content-link" href="#main">Skip to content</a>
         <div class="container-fluid">
             <div class="navbar navbar-expand-lg navbar-dark font-weight-bold">
-                    <a href="#"
+                    <a href="index.html"
                         title="Wagtail"
                         class="logo navbar-brand"
                     >
@@ -59,14 +59,21 @@
     <nav class="toc mt-3" aria-label="Main menu">
         <p class="caption" role="heading"><span class="caption-text">Contenidos:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="modules.html">App Discos</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="controller.html">Módulo Controlador</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">App Discos - Módulos del Sistema</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="main.html">Módulo Principal</a></li>
-<li class="toctree-l2"><a class="reference internal" href="model.html">Módulo de Modelos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="validations.html">Módulo de Validaciones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model.html">Módulo de Modelos y Patrón Observador</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controller.html">Módulo Controlador</a></li>
 <li class="toctree-l2"><a class="reference internal" href="views.html">Módulo de Vistas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="validations.html">Módulo de Validaciones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cliente_logs.html">cliente_logs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="servidor_logs.html">servidor_logs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_logs.html">config_logs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_logs.html#configuracion-centralizada-del-sistema-de-logs">Configuración Centralizada del Sistema de Logs</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="sistema_logs.html">Sistema de Logs Cliente-Servidor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="patrones_dise%C3%B1o.html">Patrones de Diseño Implementados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guia_uso.html">Guía de Uso - App Discos</a></li>
 </ul>
 
     </nav>
@@ -87,7 +94,7 @@
                         <nav aria-label="breadcrumb">
     <ol class="breadcrumb m-0 p-0 bg-transparent">
         <li class="breadcrumb-item"><a href="#">Docs</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Documentación Gestión Musical</li>
+        <li class="breadcrumb-item active" aria-current="page">Gestión Musical - App Discos</li>
     </ol>
 </nav>
                     </div>
@@ -99,7 +106,7 @@
                             <span class="dark-only"><i class="fas fa-sun"></i> Light mode</span>
                             <span class="light-only"><i class="fas fa-moon"></i> Dark mode</span>
                         </button>
-    <a class="btn btn-sm btn-light text-decoration-none" href="https://github.com/jciasenza/App-Discos/tree/dev/docs/index.rst" rel="nofollow">
+    <a class="btn btn-sm btn-light text-decoration-none" href="https://github.com/wagtail/sphinx_wagtail_theme/blob/main/docs/index.rst" rel="nofollow">
         <span class="btn-icon"><span class="fab fa-github"></span></span>
         <span class="btn-text">Edit on GitHub</span>
     </a>
@@ -118,30 +125,115 @@
                 <div class="row">
                     <div class="col-12 col-lg-9 order-last order-lg-first rst-content">
                         <main role="main" id="main">
-    <section id="documentacion-gestion-musical">
-<h1>Documentación Gestión Musical<a class="headerlink" href="#documentacion-gestion-musical" title="Link to this heading">¶</a></h1>
+    <section id="gestion-musical-app-discos">
+<h1>Gestión Musical - App Discos<a class="headerlink" href="#gestion-musical-app-discos" title="Link to this heading">¶</a></h1>
+<p>Una aplicación completa para la gestión de una discoteca musical, desarrollada con Python,
+Tkinter y Peewee ORM. Incluye un avanzado sistema de logging cliente-servidor y
+patrones de diseño modernos.</p>
+<section id="caracteristicas-principales">
+<h2>Características Principales<a class="headerlink" href="#caracteristicas-principales" title="Link to this heading">¶</a></h2>
+<dl class="simple">
+<dt>🎵 <strong>Gestión Completa de Discoteca</strong></dt><dd><ul class="simple">
+<li><p>Artistas, discos y canciones</p></li>
+<li><p>Interfaz gráfica intuitiva</p></li>
+<li><p>Base de datos SQLite con integridad referencial</p></li>
+</ul>
+</dd>
+<dt>📊 <strong>Sistema de Logs Avanzado</strong></dt><dd><ul class="simple">
+<li><p>Logs locales automáticos</p></li>
+<li><p>Servidor centralizado opcional</p></li>
+<li><p>Niveles de logging inteligentes (INFO/WARNING/ERROR)</p></li>
+<li><p>Serialización JSON personalizada</p></li>
+</ul>
+</dd>
+<dt>🔄 <strong>Patrones de Diseño Modernos</strong></dt><dd><ul class="simple">
+<li><p>Patrón Observador para logging</p></li>
+<li><p>Decoradores de logging automáticos</p></li>
+<li><p>Arquitectura MVC clara</p></li>
+<li><p>Manejo robusto de errores</p></li>
+</ul>
+</dd>
+<dt>🚀 <strong>Funcionalidades Avanzadas</strong></dt><dd><ul class="simple">
+<li><p>Sistema cliente-servidor TCP</p></li>
+<li><p>Logging distribuido</p></li>
+<li><p>Manejo de imágenes para portadas</p></li>
+<li><p>Validaciones robustas</p></li>
+</ul>
+</dd>
+</dl>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Contenidos:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="modules.html">App Discos</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="controller.html">Módulo Controlador</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">App Discos - Módulos del Sistema</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="main.html">Módulo Principal</a></li>
-<li class="toctree-l2"><a class="reference internal" href="model.html">Módulo de Modelos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="validations.html">Módulo de Validaciones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model.html">Módulo de Modelos y Patrón Observador</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controller.html">Módulo Controlador</a></li>
 <li class="toctree-l2"><a class="reference internal" href="views.html">Módulo de Vistas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="validations.html">Módulo de Validaciones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cliente_logs.html">cliente_logs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="servidor_logs.html">servidor_logs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_logs.html">config_logs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_logs.html#configuracion-centralizada-del-sistema-de-logs">Configuración Centralizada del Sistema de Logs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sistema_logs.html">Sistema de Logs Cliente-Servidor</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sistema_logs.html#arquitectura-general">Arquitectura General</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sistema_logs.html#componentes-del-sistema">Componentes del Sistema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sistema_logs.html#serializacion-json-personalizada">Serialización JSON Personalizada</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sistema_logs.html#configuracion">Configuración</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sistema_logs.html#modos-de-operacion">Modos de Operación</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sistema_logs.html#archivos-de-log-generados">Archivos de Log Generados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sistema_logs.html#ejemplo-de-uso-programatico">Ejemplo de Uso Programático</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sistema_logs.html#ventajas-del-sistema">Ventajas del Sistema</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="patrones_dise%C3%B1o.html">Patrones de Diseño Implementados</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="patrones_dise%C3%B1o.html#patron-observador-observer-pattern">Patrón Observador (Observer Pattern)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="patrones_dise%C3%B1o.html#decoradores-de-logging">Decoradores de Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="patrones_dise%C3%B1o.html#patron-mvc-model-view-controller">Patrón MVC (Model-View-Controller)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="patrones_dise%C3%B1o.html#patron-singleton-configuracion">Patrón Singleton (Configuración)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="patrones_dise%C3%B1o.html#manejo-de-errores-robusto">Manejo de Errores Robusto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="patrones_dise%C3%B1o.html#beneficios-de-los-patrones-implementados">Beneficios de los Patrones Implementados</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guia_uso.html">Guía de Uso - App Discos</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guia_uso.html#instalacion-y-configuracion">Instalación y Configuración</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guia_uso.html#uso-basico-de-la-aplicacion">Uso Básico de la Aplicación</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guia_uso.html#interfaz-de-usuario">Interfaz de Usuario</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guia_uso.html#sistema-de-logs">Sistema de Logs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guia_uso.html#pruebas-del-sistema">Pruebas del Sistema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guia_uso.html#solucion-de-problemas">Solución de Problemas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guia_uso.html#documentacion-tecnica">Documentación Técnica</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guia_uso.html#estructura-de-la-base-de-datos">Estructura de la Base de Datos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guia_uso.html#api-de-desarrollo">API de Desarrollo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guia_uso.html#consideraciones-de-produccion">Consideraciones de Producción</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </section>
+</section>
 
 </main>
                         <nav aria-label="Page navigation" class="py-4 my-5 clearfix font-weight-bold border-top">
     <a class="float-right" href="modules.html" title="Next">
-        App Discos <span aria-hidden="true">&nbsp;→</span>
+        App Discos - Módulos del Sistema <span aria-hidden="true">&nbsp;→</span>
     </a>
 </nav>
                     </div>
+                    
+                    <nav class="col-12 col-lg-3 pb-4">
+                        <div class="sticky-top toc page-toc" aria-labelledby="page-toc-heading">
+                            <p class="font-weight-bold" id="page-toc-heading">Page contents</p>
+                            <ul>
+<li><a class="reference internal" href="#">Gestión Musical - App Discos</a><ul>
+<li><a class="reference internal" href="#caracteristicas-principales">Características Principales</a></li>
+</ul>
+</li>
+</ul>
+
+                        </div>
+                    </nav>
                     
                 </div>
             </div>

@@ -14,9 +14,9 @@
             <link rel="index" title="Índice" href="genindex.html" />
             <link rel="search" title="Búsqueda" href="search.html" />
             <link rel="top" title="documentación de GestionMusical - 4.5.0" href="#" />
-            <link rel="up" title="App Discos" href="modules.html" />
-            <link rel="next" title="Módulo de Vistas" href="views.html" />
-            <link rel="prev" title="Módulo de Modelos" href="model.html" />
+            <link rel="up" title="App Discos - Módulos del Sistema" href="modules.html" />
+            <link rel="next" title="cliente_logs module" href="cliente_logs.html" />
+            <link rel="prev" title="Módulo de Vistas" href="views.html" />
     </head>
 <body>
     <script type="text/javascript" src="_static/dist/blocking.js"></script>
@@ -61,14 +61,21 @@
     <nav class="toc mt-3" aria-label="Main menu">
         <p class="caption" role="heading"><span class="caption-text">Contenidos:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="modules.html">App Discos</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="controller.html">Módulo Controlador</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">App Discos - Módulos del Sistema</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="main.html">Módulo Principal</a></li>
-<li class="toctree-l2"><a class="reference internal" href="model.html">Módulo de Modelos</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Módulo de Validaciones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model.html">Módulo de Modelos y Patrón Observador</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controller.html">Módulo Controlador</a></li>
 <li class="toctree-l2"><a class="reference internal" href="views.html">Módulo de Vistas</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Módulo de Validaciones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cliente_logs.html">cliente_logs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="servidor_logs.html">servidor_logs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_logs.html">config_logs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_logs.html#configuracion-centralizada-del-sistema-de-logs">Configuración Centralizada del Sistema de Logs</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="sistema_logs.html">Sistema de Logs Cliente-Servidor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="patrones_dise%C3%B1o.html">Patrones de Diseño Implementados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guia_uso.html">Guía de Uso - App Discos</a></li>
 </ul>
 
     </nav>
@@ -89,7 +96,7 @@
                         <nav aria-label="breadcrumb">
     <ol class="breadcrumb m-0 p-0 bg-transparent">
         <li class="breadcrumb-item"><a href="index.html">Docs</a></li>
-            <li class="breadcrumb-item"><a href="modules.html">App Discos</a></li>
+            <li class="breadcrumb-item"><a href="modules.html">App Discos - Módulos del Sistema</a></li>
         <li class="breadcrumb-item active" aria-current="page">Módulo de Validaciones</li>
     </ol>
 </nav>
@@ -102,7 +109,7 @@
                             <span class="dark-only"><i class="fas fa-sun"></i> Light mode</span>
                             <span class="light-only"><i class="fas fa-moon"></i> Dark mode</span>
                         </button>
-    <a class="btn btn-sm btn-light text-decoration-none" href="https://github.com/jciasenza/App-Discos/tree/dev/docs/validations.rst" rel="nofollow">
+    <a class="btn btn-sm btn-light text-decoration-none" href="https://github.com/wagtail/sphinx_wagtail_theme/blob/main/docs/validations.rst" rel="nofollow">
         <span class="btn-icon"><span class="fab fa-github"></span></span>
         <span class="btn-text">Edit on GitHub</span>
     </a>
@@ -176,15 +183,280 @@ formatos inválidos (ej. empezar con un espacio).</p>
 
 </dd></dl>
 
+<section id="funciones-de-validacion">
+<h2>Funciones de Validación<a class="headerlink" href="#funciones-de-validacion" title="Link to this heading">¶</a></h2>
+<p>El módulo proporciona funciones para validar datos antes de operaciones CRUD.</p>
+<section id="validar-artista-data">
+<h3>validar_artista(data)<a class="headerlink" href="#validar-artista-data" title="Link to this heading">¶</a></h3>
+<p>Valida los datos de un artista antes de guardarlo en la base de datos.</p>
+<p><strong>Parámetros:</strong>
+- <code class="docutils literal notranslate"><span class="pre">data</span></code> (dict): Diccionario con los datos del artista</p>
+<p><strong>Retorna:</strong>
+- <code class="docutils literal notranslate"><span class="pre">bool</span></code>: True si los datos son válidos, False en caso contrario</p>
+<p><strong>Validaciones realizadas:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Nombre requerido:</strong>
+- No puede ser None o vacío
+- Debe ser string</p></li>
+<li><p><strong>Nombre único:</strong>
+- Verifica que no exista otro artista con el mismo nombre
+- Insensible a mayúsculas/minúsculas</p></li>
+<li><p><strong>Tipo válido (opcional):</strong>
+- Debe ser uno de: “Solista”, “Banda”, “Dúo”
+- Si se proporciona, debe ser string</p></li>
+</ol>
+<p><strong>Ejemplo de uso:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">validations</span><span class="w"> </span><span class="kn">import</span> <span class="n">validar_artista</span>
+
+<span class="c1"># Datos válidos</span>
+<span class="n">data_valido</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;nombre&#39;</span><span class="p">:</span> <span class="s1">&#39;The Rolling Stones&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;tipo&#39;</span><span class="p">:</span> <span class="s1">&#39;Banda&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;info&#39;</span><span class="p">:</span> <span class="s1">&#39;Banda legendaria de rock&#39;</span>
+<span class="p">}</span>
+<span class="n">es_valido</span> <span class="o">=</span> <span class="n">validar_artista</span><span class="p">(</span><span class="n">data_valido</span><span class="p">)</span>  <span class="c1"># Retorna True</span>
+
+<span class="c1"># Datos inválidos - nombre vacío</span>
+<span class="n">data_invalido</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;nombre&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;tipo&#39;</span><span class="p">:</span> <span class="s1">&#39;Banda&#39;</span><span class="p">}</span>
+<span class="n">es_valido</span> <span class="o">=</span> <span class="n">validar_artista</span><span class="p">(</span><span class="n">data_invalido</span><span class="p">)</span>  <span class="c1"># Retorna False</span>
+</pre></div>
+</div>
+</section>
+<section id="validar-disco-data">
+<h3>validar_disco(data)<a class="headerlink" href="#validar-disco-data" title="Link to this heading">¶</a></h3>
+<p>Valida los datos de un disco antes de guardarlo.</p>
+<p><strong>Parámetros:</strong>
+- <code class="docutils literal notranslate"><span class="pre">data</span></code> (dict): Diccionario con los datos del disco</p>
+<p><strong>Retorna:</strong>
+- <code class="docutils literal notranslate"><span class="pre">bool</span></code>: True si los datos son válidos</p>
+<p><strong>Validaciones realizadas:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Artista requerido:</strong>
+- ID del artista debe existir en la base de datos
+- Debe ser un número entero positivo</p></li>
+<li><p><strong>Título requerido:</strong>
+- No puede ser None o vacío
+- Debe ser string</p></li>
+<li><p><strong>Año válido (opcional):</strong>
+- Si se proporciona, debe ser un número entero
+- Debe estar en rango razonable (1900-actual+1)</p></li>
+<li><p><strong>Formato válido:</strong>
+- Debe ser uno de los formatos permitidos
+- Actualmente: “Vinilo”, “CD”, “Digital”, “Cassette”, “Otro”</p></li>
+</ol>
+<p><strong>Ejemplo:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data_disco</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;artista&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>  <span class="c1"># ID existente</span>
+    <span class="s1">&#39;titulo&#39;</span><span class="p">:</span> <span class="s1">&#39;Exile on Main St.&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;anio&#39;</span><span class="p">:</span> <span class="mi">1972</span><span class="p">,</span>
+    <span class="s1">&#39;formato&#39;</span><span class="p">:</span> <span class="s1">&#39;Vinilo&#39;</span>
+<span class="p">}</span>
+<span class="n">valido</span> <span class="o">=</span> <span class="n">validar_disco</span><span class="p">(</span><span class="n">data_disco</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="validar-cancion-data">
+<h3>validar_cancion(data)<a class="headerlink" href="#validar-cancion-data" title="Link to this heading">¶</a></h3>
+<p>Valida los datos de una canción.</p>
+<p><strong>Parámetros:</strong>
+- <code class="docutils literal notranslate"><span class="pre">data</span></code> (dict): Diccionario con los datos de la canción</p>
+<p><strong>Retorna:</strong>
+- <code class="docutils literal notranslate"><span class="pre">bool</span></code>: True si los datos son válidos</p>
+<p><strong>Validaciones realizadas:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Disco requerido:</strong>
+- ID del disco debe existir en la base de datos</p></li>
+<li><p><strong>Número de pista requerido:</strong>
+- Debe ser un número entero positivo
+- No puede haber dos canciones con mismo número en el mismo disco</p></li>
+<li><p><strong>Título requerido:</strong>
+- No puede ser None o vacío</p></li>
+<li><p><strong>Duración válida (opcional):</strong>
+- Si se proporciona, debe tener formato válido (ej: «3:45»)</p></li>
+</ol>
+<p><strong>Ejemplo:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data_cancion</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;numero_pista&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s1">&#39;titulo&#39;</span><span class="p">:</span> <span class="s1">&#39;Sympathy for the Devil&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;duracion&#39;</span><span class="p">:</span> <span class="s1">&#39;6:18&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;disco&#39;</span><span class="p">:</span> <span class="mi">1</span>
+<span class="p">}</span>
+<span class="n">valido</span> <span class="o">=</span> <span class="n">validar_cancion</span><span class="p">(</span><span class="n">data_cancion</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="funciones-auxiliares">
+<h2>Funciones Auxiliares<a class="headerlink" href="#funciones-auxiliares" title="Link to this heading">¶</a></h2>
+<section id="existe-artista-artista-id">
+<h3>existe_artista(artista_id)<a class="headerlink" href="#existe-artista-artista-id" title="Link to this heading">¶</a></h3>
+<p>Verifica si existe un artista con el ID especificado.</p>
+<p><strong>Parámetros:</strong>
+- <code class="docutils literal notranslate"><span class="pre">artista_id</span></code> (int): ID del artista a verificar</p>
+<p><strong>Retorna:</strong>
+- <code class="docutils literal notranslate"><span class="pre">bool</span></code>: True si el artista existe</p>
+<p><strong>Implementación:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">existe_artista</span><span class="p">(</span><span class="n">artista_id</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">Artista</span><span class="o">.</span><span class="n">get_by_id</span><span class="p">(</span><span class="n">artista_id</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">except</span> <span class="n">Artista</span><span class="o">.</span><span class="n">DoesNotExist</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</section>
+<section id="existe-disco-disco-id">
+<h3>existe_disco(disco_id)<a class="headerlink" href="#existe-disco-disco-id" title="Link to this heading">¶</a></h3>
+<p>Verifica si existe un disco con el ID especificado.</p>
+<p><strong>Parámetros:</strong>
+- <code class="docutils literal notranslate"><span class="pre">disco_id</span></code> (int): ID del disco a verificar</p>
+<p><strong>Retorna:</strong>
+- <code class="docutils literal notranslate"><span class="pre">bool</span></code>: True si el disco existe</p>
+</section>
+<section id="existe-cancion-cancion-id">
+<h3>existe_cancion(cancion_id)<a class="headerlink" href="#existe-cancion-cancion-id" title="Link to this heading">¶</a></h3>
+<p>Verifica si existe una canción con el ID especificado.</p>
+<p><strong>Parámetros:</strong>
+- <code class="docutils literal notranslate"><span class="pre">cancion_id</span></code> (int): ID del canción a verificar</p>
+<p><strong>Retorna:</strong>
+- <code class="docutils literal notranslate"><span class="pre">bool</span></code>: True si la canción existe</p>
+</section>
+</section>
+<section id="validaciones-de-formato">
+<h2>Validaciones de Formato<a class="headerlink" href="#validaciones-de-formato" title="Link to this heading">¶</a></h2>
+<section id="validar-formato-duracion-duracion">
+<h3>validar_formato_duracion(duracion)<a class="headerlink" href="#validar-formato-duracion-duracion" title="Link to this heading">¶</a></h3>
+<p>Valida que una duración tenga formato correcto (MM:SS).</p>
+<p><strong>Parámetros:</strong>
+- <code class="docutils literal notranslate"><span class="pre">duracion</span></code> (str): String con la duración</p>
+<p><strong>Retorna:</strong>
+- <code class="docutils literal notranslate"><span class="pre">bool</span></code>: True si el formato es válido</p>
+<p><strong>Formatos aceptados:</strong>
+- «3:45» (3 minutos, 45 segundos)
+- «1:23:45» (1 hora, 23 minutos, 45 segundos)
+- «45» (45 segundos)</p>
+<p><strong>Implementación:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">validar_formato_duracion</span><span class="p">(</span><span class="n">duracion</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Valida formato de duración MM:SS o H:MM:SS&quot;&quot;&quot;</span>
+    <span class="n">patron</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^(\d+:)?\d+:\d+$&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="n">patron</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">duracion</span><span class="p">))</span>
+</pre></div>
+</div>
+</section>
+<section id="validar-anio-anio">
+<h3>validar_anio(anio)<a class="headerlink" href="#validar-anio-anio" title="Link to this heading">¶</a></h3>
+<p>Valida que un año esté en rango válido.</p>
+<p><strong>Parámetros:</strong>
+- <code class="docutils literal notranslate"><span class="pre">anio</span></code> (int): Año a validar</p>
+<p><strong>Retorna:</strong>
+- <code class="docutils literal notranslate"><span class="pre">bool</span></code>: True si el año es válido</p>
+<p><strong>Rango válido:</strong> 1900 hasta el año actual + 1</p>
+<p><strong>Implementación:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">validar_anio</span><span class="p">(</span><span class="n">anio</span><span class="p">):</span>
+    <span class="n">anio_actual</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">year</span>
+    <span class="k">return</span> <span class="mi">1900</span> <span class="o">&lt;=</span> <span class="n">anio</span> <span class="o">&lt;=</span> <span class="n">anio_actual</span> <span class="o">+</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="constantes-de-validacion">
+<h2>Constantes de Validación<a class="headerlink" href="#constantes-de-validacion" title="Link to this heading">¶</a></h2>
+<section id="formatos-disco-validos">
+<h3>FORMATOS_DISCO_VALIDOS<a class="headerlink" href="#formatos-disco-validos" title="Link to this heading">¶</a></h3>
+<p>Lista de formatos de disco válidos.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">FORMATOS_DISCO_VALIDOS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;Vinilo&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;CD&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Digital&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Cassette&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Otro&#39;</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="tipos-artista-validos">
+<h3>TIPOS_ARTISTA_VALIDOS<a class="headerlink" href="#tipos-artista-validos" title="Link to this heading">¶</a></h3>
+<p>Lista de tipos de artista válidos.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">TIPOS_ARTISTA_VALIDOS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;Solista&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Banda&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Dúo&#39;</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="mensajes-de-error">
+<h2>Mensajes de Error<a class="headerlink" href="#mensajes-de-error" title="Link to this heading">¶</a></h2>
+<p>El módulo incluye mensajes de error descriptivos para validaciones fallidas.</p>
+<p><strong>Ejemplos de mensajes:</strong></p>
+<ul class="simple">
+<li><p>«El nombre del artista es obligatorio»</p></li>
+<li><p>«Ya existe un artista con ese nombre»</p></li>
+<li><p>«El tipo de artista debe ser: Solista, Banda o Dúo»</p></li>
+<li><p>«El artista especificado no existe»</p></li>
+<li><p>«El formato del disco debe ser: Vinilo, CD, Digital, Cassette u Otro»</p></li>
+<li><p>«El año debe estar entre 1900 y {anio_actual + 1}»</p></li>
+<li><p>«El número de pista debe ser un entero positivo»</p></li>
+<li><p>«Ya existe una canción con ese número de pista en este disco»</p></li>
+<li><p>«El formato de duración debe ser MM:SS o H:MM:SS»</p></li>
+</ul>
+</section>
+<section id="integracion-con-controlador">
+<h2>Integración con Controlador<a class="headerlink" href="#integracion-con-controlador" title="Link to this heading">¶</a></h2>
+<p>Las funciones de validación se integran con el controlador:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Controlador</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">agregar_artista</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">validar_artista</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_artista</span><span class="o">.</span><span class="n">agregar</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Beneficios:</strong>
+- Validación antes de operaciones de base de datos
+- Mensajes de error consistentes
+- Prevención de datos corruptos
+- Separación de responsabilidades</p>
+</section>
+<section id="consideraciones-de-diseno">
+<h2>Consideraciones de Diseño<a class="headerlink" href="#consideraciones-de-diseno" title="Link to this heading">¶</a></h2>
+<p><strong>Principios aplicados:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Validación temprana:</strong> Verificar datos antes de operaciones costosas</p></li>
+<li><p><strong>Mensajes descriptivos:</strong> Errores claros para el usuario</p></li>
+<li><p><strong>Reutilización:</strong> Funciones auxiliares compartidas</p></li>
+<li><p><strong>Consistencia:</strong> Reglas de validación uniformes</p></li>
+<li><p><strong>Extensibilidad:</strong> Fácil agregar nuevas validaciones</p></li>
+</ol>
+<p><strong>Buenas prácticas:</strong></p>
+<ul class="simple">
+<li><p>Validar tipos de datos</p></li>
+<li><p>Verificar restricciones de unicidad</p></li>
+<li><p>Validar referencias foráneas</p></li>
+<li><p>Proporcionar valores por defecto cuando sea apropiado</p></li>
+<li><p>Manejar casos edge (valores límite, strings vacíos, etc.)</p></li>
+</ul>
+<p><strong>Rendimiento:</strong></p>
+<ul class="simple">
+<li><p>Consultas eficientes para verificar existencia</p></li>
+<li><p>Validación en memoria cuando posible</p></li>
+<li><p>Evitar validaciones redundantes</p></li>
+<li><p>Cache de resultados cuando apropiado</p></li>
+</ul>
+</section>
 </section>
 
 </main>
                         <nav aria-label="Page navigation" class="py-4 my-5 clearfix font-weight-bold border-top">
-    <a class="float-left" href="model.html" title="Previous">
-        <span aria-hidden="true">←&nbsp;</span>Módulo de Modelos
+    <a class="float-left" href="views.html" title="Previous">
+        <span aria-hidden="true">←&nbsp;</span>Módulo de Vistas
     </a>
-    <a class="float-right" href="views.html" title="Next">
-        Módulo de Vistas <span aria-hidden="true">&nbsp;→</span>
+    <a class="float-right" href="cliente_logs.html" title="Next">
+        cliente_logs module <span aria-hidden="true">&nbsp;→</span>
     </a>
 </nav>
                     </div>
@@ -201,6 +473,31 @@ formatos inválidos (ej. empezar con un espacio).</p>
 <li><a class="reference internal" href="#validations.Validations.validar_titulo"><code class="docutils literal notranslate"><span class="pre">Validations.validar_titulo()</span></code></a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#funciones-de-validacion">Funciones de Validación</a><ul>
+<li><a class="reference internal" href="#validar-artista-data">validar_artista(data)</a></li>
+<li><a class="reference internal" href="#validar-disco-data">validar_disco(data)</a></li>
+<li><a class="reference internal" href="#validar-cancion-data">validar_cancion(data)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#funciones-auxiliares">Funciones Auxiliares</a><ul>
+<li><a class="reference internal" href="#existe-artista-artista-id">existe_artista(artista_id)</a></li>
+<li><a class="reference internal" href="#existe-disco-disco-id">existe_disco(disco_id)</a></li>
+<li><a class="reference internal" href="#existe-cancion-cancion-id">existe_cancion(cancion_id)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#validaciones-de-formato">Validaciones de Formato</a><ul>
+<li><a class="reference internal" href="#validar-formato-duracion-duracion">validar_formato_duracion(duracion)</a></li>
+<li><a class="reference internal" href="#validar-anio-anio">validar_anio(anio)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#constantes-de-validacion">Constantes de Validación</a><ul>
+<li><a class="reference internal" href="#formatos-disco-validos">FORMATOS_DISCO_VALIDOS</a></li>
+<li><a class="reference internal" href="#tipos-artista-validos">TIPOS_ARTISTA_VALIDOS</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#mensajes-de-error">Mensajes de Error</a></li>
+<li><a class="reference internal" href="#integracion-con-controlador">Integración con Controlador</a></li>
+<li><a class="reference internal" href="#consideraciones-de-diseno">Consideraciones de Diseño</a></li>
 </ul>
 </li>
 </ul>

@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html class="no-js" lang="es" data-content_root="./">
+<head>
+    <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+        <title>Guía de Uso - App Discos &mdash; documentación de GestionMusical - 4.5.0</title>
+    
+    <link rel="stylesheet" type="text/css" href="_static/dist/fontawesome.css" />
+      <link rel="stylesheet" type="text/css" href="_static/dist/theme.css?v=310cf088" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+            <link rel="index" title="Índice" href="genindex.html" />
+            <link rel="search" title="Búsqueda" href="search.html" />
+            <link rel="top" title="documentación de GestionMusical - 4.5.0" href="#" />
+            <link rel="prev" title="Patrones de Diseño Implementados" href="patrones_dise%C3%B1o.html" />
+    </head>
+<body>
+    <script type="text/javascript" src="_static/dist/blocking.js"></script>
+    <header class="container-fluid bg-primary">
+        <a class="btn btn-sm btn-light skip-to-content-link" href="#main">Skip to content</a>
+        <div class="container-fluid">
+            <div class="navbar navbar-expand-lg navbar-dark font-weight-bold">
+                    <a href="index.html"
+                        title="Wagtail"
+                        class="logo navbar-brand"
+                    >
+                        <img src="_static/img/icono.ico" width="45" height="59" alt="Wagtail"
+                            class="logo-img"
+                        />
+                        Gestión Musical
+                    </a>
+                
+                
+                <button class="navbar-toggler btn btn-primary d-lg-none" type="button" data-toggle="collapse" data-target="#collapseSidebar" aria-expanded="false" aria-controls="collapseExample">
+                    <span class="navbar-toggler-icon"></span>
+                    <span class="sr-only">menu</span>
+                </button>
+            </div>
+        </div>
+    </header>
+    <div class="container-fluid">
+        <div class="row">
+            <aside class="col-12 col-lg-3 sidebar-container">
+                <div id="collapseSidebar" class="collapse sticky-top d-lg-block pt-5 pr-lg-4">
+<div id="searchbox" class="searchbox mb-6 px-1" role="search">
+    <form id="search-form" action="search.html" autocomplete="off" method="get" role="search">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text border-right-0 bg-white py-3 pl-3 pr-2"><span class="fas fa-search"></span></div>
+            </div>
+            <input class="form-control py-3 pr-3 pl-1 h-100 border-left-0" type="search" name="q" placeholder="Search documentation" aria-label="Search documentation" id="searchinput" />
+        </div>
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div><div class="site-toc">
+    <nav class="toc mt-3" aria-label="Main menu">
+        <p class="caption" role="heading"><span class="caption-text">Contenidos:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="modules.html">App Discos - Módulos del Sistema</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="main.html">Módulo Principal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model.html">Módulo de Modelos y Patrón Observador</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controller.html">Módulo Controlador</a></li>
+<li class="toctree-l2"><a class="reference internal" href="views.html">Módulo de Vistas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="validations.html">Módulo de Validaciones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cliente_logs.html">cliente_logs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="servidor_logs.html">servidor_logs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_logs.html">config_logs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_logs.html#configuracion-centralizada-del-sistema-de-logs">Configuración Centralizada del Sistema de Logs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sistema_logs.html">Sistema de Logs Cliente-Servidor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="patrones_dise%C3%B1o.html">Patrones de Diseño Implementados</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Guía de Uso - App Discos</a></li>
+</ul>
+
+    </nav>
+    <template data-toggle-item-template>
+        <button class="btn btn-sm btn-link toctree-expand" type="button">
+            <span class="sr-only">Toggle menu contents</span>
+        </button>
+    </template>
+</div>
+                    <div class="d-lg-none border-bottom">
+                        
+                    </div>
+                </div>
+            </aside>
+            <div class="col-12 col-lg-9 pt-5">
+                <header class="row align-items-baseline">
+                    <div class="col">
+                        <nav aria-label="breadcrumb">
+    <ol class="breadcrumb m-0 p-0 bg-transparent">
+        <li class="breadcrumb-item"><a href="index.html">Docs</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Guía de Uso - App Discos</li>
+    </ol>
+</nav>
+                    </div>
+                    <div class="col-sm-12 col-lg-auto mt-3 mt-lg-3">
+                        <noscript>
+                            <p>JavaScript is required to toggle light/dark mode..</p>
+                        </noscript>
+                        <button id="wagtail-theme" class="btn btn-sm btn-light text-decoration-none" type="button">
+                            <span class="dark-only"><i class="fas fa-sun"></i> Light mode</span>
+                            <span class="light-only"><i class="fas fa-moon"></i> Dark mode</span>
+                        </button>
+    <a class="btn btn-sm btn-light text-decoration-none" href="https://github.com/wagtail/sphinx_wagtail_theme/blob/main/docs/guia_uso.rst" rel="nofollow">
+        <span class="btn-icon"><span class="fab fa-github"></span></span>
+        <span class="btn-text">Edit on GitHub</span>
+    </a>
+    <a class="btn btn-sm btn-light text-decoration-none" href="_sources/guia_uso.rst.txt" rel="nofollow">
+        <span class="btn-icon"><span class="fas fa-code"></span></span>
+        <span class="btn-text">View source</span>
+    </a>
+                        
+                    </div>
+                </header>
+                <div class="row" >
+                    <div class="col-12">
+                        <hr class="w-100 my-4">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-lg-9 order-last order-lg-first rst-content">
+                        <main role="main" id="main">
+    <section id="guia-de-uso-app-discos">
+<h1>Guía de Uso - App Discos<a class="headerlink" href="#guia-de-uso-app-discos" title="Link to this heading">¶</a></h1>
+<p>Esta guía explica cómo usar todas las funcionalidades de la aplicación,
+incluyendo el sistema de logs cliente-servidor y las nuevas características.</p>
+<section id="instalacion-y-configuracion">
+<h2>Instalación y Configuración<a class="headerlink" href="#instalacion-y-configuracion" title="Link to this heading">¶</a></h2>
+<section id="requisitos-del-sistema">
+<h3>Requisitos del Sistema<a class="headerlink" href="#requisitos-del-sistema" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Python 3.8 o superior</p></li>
+<li><p>Tkinter (incluido en Python estándar)</p></li>
+<li><p>Pillow (PIL) para manejo de imágenes</p></li>
+<li><p>Peewee ORM</p></li>
+</ul>
+</section>
+<section id="instalacion-de-dependencias">
+<h3>Instalación de Dependencias<a class="headerlink" href="#instalacion-de-dependencias" title="Link to this heading">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>peewee<span class="w"> </span>pillow
+</pre></div>
+</div>
+</section>
+<section id="estructura-del-proyecto">
+<h3>Estructura del Proyecto<a class="headerlink" href="#estructura-del-proyecto" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>App Discos/
+├── main.py                 # Punto de entrada
+├── model.py                # Modelos y lógica de negocio
+├── controller.py           # Controladores y lógica de aplicación
+├── views.py                # Interfaz gráfica
+├── validations.py          # Validaciones
+├── cliente_logs.py         # Cliente de logs TCP
+├── servidor_logs.py        # Servidor de logs TCP
+├── config_logs.py          # Configuración del sistema de logs
+├── docs/                   # Documentación Sphinx
+├── Views/                  # Vistas específicas
+├── img/                    # Imágenes y recursos
+└── discos.db               # Base de datos SQLite
+</pre></div>
+</div>
+</section>
+</section>
+<section id="uso-basico-de-la-aplicacion">
+<h2>Uso Básico de la Aplicación<a class="headerlink" href="#uso-basico-de-la-aplicacion" title="Link to this heading">¶</a></h2>
+<section id="inicio-de-la-aplicacion">
+<h3>Inicio de la Aplicación<a class="headerlink" href="#inicio-de-la-aplicacion" title="Link to this heading">¶</a></h3>
+<p><strong>Modo Local (Recomendado para desarrollo):</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>main.py
+</pre></div>
+</div>
+<p>La aplicación iniciará y registrará logs automáticamente en <code class="docutils literal notranslate"><span class="pre">app_discos.log</span></code>.</p>
+<p><strong>Modo Cliente-Servidor (Para producción):</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Terminal 1: Iniciar servidor de logs</span>
+python<span class="w"> </span>servidor_logs.py
+
+<span class="c1"># Terminal 2: Iniciar aplicación</span>
+python<span class="w"> </span>main.py
+</pre></div>
+</div>
+<p>La aplicación detectará automáticamente el servidor y enviará logs centralizados.</p>
+</section>
+</section>
+<section id="interfaz-de-usuario">
+<h2>Interfaz de Usuario<a class="headerlink" href="#interfaz-de-usuario" title="Link to this heading">¶</a></h2>
+<p>La aplicación cuenta con una interfaz gráfica intuitiva dividida en secciones:</p>
+<section id="gestion-de-artistas">
+<h3>Gestión de Artistas<a class="headerlink" href="#gestion-de-artistas" title="Link to this heading">¶</a></h3>
+<p><strong>Agregar Artista:</strong></p>
+<ol class="arabic simple">
+<li><p>Navegar a la pestaña «Artistas»</p></li>
+<li><p>Hacer clic en «Nuevo Artista»</p></li>
+<li><p>Completar los campos:
+- <strong>Nombre</strong>: Nombre del artista o banda (obligatorio)
+- <strong>Tipo</strong>: Solista, Banda o Dúo
+- <strong>Biografía</strong>: Información adicional
+- <strong>Foto</strong>: Seleccionar imagen (opcional)</p></li>
+<li><p>Hacer clic en «Guardar»</p></li>
+</ol>
+<p><strong>Editar Artista:</strong></p>
+<ol class="arabic simple">
+<li><p>Seleccionar artista de la lista</p></li>
+<li><p>Hacer clic en «Editar Artista»</p></li>
+<li><p>Modificar los campos deseados</p></li>
+<li><p>Hacer clic en «Guardar»</p></li>
+</ol>
+<p><strong>Eliminar Artista:</strong></p>
+<ol class="arabic simple">
+<li><p>Seleccionar artista de la lista</p></li>
+<li><p>Hacer clic en «Eliminar Artista»</p></li>
+<li><p>Confirmar la eliminación</p></li>
+</ol>
+</section>
+<section id="gestion-de-discos">
+<h3>Gestión de Discos<a class="headerlink" href="#gestion-de-discos" title="Link to this heading">¶</a></h3>
+<p><strong>Agregar Disco:</strong></p>
+<ol class="arabic simple">
+<li><p>Navegar a la pestaña «Discos»</p></li>
+<li><p>Seleccionar artista de la lista</p></li>
+<li><p>Hacer clic en «Nuevo Disco»</p></li>
+<li><p>Completar los campos:
+- <strong>Artista</strong>: Seleccionar de la lista desplegable
+- <strong>Título</strong>: Nombre del disco (obligatorio)
+- <strong>Año</strong>: Año de lanzamiento
+- <strong>Formato</strong>: CD, Vinilo, Digital, etc.
+- <strong>Portada</strong>: Seleccionar imagen (opcional)</p></li>
+<li><p>Hacer clic en «Guardar»</p></li>
+</ol>
+<p><strong>Editar Disco:</strong></p>
+<ol class="arabic simple">
+<li><p>Seleccionar disco de la lista</p></li>
+<li><p>Hacer clic en «Editar Disco»</p></li>
+<li><p>Modificar los campos deseados</p></li>
+<li><p>Hacer clic en «Guardar»</p></li>
+</ol>
+<p><strong>Eliminar Disco:</strong></p>
+<ol class="arabic simple">
+<li><p>Seleccionar disco de la lista</p></li>
+<li><p>Hacer clic en «Eliminar Disco»</p></li>
+<li><p>Confirmar la eliminación</p></li>
+</ol>
+</section>
+<section id="gestion-de-canciones">
+<h3>Gestión de Canciones<a class="headerlink" href="#gestion-de-canciones" title="Link to this heading">¶</a></h3>
+<p><strong>Agregar Canción:</strong></p>
+<ol class="arabic simple">
+<li><p>Seleccionar un disco</p></li>
+<li><p>En la pestaña «Canciones», hacer clic en «Nueva Canción»</p></li>
+<li><p>Completar los campos:
+- <strong>Número de pista</strong>: Orden en el disco
+- <strong>Título</strong>: Nombre de la canción
+- <strong>Duración</strong>: Tiempo de reproducción</p></li>
+<li><p>Hacer clic en «Guardar»</p></li>
+</ol>
+</section>
+</section>
+<section id="sistema-de-logs">
+<h2>Sistema de Logs<a class="headerlink" href="#sistema-de-logs" title="Link to this heading">¶</a></h2>
+<p>La aplicación incluye un sistema de logging avanzado con múltiples opciones.</p>
+<section id="logs-locales">
+<h3>Logs Locales<a class="headerlink" href="#logs-locales" title="Link to this heading">¶</a></h3>
+<p><strong>Archivo:</strong> <code class="docutils literal notranslate"><span class="pre">app_discos.log</span></code></p>
+<p>Siempre activo, registra todas las operaciones localmente:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2026</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">26</span> <span class="mi">10</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">45</span> <span class="o">-</span> <span class="n">INFO</span> <span class="o">-</span> <span class="n">Evento</span><span class="p">:</span> <span class="n">artista_agregado</span> <span class="o">|</span> <span class="n">Datos</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">Artista</span> <span class="nb">object</span><span class="o">&gt;</span>
+<span class="mi">2026</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">26</span> <span class="mi">10</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">12</span> <span class="o">-</span> <span class="n">WARNING</span> <span class="o">-</span> <span class="n">Evento</span><span class="p">:</span> <span class="n">disco_actualizado</span> <span class="o">|</span> <span class="n">Datos</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;anio&#39;</span><span class="p">:</span> <span class="mi">1969</span><span class="p">}}</span>
+<span class="mi">2026</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">26</span> <span class="mi">10</span><span class="p">:</span><span class="mi">32</span><span class="p">:</span><span class="mi">00</span> <span class="o">-</span> <span class="n">ERROR</span> <span class="o">-</span> <span class="n">Evento</span><span class="p">:</span> <span class="n">artista_eliminado</span> <span class="o">|</span> <span class="n">Datos</span><span class="p">:</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</section>
+<section id="logs-centralizados-servidor">
+<h3>Logs Centralizados (Servidor)<a class="headerlink" href="#logs-centralizados-servidor" title="Link to this heading">¶</a></h3>
+<p><strong>Archivos:</strong>
+- <code class="docutils literal notranslate"><span class="pre">servidor_logs.log</span></code>: Logs del servidor central
+- <code class="docutils literal notranslate"><span class="pre">cliente_logs.log</span></code>: Logs del cliente</p>
+<p>Para activar el modo centralizado:</p>
+<ol class="arabic">
+<li><p>Iniciar el servidor:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>servidor_logs.py
+</pre></div>
+</div>
+</li>
+<li><p>Iniciar la aplicación normalmente:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>main.py
+</pre></div>
+</div>
+</li>
+</ol>
+<p>La aplicación detectará automáticamente el servidor.</p>
+</section>
+<section id="configuracion-del-sistema-de-logs">
+<h3>Configuración del Sistema de Logs<a class="headerlink" href="#configuracion-del-sistema-de-logs" title="Link to this heading">¶</a></h3>
+<p><strong>Archivo:</strong> <code class="docutils literal notranslate"><span class="pre">config_logs.py</span></code></p>
+<p>Personalizar configuración:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cambiar puerto del servidor</span>
+<span class="n">SERVIDOR_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;puerto&#39;</span><span class="p">:</span> <span class="mi">8080</span><span class="p">,</span>  <span class="c1"># Cambiar de 5000 a 8080</span>
+<span class="p">}</span>
+
+<span class="c1"># Cambiar nombre del cliente</span>
+<span class="n">CLIENTE_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;nombre_cliente&#39;</span><span class="p">:</span> <span class="s1">&#39;Mi-Discoteca-Personal&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="pruebas-del-sistema">
+<h2>Pruebas del Sistema<a class="headerlink" href="#pruebas-del-sistema" title="Link to this heading">¶</a></h2>
+<section id="scripts-de-prueba-incluidos">
+<h3>Scripts de Prueba Incluidos<a class="headerlink" href="#scripts-de-prueba-incluidos" title="Link to this heading">¶</a></h3>
+<p><strong>Prueba del Cliente-Servidor:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Terminal 1</span>
+python<span class="w"> </span>servidor_logs.py
+
+<span class="c1"># Terminal 2</span>
+python<span class="w"> </span>prueba_cliente_servidor.py
+</pre></div>
+</div>
+<p><strong>Prueba de Serialización JSON:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>prueba_serializacion.py
+</pre></div>
+</div>
+</section>
+<section id="verificacion-de-logs">
+<h3>Verificación de Logs<a class="headerlink" href="#verificacion-de-logs" title="Link to this heading">¶</a></h3>
+<p><strong>Windows PowerShell:</strong></p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="c"># Ver logs locales</span>
+<span class="nb">Get-Content</span> <span class="n">app_discos</span><span class="p">.</span><span class="n">log</span> <span class="n">-Tail</span> <span class="n">10</span>
+
+<span class="c"># Ver logs del servidor</span>
+<span class="nb">Get-Content</span> <span class="n">servidor_logs</span><span class="p">.</span><span class="n">log</span> <span class="n">-Tail</span> <span class="n">10</span>
+
+<span class="c"># Monitoreo en tiempo real</span>
+<span class="nb">Get-Content</span> <span class="n">app_discos</span><span class="p">.</span><span class="n">log</span> <span class="n">-Tail</span> <span class="n">10</span> <span class="n">-Wait</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="solucion-de-problemas">
+<h2>Solución de Problemas<a class="headerlink" href="#solucion-de-problemas" title="Link to this heading">¶</a></h2>
+<section id="problema-no-se-puede-establecer-una-conexion">
+<h3>Problema: «No se puede establecer una conexión»<a class="headerlink" href="#problema-no-se-puede-establecer-una-conexion" title="Link to this heading">¶</a></h3>
+<p><strong>Síntoma:</strong> <code class="docutils literal notranslate"><span class="pre">AttributeError:</span> <span class="pre">[WinError</span> <span class="pre">10061]</span> <span class="pre">No</span> <span class="pre">se</span> <span class="pre">puede</span> <span class="pre">establecer</span> <span class="pre">una</span> <span class="pre">conexión</span></code></p>
+<p><strong>Solución:</strong> El servidor de logs no está ejecutándose.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Iniciar servidor en otra terminal</span>
+python<span class="w"> </span>servidor_logs.py
+
+<span class="c1"># Luego iniciar la aplicación</span>
+python<span class="w"> </span>main.py
+</pre></div>
+</div>
+</section>
+<section id="problema-object-of-type-set-is-not-json-serializable">
+<h3>Problema: «Object of type set is not JSON serializable»<a class="headerlink" href="#problema-object-of-type-set-is-not-json-serializable" title="Link to this heading">¶</a></h3>
+<p><strong>Solución:</strong> Ya está solucionado en la versión actual. El sistema incluye
+un <code class="docutils literal notranslate"><span class="pre">JSONEncoderPersonalizado</span></code> que maneja automáticamente tipos complejos.</p>
+</section>
+<section id="problema-attributeerror-artistaformview-object-has-no-attribute-foto-path">
+<h3>Problema: «AttributeError: “ArtistaFormView” object has no attribute “foto_path”»<a class="headerlink" href="#problema-attributeerror-artistaformview-object-has-no-attribute-foto-path" title="Link to this heading">¶</a></h3>
+<p><strong>Solución:</strong> Ya está solucionado. El controlador usa <code class="docutils literal notranslate"><span class="pre">getattr(form,</span> <span class="pre">'foto_path',</span> <span class="pre">None)</span></code>
+para manejar casos donde no se ha seleccionado imagen.</p>
+</section>
+<section id="problema-aplicacion-no-inicia">
+<h3>Problema: Aplicación no inicia<a class="headerlink" href="#problema-aplicacion-no-inicia" title="Link to this heading">¶</a></h3>
+<p><strong>Verificar sintaxis:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>py_compile<span class="w"> </span>main.py<span class="w"> </span>model.py<span class="w"> </span>controller.py
+</pre></div>
+</div>
+<p><strong>Verificar dependencias:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>list<span class="w"> </span><span class="p">|</span><span class="w"> </span>findstr<span class="w"> </span><span class="s2">&quot;peewee\|Pillow&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="problema-logs-no-aparecen">
+<h3>Problema: Logs no aparecen<a class="headerlink" href="#problema-logs-no-aparecen" title="Link to this heading">¶</a></h3>
+<p><strong>Verificar archivos:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>dir<span class="w"> </span>*.log
+</pre></div>
+</div>
+<p><strong>Verificar permisos de escritura:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># El directorio debe tener permisos de escritura</span>
+icacls<span class="w"> </span>.
+</pre></div>
+</div>
+</section>
+</section>
+<section id="documentacion-tecnica">
+<h2>Documentación Técnica<a class="headerlink" href="#documentacion-tecnica" title="Link to this heading">¶</a></h2>
+<section id="generar-documentacion">
+<h3>Generar Documentación<a class="headerlink" href="#generar-documentacion" title="Link to this heading">¶</a></h3>
+<p>La documentación se genera con Sphinx:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>docs
+make<span class="w"> </span>html<span class="w">  </span><span class="c1"># Windows</span>
+<span class="c1"># o</span>
+make.bat<span class="w"> </span>html<span class="w">  </span><span class="c1"># Windows alternativo</span>
+</pre></div>
+</div>
+<p>Abrir documentación:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>start<span class="w"> </span>docs/_build/html/index.html
+</pre></div>
+</div>
+</section>
+</section>
+<section id="estructura-de-la-base-de-datos">
+<h2>Estructura de la Base de Datos<a class="headerlink" href="#estructura-de-la-base-de-datos" title="Link to this heading">¶</a></h2>
+<p>La aplicación usa SQLite con Peewee ORM:</p>
+<p><strong>Tabla Artista:</strong></p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">artista</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="w">    </span><span class="n">nombre</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">UNIQUE</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">tipo</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span>
+<span class="w">    </span><span class="n">info</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">,</span>
+<span class="w">    </span><span class="n">foto</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Tabla Discos:</strong></p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">discos</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="w">    </span><span class="n">artista_id</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">artista</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">DELETE</span><span class="w"> </span><span class="k">CASCADE</span><span class="p">,</span>
+<span class="w">    </span><span class="n">titulo</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">anio</span><span class="w"> </span><span class="nb">INTEGER</span><span class="p">,</span>
+<span class="w">    </span><span class="n">formato</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span>
+<span class="w">    </span><span class="n">portada</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Tabla Cancion:</strong></p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">cancion</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="w">    </span><span class="n">numero_pista</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">titulo</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">duracion</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span>
+<span class="w">    </span><span class="n">disco_id</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">discos</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">DELETE</span><span class="w"> </span><span class="k">CASCADE</span><span class="p">,</span>
+<span class="w">    </span><span class="k">UNIQUE</span><span class="p">(</span><span class="n">numero_pista</span><span class="p">,</span><span class="w"> </span><span class="n">disco_id</span><span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="api-de-desarrollo">
+<h2>API de Desarrollo<a class="headerlink" href="#api-de-desarrollo" title="Link to this heading">¶</a></h2>
+<p>Para desarrolladores que quieran extender la aplicación:</p>
+<p><strong>Agregar Nuevo Observador:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">MiObservador</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">actualizar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evento</span><span class="p">,</span> <span class="n">datos</span><span class="p">):</span>
+        <span class="c1"># Mi lógica personalizada</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Evento personalizado: </span><span class="si">{</span><span class="n">evento</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Agregar al modelo</span>
+<span class="n">modelo</span><span class="o">.</span><span class="n">agregar_observador</span><span class="p">(</span><span class="n">MiObservador</span><span class="p">())</span>
+</pre></div>
+</div>
+<p><strong>Crear Nuevo Decorador:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">mi_decorador</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="c1"># Lógica antes</span>
+        <span class="n">resultado</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="c1"># Lógica después</span>
+        <span class="k">return</span> <span class="n">resultado</span>
+    <span class="k">return</span> <span class="n">wrapper</span>
+</pre></div>
+</div>
+<p><strong>Extender Validaciones:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># En validations.py</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">validar_mi_campo</span><span class="p">(</span><span class="n">valor</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">valor</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="s2">&quot;Campo obligatorio&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">valor</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="consideraciones-de-produccion">
+<h2>Consideraciones de Producción<a class="headerlink" href="#consideraciones-de-produccion" title="Link to this heading">¶</a></h2>
+<p><strong>Configuración para Producción:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Cambiar puerto del servidor</strong> en <code class="docutils literal notranslate"><span class="pre">config_logs.py</span></code></p></li>
+<li><p><strong>Configurar logging rotativo</strong> para archivos grandes</p></li>
+<li><p><strong>Implementar autenticación</strong> en el servidor TCP</p></li>
+<li><p><strong>Usar HTTPS</strong> para comunicaciones seguras</p></li>
+<li><p><strong>Configurar monitoreo</strong> de logs centralizados</p></li>
+</ol>
+<p><strong>Recomendaciones de Despliegue:</strong></p>
+<ul class="simple">
+<li><p>Ejecutar servidor de logs como servicio del sistema</p></li>
+<li><p>Configurar backups automáticos de logs</p></li>
+<li><p>Implementar rotación de logs para evitar archivos muy grandes</p></li>
+<li><p>Monitorear uso de disco y conexiones TCP</p></li>
+</ul>
+<p><strong>Seguridad:</strong></p>
+<ul class="simple">
+<li><p>Validar todas las entradas de usuario</p></li>
+<li><p>Sanitizar datos antes de logging</p></li>
+<li><p>Limitar conexiones concurrentes al servidor</p></li>
+<li><p>Implementar timeouts apropiados</p></li>
+</ul>
+<p>Esta guía cubre todas las funcionalidades implementadas. Para más detalles técnicos,
+consulta la documentación completa generada con Sphinx.</p>
+</section>
+</section>
+
+</main>
+                        <nav aria-label="Page navigation" class="py-4 my-5 clearfix font-weight-bold border-top">
+    <a class="float-left" href="patrones_dise%C3%B1o.html" title="Previous">
+        <span aria-hidden="true">←&nbsp;</span>Patrones de Diseño Implementados
+    </a>
+</nav>
+                    </div>
+                    
+                    <nav class="col-12 col-lg-3 pb-4">
+                        <div class="sticky-top toc page-toc" aria-labelledby="page-toc-heading">
+                            <p class="font-weight-bold" id="page-toc-heading">Page contents</p>
+                            <ul>
+<li><a class="reference internal" href="#">Guía de Uso - App Discos</a><ul>
+<li><a class="reference internal" href="#instalacion-y-configuracion">Instalación y Configuración</a><ul>
+<li><a class="reference internal" href="#requisitos-del-sistema">Requisitos del Sistema</a></li>
+<li><a class="reference internal" href="#instalacion-de-dependencias">Instalación de Dependencias</a></li>
+<li><a class="reference internal" href="#estructura-del-proyecto">Estructura del Proyecto</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#uso-basico-de-la-aplicacion">Uso Básico de la Aplicación</a><ul>
+<li><a class="reference internal" href="#inicio-de-la-aplicacion">Inicio de la Aplicación</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#interfaz-de-usuario">Interfaz de Usuario</a><ul>
+<li><a class="reference internal" href="#gestion-de-artistas">Gestión de Artistas</a></li>
+<li><a class="reference internal" href="#gestion-de-discos">Gestión de Discos</a></li>
+<li><a class="reference internal" href="#gestion-de-canciones">Gestión de Canciones</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#sistema-de-logs">Sistema de Logs</a><ul>
+<li><a class="reference internal" href="#logs-locales">Logs Locales</a></li>
+<li><a class="reference internal" href="#logs-centralizados-servidor">Logs Centralizados (Servidor)</a></li>
+<li><a class="reference internal" href="#configuracion-del-sistema-de-logs">Configuración del Sistema de Logs</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pruebas-del-sistema">Pruebas del Sistema</a><ul>
+<li><a class="reference internal" href="#scripts-de-prueba-incluidos">Scripts de Prueba Incluidos</a></li>
+<li><a class="reference internal" href="#verificacion-de-logs">Verificación de Logs</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#solucion-de-problemas">Solución de Problemas</a><ul>
+<li><a class="reference internal" href="#problema-no-se-puede-establecer-una-conexion">Problema: «No se puede establecer una conexión»</a></li>
+<li><a class="reference internal" href="#problema-object-of-type-set-is-not-json-serializable">Problema: «Object of type set is not JSON serializable»</a></li>
+<li><a class="reference internal" href="#problema-attributeerror-artistaformview-object-has-no-attribute-foto-path">Problema: «AttributeError: “ArtistaFormView” object has no attribute “foto_path”»</a></li>
+<li><a class="reference internal" href="#problema-aplicacion-no-inicia">Problema: Aplicación no inicia</a></li>
+<li><a class="reference internal" href="#problema-logs-no-aparecen">Problema: Logs no aparecen</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#documentacion-tecnica">Documentación Técnica</a><ul>
+<li><a class="reference internal" href="#generar-documentacion">Generar Documentación</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#estructura-de-la-base-de-datos">Estructura de la Base de Datos</a></li>
+<li><a class="reference internal" href="#api-de-desarrollo">API de Desarrollo</a></li>
+<li><a class="reference internal" href="#consideraciones-de-produccion">Consideraciones de Producción</a></li>
+</ul>
+</li>
+</ul>
+
+                        </div>
+                    </nav>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="container-fluid bg-primary text-light">
+        <div class="container">
+            <div class="row">
+        <div class="col p-4">
+            
+                <nav aria-label="Footer">
+                    <ul class="nav justify-content-center mb-2">
+                            <li class="nav-item"><a class="nav-link text-light"  href="https://github.com/jciasenza"><span class="fab fa-github"></span></a></li>
+                            <li class="nav-item"><a class="nav-link text-light"  href="https://www.linkedin.com/in/juan-carlos-iasenza-8119501a9/"><span class="fab fa-linkedin"></span></a></li>
+                            <li class="nav-item"><a class="nav-link text-light"  href="mailto:iasenzajuancarlos@gmail.com"><span class="fas fa-envelope"></span></a></li>
+                    </ul>
+                </nav>
+            
+            <div class="text-center">
+                    &copy; Copyright 2026, Juan Carlos Iasenza
+            </div>
+            <div class="text-center text-white-50 font-italic mt-3">
+                <small>
+                    Created using
+                    <a class="text-white" href="https://github.com/wagtail/sphinx_wagtail_theme" rel="nofollow" target="_blank">
+                        Sphinx Wagtail Theme 6.5.0
+                    </a>
+                    and
+                    <a class="text-white" href="https://www.sphinx-doc.org/" rel="nofollow" target="_blank">
+                        Sphinx 8.1.3
+                    </a>
+                </small>
+            </div>
+        </div>
+    </div>
+        </div>
+    </footer>
+        <script src="_static/documentation_options.js?v=e56700d4"></script>
+        <script src="_static/doctools.js?v=9bcbadda"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="_static/copybutton.js?v=f281be69"></script>
+        <script src="_static/translations.js?v=f85f4cfb"></script>
+        <script type="text/javascript" src="_static/dist/theme.js"></script>
+        <script type="text/javascript" src="_static/dist/vendor.js"></script>
+        <script type="text/javascript" src="_static/searchtools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', function() { Search.loadIndex("searchindex.js"); });
+        </script>
+        <script type="text/javascript" id="searchindexloader"></script>
+    </body>
+</html>

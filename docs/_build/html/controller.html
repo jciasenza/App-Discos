@@ -14,9 +14,9 @@
             <link rel="index" title="Índice" href="genindex.html" />
             <link rel="search" title="Búsqueda" href="search.html" />
             <link rel="top" title="documentación de GestionMusical - 4.5.0" href="#" />
-            <link rel="up" title="App Discos" href="modules.html" />
-            <link rel="next" title="Módulo Principal" href="main.html" />
-            <link rel="prev" title="App Discos" href="modules.html" />
+            <link rel="up" title="App Discos - Módulos del Sistema" href="modules.html" />
+            <link rel="next" title="Módulo de Vistas" href="views.html" />
+            <link rel="prev" title="Módulo de Modelos y Patrón Observador" href="model.html" />
     </head>
 <body>
     <script type="text/javascript" src="_static/dist/blocking.js"></script>
@@ -61,14 +61,21 @@
     <nav class="toc mt-3" aria-label="Main menu">
         <p class="caption" role="heading"><span class="caption-text">Contenidos:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="modules.html">App Discos</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Módulo Controlador</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">App Discos - Módulos del Sistema</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="main.html">Módulo Principal</a></li>
-<li class="toctree-l2"><a class="reference internal" href="model.html">Módulo de Modelos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="validations.html">Módulo de Validaciones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model.html">Módulo de Modelos y Patrón Observador</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Módulo Controlador</a></li>
 <li class="toctree-l2"><a class="reference internal" href="views.html">Módulo de Vistas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="validations.html">Módulo de Validaciones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cliente_logs.html">cliente_logs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="servidor_logs.html">servidor_logs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_logs.html">config_logs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_logs.html#configuracion-centralizada-del-sistema-de-logs">Configuración Centralizada del Sistema de Logs</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="sistema_logs.html">Sistema de Logs Cliente-Servidor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="patrones_dise%C3%B1o.html">Patrones de Diseño Implementados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guia_uso.html">Guía de Uso - App Discos</a></li>
 </ul>
 
     </nav>
@@ -89,7 +96,7 @@
                         <nav aria-label="breadcrumb">
     <ol class="breadcrumb m-0 p-0 bg-transparent">
         <li class="breadcrumb-item"><a href="index.html">Docs</a></li>
-            <li class="breadcrumb-item"><a href="modules.html">App Discos</a></li>
+            <li class="breadcrumb-item"><a href="modules.html">App Discos - Módulos del Sistema</a></li>
         <li class="breadcrumb-item active" aria-current="page">Módulo Controlador</li>
     </ol>
 </nav>
@@ -102,7 +109,7 @@
                             <span class="dark-only"><i class="fas fa-sun"></i> Light mode</span>
                             <span class="light-only"><i class="fas fa-moon"></i> Dark mode</span>
                         </button>
-    <a class="btn btn-sm btn-light text-decoration-none" href="https://github.com/jciasenza/App-Discos/tree/dev/docs/controller.rst" rel="nofollow">
+    <a class="btn btn-sm btn-light text-decoration-none" href="https://github.com/wagtail/sphinx_wagtail_theme/blob/main/docs/controller.rst" rel="nofollow">
         <span class="btn-icon"><span class="fab fa-github"></span></span>
         <span class="btn-text">Edit on GitHub</span>
     </a>
@@ -121,195 +128,409 @@
                 <div class="row">
                     <div class="col-12 col-lg-9 order-last order-lg-first rst-content">
                         <main role="main" id="main">
-    <section id="module-controller">
-<span id="modulo-controlador"></span><h1>Módulo Controlador<a class="headerlink" href="#module-controller" title="Link to this heading">¶</a></h1>
-<section id="modulo-del-controlador-principal">
-<h2>Módulo del Controlador Principal<a class="headerlink" href="#modulo-del-controlador-principal" title="Link to this heading">¶</a></h2>
-<p>Este módulo define la clase <a class="reference internal" href="#controller.DiscoController" title="controller.DiscoController"><code class="xref py py-class docutils literal notranslate"><span class="pre">DiscoController</span></code></a>, que actúa como el mediador
-entre la interfaz gráfica (Tkinter) y la persistencia de datos (Peewee).
-Gestiona el flujo de información para artistas, discos y canciones.</p>
+    <section id="modulo-controlador">
+<h1>Módulo Controlador<a class="headerlink" href="#modulo-controlador" title="Link to this heading">¶</a></h1>
+<section id="clase-controlador">
+<h2>Clase Controlador<a class="headerlink" href="#clase-controlador" title="Link to this heading">¶</a></h2>
+<p>La clase principal que maneja la lógica de negocio y la interacción con la interfaz de usuario.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Controlador</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model_artista</span> <span class="o">=</span> <span class="n">ArtistaModel</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model_disco</span> <span class="o">=</span> <span class="n">DiscoModel</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model_cancion</span> <span class="o">=</span> <span class="n">CancionModel</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="kc">None</span>
+</pre></div>
+</div>
 </section>
-<dl class="py class">
-<dt class="sig sig-object py" id="controller.DiscoController">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">controller.</span></span><span class="sig-name descname"><span class="pre">DiscoController</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cancion_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">artista_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">view</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller.html#DiscoController"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.DiscoController" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Controlador principal de la aplicación.</p>
-<p>Se encarga de reaccionar a los eventos de la vista, solicitar datos a los 
-modelos y actualizar la interfaz en consecuencia siguiendo el patrón MVC.</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="controller.DiscoController.actualizar_dropdown_artistas">
-<span class="sig-name descname"><span class="pre">actualizar_dropdown_artistas</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller.html#DiscoController.actualizar_dropdown_artistas"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.DiscoController.actualizar_dropdown_artistas" title="Link to this definition">¶</a></dt>
-<dd><p>Actualiza el ComboBox de artistas en el formulario de discos.</p>
-</dd></dl>
+<section id="decoradores-de-logging">
+<h2>Decoradores de Logging<a class="headerlink" href="#decoradores-de-logging" title="Link to this heading">¶</a></h2>
+<p>El controlador utiliza decoradores para logging automático de operaciones.</p>
+<section id="log-alta">
+<h3>log_alta<a class="headerlink" href="#log-alta" title="Link to this heading">¶</a></h3>
+<p>Decorador para operaciones de creación (alta).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@log_alta</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">agregar_artista</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Agrega un nuevo artista con logging automático&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_artista</span><span class="o">.</span><span class="n">agregar</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Características:</strong>
+- Registra evento <code class="docutils literal notranslate"><span class="pre">artista_agregado</span></code> con datos del nuevo artista
+- Nivel de log: INFO
+- Se ejecuta después de la operación exitosa</p>
+</section>
+<section id="log-actualizacion">
+<h3>log_actualizacion<a class="headerlink" href="#log-actualizacion" title="Link to this heading">¶</a></h3>
+<p>Decorador para operaciones de actualización.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@log_actualizacion</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">actualizar_artista</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">artista_id</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Actualiza un artista con logging automático&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_artista</span><span class="o">.</span><span class="n">actualizar</span><span class="p">(</span><span class="n">artista_id</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Características:</strong>
+- Registra evento <code class="docutils literal notranslate"><span class="pre">artista_actualizado</span></code> con ID y datos nuevos
+- Nivel de log: WARNING
+- Se ejecuta después de la operación exitosa</p>
+</section>
+<section id="log-baja">
+<h3>log_baja<a class="headerlink" href="#log-baja" title="Link to this heading">¶</a></h3>
+<p>Decorador para operaciones de eliminación (baja).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@log_baja</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">eliminar_artista</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">artista_id</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Elimina un artista con logging automático&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_artista</span><span class="o">.</span><span class="n">eliminar</span><span class="p">(</span><span class="n">artista_id</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Características:</strong>
+- Registra evento <code class="docutils literal notranslate"><span class="pre">artista_eliminado</span></code> con ID del artista eliminado
+- Nivel de log: ERROR
+- Se ejecuta después de la operación exitosa</p>
+</section>
+</section>
+<section id="implementacion-de-decoradores">
+<h2>Implementación de Decoradores<a class="headerlink" href="#implementacion-de-decoradores" title="Link to this heading">¶</a></h2>
+<p>Los decoradores están implementados como funciones que retornan decoradores:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">log_alta</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">wrapper</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">resultado</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">resultado</span><span class="p">:</span>
+            <span class="c1"># Logging de la operación exitosa</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Operación de alta exitosa: </span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">resultado</span>
+    <span class="k">return</span> <span class="n">wrapper</span>
+</pre></div>
+</div>
+<p><strong>Ventajas:</strong>
+- Transparente: No modifica la lógica de negocio
+- Automático: Se ejecuta en cada llamada decorada
+- Configurable: Fácil cambiar comportamiento de logging
+- Reutilizable: Mismo decorador para diferentes métodos</p>
+</section>
+<section id="metodos-de-artistas">
+<h2>Métodos de Artistas<a class="headerlink" href="#metodos-de-artistas" title="Link to this heading">¶</a></h2>
+<section id="agregar-artista-data">
+<h3>agregar_artista(data)<a class="headerlink" href="#agregar-artista-data" title="Link to this heading">¶</a></h3>
+<p>Agrega un nuevo artista a la base de datos.</p>
+<p><strong>Parámetros:</strong>
+- <code class="docutils literal notranslate"><span class="pre">data</span></code> (dict): Diccionario con datos del artista</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">nombre</span></code> (str): Nombre del artista (requerido)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tipo</span></code> (str): Tipo de artista (opcional)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">info</span></code> (str): Información biográfica (opcional)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">foto</span></code> (str): Ruta a imagen (opcional)</p></li>
+</ul>
+</div></blockquote>
+<p><strong>Retorna:</strong>
+- <code class="docutils literal notranslate"><span class="pre">Artista</span></code>: Instancia del artista creado, o <code class="docutils literal notranslate"><span class="pre">None</span></code> si falla</p>
+<p><strong>Ejemplo:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">controlador</span> <span class="o">=</span> <span class="n">Controlador</span><span class="p">()</span>
+<span class="n">nuevo_artista</span> <span class="o">=</span> <span class="n">controlador</span><span class="o">.</span><span class="n">agregar_artista</span><span class="p">({</span>
+    <span class="s1">&#39;nombre&#39;</span><span class="p">:</span> <span class="s1">&#39;Queen&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;tipo&#39;</span><span class="p">:</span> <span class="s1">&#39;Banda&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;info&#39;</span><span class="p">:</span> <span class="s1">&#39;Banda británica de rock&#39;</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+</section>
+<section id="listar-artistas">
+<h3>listar_artistas()<a class="headerlink" href="#listar-artistas" title="Link to this heading">¶</a></h3>
+<p>Obtiene todos los artistas ordenados alfabéticamente.</p>
+<p><strong>Retorna:</strong>
+- <code class="docutils literal notranslate"><span class="pre">list</span></code>: Lista de instancias <code class="docutils literal notranslate"><span class="pre">Artista</span></code></p>
+</section>
+<section id="buscar-artistas-texto">
+<h3>buscar_artistas(texto)<a class="headerlink" href="#buscar-artistas-texto" title="Link to this heading">¶</a></h3>
+<p>Busca artistas por nombre.</p>
+<p><strong>Parámetros:</strong>
+- <code class="docutils literal notranslate"><span class="pre">texto</span></code> (str): Texto a buscar (insensible a mayúsculas)</p>
+<p><strong>Retorna:</strong>
+- <code class="docutils literal notranslate"><span class="pre">list</span></code>: Lista de artistas que coinciden con la búsqueda</p>
+</section>
+<section id="obtener-artista-artista-id">
+<h3>obtener_artista(artista_id)<a class="headerlink" href="#obtener-artista-artista-id" title="Link to this heading">¶</a></h3>
+<p>Obtiene un artista específico por su ID.</p>
+<p><strong>Parámetros:</strong>
+- <code class="docutils literal notranslate"><span class="pre">artista_id</span></code> (int): ID del artista</p>
+<p><strong>Retorna:</strong>
+- <code class="docutils literal notranslate"><span class="pre">Artista</span></code> o <code class="docutils literal notranslate"><span class="pre">None</span></code>: El artista encontrado o None</p>
+</section>
+<section id="actualizar-artista-artista-id-data">
+<h3>actualizar_artista(artista_id, data)<a class="headerlink" href="#actualizar-artista-artista-id-data" title="Link to this heading">¶</a></h3>
+<p>Actualiza los datos de un artista.</p>
+<p><strong>Parámetros:</strong>
+- <code class="docutils literal notranslate"><span class="pre">artista_id</span></code> (int): ID del artista a actualizar
+- <code class="docutils literal notranslate"><span class="pre">data</span></code> (dict): Campos a actualizar</p>
+<p><strong>Retorna:</strong>
+- <code class="docutils literal notranslate"><span class="pre">bool</span></code>: True si se actualizó correctamente</p>
+</section>
+<section id="eliminar-artista-artista-id">
+<h3>eliminar_artista(artista_id)<a class="headerlink" href="#eliminar-artista-artista-id" title="Link to this heading">¶</a></h3>
+<p>Elimina un artista de la base de datos.</p>
+<p><strong>Parámetros:</strong>
+- <code class="docutils literal notranslate"><span class="pre">artista_id</span></code> (int): ID del artista a eliminar</p>
+<p><strong>Retorna:</strong>
+- <code class="docutils literal notranslate"><span class="pre">bool</span></code>: True si se eliminó correctamente</p>
+</section>
+</section>
+<section id="metodos-de-discos">
+<h2>Métodos de Discos<a class="headerlink" href="#metodos-de-discos" title="Link to this heading">¶</a></h2>
+<section id="agregar-disco-data">
+<h3>agregar_disco(data)<a class="headerlink" href="#agregar-disco-data" title="Link to this heading">¶</a></h3>
+<p>Agrega un nuevo disco.</p>
+<p><strong>Parámetros:</strong>
+- <code class="docutils literal notranslate"><span class="pre">data</span></code> (dict): Datos del disco</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">artista</span></code> (int): ID del artista</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">titulo</span></code> (str): Título del disco</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">anio</span></code> (int): Año de lanzamiento (opcional)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">formato</span></code> (str): Formato del disco</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">portada</span></code> (str): Ruta a imagen de portada (opcional)</p></li>
+</ul>
+</div></blockquote>
+<p><strong>Retorna:</strong>
+- <code class="docutils literal notranslate"><span class="pre">Discos</span></code>: Instancia del disco creado</p>
+</section>
+<section id="listar-discos">
+<h3>listar_discos()<a class="headerlink" href="#listar-discos" title="Link to this heading">¶</a></h3>
+<p>Obtiene todos los discos con información del artista.</p>
+<p><strong>Retorna:</strong>
+- <code class="docutils literal notranslate"><span class="pre">list</span></code>: Lista de discos con artista relacionado</p>
+</section>
+<section id="buscar-discos-texto">
+<h3>buscar_discos(texto)<a class="headerlink" href="#buscar-discos-texto" title="Link to this heading">¶</a></h3>
+<p>Busca discos por título o nombre de artista.</p>
+<p><strong>Parámetros:</strong>
+- <code class="docutils literal notranslate"><span class="pre">texto</span></code> (str): Texto a buscar</p>
+<p><strong>Retorna:</strong>
+- <code class="docutils literal notranslate"><span class="pre">list</span></code>: Lista de discos que coinciden</p>
+</section>
+<section id="obtener-disco-disco-id">
+<h3>obtener_disco(disco_id)<a class="headerlink" href="#obtener-disco-disco-id" title="Link to this heading">¶</a></h3>
+<p>Obtiene un disco específico con su artista.</p>
+<p><strong>Parámetros:</strong>
+- <code class="docutils literal notranslate"><span class="pre">disco_id</span></code> (int): ID del disco</p>
+<p><strong>Retorna:</strong>
+- <code class="docutils literal notranslate"><span class="pre">Discos</span></code>: Disco con artista relacionado</p>
+</section>
+<section id="actualizar-disco-disco-id-data">
+<h3>actualizar_disco(disco_id, data)<a class="headerlink" href="#actualizar-disco-disco-id-data" title="Link to this heading">¶</a></h3>
+<p>Actualiza los datos de un disco.</p>
+<p><strong>Parámetros:</strong>
+- <code class="docutils literal notranslate"><span class="pre">disco_id</span></code> (int): ID del disco
+- <code class="docutils literal notranslate"><span class="pre">data</span></code> (dict): Campos a actualizar</p>
+<p><strong>Retorna:</strong>
+- <code class="docutils literal notranslate"><span class="pre">bool</span></code>: True si se actualizó correctamente</p>
+</section>
+<section id="eliminar-disco-disco-id">
+<h3>eliminar_disco(disco_id)<a class="headerlink" href="#eliminar-disco-disco-id" title="Link to this heading">¶</a></h3>
+<p>Elimina un disco y todas sus canciones.</p>
+<p><strong>Parámetros:</strong>
+- <code class="docutils literal notranslate"><span class="pre">disco_id</span></code> (int): ID del disco</p>
+<p><strong>Retorna:</strong>
+- <code class="docutils literal notranslate"><span class="pre">bool</span></code>: True si se eliminó correctamente</p>
+</section>
+</section>
+<section id="metodos-de-canciones">
+<h2>Métodos de Canciones<a class="headerlink" href="#metodos-de-canciones" title="Link to this heading">¶</a></h2>
+<section id="agregar-cancion-data">
+<h3>agregar_cancion(data)<a class="headerlink" href="#agregar-cancion-data" title="Link to this heading">¶</a></h3>
+<p>Agrega una nueva canción.</p>
+<p><strong>Parámetros:</strong>
+- <code class="docutils literal notranslate"><span class="pre">data</span></code> (dict): Datos de la canción</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">numero_pista</span></code> (int): Número de pista</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">titulo</span></code> (str): Título de la canción</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">duracion</span></code> (str): Duración (opcional)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">disco</span></code> (int): ID del disco</p></li>
+</ul>
+</div></blockquote>
+<p><strong>Retorna:</strong>
+- <code class="docutils literal notranslate"><span class="pre">Cancion</span></code>: Instancia de la canción creada</p>
+</section>
+<section id="listar-canciones-por-disco-disco-id">
+<h3>listar_canciones_por_disco(disco_id)<a class="headerlink" href="#listar-canciones-por-disco-disco-id" title="Link to this heading">¶</a></h3>
+<p>Obtiene todas las canciones de un disco específico.</p>
+<p><strong>Parámetros:</strong>
+- <code class="docutils literal notranslate"><span class="pre">disco_id</span></code> (int): ID del disco</p>
+<p><strong>Retorna:</strong>
+- <code class="docutils literal notranslate"><span class="pre">list</span></code>: Lista de canciones ordenadas por número de pista</p>
+</section>
+<section id="listar-todas-canciones">
+<h3>listar_todas_canciones()<a class="headerlink" href="#listar-todas-canciones" title="Link to this heading">¶</a></h3>
+<p>Obtiene todas las canciones con información de disco y artista.</p>
+<p><strong>Retorna:</strong>
+- <code class="docutils literal notranslate"><span class="pre">list</span></code>: Lista completa de canciones</p>
+</section>
+<section id="buscar-canciones-texto">
+<h3>buscar_canciones(texto)<a class="headerlink" href="#buscar-canciones-texto" title="Link to this heading">¶</a></h3>
+<p>Busca canciones por título, artista o disco.</p>
+<p><strong>Parámetros:</strong>
+- <code class="docutils literal notranslate"><span class="pre">texto</span></code> (str): Texto a buscar</p>
+<p><strong>Retorna:</strong>
+- <code class="docutils literal notranslate"><span class="pre">list</span></code>: Lista de canciones que coinciden</p>
+</section>
+<section id="actualizar-cancion-cancion-id-data">
+<h3>actualizar_cancion(cancion_id, data)<a class="headerlink" href="#actualizar-cancion-cancion-id-data" title="Link to this heading">¶</a></h3>
+<p>Actualiza los datos de una canción.</p>
+<p><strong>Parámetros:</strong>
+- <code class="docutils literal notranslate"><span class="pre">cancion_id</span></code> (int): ID de la canción
+- <code class="docutils literal notranslate"><span class="pre">data</span></code> (dict): Campos a actualizar</p>
+<p><strong>Retorna:</strong>
+- <code class="docutils literal notranslate"><span class="pre">bool</span></code>: True si se actualizó correctamente</p>
+</section>
+<section id="eliminar-cancion-cancion-id">
+<h3>eliminar_cancion(cancion_id)<a class="headerlink" href="#eliminar-cancion-cancion-id" title="Link to this heading">¶</a></h3>
+<p>Elimina una canción específica.</p>
+<p><strong>Parámetros:</strong>
+- <code class="docutils literal notranslate"><span class="pre">cancion_id</span></code> (int): ID de la canción</p>
+<p><strong>Retorna:</strong>
+- <code class="docutils literal notranslate"><span class="pre">bool</span></code>: True si se eliminó correctamente</p>
+</section>
+</section>
+<section id="metodos-de-validacion">
+<h2>Métodos de Validación<a class="headerlink" href="#metodos-de-validacion" title="Link to this heading">¶</a></h2>
+<section id="validar-artista-data">
+<h3>validar_artista(data)<a class="headerlink" href="#validar-artista-data" title="Link to this heading">¶</a></h3>
+<p>Valida los datos de un artista antes de guardarlo.</p>
+<p><strong>Parámetros:</strong>
+- <code class="docutils literal notranslate"><span class="pre">data</span></code> (dict): Datos del artista</p>
+<p><strong>Retorna:</strong>
+- <code class="docutils literal notranslate"><span class="pre">bool</span></code>: True si los datos son válidos</p>
+<p><strong>Validaciones realizadas:</strong>
+- Nombre requerido y no vacío
+- Tipo debe ser uno de los valores permitidos
+- Nombre único en la base de datos</p>
+</section>
+<section id="validar-disco-data">
+<h3>validar_disco(data)<a class="headerlink" href="#validar-disco-data" title="Link to this heading">¶</a></h3>
+<p>Valida los datos de un disco.</p>
+<p><strong>Parámetros:</strong>
+- <code class="docutils literal notranslate"><span class="pre">data</span></code> (dict): Datos del disco</p>
+<p><strong>Retorna:</strong>
+- <code class="docutils literal notranslate"><span class="pre">bool</span></code>: True si los datos son válidos</p>
+<p><strong>Validaciones realizadas:</strong>
+- Artista ID debe existir
+- Título requerido
+- Formato debe ser válido
+- Año debe ser un número válido si se proporciona</p>
+</section>
+<section id="validar-cancion-data">
+<h3>validar_cancion(data)<a class="headerlink" href="#validar-cancion-data" title="Link to this heading">¶</a></h3>
+<p>Valida los datos de una canción.</p>
+<p><strong>Parámetros:</strong>
+- <code class="docutils literal notranslate"><span class="pre">data</span></code> (dict): Datos de la canción</p>
+<p><strong>Retorna:</strong>
+- <code class="docutils literal notranslate"><span class="pre">bool</span></code>: True si los datos son válidos</p>
+<p><strong>Validaciones realizadas:</strong>
+- Disco ID debe existir
+- Número de pista debe ser positivo
+- Título requerido
+- No puede haber dos pistas con mismo número en un disco</p>
+</section>
+</section>
+<section id="manejo-de-imagenes">
+<h2>Manejo de Imágenes<a class="headerlink" href="#manejo-de-imagenes" title="Link to this heading">¶</a></h2>
+<p>El controlador incluye métodos para manejar rutas de imágenes de forma segura.</p>
+<section id="obtener-ruta-imagen-objeto-campo">
+<h3>obtener_ruta_imagen(objeto, campo)<a class="headerlink" href="#obtener-ruta-imagen-objeto-campo" title="Link to this heading">¶</a></h3>
+<p>Obtiene la ruta de imagen de un objeto de forma segura.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">obtener_ruta_imagen</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">objeto</span><span class="p">,</span> <span class="n">campo</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Obtiene ruta de imagen usando getattr para evitar AttributeError&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">objeto</span><span class="p">,</span> <span class="n">campo</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Parámetros:</strong>
+- <code class="docutils literal notranslate"><span class="pre">objeto</span></code>: Instancia del modelo (Artista, Discos)
+- <code class="docutils literal notranslate"><span class="pre">campo</span></code> (str): Nombre del campo de imagen (“foto”, “portada”)</p>
+<p><strong>Retorna:</strong>
+- <code class="docutils literal notranslate"><span class="pre">str</span></code> o <code class="docutils literal notranslate"><span class="pre">None</span></code>: Ruta de la imagen o None si no existe</p>
+<p><strong>Ventajas:</strong>
+- Evita <code class="docutils literal notranslate"><span class="pre">AttributeError</span></code> si el campo no existe
+- Maneja objetos que pueden no tener el atributo
+- Compatible con versiones anteriores del modelo</p>
+</section>
+</section>
+<section id="manejo-de-errores">
+<h2>Manejo de Errores<a class="headerlink" href="#manejo-de-errores" title="Link to this heading">¶</a></h2>
+<p>El controlador implementa manejo robusto de errores:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">resultado</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_artista</span><span class="o">.</span><span class="n">agregar</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">resultado</span><span class="p">:</span>
+        <span class="c1"># Operación exitosa</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Validación fallida</span>
+        <span class="k">return</span> <span class="kc">False</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="c1"># Error inesperado</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error en agregar_artista: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">False</span>
+</pre></div>
+</div>
+<p><strong>Estrategias de manejo:</strong>
+- Captura de excepciones específicas de base de datos
+- Logging de errores con contexto
+- Retorno de valores booleanos para indicar éxito/fallo
+- Mensajes de error descriptivos para la UI</p>
+</section>
+<section id="integracion-con-vistas">
+<h2>Integración con Vistas<a class="headerlink" href="#integracion-con-vistas" title="Link to this heading">¶</a></h2>
+<p>El controlador se conecta con las vistas Tkinter:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">set_view</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">view</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Establece la referencia a la vista principal&quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="n">view</span>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="controller.DiscoController.agregar_cancion">
-<span class="sig-name descname"><span class="pre">agregar_cancion</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller.html#DiscoController.agregar_cancion"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.DiscoController.agregar_cancion" title="Link to this definition">¶</a></dt>
-<dd><p>Agrega o actualiza una canción vinculada al disco actual.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="controller.DiscoController.artista_actual_id">
-<span class="sig-name descname"><span class="pre">artista_actual_id</span></span><a class="headerlink" href="#controller.DiscoController.artista_actual_id" title="Link to this definition">¶</a></dt>
-<dd><p>ID del artista en edición.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="controller.DiscoController.cancion_en_edicion_id">
-<span class="sig-name descname"><span class="pre">cancion_en_edicion_id</span></span><a class="headerlink" href="#controller.DiscoController.cancion_en_edicion_id" title="Link to this definition">¶</a></dt>
-<dd><p>ID de la canción que se está modificando en el formulario.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="controller.DiscoController.cargar_canciones">
-<span class="sig-name descname"><span class="pre">cargar_canciones</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller.html#DiscoController.cargar_canciones"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.DiscoController.cargar_canciones" title="Link to this definition">¶</a></dt>
-<dd><p>Refresca la lista de canciones en el formulario (Listbox).</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="controller.DiscoController.disco_actual_id">
-<span class="sig-name descname"><span class="pre">disco_actual_id</span></span><a class="headerlink" href="#controller.DiscoController.disco_actual_id" title="Link to this definition">¶</a></dt>
-<dd><p>ID del disco que se está editando actualmente (None si es nuevo).</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="controller.DiscoController.editar">
-<span class="sig-name descname"><span class="pre">editar</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller.html#DiscoController.editar"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.DiscoController.editar" title="Link to this definition">¶</a></dt>
-<dd><p>Carga un disco existente en el formulario de edición.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="controller.DiscoController.editar_artista">
-<span class="sig-name descname"><span class="pre">editar_artista</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller.html#DiscoController.editar_artista"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.DiscoController.editar_artista" title="Link to this definition">¶</a></dt>
-<dd><p>Carga los datos del artista seleccionado en el formulario para editar.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="controller.DiscoController.ejecutar_busqueda">
-<span class="sig-name descname"><span class="pre">ejecutar_busqueda</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller.html#DiscoController.ejecutar_busqueda"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.DiscoController.ejecutar_busqueda" title="Link to this definition">¶</a></dt>
-<dd><p>Ejecuta la búsqueda global de discos.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="controller.DiscoController.ejecutar_busqueda_artistas">
-<span class="sig-name descname"><span class="pre">ejecutar_busqueda_artistas</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller.html#DiscoController.ejecutar_busqueda_artistas"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.DiscoController.ejecutar_busqueda_artistas" title="Link to this definition">¶</a></dt>
-<dd><p>Filtra la lista de artistas según el texto ingresado en el buscador.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="controller.DiscoController.ejecutar_busqueda_canciones">
-<span class="sig-name descname"><span class="pre">ejecutar_busqueda_canciones</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller.html#DiscoController.ejecutar_busqueda_canciones"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.DiscoController.ejecutar_busqueda_canciones" title="Link to this definition">¶</a></dt>
-<dd><p>Filtra el listado de canciones.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="controller.DiscoController.eliminar">
-<span class="sig-name descname"><span class="pre">eliminar</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller.html#DiscoController.eliminar"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.DiscoController.eliminar" title="Link to this definition">¶</a></dt>
-<dd><p>Elimina el disco seleccionado previa confirmación del usuario.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="controller.DiscoController.eliminar_artista_accion">
-<span class="sig-name descname"><span class="pre">eliminar_artista_accion</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller.html#DiscoController.eliminar_artista_accion"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.DiscoController.eliminar_artista_accion" title="Link to this definition">¶</a></dt>
-<dd><p>Solicita confirmación y elimina al artista seleccionado.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="controller.DiscoController.eliminar_cancion">
-<span class="sig-name descname"><span class="pre">eliminar_cancion</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller.html#DiscoController.eliminar_cancion"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.DiscoController.eliminar_cancion" title="Link to this definition">¶</a></dt>
-<dd><p>Elimina la pista seleccionada del disco actual.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="controller.DiscoController.guardar">
-<span class="sig-name descname"><span class="pre">guardar</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller.html#DiscoController.guardar"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.DiscoController.guardar" title="Link to this definition">¶</a></dt>
-<dd><p>Valida y guarda la información del disco actual.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="controller.DiscoController.guardar_artista">
-<span class="sig-name descname"><span class="pre">guardar_artista</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller.html#DiscoController.guardar_artista"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.DiscoController.guardar_artista" title="Link to this definition">¶</a></dt>
-<dd><p>Persiste los datos del artista en la base de datos.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="controller.DiscoController.imagen_actual_path">
-<span class="sig-name descname"><span class="pre">imagen_actual_path</span></span><a class="headerlink" href="#controller.DiscoController.imagen_actual_path" title="Link to this definition">¶</a></dt>
-<dd><p>Ruta temporal de la imagen seleccionada para el disco/artista.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="controller.DiscoController.inicializar_datos">
-<span class="sig-name descname"><span class="pre">inicializar_datos</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller.html#DiscoController.inicializar_datos"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.DiscoController.inicializar_datos" title="Link to this definition">¶</a></dt>
-<dd><p>Realiza la carga inicial de información desde la base de datos 
-hacia todos los componentes de la vista.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="controller.DiscoController.mostrar_listado_canciones">
-<span class="sig-name descname"><span class="pre">mostrar_listado_canciones</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller.html#DiscoController.mostrar_listado_canciones"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.DiscoController.mostrar_listado_canciones" title="Link to this definition">¶</a></dt>
-<dd><p>Muestra la vista general de todas las canciones registradas.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="controller.DiscoController.nuevo">
-<span class="sig-name descname"><span class="pre">nuevo</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller.html#DiscoController.nuevo"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.DiscoController.nuevo" title="Link to this definition">¶</a></dt>
-<dd><p>Prepara el formulario para la creación de un nuevo disco.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="controller.DiscoController.nuevo_artista">
-<span class="sig-name descname"><span class="pre">nuevo_artista</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller.html#DiscoController.nuevo_artista"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.DiscoController.nuevo_artista" title="Link to this definition">¶</a></dt>
-<dd><p>Limpia el estado y muestra el formulario para un nuevo artista.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="controller.DiscoController.preparar_edicion_cancion">
-<span class="sig-name descname"><span class="pre">preparar_edicion_cancion</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller.html#DiscoController.preparar_edicion_cancion"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.DiscoController.preparar_edicion_cancion" title="Link to this definition">¶</a></dt>
-<dd><p>Carga los datos de la canción seleccionada en los campos de entrada para editar.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="controller.DiscoController.refrescar">
-<span class="sig-name descname"><span class="pre">refrescar</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller.html#DiscoController.refrescar"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.DiscoController.refrescar" title="Link to this definition">¶</a></dt>
-<dd><p>Actualiza la tabla de discos y cambia a la vista de listado.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="controller.DiscoController.refrescar_artistas">
-<span class="sig-name descname"><span class="pre">refrescar_artistas</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller.html#DiscoController.refrescar_artistas"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.DiscoController.refrescar_artistas" title="Link to this definition">¶</a></dt>
-<dd><p>Recarga la lista de artistas y cambia la pantalla a la vista de artistas.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="controller.DiscoController.refrescar_datos_silencioso">
-<span class="sig-name descname"><span class="pre">refrescar_datos_silencioso</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller.html#DiscoController.refrescar_datos_silencioso"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.DiscoController.refrescar_datos_silencioso" title="Link to this definition">¶</a></dt>
-<dd><p>Actualiza la tabla principal de discos sin cambiar la pantalla actual.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="controller.DiscoController.seleccionar_foto_artista">
-<span class="sig-name descname"><span class="pre">seleccionar_foto_artista</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller.html#DiscoController.seleccionar_foto_artista"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.DiscoController.seleccionar_foto_artista" title="Link to this definition">¶</a></dt>
-<dd><p>Abre un diálogo de archivos para seleccionar la foto del artista.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="controller.DiscoController.seleccionar_imagen">
-<span class="sig-name descname"><span class="pre">seleccionar_imagen</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller.html#DiscoController.seleccionar_imagen"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.DiscoController.seleccionar_imagen" title="Link to this definition">¶</a></dt>
-<dd><p>Gestiona la selección de la imagen de portada para el disco.</p>
-</dd></dl>
-
-</dd></dl>
-
+<span class="k">def</span><span class="w"> </span><span class="nf">actualizar_vista_artistas</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Actualiza la lista de artistas en la vista&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="p">:</span>
+        <span class="n">artistas</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">listar_artistas</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">actualizar_lista_artistas</span><span class="p">(</span><span class="n">artistas</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Patrón implementado:</strong>
+- Controlador mantiene referencia a la vista
+- Métodos específicos para actualizar diferentes secciones
+- Separación clara entre lógica de negocio y presentación</p>
+</section>
+<section id="consideraciones-de-diseno">
+<h2>Consideraciones de Diseño<a class="headerlink" href="#consideraciones-de-diseno" title="Link to this heading">¶</a></h2>
+<p><strong>Principios SOLID aplicados:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Single Responsibility</strong>: Cada método tiene una responsabilidad clara</p></li>
+<li><p><strong>Open/Closed</strong>: Decoradores permiten extender funcionalidad sin modificar código existente</p></li>
+<li><p><strong>Liskov Substitution</strong>: Los decoradores son compatibles con cualquier método</p></li>
+<li><p><strong>Interface Segregation</strong>: Métodos específicos para cada entidad</p></li>
+<li><p><strong>Dependency Inversion</strong>: El controlador no depende de implementaciones concretas</p></li>
+</ol>
+<p><strong>Patrones de diseño utilizados:</strong></p>
+<ul class="simple">
+<li><p><strong>Decorator Pattern</strong>: Para logging automático</p></li>
+<li><p><strong>Observer Pattern</strong>: Integración con sistema de logs (en modelos)</p></li>
+<li><p><strong>MVC Pattern</strong>: Separación entre modelo, vista y controlador</p></li>
+<li><p><strong>Factory Pattern</strong>: Creación de instancias de modelos</p></li>
+</ul>
+<p><strong>Buenas prácticas implementadas:</strong></p>
+<ul class="simple">
+<li><p>Validación de entrada antes de operaciones</p></li>
+<li><p>Manejo consistente de errores</p></li>
+<li><p>Logging automático de operaciones</p></li>
+<li><p>Nombres descriptivos de métodos</p></li>
+<li><p>Documentación completa con docstrings</p></li>
+</ul>
+</section>
 </section>
 
 </main>
                         <nav aria-label="Page navigation" class="py-4 my-5 clearfix font-weight-bold border-top">
-    <a class="float-left" href="modules.html" title="Previous">
-        <span aria-hidden="true">←&nbsp;</span>App Discos
+    <a class="float-left" href="model.html" title="Previous">
+        <span aria-hidden="true">←&nbsp;</span>Módulo de Modelos y Patrón Observador
     </a>
-    <a class="float-right" href="main.html" title="Next">
-        Módulo Principal <span aria-hidden="true">&nbsp;→</span>
+    <a class="float-right" href="views.html" title="Next">
+        Módulo de Vistas <span aria-hidden="true">&nbsp;→</span>
     </a>
 </nav>
                     </div>
@@ -319,37 +540,54 @@ hacia todos los componentes de la vista.</p>
                             <p class="font-weight-bold" id="page-toc-heading">Page contents</p>
                             <ul>
 <li><a class="reference internal" href="#">Módulo Controlador</a><ul>
-<li><a class="reference internal" href="#modulo-del-controlador-principal">Módulo del Controlador Principal</a></li>
-<li><a class="reference internal" href="#controller.DiscoController"><code class="docutils literal notranslate"><span class="pre">DiscoController</span></code></a><ul>
-<li><a class="reference internal" href="#controller.DiscoController.actualizar_dropdown_artistas"><code class="docutils literal notranslate"><span class="pre">DiscoController.actualizar_dropdown_artistas()</span></code></a></li>
-<li><a class="reference internal" href="#controller.DiscoController.agregar_cancion"><code class="docutils literal notranslate"><span class="pre">DiscoController.agregar_cancion()</span></code></a></li>
-<li><a class="reference internal" href="#controller.DiscoController.artista_actual_id"><code class="docutils literal notranslate"><span class="pre">DiscoController.artista_actual_id</span></code></a></li>
-<li><a class="reference internal" href="#controller.DiscoController.cancion_en_edicion_id"><code class="docutils literal notranslate"><span class="pre">DiscoController.cancion_en_edicion_id</span></code></a></li>
-<li><a class="reference internal" href="#controller.DiscoController.cargar_canciones"><code class="docutils literal notranslate"><span class="pre">DiscoController.cargar_canciones()</span></code></a></li>
-<li><a class="reference internal" href="#controller.DiscoController.disco_actual_id"><code class="docutils literal notranslate"><span class="pre">DiscoController.disco_actual_id</span></code></a></li>
-<li><a class="reference internal" href="#controller.DiscoController.editar"><code class="docutils literal notranslate"><span class="pre">DiscoController.editar()</span></code></a></li>
-<li><a class="reference internal" href="#controller.DiscoController.editar_artista"><code class="docutils literal notranslate"><span class="pre">DiscoController.editar_artista()</span></code></a></li>
-<li><a class="reference internal" href="#controller.DiscoController.ejecutar_busqueda"><code class="docutils literal notranslate"><span class="pre">DiscoController.ejecutar_busqueda()</span></code></a></li>
-<li><a class="reference internal" href="#controller.DiscoController.ejecutar_busqueda_artistas"><code class="docutils literal notranslate"><span class="pre">DiscoController.ejecutar_busqueda_artistas()</span></code></a></li>
-<li><a class="reference internal" href="#controller.DiscoController.ejecutar_busqueda_canciones"><code class="docutils literal notranslate"><span class="pre">DiscoController.ejecutar_busqueda_canciones()</span></code></a></li>
-<li><a class="reference internal" href="#controller.DiscoController.eliminar"><code class="docutils literal notranslate"><span class="pre">DiscoController.eliminar()</span></code></a></li>
-<li><a class="reference internal" href="#controller.DiscoController.eliminar_artista_accion"><code class="docutils literal notranslate"><span class="pre">DiscoController.eliminar_artista_accion()</span></code></a></li>
-<li><a class="reference internal" href="#controller.DiscoController.eliminar_cancion"><code class="docutils literal notranslate"><span class="pre">DiscoController.eliminar_cancion()</span></code></a></li>
-<li><a class="reference internal" href="#controller.DiscoController.guardar"><code class="docutils literal notranslate"><span class="pre">DiscoController.guardar()</span></code></a></li>
-<li><a class="reference internal" href="#controller.DiscoController.guardar_artista"><code class="docutils literal notranslate"><span class="pre">DiscoController.guardar_artista()</span></code></a></li>
-<li><a class="reference internal" href="#controller.DiscoController.imagen_actual_path"><code class="docutils literal notranslate"><span class="pre">DiscoController.imagen_actual_path</span></code></a></li>
-<li><a class="reference internal" href="#controller.DiscoController.inicializar_datos"><code class="docutils literal notranslate"><span class="pre">DiscoController.inicializar_datos()</span></code></a></li>
-<li><a class="reference internal" href="#controller.DiscoController.mostrar_listado_canciones"><code class="docutils literal notranslate"><span class="pre">DiscoController.mostrar_listado_canciones()</span></code></a></li>
-<li><a class="reference internal" href="#controller.DiscoController.nuevo"><code class="docutils literal notranslate"><span class="pre">DiscoController.nuevo()</span></code></a></li>
-<li><a class="reference internal" href="#controller.DiscoController.nuevo_artista"><code class="docutils literal notranslate"><span class="pre">DiscoController.nuevo_artista()</span></code></a></li>
-<li><a class="reference internal" href="#controller.DiscoController.preparar_edicion_cancion"><code class="docutils literal notranslate"><span class="pre">DiscoController.preparar_edicion_cancion()</span></code></a></li>
-<li><a class="reference internal" href="#controller.DiscoController.refrescar"><code class="docutils literal notranslate"><span class="pre">DiscoController.refrescar()</span></code></a></li>
-<li><a class="reference internal" href="#controller.DiscoController.refrescar_artistas"><code class="docutils literal notranslate"><span class="pre">DiscoController.refrescar_artistas()</span></code></a></li>
-<li><a class="reference internal" href="#controller.DiscoController.refrescar_datos_silencioso"><code class="docutils literal notranslate"><span class="pre">DiscoController.refrescar_datos_silencioso()</span></code></a></li>
-<li><a class="reference internal" href="#controller.DiscoController.seleccionar_foto_artista"><code class="docutils literal notranslate"><span class="pre">DiscoController.seleccionar_foto_artista()</span></code></a></li>
-<li><a class="reference internal" href="#controller.DiscoController.seleccionar_imagen"><code class="docutils literal notranslate"><span class="pre">DiscoController.seleccionar_imagen()</span></code></a></li>
+<li><a class="reference internal" href="#clase-controlador">Clase Controlador</a></li>
+<li><a class="reference internal" href="#decoradores-de-logging">Decoradores de Logging</a><ul>
+<li><a class="reference internal" href="#log-alta">log_alta</a></li>
+<li><a class="reference internal" href="#log-actualizacion">log_actualizacion</a></li>
+<li><a class="reference internal" href="#log-baja">log_baja</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#implementacion-de-decoradores">Implementación de Decoradores</a></li>
+<li><a class="reference internal" href="#metodos-de-artistas">Métodos de Artistas</a><ul>
+<li><a class="reference internal" href="#agregar-artista-data">agregar_artista(data)</a></li>
+<li><a class="reference internal" href="#listar-artistas">listar_artistas()</a></li>
+<li><a class="reference internal" href="#buscar-artistas-texto">buscar_artistas(texto)</a></li>
+<li><a class="reference internal" href="#obtener-artista-artista-id">obtener_artista(artista_id)</a></li>
+<li><a class="reference internal" href="#actualizar-artista-artista-id-data">actualizar_artista(artista_id, data)</a></li>
+<li><a class="reference internal" href="#eliminar-artista-artista-id">eliminar_artista(artista_id)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#metodos-de-discos">Métodos de Discos</a><ul>
+<li><a class="reference internal" href="#agregar-disco-data">agregar_disco(data)</a></li>
+<li><a class="reference internal" href="#listar-discos">listar_discos()</a></li>
+<li><a class="reference internal" href="#buscar-discos-texto">buscar_discos(texto)</a></li>
+<li><a class="reference internal" href="#obtener-disco-disco-id">obtener_disco(disco_id)</a></li>
+<li><a class="reference internal" href="#actualizar-disco-disco-id-data">actualizar_disco(disco_id, data)</a></li>
+<li><a class="reference internal" href="#eliminar-disco-disco-id">eliminar_disco(disco_id)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#metodos-de-canciones">Métodos de Canciones</a><ul>
+<li><a class="reference internal" href="#agregar-cancion-data">agregar_cancion(data)</a></li>
+<li><a class="reference internal" href="#listar-canciones-por-disco-disco-id">listar_canciones_por_disco(disco_id)</a></li>
+<li><a class="reference internal" href="#listar-todas-canciones">listar_todas_canciones()</a></li>
+<li><a class="reference internal" href="#buscar-canciones-texto">buscar_canciones(texto)</a></li>
+<li><a class="reference internal" href="#actualizar-cancion-cancion-id-data">actualizar_cancion(cancion_id, data)</a></li>
+<li><a class="reference internal" href="#eliminar-cancion-cancion-id">eliminar_cancion(cancion_id)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#metodos-de-validacion">Métodos de Validación</a><ul>
+<li><a class="reference internal" href="#validar-artista-data">validar_artista(data)</a></li>
+<li><a class="reference internal" href="#validar-disco-data">validar_disco(data)</a></li>
+<li><a class="reference internal" href="#validar-cancion-data">validar_cancion(data)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#manejo-de-imagenes">Manejo de Imágenes</a><ul>
+<li><a class="reference internal" href="#obtener-ruta-imagen-objeto-campo">obtener_ruta_imagen(objeto, campo)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#manejo-de-errores">Manejo de Errores</a></li>
+<li><a class="reference internal" href="#integracion-con-vistas">Integración con Vistas</a></li>
+<li><a class="reference internal" href="#consideraciones-de-diseno">Consideraciones de Diseño</a></li>
 </ul>
 </li>
 </ul>

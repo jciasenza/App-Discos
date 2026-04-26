@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html class="no-js" lang="es" data-content_root="./">
+<head>
+    <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+        <title>Sistema de Logs Cliente-Servidor &mdash; documentación de GestionMusical - 4.5.0</title>
+    
+    <link rel="stylesheet" type="text/css" href="_static/dist/fontawesome.css" />
+      <link rel="stylesheet" type="text/css" href="_static/dist/theme.css?v=310cf088" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+            <link rel="index" title="Índice" href="genindex.html" />
+            <link rel="search" title="Búsqueda" href="search.html" />
+            <link rel="top" title="documentación de GestionMusical - 4.5.0" href="#" />
+            <link rel="next" title="Patrones de Diseño Implementados" href="patrones_dise%C3%B1o.html" />
+            <link rel="prev" title="config_logs module" href="config_logs.html" />
+    </head>
+<body>
+    <script type="text/javascript" src="_static/dist/blocking.js"></script>
+    <header class="container-fluid bg-primary">
+        <a class="btn btn-sm btn-light skip-to-content-link" href="#main">Skip to content</a>
+        <div class="container-fluid">
+            <div class="navbar navbar-expand-lg navbar-dark font-weight-bold">
+                    <a href="index.html"
+                        title="Wagtail"
+                        class="logo navbar-brand"
+                    >
+                        <img src="_static/img/icono.ico" width="45" height="59" alt="Wagtail"
+                            class="logo-img"
+                        />
+                        Gestión Musical
+                    </a>
+                
+                
+                <button class="navbar-toggler btn btn-primary d-lg-none" type="button" data-toggle="collapse" data-target="#collapseSidebar" aria-expanded="false" aria-controls="collapseExample">
+                    <span class="navbar-toggler-icon"></span>
+                    <span class="sr-only">menu</span>
+                </button>
+            </div>
+        </div>
+    </header>
+    <div class="container-fluid">
+        <div class="row">
+            <aside class="col-12 col-lg-3 sidebar-container">
+                <div id="collapseSidebar" class="collapse sticky-top d-lg-block pt-5 pr-lg-4">
+<div id="searchbox" class="searchbox mb-6 px-1" role="search">
+    <form id="search-form" action="search.html" autocomplete="off" method="get" role="search">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text border-right-0 bg-white py-3 pl-3 pr-2"><span class="fas fa-search"></span></div>
+            </div>
+            <input class="form-control py-3 pr-3 pl-1 h-100 border-left-0" type="search" name="q" placeholder="Search documentation" aria-label="Search documentation" id="searchinput" />
+        </div>
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div><div class="site-toc">
+    <nav class="toc mt-3" aria-label="Main menu">
+        <p class="caption" role="heading"><span class="caption-text">Contenidos:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="modules.html">App Discos - Módulos del Sistema</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="main.html">Módulo Principal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model.html">Módulo de Modelos y Patrón Observador</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controller.html">Módulo Controlador</a></li>
+<li class="toctree-l2"><a class="reference internal" href="views.html">Módulo de Vistas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="validations.html">Módulo de Validaciones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cliente_logs.html">cliente_logs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="servidor_logs.html">servidor_logs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_logs.html">config_logs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_logs.html#configuracion-centralizada-del-sistema-de-logs">Configuración Centralizada del Sistema de Logs</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Sistema de Logs Cliente-Servidor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="patrones_dise%C3%B1o.html">Patrones de Diseño Implementados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guia_uso.html">Guía de Uso - App Discos</a></li>
+</ul>
+
+    </nav>
+    <template data-toggle-item-template>
+        <button class="btn btn-sm btn-link toctree-expand" type="button">
+            <span class="sr-only">Toggle menu contents</span>
+        </button>
+    </template>
+</div>
+                    <div class="d-lg-none border-bottom">
+                        
+                    </div>
+                </div>
+            </aside>
+            <div class="col-12 col-lg-9 pt-5">
+                <header class="row align-items-baseline">
+                    <div class="col">
+                        <nav aria-label="breadcrumb">
+    <ol class="breadcrumb m-0 p-0 bg-transparent">
+        <li class="breadcrumb-item"><a href="index.html">Docs</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Sistema de Logs Cliente-Servidor</li>
+    </ol>
+</nav>
+                    </div>
+                    <div class="col-sm-12 col-lg-auto mt-3 mt-lg-3">
+                        <noscript>
+                            <p>JavaScript is required to toggle light/dark mode..</p>
+                        </noscript>
+                        <button id="wagtail-theme" class="btn btn-sm btn-light text-decoration-none" type="button">
+                            <span class="dark-only"><i class="fas fa-sun"></i> Light mode</span>
+                            <span class="light-only"><i class="fas fa-moon"></i> Dark mode</span>
+                        </button>
+    <a class="btn btn-sm btn-light text-decoration-none" href="https://github.com/wagtail/sphinx_wagtail_theme/blob/main/docs/sistema_logs.rst" rel="nofollow">
+        <span class="btn-icon"><span class="fab fa-github"></span></span>
+        <span class="btn-text">Edit on GitHub</span>
+    </a>
+    <a class="btn btn-sm btn-light text-decoration-none" href="_sources/sistema_logs.rst.txt" rel="nofollow">
+        <span class="btn-icon"><span class="fas fa-code"></span></span>
+        <span class="btn-text">View source</span>
+    </a>
+                        
+                    </div>
+                </header>
+                <div class="row" >
+                    <div class="col-12">
+                        <hr class="w-100 my-4">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-lg-9 order-last order-lg-first rst-content">
+                        <main role="main" id="main">
+    <section id="sistema-de-logs-cliente-servidor">
+<h1>Sistema de Logs Cliente-Servidor<a class="headerlink" href="#sistema-de-logs-cliente-servidor" title="Link to this heading">¶</a></h1>
+<p>El sistema de logs implementa un patrón observador avanzado que permite registrar
+eventos tanto localmente como en un servidor centralizado, proporcionando trazabilidad
+completa de todas las operaciones del sistema.</p>
+<section id="arquitectura-general">
+<h2>Arquitectura General<a class="headerlink" href="#arquitectura-general" title="Link to this heading">¶</a></h2>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>┌─────────────────┐
+│   App Discos    │
+│   (main.py)     │
+└────────┬────────┘
+         │
+         ├─► ObservadorLog ──► app_discos.log (local)
+         │
+         └─► ObservadorClienteLogs ──► ClienteLogs
+                                        │
+                                        └─► ServidorLogs
+                                                 │
+                                                 └─► servidor_logs.log
+</pre></div>
+</div>
+</section>
+<section id="componentes-del-sistema">
+<h2>Componentes del Sistema<a class="headerlink" href="#componentes-del-sistema" title="Link to this heading">¶</a></h2>
+<section id="observadorlog">
+<h3>ObservadorLog<a class="headerlink" href="#observadorlog" title="Link to this heading">¶</a></h3>
+<p>Clase que registra eventos en un archivo local usando el módulo estándar <code class="docutils literal notranslate"><span class="pre">logging</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">ObservadorLog</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">actualizar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evento</span><span class="p">,</span> <span class="n">datos</span><span class="p">):</span>
+        <span class="k">if</span> <span class="s2">&quot;agregado&quot;</span> <span class="ow">in</span> <span class="n">evento</span> <span class="ow">or</span> <span class="s2">&quot;agregada&quot;</span> <span class="ow">in</span> <span class="n">evento</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Evento: </span><span class="si">{</span><span class="n">evento</span><span class="si">}</span><span class="s2"> | Datos: </span><span class="si">{</span><span class="n">datos</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="s2">&quot;actualizado&quot;</span> <span class="ow">in</span> <span class="n">evento</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Evento: </span><span class="si">{</span><span class="n">evento</span><span class="si">}</span><span class="s2"> | Datos: </span><span class="si">{</span><span class="n">datos</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="s2">&quot;eliminado&quot;</span> <span class="ow">in</span> <span class="n">evento</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Evento: </span><span class="si">{</span><span class="n">evento</span><span class="si">}</span><span class="s2"> | Datos: </span><span class="si">{</span><span class="n">datos</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Evento: </span><span class="si">{</span><span class="n">evento</span><span class="si">}</span><span class="s2"> | Datos: </span><span class="si">{</span><span class="n">datos</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Niveles de Log por Operación:</strong></p>
+<ul class="simple">
+<li><p><strong>INFO</strong>: Operaciones de creación (agregar)</p></li>
+<li><p><strong>WARNING</strong>: Operaciones de actualización</p></li>
+<li><p><strong>ERROR</strong>: Operaciones de eliminación</p></li>
+</ul>
+</section>
+<section id="observadorclientelogs">
+<h3>ObservadorClienteLogs<a class="headerlink" href="#observadorclientelogs" title="Link to this heading">¶</a></h3>
+<p>Envía eventos a un servidor remoto TCP para logging centralizado.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">ObservadorClienteLogs</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cliente_logs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cliente_logs</span> <span class="o">=</span> <span class="n">cliente_logs</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">actualizar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evento</span><span class="p">,</span> <span class="n">datos</span><span class="p">):</span>
+        <span class="c1"># Convertir datos a formato serializable</span>
+        <span class="n">datos_dict</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_convertir_datos</span><span class="p">(</span><span class="n">datos</span><span class="p">)</span>
+        <span class="c1"># Enviar al servidor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cliente_logs</span><span class="o">.</span><span class="n">enviar_log</span><span class="p">(</span><span class="n">evento</span><span class="p">,</span> <span class="n">datos_dict</span><span class="p">,</span> <span class="n">nivel</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Características:</strong></p>
+<ul class="simple">
+<li><p>Conversión automática de objetos Peewee a diccionarios</p></li>
+<li><p>Manejo de tipos complejos (sets, datetime, etc.)</p></li>
+<li><p>Conexión TCP persistente</p></li>
+<li><p>Reconexión automática en caso de fallo</p></li>
+</ul>
+</section>
+<section id="clientelogs">
+<h3>ClienteLogs<a class="headerlink" href="#clientelogs" title="Link to this heading">¶</a></h3>
+<p>Cliente TCP que se conecta al servidor de logs y envía eventos serializados en JSON.</p>
+<p><strong>Métodos principales:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">conectar()</span></code>: Establece conexión TCP con el servidor</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">enviar_log(evento,</span> <span class="pre">datos,</span> <span class="pre">nivel)</span></code>: Envía un evento de log</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">desconectar()</span></code>: Cierra la conexión TCP</p></li>
+</ul>
+<p><strong>Formato JSON enviado:</strong></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;evento&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;artista_agregado&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;datos&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The Beatles&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;tipo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Banda&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;nivel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;INFO&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;cliente&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;App-Discos&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="servidorlogs">
+<h3>ServidorLogs<a class="headerlink" href="#servidorlogs" title="Link to this heading">¶</a></h3>
+<p>Servidor TCP multihilo que recibe conexiones de clientes y registra eventos en un archivo centralizado.</p>
+<p><strong>Características:</strong></p>
+<ul class="simple">
+<li><p>Puerto configurable (por defecto: 5000)</p></li>
+<li><p>Manejo de múltiples clientes simultáneos</p></li>
+<li><p>Logging estructurado con timestamps</p></li>
+<li><p>Recuperación automática de errores de conexión</p></li>
+</ul>
+<p><strong>Respuesta al cliente:</strong></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;estado&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;recibido&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;evento&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;artista_agregado&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="serializacion-json-personalizada">
+<h2>Serialización JSON Personalizada<a class="headerlink" href="#serializacion-json-personalizada" title="Link to this heading">¶</a></h2>
+<p>El sistema incluye un codificador JSON personalizado para manejar tipos complejos:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">JSONEncoderPersonalizado</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">JSONEncoder</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">default</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">):</span>
+        <span class="c1"># Manejar objetos Peewee</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="s1">&#39;__dict__&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="s1">&#39;_meta&#39;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="p">{</span>
+                <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+                <span class="s1">&#39;tipo&#39;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span>
+                <span class="o">**</span><span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="nb">set</span><span class="p">)</span> <span class="k">else</span> <span class="n">v</span>
+                   <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">o</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+                   <span class="k">if</span> <span class="ow">not</span> <span class="n">k</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)}</span>
+            <span class="p">}</span>
+        <span class="c1"># Manejar sets</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="nb">set</span><span class="p">):</span>
+            <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+        <span class="c1"># Manejar datetime</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">datetime</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">o</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="configuracion">
+<h2>Configuración<a class="headerlink" href="#configuracion" title="Link to this heading">¶</a></h2>
+<p><strong>Archivo de configuración centralizado</strong> (<code class="docutils literal notranslate"><span class="pre">config_logs.py</span></code>):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">SERVIDOR_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;host&#39;</span><span class="p">:</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;puerto&#39;</span><span class="p">:</span> <span class="mi">5000</span><span class="p">,</span>
+    <span class="s1">&#39;max_conexiones&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">CLIENTE_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;host&#39;</span><span class="p">:</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;puerto&#39;</span><span class="p">:</span> <span class="mi">5000</span><span class="p">,</span>
+    <span class="s1">&#39;nombre_cliente&#39;</span><span class="p">:</span> <span class="s1">&#39;App-Discos&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;timeout&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">LOGGING_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;archivo_servidor&#39;</span><span class="p">:</span> <span class="s1">&#39;servidor_logs.log&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;archivo_cliente&#39;</span><span class="p">:</span> <span class="s1">&#39;cliente_logs.log&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;archivo_local&#39;</span><span class="p">:</span> <span class="s1">&#39;app_discos.log&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;level&#39;</span><span class="p">:</span> <span class="s1">&#39;INFO&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;formato&#39;</span><span class="p">:</span> <span class="s1">&#39;</span><span class="si">%(asctime)s</span><span class="s1"> - </span><span class="si">%(levelname)s</span><span class="s1"> - </span><span class="si">%(message)s</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;fecha_formato&#39;</span><span class="p">:</span> <span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1"> %H:%M:%S&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="modos-de-operacion">
+<h2>Modos de Operación<a class="headerlink" href="#modos-de-operacion" title="Link to this heading">¶</a></h2>
+<p><strong>Modo Local (Siempre disponible):</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>main.py
+<span class="c1"># Registra solo en app_discos.log</span>
+</pre></div>
+</div>
+<p><strong>Modo Cliente-Servidor:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Terminal 1 - Servidor</span>
+python<span class="w"> </span>servidor_logs.py
+
+<span class="c1"># Terminal 2 - Cliente</span>
+python<span class="w"> </span>main.py
+<span class="c1"># Registra en app_discos.log + servidor_logs.log + cliente_logs.log</span>
+</pre></div>
+</div>
+</section>
+<section id="archivos-de-log-generados">
+<h2>Archivos de Log Generados<a class="headerlink" href="#archivos-de-log-generados" title="Link to this heading">¶</a></h2>
+<ol class="arabic">
+<li><p><strong>app_discos.log</strong> (Local)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2026</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">26</span> <span class="mi">10</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">45</span> <span class="o">-</span> <span class="n">INFO</span> <span class="o">-</span> <span class="n">Evento</span><span class="p">:</span> <span class="n">artista_agregado</span> <span class="o">|</span> <span class="n">Datos</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">Artista</span> <span class="nb">object</span><span class="o">&gt;</span>
+<span class="mi">2026</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">26</span> <span class="mi">10</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">12</span> <span class="o">-</span> <span class="n">WARNING</span> <span class="o">-</span> <span class="n">Evento</span><span class="p">:</span> <span class="n">disco_actualizado</span> <span class="o">|</span> <span class="n">Datos</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;anio&#39;</span><span class="p">:</span> <span class="mi">1969</span><span class="p">}}</span>
+<span class="mi">2026</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">26</span> <span class="mi">10</span><span class="p">:</span><span class="mi">32</span><span class="p">:</span><span class="mi">00</span> <span class="o">-</span> <span class="n">ERROR</span> <span class="o">-</span> <span class="n">Evento</span><span class="p">:</span> <span class="n">artista_eliminado</span> <span class="o">|</span> <span class="n">Datos</span><span class="p">:</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>servidor_logs.log</strong> (Centralizado)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2026</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">26</span> <span class="mi">10</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">45</span> <span class="o">-</span> <span class="n">INFO</span> <span class="o">-</span> <span class="n">Servidor</span> <span class="n">iniciado</span> <span class="n">en</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">5000</span>
+<span class="mi">2026</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">26</span> <span class="mi">10</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">47</span> <span class="o">-</span> <span class="n">INFO</span> <span class="o">-</span> <span class="n">Cliente</span> <span class="n">conectado</span> <span class="n">desde</span> <span class="p">(</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="mi">54321</span><span class="p">)</span>
+<span class="mi">2026</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">26</span> <span class="mi">10</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">50</span> <span class="o">-</span> <span class="n">INFO</span> <span class="o">-</span> <span class="p">[</span><span class="n">App</span><span class="o">-</span><span class="n">Discos</span><span class="p">]</span> <span class="n">Evento</span><span class="p">:</span> <span class="n">artista_agregado</span> <span class="o">|</span> <span class="n">Datos</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;nombre&#39;</span><span class="p">:</span> <span class="s1">&#39;The Beatles&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>cliente_logs.log</strong> (Cliente)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2026</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">26</span> <span class="mi">10</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">47</span> <span class="o">-</span> <span class="n">INFO</span> <span class="o">-</span> <span class="n">Conectado</span> <span class="n">al</span> <span class="n">servidor</span> <span class="n">en</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">5000</span>
+<span class="mi">2026</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">26</span> <span class="mi">10</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">50</span> <span class="o">-</span> <span class="n">INFO</span> <span class="o">-</span> <span class="n">Log</span> <span class="n">enviado</span><span class="p">:</span> <span class="n">artista_agregado</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="ejemplo-de-uso-programatico">
+<h2>Ejemplo de Uso Programático<a class="headerlink" href="#ejemplo-de-uso-programatico" title="Link to this heading">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">cliente_logs</span><span class="w"> </span><span class="kn">import</span> <span class="n">ClienteLogs</span>
+
+<span class="c1"># Crear cliente</span>
+<span class="n">cliente</span> <span class="o">=</span> <span class="n">ClienteLogs</span><span class="p">(</span><span class="n">nombre_cliente</span><span class="o">=</span><span class="s1">&#39;Mi-App&#39;</span><span class="p">)</span>
+
+<span class="c1"># Conectar</span>
+<span class="k">if</span> <span class="n">cliente</span><span class="o">.</span><span class="n">conectar</span><span class="p">():</span>
+    <span class="c1"># Enviar eventos</span>
+    <span class="n">cliente</span><span class="o">.</span><span class="n">enviar_log</span><span class="p">(</span><span class="s1">&#39;usuario_registrado&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span><span class="p">:</span> <span class="s1">&#39;user@example.com&#39;</span><span class="p">},</span> <span class="s1">&#39;INFO&#39;</span><span class="p">)</span>
+    <span class="n">cliente</span><span class="o">.</span><span class="n">enviar_log</span><span class="p">(</span><span class="s1">&#39;pago_procesado&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;monto&#39;</span><span class="p">:</span> <span class="mf">99.99</span><span class="p">,</span> <span class="s1">&#39;metodo&#39;</span><span class="p">:</span> <span class="s1">&#39;tarjeta&#39;</span><span class="p">},</span> <span class="s1">&#39;INFO&#39;</span><span class="p">)</span>
+    <span class="n">cliente</span><span class="o">.</span><span class="n">enviar_log</span><span class="p">(</span><span class="s1">&#39;error_sistema&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;codigo&#39;</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span> <span class="s1">&#39;mensaje&#39;</span><span class="p">:</span> <span class="s1">&#39;Error interno&#39;</span><span class="p">},</span> <span class="s1">&#39;ERROR&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Desconectar</span>
+    <span class="n">cliente</span><span class="o">.</span><span class="n">desconectar</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="ventajas-del-sistema">
+<h2>Ventajas del Sistema<a class="headerlink" href="#ventajas-del-sistema" title="Link to this heading">¶</a></h2>
+<p>✅ <strong>Escalabilidad</strong>: Múltiples clientes pueden conectarse simultáneamente
+✅ <strong>Resiliencia</strong>: Funciona sin servidor (modo local)
+✅ <strong>Trazabilidad</strong>: Logs completos con contexto y timestamps
+✅ <strong>Flexibilidad</strong>: Niveles de log automáticos según operación
+✅ <strong>Robustez</strong>: Manejo automático de tipos complejos y errores
+✅ <strong>Centralización</strong>: Un único punto para monitoreo de todos los eventos</p>
+</section>
+</section>
+
+</main>
+                        <nav aria-label="Page navigation" class="py-4 my-5 clearfix font-weight-bold border-top">
+    <a class="float-left" href="config_logs.html" title="Previous">
+        <span aria-hidden="true">←&nbsp;</span>config_logs module
+    </a>
+    <a class="float-right" href="patrones_dise%C3%B1o.html" title="Next">
+        Patrones de Diseño Implementados <span aria-hidden="true">&nbsp;→</span>
+    </a>
+</nav>
+                    </div>
+                    
+                    <nav class="col-12 col-lg-3 pb-4">
+                        <div class="sticky-top toc page-toc" aria-labelledby="page-toc-heading">
+                            <p class="font-weight-bold" id="page-toc-heading">Page contents</p>
+                            <ul>
+<li><a class="reference internal" href="#">Sistema de Logs Cliente-Servidor</a><ul>
+<li><a class="reference internal" href="#arquitectura-general">Arquitectura General</a></li>
+<li><a class="reference internal" href="#componentes-del-sistema">Componentes del Sistema</a><ul>
+<li><a class="reference internal" href="#observadorlog">ObservadorLog</a></li>
+<li><a class="reference internal" href="#observadorclientelogs">ObservadorClienteLogs</a></li>
+<li><a class="reference internal" href="#clientelogs">ClienteLogs</a></li>
+<li><a class="reference internal" href="#servidorlogs">ServidorLogs</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#serializacion-json-personalizada">Serialización JSON Personalizada</a></li>
+<li><a class="reference internal" href="#configuracion">Configuración</a></li>
+<li><a class="reference internal" href="#modos-de-operacion">Modos de Operación</a></li>
+<li><a class="reference internal" href="#archivos-de-log-generados">Archivos de Log Generados</a></li>
+<li><a class="reference internal" href="#ejemplo-de-uso-programatico">Ejemplo de Uso Programático</a></li>
+<li><a class="reference internal" href="#ventajas-del-sistema">Ventajas del Sistema</a></li>
+</ul>
+</li>
+</ul>
+
+                        </div>
+                    </nav>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="container-fluid bg-primary text-light">
+        <div class="container">
+            <div class="row">
+        <div class="col p-4">
+            
+                <nav aria-label="Footer">
+                    <ul class="nav justify-content-center mb-2">
+                            <li class="nav-item"><a class="nav-link text-light"  href="https://github.com/jciasenza"><span class="fab fa-github"></span></a></li>
+                            <li class="nav-item"><a class="nav-link text-light"  href="https://www.linkedin.com/in/juan-carlos-iasenza-8119501a9/"><span class="fab fa-linkedin"></span></a></li>
+                            <li class="nav-item"><a class="nav-link text-light"  href="mailto:iasenzajuancarlos@gmail.com"><span class="fas fa-envelope"></span></a></li>
+                    </ul>
+                </nav>
+            
+            <div class="text-center">
+                    &copy; Copyright 2026, Juan Carlos Iasenza
+            </div>
+            <div class="text-center text-white-50 font-italic mt-3">
+                <small>
+                    Created using
+                    <a class="text-white" href="https://github.com/wagtail/sphinx_wagtail_theme" rel="nofollow" target="_blank">
+                        Sphinx Wagtail Theme 6.5.0
+                    </a>
+                    and
+                    <a class="text-white" href="https://www.sphinx-doc.org/" rel="nofollow" target="_blank">
+                        Sphinx 8.1.3
+                    </a>
+                </small>
+            </div>
+        </div>
+    </div>
+        </div>
+    </footer>
+        <script src="_static/documentation_options.js?v=e56700d4"></script>
+        <script src="_static/doctools.js?v=9bcbadda"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="_static/copybutton.js?v=f281be69"></script>
+        <script src="_static/translations.js?v=f85f4cfb"></script>
+        <script type="text/javascript" src="_static/dist/theme.js"></script>
+        <script type="text/javascript" src="_static/dist/vendor.js"></script>
+        <script type="text/javascript" src="_static/searchtools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', function() { Search.loadIndex("searchindex.js"); });
+        </script>
+        <script type="text/javascript" id="searchindexloader"></script>
+    </body>
+</html>

@@ -6,7 +6,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-        <title>App Discos &mdash; documentación de GestionMusical - 4.5.0</title>
+        <title>App Discos - Módulos del Sistema &mdash; documentación de GestionMusical - 4.5.0</title>
     
     <link rel="stylesheet" type="text/css" href="_static/dist/fontawesome.css" />
       <link rel="stylesheet" type="text/css" href="_static/dist/theme.css?v=310cf088" />
@@ -14,8 +14,8 @@
             <link rel="index" title="Índice" href="genindex.html" />
             <link rel="search" title="Búsqueda" href="search.html" />
             <link rel="top" title="documentación de GestionMusical - 4.5.0" href="#" />
-            <link rel="next" title="Módulo Controlador" href="controller.html" />
-            <link rel="prev" title="Documentación Gestión Musical" href="index.html" />
+            <link rel="next" title="Módulo Principal" href="main.html" />
+            <link rel="prev" title="Gestión Musical - App Discos" href="index.html" />
     </head>
 <body>
     <script type="text/javascript" src="_static/dist/blocking.js"></script>
@@ -60,14 +60,21 @@
     <nav class="toc mt-3" aria-label="Main menu">
         <p class="caption" role="heading"><span class="caption-text">Contenidos:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">App Discos</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="controller.html">Módulo Controlador</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">App Discos - Módulos del Sistema</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="main.html">Módulo Principal</a></li>
-<li class="toctree-l2"><a class="reference internal" href="model.html">Módulo de Modelos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="validations.html">Módulo de Validaciones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model.html">Módulo de Modelos y Patrón Observador</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controller.html">Módulo Controlador</a></li>
 <li class="toctree-l2"><a class="reference internal" href="views.html">Módulo de Vistas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="validations.html">Módulo de Validaciones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cliente_logs.html">cliente_logs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="servidor_logs.html">servidor_logs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_logs.html">config_logs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_logs.html#configuracion-centralizada-del-sistema-de-logs">Configuración Centralizada del Sistema de Logs</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="sistema_logs.html">Sistema de Logs Cliente-Servidor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="patrones_dise%C3%B1o.html">Patrones de Diseño Implementados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guia_uso.html">Guía de Uso - App Discos</a></li>
 </ul>
 
     </nav>
@@ -88,7 +95,7 @@
                         <nav aria-label="breadcrumb">
     <ol class="breadcrumb m-0 p-0 bg-transparent">
         <li class="breadcrumb-item"><a href="index.html">Docs</a></li>
-        <li class="breadcrumb-item active" aria-current="page">App Discos</li>
+        <li class="breadcrumb-item active" aria-current="page">App Discos - Módulos del Sistema</li>
     </ol>
 </nav>
                     </div>
@@ -100,7 +107,7 @@
                             <span class="dark-only"><i class="fas fa-sun"></i> Light mode</span>
                             <span class="light-only"><i class="fas fa-moon"></i> Dark mode</span>
                         </button>
-    <a class="btn btn-sm btn-light text-decoration-none" href="https://github.com/jciasenza/App-Discos/tree/dev/docs/modules.rst" rel="nofollow">
+    <a class="btn btn-sm btn-light text-decoration-none" href="https://github.com/wagtail/sphinx_wagtail_theme/blob/main/docs/modules.rst" rel="nofollow">
         <span class="btn-icon"><span class="fab fa-github"></span></span>
         <span class="btn-text">Edit on GitHub</span>
     </a>
@@ -119,122 +126,135 @@
                 <div class="row">
                     <div class="col-12 col-lg-9 order-last order-lg-first rst-content">
                         <main role="main" id="main">
-    <section id="app-discos">
-<h1>App Discos<a class="headerlink" href="#app-discos" title="Link to this heading">¶</a></h1>
+    <section id="app-discos-modulos-del-sistema">
+<h1>App Discos - Módulos del Sistema<a class="headerlink" href="#app-discos-modulos-del-sistema" title="Link to this heading">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="controller.html">Módulo Controlador</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="controller.html#modulo-del-controlador-principal">Módulo del Controlador Principal</a></li>
-<li class="toctree-l2"><a class="reference internal" href="controller.html#controller.DiscoController"><code class="docutils literal notranslate"><span class="pre">DiscoController</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="controller.html#controller.DiscoController.actualizar_dropdown_artistas"><code class="docutils literal notranslate"><span class="pre">DiscoController.actualizar_dropdown_artistas()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="controller.html#controller.DiscoController.agregar_cancion"><code class="docutils literal notranslate"><span class="pre">DiscoController.agregar_cancion()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="controller.html#controller.DiscoController.artista_actual_id"><code class="docutils literal notranslate"><span class="pre">DiscoController.artista_actual_id</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="controller.html#controller.DiscoController.cancion_en_edicion_id"><code class="docutils literal notranslate"><span class="pre">DiscoController.cancion_en_edicion_id</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="controller.html#controller.DiscoController.cargar_canciones"><code class="docutils literal notranslate"><span class="pre">DiscoController.cargar_canciones()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="controller.html#controller.DiscoController.disco_actual_id"><code class="docutils literal notranslate"><span class="pre">DiscoController.disco_actual_id</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="controller.html#controller.DiscoController.editar"><code class="docutils literal notranslate"><span class="pre">DiscoController.editar()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="controller.html#controller.DiscoController.editar_artista"><code class="docutils literal notranslate"><span class="pre">DiscoController.editar_artista()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="controller.html#controller.DiscoController.ejecutar_busqueda"><code class="docutils literal notranslate"><span class="pre">DiscoController.ejecutar_busqueda()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="controller.html#controller.DiscoController.ejecutar_busqueda_artistas"><code class="docutils literal notranslate"><span class="pre">DiscoController.ejecutar_busqueda_artistas()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="controller.html#controller.DiscoController.ejecutar_busqueda_canciones"><code class="docutils literal notranslate"><span class="pre">DiscoController.ejecutar_busqueda_canciones()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="controller.html#controller.DiscoController.eliminar"><code class="docutils literal notranslate"><span class="pre">DiscoController.eliminar()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="controller.html#controller.DiscoController.eliminar_artista_accion"><code class="docutils literal notranslate"><span class="pre">DiscoController.eliminar_artista_accion()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="controller.html#controller.DiscoController.eliminar_cancion"><code class="docutils literal notranslate"><span class="pre">DiscoController.eliminar_cancion()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="controller.html#controller.DiscoController.guardar"><code class="docutils literal notranslate"><span class="pre">DiscoController.guardar()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="controller.html#controller.DiscoController.guardar_artista"><code class="docutils literal notranslate"><span class="pre">DiscoController.guardar_artista()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="controller.html#controller.DiscoController.imagen_actual_path"><code class="docutils literal notranslate"><span class="pre">DiscoController.imagen_actual_path</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="controller.html#controller.DiscoController.inicializar_datos"><code class="docutils literal notranslate"><span class="pre">DiscoController.inicializar_datos()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="controller.html#controller.DiscoController.mostrar_listado_canciones"><code class="docutils literal notranslate"><span class="pre">DiscoController.mostrar_listado_canciones()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="controller.html#controller.DiscoController.nuevo"><code class="docutils literal notranslate"><span class="pre">DiscoController.nuevo()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="controller.html#controller.DiscoController.nuevo_artista"><code class="docutils literal notranslate"><span class="pre">DiscoController.nuevo_artista()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="controller.html#controller.DiscoController.preparar_edicion_cancion"><code class="docutils literal notranslate"><span class="pre">DiscoController.preparar_edicion_cancion()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="controller.html#controller.DiscoController.refrescar"><code class="docutils literal notranslate"><span class="pre">DiscoController.refrescar()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="controller.html#controller.DiscoController.refrescar_artistas"><code class="docutils literal notranslate"><span class="pre">DiscoController.refrescar_artistas()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="controller.html#controller.DiscoController.refrescar_datos_silencioso"><code class="docutils literal notranslate"><span class="pre">DiscoController.refrescar_datos_silencioso()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="controller.html#controller.DiscoController.seleccionar_foto_artista"><code class="docutils literal notranslate"><span class="pre">DiscoController.seleccionar_foto_artista()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="controller.html#controller.DiscoController.seleccionar_imagen"><code class="docutils literal notranslate"><span class="pre">DiscoController.seleccionar_imagen()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="main.html">Módulo Principal</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="main.html#id1">Módulo Principal</a></li>
-<li class="toctree-l2"><a class="reference internal" href="main.html#main.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html#funcion-main">Función main()</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html#inicializacion-del-sistema-de-logs">Inicialización del Sistema de Logs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="main.html#inicializar-logs">inicializar_logs()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="main.html#iniciar-servidor-logs">iniciar_servidor_logs()</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="model.html">Módulo de Modelos</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="model.html#modulo-de-modelos-y-base-de-datos">Módulo de Modelos y Base de Datos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="model.html#model.Artista"><code class="docutils literal notranslate"><span class="pre">Artista</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="model.html#model.Artista.foto"><code class="docutils literal notranslate"><span class="pre">Artista.foto</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="model.html#model.Artista.info"><code class="docutils literal notranslate"><span class="pre">Artista.info</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="model.html#model.Artista.nombre"><code class="docutils literal notranslate"><span class="pre">Artista.nombre</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="model.html#model.Artista.tipo"><code class="docutils literal notranslate"><span class="pre">Artista.tipo</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html#configuracion-de-observadores">Configuración de Observadores</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="main.html#configurar-observadores-model-artista-model-disco-model-cancion">configurar_observadores(model_artista, model_disco, model_cancion)</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="model.html#model.ArtistaModel"><code class="docutils literal notranslate"><span class="pre">ArtistaModel</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="model.html#model.ArtistaModel.actualizar"><code class="docutils literal notranslate"><span class="pre">ArtistaModel.actualizar()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="model.html#model.ArtistaModel.agregar"><code class="docutils literal notranslate"><span class="pre">ArtistaModel.agregar()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="model.html#model.ArtistaModel.buscar"><code class="docutils literal notranslate"><span class="pre">ArtistaModel.buscar()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="model.html#model.ArtistaModel.eliminar"><code class="docutils literal notranslate"><span class="pre">ArtistaModel.eliminar()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="model.html#model.ArtistaModel.listar"><code class="docutils literal notranslate"><span class="pre">ArtistaModel.listar()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="model.html#model.ArtistaModel.obtener"><code class="docutils literal notranslate"><span class="pre">ArtistaModel.obtener()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html#manejo-de-cierre-de-aplicacion">Manejo de Cierre de Aplicación</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="main.html#cerrar-aplicacion-root">cerrar_aplicacion(root)</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="model.html#model.BaseModel"><code class="docutils literal notranslate"><span class="pre">BaseModel</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="model.html#model.BaseModel.Meta"><code class="docutils literal notranslate"><span class="pre">BaseModel.Meta</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="model.html#model.BaseModel.Meta.database"><code class="docutils literal notranslate"><span class="pre">BaseModel.Meta.database</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html#arquitectura-general">Arquitectura General</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html#sistema-de-logging-distribuido">Sistema de Logging Distribuido</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html#manejo-de-errores-global">Manejo de Errores Global</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html#configuracion-de-entorno">Configuración de Entorno</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html#consideraciones-de-rendimiento">Consideraciones de Rendimiento</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html#modo-de-desarrollo-vs-produccion">Modo de Desarrollo vs Producción</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="model.html">Módulo de Modelos y Patrón Observador</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="model.html#clases-de-base-de-datos">Clases de Base de Datos</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="model.html#basemodel">BaseModel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="model.html#artista">Artista</a></li>
+<li class="toctree-l3"><a class="reference internal" href="model.html#discos">Discos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="model.html#cancion">Cancion</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="model.html#patron-observador">Patrón Observador</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="model.html#observable">Observable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="model.html#observadorlog">ObservadorLog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="model.html#observadorclientelogs">ObservadorClienteLogs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="model.html#clases-crud">Clases CRUD</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="model.html#artistamodel">ArtistaModel</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="model.html#agregar-data">agregar(data)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="model.html#listar">listar()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="model.html#obtener-artista-id">obtener(artista_id)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="model.html#actualizar-artista-id-data">actualizar(artista_id, data)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="model.html#eliminar-artista-id">eliminar(artista_id)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="model.html#buscar-texto">buscar(texto)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="model.html#discomodel">DiscoModel</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="model.html#id1">agregar(data)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="model.html#id2">listar()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="model.html#obtener-disco-id">obtener(disco_id)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="model.html#actualizar-disco-id-data">actualizar(disco_id, data)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="model.html#eliminar-disco-id">eliminar(disco_id)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="model.html#id3">buscar(texto)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="model.html#cancionmodel">CancionModel</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="model.html#id4">agregar(data)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="model.html#listar-por-disco-disco-id">listar_por_disco(disco_id)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="model.html#listar-todas-con-disco">listar_todas_con_disco()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="model.html#actualizar-cancion-id-data">actualizar(cancion_id, data)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="model.html#eliminar-cancion-id">eliminar(cancion_id)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="model.html#id5">buscar(texto)</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="model.html#model.Cancion"><code class="docutils literal notranslate"><span class="pre">Cancion</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="model.html#model.Cancion.Meta"><code class="docutils literal notranslate"><span class="pre">Cancion.Meta</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="model.html#model.Cancion.Meta.indexes"><code class="docutils literal notranslate"><span class="pre">Cancion.Meta.indexes</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="model.html#funciones-de-inicializacion">Funciones de Inicialización</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="model.html#inicializar-db">inicializar_db()</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="model.html#model.Cancion.disco"><code class="docutils literal notranslate"><span class="pre">Cancion.disco</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="model.html#model.Cancion.duracion"><code class="docutils literal notranslate"><span class="pre">Cancion.duracion</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="model.html#model.Cancion.numero_pista"><code class="docutils literal notranslate"><span class="pre">Cancion.numero_pista</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="model.html#model.Cancion.titulo"><code class="docutils literal notranslate"><span class="pre">Cancion.titulo</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="model.html#configuracion-de-logging">Configuración de Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model.html#integracion-con-sistema-de-logs">Integración con Sistema de Logs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model.html#consideraciones-de-rendimiento">Consideraciones de Rendimiento</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="model.html#model.CancionModel"><code class="docutils literal notranslate"><span class="pre">CancionModel</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="model.html#model.CancionModel.actualizar"><code class="docutils literal notranslate"><span class="pre">CancionModel.actualizar()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="model.html#model.CancionModel.agregar"><code class="docutils literal notranslate"><span class="pre">CancionModel.agregar()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="model.html#model.CancionModel.buscar"><code class="docutils literal notranslate"><span class="pre">CancionModel.buscar()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="model.html#model.CancionModel.eliminar"><code class="docutils literal notranslate"><span class="pre">CancionModel.eliminar()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="model.html#model.CancionModel.listar_por_disco"><code class="docutils literal notranslate"><span class="pre">CancionModel.listar_por_disco()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="model.html#model.CancionModel.listar_todas_con_disco"><code class="docutils literal notranslate"><span class="pre">CancionModel.listar_todas_con_disco()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="controller.html">Módulo Controlador</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="controller.html#clase-controlador">Clase Controlador</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controller.html#decoradores-de-logging">Decoradores de Logging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="controller.html#log-alta">log_alta</a></li>
+<li class="toctree-l3"><a class="reference internal" href="controller.html#log-actualizacion">log_actualizacion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="controller.html#log-baja">log_baja</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="model.html#model.DiscoModel"><code class="docutils literal notranslate"><span class="pre">DiscoModel</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="model.html#model.DiscoModel.actualizar"><code class="docutils literal notranslate"><span class="pre">DiscoModel.actualizar()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="model.html#model.DiscoModel.agregar"><code class="docutils literal notranslate"><span class="pre">DiscoModel.agregar()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="model.html#model.DiscoModel.buscar"><code class="docutils literal notranslate"><span class="pre">DiscoModel.buscar()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="model.html#model.DiscoModel.eliminar"><code class="docutils literal notranslate"><span class="pre">DiscoModel.eliminar()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="model.html#model.DiscoModel.listar"><code class="docutils literal notranslate"><span class="pre">DiscoModel.listar()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="model.html#model.DiscoModel.obtener"><code class="docutils literal notranslate"><span class="pre">DiscoModel.obtener()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="controller.html#implementacion-de-decoradores">Implementación de Decoradores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controller.html#metodos-de-artistas">Métodos de Artistas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="controller.html#agregar-artista-data">agregar_artista(data)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="controller.html#listar-artistas">listar_artistas()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="controller.html#buscar-artistas-texto">buscar_artistas(texto)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="controller.html#obtener-artista-artista-id">obtener_artista(artista_id)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="controller.html#actualizar-artista-artista-id-data">actualizar_artista(artista_id, data)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="controller.html#eliminar-artista-artista-id">eliminar_artista(artista_id)</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="model.html#model.Discos"><code class="docutils literal notranslate"><span class="pre">Discos</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="model.html#model.Discos.anio"><code class="docutils literal notranslate"><span class="pre">Discos.anio</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="model.html#model.Discos.artista"><code class="docutils literal notranslate"><span class="pre">Discos.artista</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="model.html#model.Discos.formato"><code class="docutils literal notranslate"><span class="pre">Discos.formato</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="model.html#model.Discos.portada"><code class="docutils literal notranslate"><span class="pre">Discos.portada</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="model.html#model.Discos.titulo"><code class="docutils literal notranslate"><span class="pre">Discos.titulo</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="controller.html#metodos-de-discos">Métodos de Discos</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="controller.html#agregar-disco-data">agregar_disco(data)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="controller.html#listar-discos">listar_discos()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="controller.html#buscar-discos-texto">buscar_discos(texto)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="controller.html#obtener-disco-disco-id">obtener_disco(disco_id)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="controller.html#actualizar-disco-disco-id-data">actualizar_disco(disco_id, data)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="controller.html#eliminar-disco-disco-id">eliminar_disco(disco_id)</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="model.html#model.inicializar_db"><code class="docutils literal notranslate"><span class="pre">inicializar_db()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="controller.html#metodos-de-canciones">Métodos de Canciones</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="controller.html#agregar-cancion-data">agregar_cancion(data)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="controller.html#listar-canciones-por-disco-disco-id">listar_canciones_por_disco(disco_id)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="controller.html#listar-todas-canciones">listar_todas_canciones()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="controller.html#buscar-canciones-texto">buscar_canciones(texto)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="controller.html#actualizar-cancion-cancion-id-data">actualizar_cancion(cancion_id, data)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="controller.html#eliminar-cancion-cancion-id">eliminar_cancion(cancion_id)</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="validations.html">Módulo de Validaciones</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="validations.html#id1">Módulo de Validaciones</a></li>
-<li class="toctree-l2"><a class="reference internal" href="validations.html#validations.ValidationError"><code class="docutils literal notranslate"><span class="pre">ValidationError</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="validations.html#validations.Validations"><code class="docutils literal notranslate"><span class="pre">Validations</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="validations.html#validations.Validations.validar_anio"><code class="docutils literal notranslate"><span class="pre">Validations.validar_anio()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="validations.html#validations.Validations.validar_titulo"><code class="docutils literal notranslate"><span class="pre">Validations.validar_titulo()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="controller.html#metodos-de-validacion">Métodos de Validación</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="controller.html#validar-artista-data">validar_artista(data)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="controller.html#validar-disco-data">validar_disco(data)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="controller.html#validar-cancion-data">validar_cancion(data)</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="controller.html#manejo-de-imagenes">Manejo de Imágenes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="controller.html#obtener-ruta-imagen-objeto-campo">obtener_ruta_imagen(objeto, campo)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="controller.html#manejo-de-errores">Manejo de Errores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controller.html#integracion-con-vistas">Integración con Vistas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controller.html#consideraciones-de-diseno">Consideraciones de Diseño</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="views.html">Módulo de Vistas</a><ul>
@@ -257,6 +277,186 @@
 <li class="toctree-l3"><a class="reference internal" href="views.html#views.View.obtener_id_seleccionado"><code class="docutils literal notranslate"><span class="pre">View.obtener_id_seleccionado()</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="views.html#arquitectura-de-vistas">Arquitectura de Vistas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="views.html#homeview">HomeView</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="views.html#vista-de-artistas">Vista de Artistas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="views.html#artistasview">ArtistasView</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="views.html#mostrar-artistas">mostrar_artistas()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="views.html#nuevo-artista">nuevo_artista()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="views.html#editar-artista">editar_artista()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="views.html#guardar-artista">guardar_artista()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="views.html#eliminar-artista">eliminar_artista()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="views.html#buscar-artistas">buscar_artistas()</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="views.html#vista-de-discos">Vista de Discos</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="views.html#discosview">DiscosView</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="views.html#vista-de-canciones">Vista de Canciones</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="views.html#cancionesview">CancionesView</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="views.html#formularios-especializados">Formularios Especializados</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="views.html#artistasformview">ArtistasFormView</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="views.html#seleccionar-foto">seleccionar_foto()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="views.html#validar-formulario">validar_formulario()</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="views.html#discoformview">DiscoFormView</a></li>
+<li class="toctree-l3"><a class="reference internal" href="views.html#discolistview">DiscoListView</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="views.html#navegacion-y-layout">Navegación y Layout</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="views.html#setup-navigation">setup_navigation()</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="views.html#manejo-de-eventos">Manejo de Eventos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="views.html#validacion-en-interfaz">Validación en Interfaz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="views.html#gestion-de-imagenes">Gestión de Imágenes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="views.html#manejo-de-errores">Manejo de Errores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="views.html#consideraciones-de-ui-ux">Consideraciones de UI/UX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="views.html#integracion-con-controlador">Integración con Controlador</a></li>
+<li class="toctree-l2"><a class="reference internal" href="views.html#rendimiento-y-optimizacion">Rendimiento y Optimización</a></li>
+<li class="toctree-l2"><a class="reference internal" href="views.html#extensibilidad">Extensibilidad</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="validations.html">Módulo de Validaciones</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="validations.html#id1">Módulo de Validaciones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="validations.html#validations.ValidationError"><code class="docutils literal notranslate"><span class="pre">ValidationError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="validations.html#validations.Validations"><code class="docutils literal notranslate"><span class="pre">Validations</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="validations.html#validations.Validations.validar_anio"><code class="docutils literal notranslate"><span class="pre">Validations.validar_anio()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="validations.html#validations.Validations.validar_titulo"><code class="docutils literal notranslate"><span class="pre">Validations.validar_titulo()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="validations.html#funciones-de-validacion">Funciones de Validación</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="validations.html#validar-artista-data">validar_artista(data)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="validations.html#validar-disco-data">validar_disco(data)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="validations.html#validar-cancion-data">validar_cancion(data)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="validations.html#funciones-auxiliares">Funciones Auxiliares</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="validations.html#existe-artista-artista-id">existe_artista(artista_id)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="validations.html#existe-disco-disco-id">existe_disco(disco_id)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="validations.html#existe-cancion-cancion-id">existe_cancion(cancion_id)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="validations.html#validaciones-de-formato">Validaciones de Formato</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="validations.html#validar-formato-duracion-duracion">validar_formato_duracion(duracion)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="validations.html#validar-anio-anio">validar_anio(anio)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="validations.html#constantes-de-validacion">Constantes de Validación</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="validations.html#formatos-disco-validos">FORMATOS_DISCO_VALIDOS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="validations.html#tipos-artista-validos">TIPOS_ARTISTA_VALIDOS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="validations.html#mensajes-de-error">Mensajes de Error</a></li>
+<li class="toctree-l2"><a class="reference internal" href="validations.html#integracion-con-controlador">Integración con Controlador</a></li>
+<li class="toctree-l2"><a class="reference internal" href="validations.html#consideraciones-de-diseno">Consideraciones de Diseño</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cliente_logs.html">cliente_logs module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cliente_logs.html#cliente_logs.ClienteLogs"><code class="docutils literal notranslate"><span class="pre">ClienteLogs</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="cliente_logs.html#cliente_logs.ClienteLogs.conectar"><code class="docutils literal notranslate"><span class="pre">ClienteLogs.conectar()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="cliente_logs.html#cliente_logs.ClienteLogs.desconectar"><code class="docutils literal notranslate"><span class="pre">ClienteLogs.desconectar()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="cliente_logs.html#cliente_logs.ClienteLogs.enviar_log"><code class="docutils literal notranslate"><span class="pre">ClienteLogs.enviar_log()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="cliente_logs.html#cliente_logs.JSONEncoderPersonalizado"><code class="docutils literal notranslate"><span class="pre">JSONEncoderPersonalizado</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="cliente_logs.html#cliente_logs.JSONEncoderPersonalizado.default"><code class="docutils literal notranslate"><span class="pre">JSONEncoderPersonalizado.default()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="cliente_logs.html#clase-clientelogs">Clase ClienteLogs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="cliente_logs.html#metodos-principales">Métodos Principales</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cliente_logs.html#conectar">conectar()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cliente_logs.html#enviar-log-evento-datos-nivel">enviar_log(evento, datos, nivel)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cliente_logs.html#desconectar">desconectar()</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="cliente_logs.html#jsonencoderpersonalizado">JSONEncoderPersonalizado</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="cliente_logs.html#tipos-soportados">Tipos Soportados</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cliente_logs.html#ejemplo-de-uso">Ejemplo de Uso</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="cliente_logs.html#manejo-de-errores">Manejo de Errores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cliente_logs.html#configuracion">Configuración</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cliente_logs.html#logging-local">Logging Local</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cliente_logs.html#ejemplo-completo">Ejemplo Completo</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="servidor_logs.html">servidor_logs module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="servidor_logs.html#servidor_logs.ServidorLogs"><code class="docutils literal notranslate"><span class="pre">ServidorLogs</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="servidor_logs.html#servidor_logs.ServidorLogs.detener"><code class="docutils literal notranslate"><span class="pre">ServidorLogs.detener()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="servidor_logs.html#servidor_logs.ServidorLogs.iniciar"><code class="docutils literal notranslate"><span class="pre">ServidorLogs.iniciar()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="servidor_logs.html#servidor_logs.ServidorLogs.manejar_cliente"><code class="docutils literal notranslate"><span class="pre">ServidorLogs.manejar_cliente()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="servidor_logs.html#clase-servidorlogs">Clase ServidorLogs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="servidor_logs.html#metodos-principales">Métodos Principales</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="servidor_logs.html#init-host-puerto">__init__(host, puerto)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="servidor_logs.html#iniciar">iniciar()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="servidor_logs.html#manejar-cliente-cliente-socket-direccion-cliente">manejar_cliente(cliente_socket, direccion_cliente)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="servidor_logs.html#detener">detener()</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="servidor_logs.html#formato-de-mensajes">Formato de Mensajes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="servidor_logs.html#mensajes-recibidos">Mensajes Recibidos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="servidor_logs.html#mensajes-de-respuesta">Mensajes de Respuesta</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="servidor_logs.html#manejo-de-multiples-clientes">Manejo de Múltiples Clientes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="servidor_logs.html#configuracion-de-logging">Configuración de Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="servidor_logs.html#manejo-de-errores">Manejo de Errores</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="servidor_logs.html#json-invalido">JSON Inválido</a></li>
+<li class="toctree-l3"><a class="reference internal" href="servidor_logs.html#conexion-perdida">Conexión Perdida</a></li>
+<li class="toctree-l3"><a class="reference internal" href="servidor_logs.html#socket-errors">Socket Errors</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="servidor_logs.html#configuracion">Configuración</a></li>
+<li class="toctree-l2"><a class="reference internal" href="servidor_logs.html#ejecucion-como-servicio">Ejecución como Servicio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="servidor_logs.html#monitoreo">Monitoreo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="servidor_logs.html#consideraciones-de-seguridad">Consideraciones de Seguridad</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="config_logs.html">config_logs module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config_logs.html#configuracion-centralizada-del-sistema-de-logs">Configuración Centralizada del Sistema de Logs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="config_logs.html#servidor-config">SERVIDOR_CONFIG</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="config_logs.html#host">host</a></li>
+<li class="toctree-l3"><a class="reference internal" href="config_logs.html#puerto">puerto</a></li>
+<li class="toctree-l3"><a class="reference internal" href="config_logs.html#max-conexiones">max_conexiones</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="config_logs.html#cliente-config">CLIENTE_CONFIG</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="config_logs.html#id1">host</a></li>
+<li class="toctree-l3"><a class="reference internal" href="config_logs.html#id2">puerto</a></li>
+<li class="toctree-l3"><a class="reference internal" href="config_logs.html#nombre-cliente">nombre_cliente</a></li>
+<li class="toctree-l3"><a class="reference internal" href="config_logs.html#timeout">timeout</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="config_logs.html#logging-config">LOGGING_CONFIG</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="config_logs.html#archivo-servidor">archivo_servidor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="config_logs.html#archivo-cliente">archivo_cliente</a></li>
+<li class="toctree-l3"><a class="reference internal" href="config_logs.html#archivo-local">archivo_local</a></li>
+<li class="toctree-l3"><a class="reference internal" href="config_logs.html#level">level</a></li>
+<li class="toctree-l3"><a class="reference internal" href="config_logs.html#formato">formato</a></li>
+<li class="toctree-l3"><a class="reference internal" href="config_logs.html#fecha-formato">fecha_formato</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="config_logs.html#mensajes">MENSAJES</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_logs.html#configuraciones-de-ejemplo">Configuraciones de Ejemplo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_logs.html#validacion-de-configuracion">Validación de Configuración</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_logs.html#modificacion-en-tiempo-de-ejecucion">Modificación en Tiempo de Ejecución</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_logs.html#persistencia-de-configuracion">Persistencia de Configuración</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_logs.html#consideraciones-de-seguridad">Consideraciones de Seguridad</a></li>
 </ul>
 </li>
 </ul>
@@ -266,10 +466,10 @@
 </main>
                         <nav aria-label="Page navigation" class="py-4 my-5 clearfix font-weight-bold border-top">
     <a class="float-left" href="index.html" title="Previous">
-        <span aria-hidden="true">←&nbsp;</span>Documentación Gestión Musical
+        <span aria-hidden="true">←&nbsp;</span>Gestión Musical - App Discos
     </a>
-    <a class="float-right" href="controller.html" title="Next">
-        Módulo Controlador <span aria-hidden="true">&nbsp;→</span>
+    <a class="float-right" href="main.html" title="Next">
+        Módulo Principal <span aria-hidden="true">&nbsp;→</span>
     </a>
 </nav>
                     </div>

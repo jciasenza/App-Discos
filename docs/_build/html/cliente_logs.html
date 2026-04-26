@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html class="no-js" lang="es" data-content_root="./">
+<head>
+    <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+        <title>cliente_logs module &mdash; documentación de GestionMusical - 4.5.0</title>
+    
+    <link rel="stylesheet" type="text/css" href="_static/dist/fontawesome.css" />
+      <link rel="stylesheet" type="text/css" href="_static/dist/theme.css?v=310cf088" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+            <link rel="index" title="Índice" href="genindex.html" />
+            <link rel="search" title="Búsqueda" href="search.html" />
+            <link rel="top" title="documentación de GestionMusical - 4.5.0" href="#" />
+            <link rel="up" title="App Discos - Módulos del Sistema" href="modules.html" />
+            <link rel="next" title="servidor_logs module" href="servidor_logs.html" />
+            <link rel="prev" title="Módulo de Validaciones" href="validations.html" />
+    </head>
+<body>
+    <script type="text/javascript" src="_static/dist/blocking.js"></script>
+    <header class="container-fluid bg-primary">
+        <a class="btn btn-sm btn-light skip-to-content-link" href="#main">Skip to content</a>
+        <div class="container-fluid">
+            <div class="navbar navbar-expand-lg navbar-dark font-weight-bold">
+                    <a href="index.html"
+                        title="Wagtail"
+                        class="logo navbar-brand"
+                    >
+                        <img src="_static/img/icono.ico" width="45" height="59" alt="Wagtail"
+                            class="logo-img"
+                        />
+                        Gestión Musical
+                    </a>
+                
+                
+                <button class="navbar-toggler btn btn-primary d-lg-none" type="button" data-toggle="collapse" data-target="#collapseSidebar" aria-expanded="false" aria-controls="collapseExample">
+                    <span class="navbar-toggler-icon"></span>
+                    <span class="sr-only">menu</span>
+                </button>
+            </div>
+        </div>
+    </header>
+    <div class="container-fluid">
+        <div class="row">
+            <aside class="col-12 col-lg-3 sidebar-container">
+                <div id="collapseSidebar" class="collapse sticky-top d-lg-block pt-5 pr-lg-4">
+<div id="searchbox" class="searchbox mb-6 px-1" role="search">
+    <form id="search-form" action="search.html" autocomplete="off" method="get" role="search">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text border-right-0 bg-white py-3 pl-3 pr-2"><span class="fas fa-search"></span></div>
+            </div>
+            <input class="form-control py-3 pr-3 pl-1 h-100 border-left-0" type="search" name="q" placeholder="Search documentation" aria-label="Search documentation" id="searchinput" />
+        </div>
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div><div class="site-toc">
+    <nav class="toc mt-3" aria-label="Main menu">
+        <p class="caption" role="heading"><span class="caption-text">Contenidos:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">App Discos - Módulos del Sistema</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="main.html">Módulo Principal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model.html">Módulo de Modelos y Patrón Observador</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controller.html">Módulo Controlador</a></li>
+<li class="toctree-l2"><a class="reference internal" href="views.html">Módulo de Vistas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="validations.html">Módulo de Validaciones</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">cliente_logs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="servidor_logs.html">servidor_logs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_logs.html">config_logs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_logs.html#configuracion-centralizada-del-sistema-de-logs">Configuración Centralizada del Sistema de Logs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sistema_logs.html">Sistema de Logs Cliente-Servidor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="patrones_dise%C3%B1o.html">Patrones de Diseño Implementados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guia_uso.html">Guía de Uso - App Discos</a></li>
+</ul>
+
+    </nav>
+    <template data-toggle-item-template>
+        <button class="btn btn-sm btn-link toctree-expand" type="button">
+            <span class="sr-only">Toggle menu contents</span>
+        </button>
+    </template>
+</div>
+                    <div class="d-lg-none border-bottom">
+                        
+                    </div>
+                </div>
+            </aside>
+            <div class="col-12 col-lg-9 pt-5">
+                <header class="row align-items-baseline">
+                    <div class="col">
+                        <nav aria-label="breadcrumb">
+    <ol class="breadcrumb m-0 p-0 bg-transparent">
+        <li class="breadcrumb-item"><a href="index.html">Docs</a></li>
+            <li class="breadcrumb-item"><a href="modules.html">App Discos - Módulos del Sistema</a></li>
+        <li class="breadcrumb-item active" aria-current="page">cliente_logs module</li>
+    </ol>
+</nav>
+                    </div>
+                    <div class="col-sm-12 col-lg-auto mt-3 mt-lg-3">
+                        <noscript>
+                            <p>JavaScript is required to toggle light/dark mode..</p>
+                        </noscript>
+                        <button id="wagtail-theme" class="btn btn-sm btn-light text-decoration-none" type="button">
+                            <span class="dark-only"><i class="fas fa-sun"></i> Light mode</span>
+                            <span class="light-only"><i class="fas fa-moon"></i> Dark mode</span>
+                        </button>
+    <a class="btn btn-sm btn-light text-decoration-none" href="https://github.com/wagtail/sphinx_wagtail_theme/blob/main/docs/cliente_logs.rst" rel="nofollow">
+        <span class="btn-icon"><span class="fab fa-github"></span></span>
+        <span class="btn-text">Edit on GitHub</span>
+    </a>
+    <a class="btn btn-sm btn-light text-decoration-none" href="_sources/cliente_logs.rst.txt" rel="nofollow">
+        <span class="btn-icon"><span class="fas fa-code"></span></span>
+        <span class="btn-text">View source</span>
+    </a>
+                        
+                    </div>
+                </header>
+                <div class="row" >
+                    <div class="col-12">
+                        <hr class="w-100 my-4">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-lg-9 order-last order-lg-first rst-content">
+                        <main role="main" id="main">
+    <section id="module-cliente_logs">
+<span id="cliente-logs-module"></span><h1>cliente_logs module<a class="headerlink" href="#module-cliente_logs" title="Link to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="cliente_logs.ClienteLogs">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cliente_logs.</span></span><span class="sig-name descname"><span class="pre">ClienteLogs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">host</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'localhost'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">puerto</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nombre_cliente</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Cliente'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cliente_logs.html#ClienteLogs"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#cliente_logs.ClienteLogs" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="cliente_logs.ClienteLogs.conectar">
+<span class="sig-name descname"><span class="pre">conectar</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/cliente_logs.html#ClienteLogs.conectar"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#cliente_logs.ClienteLogs.conectar" title="Link to this definition">¶</a></dt>
+<dd><p>Conecta al servidor de logs</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cliente_logs.ClienteLogs.desconectar">
+<span class="sig-name descname"><span class="pre">desconectar</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/cliente_logs.html#ClienteLogs.desconectar"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#cliente_logs.ClienteLogs.desconectar" title="Link to this definition">¶</a></dt>
+<dd><p>Desconecta del servidor</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cliente_logs.ClienteLogs.enviar_log">
+<span class="sig-name descname"><span class="pre">enviar_log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">evento</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">datos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nivel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'INFO'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cliente_logs.html#ClienteLogs.enviar_log"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#cliente_logs.ClienteLogs.enviar_log" title="Link to this definition">¶</a></dt>
+<dd><p>Envía un evento de log al servidor</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>evento (str): Nombre del evento (ej: “artista_agregado”)
+datos (dict): Datos del evento
+nivel (str): Nivel de log (“INFO”, “WARNING”, “ERROR”)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cliente_logs.JSONEncoderPersonalizado">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cliente_logs.</span></span><span class="sig-name descname"><span class="pre">JSONEncoderPersonalizado</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skipkeys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ensure_ascii</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_circular</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_nan</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort_keys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">separators</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cliente_logs.html#JSONEncoderPersonalizado"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#cliente_logs.JSONEncoderPersonalizado" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">JSONEncoder</span></code></p>
+<p>Codificador JSON personalizado que maneja tipos especiales</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="cliente_logs.JSONEncoderPersonalizado.default">
+<span class="sig-name descname"><span class="pre">default</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">o</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cliente_logs.html#JSONEncoderPersonalizado.default"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#cliente_logs.JSONEncoderPersonalizado.default" title="Link to this definition">¶</a></dt>
+<dd><p>Implement this method in a subclass such that it returns
+a serializable object for <code class="docutils literal notranslate"><span class="pre">o</span></code>, or calls the base implementation
+(to raise a <code class="docutils literal notranslate"><span class="pre">TypeError</span></code>).</p>
+<p>For example, to support arbitrary iterators, you could
+implement default like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">default</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">iterable</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">iterable</span><span class="p">)</span>
+    <span class="c1"># Let the base class default method raise the TypeError</span>
+    <span class="k">return</span> <span class="n">JSONEncoder</span><span class="o">.</span><span class="n">default</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<section id="clase-clientelogs">
+<h2>Clase ClienteLogs<a class="headerlink" href="#clase-clientelogs" title="Link to this heading">¶</a></h2>
+<p>La clase <code class="docutils literal notranslate"><span class="pre">ClienteLogs</span></code> maneja la conexión TCP con el servidor de logs y el envío
+de eventos serializados en JSON.</p>
+<section id="metodos-principales">
+<h3>Métodos Principales<a class="headerlink" href="#metodos-principales" title="Link to this heading">¶</a></h3>
+<section id="conectar">
+<h4>conectar()<a class="headerlink" href="#conectar" title="Link to this heading">¶</a></h4>
+<p>Establece conexión TCP con el servidor de logs.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cliente</span> <span class="o">=</span> <span class="n">ClienteLogs</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">cliente</span><span class="o">.</span><span class="n">conectar</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Conectado exitosamente&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error de conexión&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Retorna:</strong> <code class="docutils literal notranslate"><span class="pre">bool</span></code> - True si la conexión fue exitosa</p>
+</section>
+<section id="enviar-log-evento-datos-nivel">
+<h4>enviar_log(evento, datos, nivel)<a class="headerlink" href="#enviar-log-evento-datos-nivel" title="Link to this heading">¶</a></h4>
+<p>Envía un evento de log al servidor.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cliente</span><span class="o">.</span><span class="n">enviar_log</span><span class="p">(</span>
+    <span class="n">evento</span><span class="o">=</span><span class="s2">&quot;usuario_registrado&quot;</span><span class="p">,</span>
+    <span class="n">datos</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;user@example.com&quot;</span><span class="p">},</span>
+    <span class="n">nivel</span><span class="o">=</span><span class="s2">&quot;INFO&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Parámetros:</strong>
+- <code class="docutils literal notranslate"><span class="pre">evento</span></code> (str): Nombre del evento
+- <code class="docutils literal notranslate"><span class="pre">datos</span></code> (dict): Datos del evento
+- <code class="docutils literal notranslate"><span class="pre">nivel</span></code> (str): Nivel de log (INFO, WARNING, ERROR)</p>
+<p><strong>Retorna:</strong> <code class="docutils literal notranslate"><span class="pre">bool</span></code> - True si el envío fue exitoso</p>
+</section>
+<section id="desconectar">
+<h4>desconectar()<a class="headerlink" href="#desconectar" title="Link to this heading">¶</a></h4>
+<p>Cierra la conexión TCP con el servidor.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cliente</span><span class="o">.</span><span class="n">desconectar</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="jsonencoderpersonalizado">
+<h2>JSONEncoderPersonalizado<a class="headerlink" href="#jsonencoderpersonalizado" title="Link to this heading">¶</a></h2>
+<p>Codificador JSON personalizado que maneja tipos complejos de Python.</p>
+<section id="tipos-soportados">
+<h3>Tipos Soportados<a class="headerlink" href="#tipos-soportados" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Objetos Peewee</strong>: Convierte modelos a diccionarios</p></li>
+<li><p><strong>Sets</strong>: Convierte a listas</p></li>
+<li><p><strong>Datetime</strong>: Convierte a formato ISO</p></li>
+<li><p><strong>Objetos personalizados</strong>: Convierte a string</p></li>
+</ul>
+</section>
+<section id="ejemplo-de-uso">
+<h3>Ejemplo de Uso<a class="headerlink" href="#ejemplo-de-uso" title="Link to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cliente_logs</span><span class="w"> </span><span class="kn">import</span> <span class="n">JSONEncoderPersonalizado</span>
+
+<span class="n">datos_complejos</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;usuario&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;tags&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;admin&quot;</span><span class="p">,</span> <span class="s2">&quot;premium&quot;</span><span class="p">}},</span>
+    <span class="s2">&quot;fecha&quot;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="n">json_str</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">datos_complejos</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="n">JSONEncoderPersonalizado</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">json_str</span><span class="p">)</span>
+<span class="c1"># {&quot;usuario&quot;: {&quot;id&quot;: 1, &quot;tags&quot;: [&quot;admin&quot;, &quot;premium&quot;]}, &quot;fecha&quot;: &quot;2026-04-26T10:30:00&quot;}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="manejo-de-errores">
+<h2>Manejo de Errores<a class="headerlink" href="#manejo-de-errores" title="Link to this heading">¶</a></h2>
+<p>La clase maneja automáticamente varios tipos de errores:</p>
+<ul class="simple">
+<li><p><strong>Conexión perdida</strong>: Intenta reconectar automáticamente</p></li>
+<li><p><strong>JSON inválido</strong>: Registra error y continúa</p></li>
+<li><p><strong>Timeout</strong>: Cancela operación y marca como desconectado</p></li>
+<li><p><strong>Socket errors</strong>: Registra error y marca conexión como perdida</p></li>
+</ul>
+</section>
+<section id="configuracion">
+<h2>Configuración<a class="headerlink" href="#configuracion" title="Link to this heading">¶</a></h2>
+<p>La configuración se lee desde <code class="docutils literal notranslate"><span class="pre">config_logs.py</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">CLIENTE_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;host&#39;</span><span class="p">:</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;puerto&#39;</span><span class="p">:</span> <span class="mi">5000</span><span class="p">,</span>
+    <span class="s1">&#39;nombre_cliente&#39;</span><span class="p">:</span> <span class="s1">&#39;App-Discos&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;timeout&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="logging-local">
+<h2>Logging Local<a class="headerlink" href="#logging-local" title="Link to this heading">¶</a></h2>
+<p>Además del envío remoto, el cliente mantiene logs locales en <code class="docutils literal notranslate"><span class="pre">cliente_logs.log</span></code>
+para trazabilidad de las operaciones de envío.</p>
+</section>
+<section id="ejemplo-completo">
+<h2>Ejemplo Completo<a class="headerlink" href="#ejemplo-completo" title="Link to this heading">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">cliente_logs</span><span class="w"> </span><span class="kn">import</span> <span class="n">ClienteLogs</span>
+
+<span class="c1"># Crear cliente</span>
+<span class="n">cliente</span> <span class="o">=</span> <span class="n">ClienteLogs</span><span class="p">(</span><span class="n">nombre_cliente</span><span class="o">=</span><span class="s1">&#39;Mi-Aplicacion&#39;</span><span class="p">)</span>
+
+<span class="c1"># Conectar</span>
+<span class="k">if</span> <span class="n">cliente</span><span class="o">.</span><span class="n">conectar</span><span class="p">():</span>
+    <span class="c1"># Enviar varios logs</span>
+    <span class="n">cliente</span><span class="o">.</span><span class="n">enviar_log</span><span class="p">(</span><span class="s1">&#39;inicio_sesion&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;usuario&#39;</span><span class="p">:</span> <span class="s1">&#39;admin&#39;</span><span class="p">},</span> <span class="s1">&#39;INFO&#39;</span><span class="p">)</span>
+    <span class="n">cliente</span><span class="o">.</span><span class="n">enviar_log</span><span class="p">(</span><span class="s1">&#39;operacion_exitosa&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;tipo&#39;</span><span class="p">:</span> <span class="s1">&#39;backup&#39;</span><span class="p">},</span> <span class="s1">&#39;INFO&#39;</span><span class="p">)</span>
+    <span class="n">cliente</span><span class="o">.</span><span class="n">enviar_log</span><span class="p">(</span><span class="s1">&#39;error_critico&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;codigo&#39;</span><span class="p">:</span> <span class="mi">500</span><span class="p">},</span> <span class="s1">&#39;ERROR&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Desconectar</span>
+    <span class="n">cliente</span><span class="o">.</span><span class="n">desconectar</span><span class="p">()</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No se pudo conectar al servidor&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+</main>
+                        <nav aria-label="Page navigation" class="py-4 my-5 clearfix font-weight-bold border-top">
+    <a class="float-left" href="validations.html" title="Previous">
+        <span aria-hidden="true">←&nbsp;</span>Módulo de Validaciones
+    </a>
+    <a class="float-right" href="servidor_logs.html" title="Next">
+        servidor_logs module <span aria-hidden="true">&nbsp;→</span>
+    </a>
+</nav>
+                    </div>
+                    
+                    <nav class="col-12 col-lg-3 pb-4">
+                        <div class="sticky-top toc page-toc" aria-labelledby="page-toc-heading">
+                            <p class="font-weight-bold" id="page-toc-heading">Page contents</p>
+                            <ul>
+<li><a class="reference internal" href="#">cliente_logs module</a><ul>
+<li><a class="reference internal" href="#cliente_logs.ClienteLogs"><code class="docutils literal notranslate"><span class="pre">ClienteLogs</span></code></a><ul>
+<li><a class="reference internal" href="#cliente_logs.ClienteLogs.conectar"><code class="docutils literal notranslate"><span class="pre">ClienteLogs.conectar()</span></code></a></li>
+<li><a class="reference internal" href="#cliente_logs.ClienteLogs.desconectar"><code class="docutils literal notranslate"><span class="pre">ClienteLogs.desconectar()</span></code></a></li>
+<li><a class="reference internal" href="#cliente_logs.ClienteLogs.enviar_log"><code class="docutils literal notranslate"><span class="pre">ClienteLogs.enviar_log()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cliente_logs.JSONEncoderPersonalizado"><code class="docutils literal notranslate"><span class="pre">JSONEncoderPersonalizado</span></code></a><ul>
+<li><a class="reference internal" href="#cliente_logs.JSONEncoderPersonalizado.default"><code class="docutils literal notranslate"><span class="pre">JSONEncoderPersonalizado.default()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#clase-clientelogs">Clase ClienteLogs</a><ul>
+<li><a class="reference internal" href="#metodos-principales">Métodos Principales</a><ul>
+<li><a class="reference internal" href="#conectar">conectar()</a></li>
+<li><a class="reference internal" href="#enviar-log-evento-datos-nivel">enviar_log(evento, datos, nivel)</a></li>
+<li><a class="reference internal" href="#desconectar">desconectar()</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#jsonencoderpersonalizado">JSONEncoderPersonalizado</a><ul>
+<li><a class="reference internal" href="#tipos-soportados">Tipos Soportados</a></li>
+<li><a class="reference internal" href="#ejemplo-de-uso">Ejemplo de Uso</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#manejo-de-errores">Manejo de Errores</a></li>
+<li><a class="reference internal" href="#configuracion">Configuración</a></li>
+<li><a class="reference internal" href="#logging-local">Logging Local</a></li>
+<li><a class="reference internal" href="#ejemplo-completo">Ejemplo Completo</a></li>
+</ul>
+</li>
+</ul>
+
+                        </div>
+                    </nav>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="container-fluid bg-primary text-light">
+        <div class="container">
+            <div class="row">
+        <div class="col p-4">
+            
+                <nav aria-label="Footer">
+                    <ul class="nav justify-content-center mb-2">
+                            <li class="nav-item"><a class="nav-link text-light"  href="https://github.com/jciasenza"><span class="fab fa-github"></span></a></li>
+                            <li class="nav-item"><a class="nav-link text-light"  href="https://www.linkedin.com/in/juan-carlos-iasenza-8119501a9/"><span class="fab fa-linkedin"></span></a></li>
+                            <li class="nav-item"><a class="nav-link text-light"  href="mailto:iasenzajuancarlos@gmail.com"><span class="fas fa-envelope"></span></a></li>
+                    </ul>
+                </nav>
+            
+            <div class="text-center">
+                    &copy; Copyright 2026, Juan Carlos Iasenza
+            </div>
+            <div class="text-center text-white-50 font-italic mt-3">
+                <small>
+                    Created using
+                    <a class="text-white" href="https://github.com/wagtail/sphinx_wagtail_theme" rel="nofollow" target="_blank">
+                        Sphinx Wagtail Theme 6.5.0
+                    </a>
+                    and
+                    <a class="text-white" href="https://www.sphinx-doc.org/" rel="nofollow" target="_blank">
+                        Sphinx 8.1.3
+                    </a>
+                </small>
+            </div>
+        </div>
+    </div>
+        </div>
+    </footer>
+        <script src="_static/documentation_options.js?v=e56700d4"></script>
+        <script src="_static/doctools.js?v=9bcbadda"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="_static/copybutton.js?v=f281be69"></script>
+        <script src="_static/translations.js?v=f85f4cfb"></script>
+        <script type="text/javascript" src="_static/dist/theme.js"></script>
+        <script type="text/javascript" src="_static/dist/vendor.js"></script>
+        <script type="text/javascript" src="_static/searchtools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', function() { Search.loadIndex("searchindex.js"); });
+        </script>
+        <script type="text/javascript" id="searchindexloader"></script>
+    </body>
+</html>

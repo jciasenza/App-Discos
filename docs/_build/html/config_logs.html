@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html class="no-js" lang="es" data-content_root="./">
+<head>
+    <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+        <title>config_logs module &mdash; documentación de GestionMusical - 4.5.0</title>
+    
+    <link rel="stylesheet" type="text/css" href="_static/dist/fontawesome.css" />
+      <link rel="stylesheet" type="text/css" href="_static/dist/theme.css?v=310cf088" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+            <link rel="index" title="Índice" href="genindex.html" />
+            <link rel="search" title="Búsqueda" href="search.html" />
+            <link rel="top" title="documentación de GestionMusical - 4.5.0" href="#" />
+            <link rel="up" title="App Discos - Módulos del Sistema" href="modules.html" />
+            <link rel="next" title="Sistema de Logs Cliente-Servidor" href="sistema_logs.html" />
+            <link rel="prev" title="servidor_logs module" href="servidor_logs.html" />
+    </head>
+<body>
+    <script type="text/javascript" src="_static/dist/blocking.js"></script>
+    <header class="container-fluid bg-primary">
+        <a class="btn btn-sm btn-light skip-to-content-link" href="#main">Skip to content</a>
+        <div class="container-fluid">
+            <div class="navbar navbar-expand-lg navbar-dark font-weight-bold">
+                    <a href="index.html"
+                        title="Wagtail"
+                        class="logo navbar-brand"
+                    >
+                        <img src="_static/img/icono.ico" width="45" height="59" alt="Wagtail"
+                            class="logo-img"
+                        />
+                        Gestión Musical
+                    </a>
+                
+                
+                <button class="navbar-toggler btn btn-primary d-lg-none" type="button" data-toggle="collapse" data-target="#collapseSidebar" aria-expanded="false" aria-controls="collapseExample">
+                    <span class="navbar-toggler-icon"></span>
+                    <span class="sr-only">menu</span>
+                </button>
+            </div>
+        </div>
+    </header>
+    <div class="container-fluid">
+        <div class="row">
+            <aside class="col-12 col-lg-3 sidebar-container">
+                <div id="collapseSidebar" class="collapse sticky-top d-lg-block pt-5 pr-lg-4">
+<div id="searchbox" class="searchbox mb-6 px-1" role="search">
+    <form id="search-form" action="search.html" autocomplete="off" method="get" role="search">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text border-right-0 bg-white py-3 pl-3 pr-2"><span class="fas fa-search"></span></div>
+            </div>
+            <input class="form-control py-3 pr-3 pl-1 h-100 border-left-0" type="search" name="q" placeholder="Search documentation" aria-label="Search documentation" id="searchinput" />
+        </div>
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div><div class="site-toc">
+    <nav class="toc mt-3" aria-label="Main menu">
+        <p class="caption" role="heading"><span class="caption-text">Contenidos:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">App Discos - Módulos del Sistema</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="main.html">Módulo Principal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model.html">Módulo de Modelos y Patrón Observador</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controller.html">Módulo Controlador</a></li>
+<li class="toctree-l2"><a class="reference internal" href="views.html">Módulo de Vistas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="validations.html">Módulo de Validaciones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cliente_logs.html">cliente_logs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="servidor_logs.html">servidor_logs module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">config_logs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuracion-centralizada-del-sistema-de-logs">Configuración Centralizada del Sistema de Logs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sistema_logs.html">Sistema de Logs Cliente-Servidor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="patrones_dise%C3%B1o.html">Patrones de Diseño Implementados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guia_uso.html">Guía de Uso - App Discos</a></li>
+</ul>
+
+    </nav>
+    <template data-toggle-item-template>
+        <button class="btn btn-sm btn-link toctree-expand" type="button">
+            <span class="sr-only">Toggle menu contents</span>
+        </button>
+    </template>
+</div>
+                    <div class="d-lg-none border-bottom">
+                        
+                    </div>
+                </div>
+            </aside>
+            <div class="col-12 col-lg-9 pt-5">
+                <header class="row align-items-baseline">
+                    <div class="col">
+                        <nav aria-label="breadcrumb">
+    <ol class="breadcrumb m-0 p-0 bg-transparent">
+        <li class="breadcrumb-item"><a href="index.html">Docs</a></li>
+            <li class="breadcrumb-item"><a href="modules.html">App Discos - Módulos del Sistema</a></li>
+        <li class="breadcrumb-item active" aria-current="page">config_logs module</li>
+    </ol>
+</nav>
+                    </div>
+                    <div class="col-sm-12 col-lg-auto mt-3 mt-lg-3">
+                        <noscript>
+                            <p>JavaScript is required to toggle light/dark mode..</p>
+                        </noscript>
+                        <button id="wagtail-theme" class="btn btn-sm btn-light text-decoration-none" type="button">
+                            <span class="dark-only"><i class="fas fa-sun"></i> Light mode</span>
+                            <span class="light-only"><i class="fas fa-moon"></i> Dark mode</span>
+                        </button>
+    <a class="btn btn-sm btn-light text-decoration-none" href="https://github.com/wagtail/sphinx_wagtail_theme/blob/main/docs/config_logs.rst" rel="nofollow">
+        <span class="btn-icon"><span class="fab fa-github"></span></span>
+        <span class="btn-text">Edit on GitHub</span>
+    </a>
+    <a class="btn btn-sm btn-light text-decoration-none" href="_sources/config_logs.rst.txt" rel="nofollow">
+        <span class="btn-icon"><span class="fas fa-code"></span></span>
+        <span class="btn-text">View source</span>
+    </a>
+                        
+                    </div>
+                </header>
+                <div class="row" >
+                    <div class="col-12">
+                        <hr class="w-100 my-4">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-lg-9 order-last order-lg-first rst-content">
+                        <main role="main" id="main">
+    <section id="module-config_logs">
+<span id="config-logs-module"></span><h1>config_logs module<a class="headerlink" href="#module-config_logs" title="Link to this heading">¶</a></h1>
+<p>Configuración centralizada para el sistema de logs</p>
+</section>
+<section id="configuracion-centralizada-del-sistema-de-logs">
+<h1>Configuración Centralizada del Sistema de Logs<a class="headerlink" href="#configuracion-centralizada-del-sistema-de-logs" title="Link to this heading">¶</a></h1>
+<p>Este módulo contiene toda la configuración del sistema de logs cliente-servidor,
+permitiendo personalizar el comportamiento sin modificar el código fuente.</p>
+<section id="servidor-config">
+<h2>SERVIDOR_CONFIG<a class="headerlink" href="#servidor-config" title="Link to this heading">¶</a></h2>
+<p>Configuración del servidor TCP de logs.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">SERVIDOR_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;host&#39;</span><span class="p">:</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span>      <span class="c1"># Dirección IP del servidor</span>
+    <span class="s1">&#39;puerto&#39;</span><span class="p">:</span> <span class="mi">5000</span><span class="p">,</span>           <span class="c1"># Puerto TCP para conexiones</span>
+    <span class="s1">&#39;max_conexiones&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>      <span class="c1"># Máximo de conexiones en cola</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Parámetros:</strong></p>
+<section id="host">
+<h3>host<a class="headerlink" href="#host" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Tipo:</strong> <code class="docutils literal notranslate"><span class="pre">str</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">'localhost'</span></code></p></li>
+<li><p><strong>Descripción:</strong> Dirección IP o hostname donde el servidor escuchará conexiones</p></li>
+<li><p><strong>Ejemplos:</strong>
+- <code class="docutils literal notranslate"><span class="pre">'localhost'</span></code> - Solo conexiones locales
+- <code class="docutils literal notranslate"><span class="pre">'0.0.0.0'</span></code> - Todas las interfaces de red
+- <code class="docutils literal notranslate"><span class="pre">'192.168.1.100'</span></code> - IP específica</p></li>
+</ul>
+</section>
+<section id="puerto">
+<h3>puerto<a class="headerlink" href="#puerto" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Tipo:</strong> <code class="docutils literal notranslate"><span class="pre">int</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">5000</span></code></p></li>
+<li><p><strong>Descripción:</strong> Puerto TCP para el servidor</p></li>
+<li><p><strong>Rango recomendado:</strong> 1024-65535 (evitar puertos bien conocidos)</p></li>
+<li><p><strong>Ejemplos:</strong> 5000, 8080, 9000</p></li>
+</ul>
+</section>
+<section id="max-conexiones">
+<h3>max_conexiones<a class="headerlink" href="#max-conexiones" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Tipo:</strong> <code class="docutils literal notranslate"><span class="pre">int</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">5</span></code></p></li>
+<li><p><strong>Descripción:</strong> Número máximo de conexiones en cola de espera</p></li>
+<li><p><strong>Recomendación:</strong> 5-10 para aplicaciones pequeñas</p></li>
+</ul>
+</section>
+</section>
+<section id="cliente-config">
+<h2>CLIENTE_CONFIG<a class="headerlink" href="#cliente-config" title="Link to this heading">¶</a></h2>
+<p>Configuración del cliente TCP de logs.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">CLIENTE_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;host&#39;</span><span class="p">:</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span>           <span class="c1"># Servidor al que conectar</span>
+    <span class="s1">&#39;puerto&#39;</span><span class="p">:</span> <span class="mi">5000</span><span class="p">,</span>                <span class="c1"># Puerto del servidor</span>
+    <span class="s1">&#39;nombre_cliente&#39;</span><span class="p">:</span> <span class="s1">&#39;App-Discos&#39;</span><span class="p">,</span> <span class="c1"># Identificador único</span>
+    <span class="s1">&#39;timeout&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>                  <span class="c1"># Timeout en segundos</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Parámetros:</strong></p>
+<section id="id1">
+<h3>host<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Tipo:</strong> <code class="docutils literal notranslate"><span class="pre">str</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">'localhost'</span></code></p></li>
+<li><p><strong>Descripción:</strong> Dirección del servidor de logs</p></li>
+<li><p><strong>Debe coincidir</strong> con <code class="docutils literal notranslate"><span class="pre">SERVIDOR_CONFIG['host']</span></code></p></li>
+</ul>
+</section>
+<section id="id2">
+<h3>puerto<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Tipo:</strong> <code class="docutils literal notranslate"><span class="pre">int</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">5000</span></code></p></li>
+<li><p><strong>Descripción:</strong> Puerto del servidor de logs</p></li>
+<li><p><strong>Debe coincidir</strong> con <code class="docutils literal notranslate"><span class="pre">SERVIDOR_CONFIG['puerto']</span></code></p></li>
+</ul>
+</section>
+<section id="nombre-cliente">
+<h3>nombre_cliente<a class="headerlink" href="#nombre-cliente" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Tipo:</strong> <code class="docutils literal notranslate"><span class="pre">str</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">'App-Discos'</span></code></p></li>
+<li><p><strong>Descripción:</strong> Identificador único del cliente</p></li>
+<li><p><strong>Aparece en logs</strong> para distinguir orígenes</p></li>
+<li><p><strong>Ejemplos:</strong> <code class="docutils literal notranslate"><span class="pre">'App-Discos'</span></code>, <code class="docutils literal notranslate"><span class="pre">'Mi-Tienda'</span></code>, <code class="docutils literal notranslate"><span class="pre">'Sistema-Ventas'</span></code></p></li>
+</ul>
+</section>
+<section id="timeout">
+<h3>timeout<a class="headerlink" href="#timeout" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Tipo:</strong> <code class="docutils literal notranslate"><span class="pre">int</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">5</span></code></p></li>
+<li><p><strong>Descripción:</strong> Segundos de espera para conexiones</p></li>
+<li><p><strong>Recomendación:</strong> 5-30 segundos</p></li>
+</ul>
+</section>
+</section>
+<section id="logging-config">
+<h2>LOGGING_CONFIG<a class="headerlink" href="#logging-config" title="Link to this heading">¶</a></h2>
+<p>Configuración del sistema de logging de Python.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">LOGGING_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;archivo_servidor&#39;</span><span class="p">:</span> <span class="s1">&#39;servidor_logs.log&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;archivo_cliente&#39;</span><span class="p">:</span> <span class="s1">&#39;cliente_logs.log&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;archivo_local&#39;</span><span class="p">:</span> <span class="s1">&#39;app_discos.log&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;level&#39;</span><span class="p">:</span> <span class="s1">&#39;INFO&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;formato&#39;</span><span class="p">:</span> <span class="s1">&#39;</span><span class="si">%(asctime)s</span><span class="s1"> - </span><span class="si">%(levelname)s</span><span class="s1"> - </span><span class="si">%(message)s</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;fecha_formato&#39;</span><span class="p">:</span> <span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1"> %H:%M:%S&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Parámetros:</strong></p>
+<section id="archivo-servidor">
+<h3>archivo_servidor<a class="headerlink" href="#archivo-servidor" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Tipo:</strong> <code class="docutils literal notranslate"><span class="pre">str</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">'servidor_logs.log'</span></code></p></li>
+<li><p><strong>Descripción:</strong> Archivo donde el servidor guarda logs centralizados</p></li>
+<li><p><strong>Ubicación:</strong> Directorio del servidor</p></li>
+</ul>
+</section>
+<section id="archivo-cliente">
+<h3>archivo_cliente<a class="headerlink" href="#archivo-cliente" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Tipo:</strong> <code class="docutils literal notranslate"><span class="pre">str</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">'cliente_logs.log'</span></code></p></li>
+<li><p><strong>Descripción:</strong> Archivo donde el cliente registra operaciones de envío</p></li>
+<li><p><strong>Ubicación:</strong> Directorio del cliente</p></li>
+</ul>
+</section>
+<section id="archivo-local">
+<h3>archivo_local<a class="headerlink" href="#archivo-local" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Tipo:</strong> <code class="docutils literal notranslate"><span class="pre">str</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">'app_discos.log'</span></code></p></li>
+<li><p><strong>Descripción:</strong> Archivo de logs locales de la aplicación</p></li>
+<li><p><strong>Ubicación:</strong> Directorio de la aplicación</p></li>
+</ul>
+</section>
+<section id="level">
+<h3>level<a class="headerlink" href="#level" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Tipo:</strong> <code class="docutils literal notranslate"><span class="pre">str</span></code></p></li>
+<li><p><strong>Valores:</strong> <code class="docutils literal notranslate"><span class="pre">'DEBUG'</span></code>, <code class="docutils literal notranslate"><span class="pre">'INFO'</span></code>, <code class="docutils literal notranslate"><span class="pre">'WARNING'</span></code>, <code class="docutils literal notranslate"><span class="pre">'ERROR'</span></code>, <code class="docutils literal notranslate"><span class="pre">'CRITICAL'</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">'INFO'</span></code></p></li>
+<li><p><strong>Descripción:</strong> Nivel mínimo de logs a registrar</p></li>
+</ul>
+</section>
+<section id="formato">
+<h3>formato<a class="headerlink" href="#formato" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Tipo:</strong> <code class="docutils literal notranslate"><span class="pre">str</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">'%(asctime)s</span> <span class="pre">-</span> <span class="pre">%(levelname)s</span> <span class="pre">-</span> <span class="pre">%(message)s'</span></code></p></li>
+<li><p><strong>Descripción:</strong> Formato de las líneas de log</p></li>
+<li><p><strong>Variables disponibles:</strong>
+- <code class="docutils literal notranslate"><span class="pre">%(asctime)s</span></code> - Timestamp
+- <code class="docutils literal notranslate"><span class="pre">%(levelname)s</span></code> - Nivel (INFO, WARNING, etc.)
+- <code class="docutils literal notranslate"><span class="pre">%(message)s</span></code> - Mensaje del log
+- <code class="docutils literal notranslate"><span class="pre">%(name)s</span></code> - Nombre del logger
+- <code class="docutils literal notranslate"><span class="pre">%(filename)s</span></code> - Archivo fuente</p></li>
+</ul>
+</section>
+<section id="fecha-formato">
+<h3>fecha_formato<a class="headerlink" href="#fecha-formato" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Tipo:</strong> <code class="docutils literal notranslate"><span class="pre">str</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">'%Y-%m-%d</span> <span class="pre">%H:%M:%S'</span></code></p></li>
+<li><p><strong>Descripción:</strong> Formato de fecha en <code class="docutils literal notranslate"><span class="pre">%(asctime)s</span></code></p></li>
+<li><p><strong>Códigos de formato:</strong> Ver <code class="docutils literal notranslate"><span class="pre">datetime.strftime()</span></code></p></li>
+</ul>
+</section>
+</section>
+<section id="mensajes">
+<h2>MENSAJES<a class="headerlink" href="#mensajes" title="Link to this heading">¶</a></h2>
+<p>Mensajes de estado predefinidos para consistencia.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">MENSAJES</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;servidor_iniciado&#39;</span><span class="p">:</span> <span class="s1">&#39;✓ Servidor iniciado en </span><span class="si">{host}</span><span class="s1">:</span><span class="si">{puerto}</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;cliente_conectado&#39;</span><span class="p">:</span> <span class="s1">&#39;✓ Cliente conectado desde </span><span class="si">{direccion}</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;error_servidor&#39;</span><span class="p">:</span> <span class="s1">&#39;✗ Error al iniciar servidor: </span><span class="si">{error}</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;error_cliente&#39;</span><span class="p">:</span> <span class="s1">&#39;✗ Error conectando al servidor: </span><span class="si">{error}</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;conexion_perdida&#39;</span><span class="p">:</span> <span class="s1">&#39;✗ Conexión perdida con el servidor&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Uso:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">config_logs</span><span class="w"> </span><span class="kn">import</span> <span class="n">MENSAJES</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">MENSAJES</span><span class="p">[</span><span class="s1">&#39;servidor_iniciado&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="n">puerto</span><span class="o">=</span><span class="mi">5000</span><span class="p">))</span>
+</pre></div>
+</div>
+</section>
+<section id="configuraciones-de-ejemplo">
+<h2>Configuraciones de Ejemplo<a class="headerlink" href="#configuraciones-de-ejemplo" title="Link to this heading">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">SERVIDOR_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;host&#39;</span><span class="p">:</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;puerto&#39;</span><span class="p">:</span> <span class="mi">5000</span><span class="p">,</span>
+    <span class="s1">&#39;max_conexiones&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">CLIENTE_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;host&#39;</span><span class="p">:</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;puerto&#39;</span><span class="p">:</span> <span class="mi">5000</span><span class="p">,</span>
+    <span class="s1">&#39;nombre_cliente&#39;</span><span class="p">:</span> <span class="s1">&#39;App-Discos-Dev&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;timeout&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">LOGGING_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;level&#39;</span><span class="p">:</span> <span class="s1">&#39;DEBUG&#39;</span><span class="p">,</span>  <span class="c1"># Más verboso en desarrollo</span>
+    <span class="s1">&#39;archivo_servidor&#39;</span><span class="p">:</span> <span class="s1">&#39;servidor_dev.log&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;archivo_cliente&#39;</span><span class="p">:</span> <span class="s1">&#39;cliente_dev.log&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;archivo_local&#39;</span><span class="p">:</span> <span class="s1">&#39;app_dev.log&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">SERVIDOR_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;host&#39;</span><span class="p">:</span> <span class="s1">&#39;0.0.0.0&#39;</span><span class="p">,</span>  <span class="c1"># Todas las interfaces</span>
+    <span class="s1">&#39;puerto&#39;</span><span class="p">:</span> <span class="mi">9000</span><span class="p">,</span>     <span class="c1"># Puerto no estándar</span>
+    <span class="s1">&#39;max_conexiones&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">CLIENTE_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;host&#39;</span><span class="p">:</span> <span class="s1">&#39;logs.empresa.com&#39;</span><span class="p">,</span>  <span class="c1"># Servidor central</span>
+    <span class="s1">&#39;puerto&#39;</span><span class="p">:</span> <span class="mi">9000</span><span class="p">,</span>
+    <span class="s1">&#39;nombre_cliente&#39;</span><span class="p">:</span> <span class="s1">&#39;Sucursal-Norte&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;timeout&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">LOGGING_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;level&#39;</span><span class="p">:</span> <span class="s1">&#39;WARNING&#39;</span><span class="p">,</span>  <span class="c1"># Solo warnings y errores en prod</span>
+    <span class="s1">&#39;formato&#39;</span><span class="p">:</span> <span class="s1">&#39;</span><span class="si">%(asctime)s</span><span class="s1"> [</span><span class="si">%(levelname)s</span><span class="s1">] </span><span class="si">%(name)s</span><span class="s1">: </span><span class="si">%(message)s</span><span class="s1">&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="n">entorno</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;ENTORNO&#39;</span><span class="p">,</span> <span class="s1">&#39;desarrollo&#39;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">entorno</span> <span class="o">==</span> <span class="s1">&#39;produccion&#39;</span><span class="p">:</span>
+    <span class="n">SERVIDOR_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;host&#39;</span><span class="p">:</span> <span class="s1">&#39;logs-prod.empresa.com&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;puerto&#39;</span><span class="p">:</span> <span class="mi">443</span><span class="p">,</span>  <span class="c1"># Puerto seguro</span>
+    <span class="p">}</span>
+<span class="k">else</span><span class="p">:</span>  <span class="c1"># desarrollo</span>
+    <span class="n">SERVIDOR_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;host&#39;</span><span class="p">:</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;puerto&#39;</span><span class="p">:</span> <span class="mi">5000</span><span class="p">,</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="validacion-de-configuracion">
+<h2>Validación de Configuración<a class="headerlink" href="#validacion-de-configuracion" title="Link to this heading">¶</a></h2>
+<p>Función auxiliar para validar configuración al inicio:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">validar_config</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Valida que la configuración sea correcta&quot;&quot;&quot;</span>
+    <span class="c1"># Validar puertos</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">1024</span> <span class="o">&lt;=</span> <span class="n">SERVIDOR_CONFIG</span><span class="p">[</span><span class="s1">&#39;puerto&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">65535</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Puerto del servidor inválido&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">1024</span> <span class="o">&lt;=</span> <span class="n">CLIENTE_CONFIG</span><span class="p">[</span><span class="s1">&#39;puerto&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">65535</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Puerto del cliente inválido&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Validar niveles de log</span>
+    <span class="n">niveles_validos</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;DEBUG&#39;</span><span class="p">,</span> <span class="s1">&#39;INFO&#39;</span><span class="p">,</span> <span class="s1">&#39;WARNING&#39;</span><span class="p">,</span> <span class="s1">&#39;ERROR&#39;</span><span class="p">,</span> <span class="s1">&#39;CRITICAL&#39;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">LOGGING_CONFIG</span><span class="p">[</span><span class="s1">&#39;level&#39;</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">niveles_validos</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Nivel de log inválido: </span><span class="si">{</span><span class="n">LOGGING_CONFIG</span><span class="p">[</span><span class="s1">&#39;level&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Validar timeout</span>
+    <span class="k">if</span> <span class="n">CLIENTE_CONFIG</span><span class="p">[</span><span class="s1">&#39;timeout&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Timeout debe ser al menos 1 segundo&quot;</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✓ Configuración validada correctamente&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="modificacion-en-tiempo-de-ejecucion">
+<h2>Modificación en Tiempo de Ejecución<a class="headerlink" href="#modificacion-en-tiempo-de-ejecucion" title="Link to this heading">¶</a></h2>
+<p>Cambiar configuración dinámicamente:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">config_logs</span><span class="w"> </span><span class="kn">import</span> <span class="n">CLIENTE_CONFIG</span>
+
+<span class="c1"># Cambiar configuración en runtime</span>
+<span class="n">CLIENTE_CONFIG</span><span class="p">[</span><span class="s1">&#39;timeout&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="n">CLIENTE_CONFIG</span><span class="p">[</span><span class="s1">&#39;nombre_cliente&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;App-Modificada&#39;</span>
+
+<span class="c1"># Nota: Los cambios no afectan instancias ya creadas</span>
+<span class="c1"># Es mejor reiniciar la aplicación</span>
+</pre></div>
+</div>
+</section>
+<section id="persistencia-de-configuracion">
+<h2>Persistencia de Configuración<a class="headerlink" href="#persistencia-de-configuracion" title="Link to this heading">¶</a></h2>
+<p>Para persistir cambios en archivo:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">guardar_config</span><span class="p">():</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;SERVIDOR_CONFIG&#39;</span><span class="p">:</span> <span class="n">SERVIDOR_CONFIG</span><span class="p">,</span>
+        <span class="s1">&#39;CLIENTE_CONFIG&#39;</span><span class="p">:</span> <span class="n">CLIENTE_CONFIG</span><span class="p">,</span>
+        <span class="s1">&#39;LOGGING_CONFIG&#39;</span><span class="p">:</span> <span class="n">LOGGING_CONFIG</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;config_personalizada.json&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">cargar_config</span><span class="p">():</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;config_personalizada.json&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">config</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+            <span class="nb">globals</span><span class="p">()</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✓ Configuración personalizada cargada&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;⚠ Usando configuración por defecto&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="consideraciones-de-seguridad">
+<h2>Consideraciones de Seguridad<a class="headerlink" href="#consideraciones-de-seguridad" title="Link to this heading">¶</a></h2>
+<p><strong>No incluir información sensible:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ❌ MAL - Credenciales expuestas</span>
+<span class="n">CLIENTE_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;usuario&#39;</span><span class="p">:</span> <span class="s1">&#39;admin&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;password&#39;</span><span class="p">:</span> <span class="s1">&#39;secreto123&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="c1"># ✅ BIEN - Usar variables de entorno</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="n">CLIENTE_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;usuario&#39;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;LOG_USER&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;password&#39;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;LOG_PASS&#39;</span><span class="p">),</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Recomendaciones:</strong></p>
+<ol class="arabic simple">
+<li><p>Usar variables de entorno para credenciales</p></li>
+<li><p>No commitear archivos con configuración sensible</p></li>
+<li><p>Usar <code class="docutils literal notranslate"><span class="pre">.env</span></code> files para desarrollo local</p></li>
+<li><p>Validar configuración al inicio de la aplicación</p></li>
+</ol>
+</section>
+</section>
+
+</main>
+                        <nav aria-label="Page navigation" class="py-4 my-5 clearfix font-weight-bold border-top">
+    <a class="float-left" href="servidor_logs.html" title="Previous">
+        <span aria-hidden="true">←&nbsp;</span>servidor_logs module
+    </a>
+    <a class="float-right" href="sistema_logs.html" title="Next">
+        Sistema de Logs Cliente-Servidor <span aria-hidden="true">&nbsp;→</span>
+    </a>
+</nav>
+                    </div>
+                    
+                    <nav class="col-12 col-lg-3 pb-4">
+                        <div class="sticky-top toc page-toc" aria-labelledby="page-toc-heading">
+                            <p class="font-weight-bold" id="page-toc-heading">Page contents</p>
+                            <ul>
+<li><a class="reference internal" href="#">config_logs module</a></li>
+<li><a class="reference internal" href="#configuracion-centralizada-del-sistema-de-logs">Configuración Centralizada del Sistema de Logs</a><ul>
+<li><a class="reference internal" href="#servidor-config">SERVIDOR_CONFIG</a><ul>
+<li><a class="reference internal" href="#host">host</a></li>
+<li><a class="reference internal" href="#puerto">puerto</a></li>
+<li><a class="reference internal" href="#max-conexiones">max_conexiones</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cliente-config">CLIENTE_CONFIG</a><ul>
+<li><a class="reference internal" href="#id1">host</a></li>
+<li><a class="reference internal" href="#id2">puerto</a></li>
+<li><a class="reference internal" href="#nombre-cliente">nombre_cliente</a></li>
+<li><a class="reference internal" href="#timeout">timeout</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#logging-config">LOGGING_CONFIG</a><ul>
+<li><a class="reference internal" href="#archivo-servidor">archivo_servidor</a></li>
+<li><a class="reference internal" href="#archivo-cliente">archivo_cliente</a></li>
+<li><a class="reference internal" href="#archivo-local">archivo_local</a></li>
+<li><a class="reference internal" href="#level">level</a></li>
+<li><a class="reference internal" href="#formato">formato</a></li>
+<li><a class="reference internal" href="#fecha-formato">fecha_formato</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#mensajes">MENSAJES</a></li>
+<li><a class="reference internal" href="#configuraciones-de-ejemplo">Configuraciones de Ejemplo</a></li>
+<li><a class="reference internal" href="#validacion-de-configuracion">Validación de Configuración</a></li>
+<li><a class="reference internal" href="#modificacion-en-tiempo-de-ejecucion">Modificación en Tiempo de Ejecución</a></li>
+<li><a class="reference internal" href="#persistencia-de-configuracion">Persistencia de Configuración</a></li>
+<li><a class="reference internal" href="#consideraciones-de-seguridad">Consideraciones de Seguridad</a></li>
+</ul>
+</li>
+</ul>
+
+                        </div>
+                    </nav>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="container-fluid bg-primary text-light">
+        <div class="container">
+            <div class="row">
+        <div class="col p-4">
+            
+                <nav aria-label="Footer">
+                    <ul class="nav justify-content-center mb-2">
+                            <li class="nav-item"><a class="nav-link text-light"  href="https://github.com/jciasenza"><span class="fab fa-github"></span></a></li>
+                            <li class="nav-item"><a class="nav-link text-light"  href="https://www.linkedin.com/in/juan-carlos-iasenza-8119501a9/"><span class="fab fa-linkedin"></span></a></li>
+                            <li class="nav-item"><a class="nav-link text-light"  href="mailto:iasenzajuancarlos@gmail.com"><span class="fas fa-envelope"></span></a></li>
+                    </ul>
+                </nav>
+            
+            <div class="text-center">
+                    &copy; Copyright 2026, Juan Carlos Iasenza
+            </div>
+            <div class="text-center text-white-50 font-italic mt-3">
+                <small>
+                    Created using
+                    <a class="text-white" href="https://github.com/wagtail/sphinx_wagtail_theme" rel="nofollow" target="_blank">
+                        Sphinx Wagtail Theme 6.5.0
+                    </a>
+                    and
+                    <a class="text-white" href="https://www.sphinx-doc.org/" rel="nofollow" target="_blank">
+                        Sphinx 8.1.3
+                    </a>
+                </small>
+            </div>
+        </div>
+    </div>
+        </div>
+    </footer>
+        <script src="_static/documentation_options.js?v=e56700d4"></script>
+        <script src="_static/doctools.js?v=9bcbadda"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="_static/copybutton.js?v=f281be69"></script>
+        <script src="_static/translations.js?v=f85f4cfb"></script>
+        <script type="text/javascript" src="_static/dist/theme.js"></script>
+        <script type="text/javascript" src="_static/dist/vendor.js"></script>
+        <script type="text/javascript" src="_static/searchtools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', function() { Search.loadIndex("searchindex.js"); });
+        </script>
+        <script type="text/javascript" id="searchindexloader"></script>
+    </body>
+</html>

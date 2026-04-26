@@ -14,9 +14,9 @@
             <link rel="index" title="Índice" href="genindex.html" />
             <link rel="search" title="Búsqueda" href="search.html" />
             <link rel="top" title="documentación de GestionMusical - 4.5.0" href="#" />
-            <link rel="up" title="App Discos" href="modules.html" />
-            <link rel="next" title="Módulo de Modelos" href="model.html" />
-            <link rel="prev" title="Módulo Controlador" href="controller.html" />
+            <link rel="up" title="App Discos - Módulos del Sistema" href="modules.html" />
+            <link rel="next" title="Módulo de Modelos y Patrón Observador" href="model.html" />
+            <link rel="prev" title="App Discos - Módulos del Sistema" href="modules.html" />
     </head>
 <body>
     <script type="text/javascript" src="_static/dist/blocking.js"></script>
@@ -61,14 +61,21 @@
     <nav class="toc mt-3" aria-label="Main menu">
         <p class="caption" role="heading"><span class="caption-text">Contenidos:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="modules.html">App Discos</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="controller.html">Módulo Controlador</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">App Discos - Módulos del Sistema</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Módulo Principal</a></li>
-<li class="toctree-l2"><a class="reference internal" href="model.html">Módulo de Modelos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="validations.html">Módulo de Validaciones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model.html">Módulo de Modelos y Patrón Observador</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controller.html">Módulo Controlador</a></li>
 <li class="toctree-l2"><a class="reference internal" href="views.html">Módulo de Vistas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="validations.html">Módulo de Validaciones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cliente_logs.html">cliente_logs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="servidor_logs.html">servidor_logs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_logs.html">config_logs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_logs.html#configuracion-centralizada-del-sistema-de-logs">Configuración Centralizada del Sistema de Logs</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="sistema_logs.html">Sistema de Logs Cliente-Servidor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="patrones_dise%C3%B1o.html">Patrones de Diseño Implementados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guia_uso.html">Guía de Uso - App Discos</a></li>
 </ul>
 
     </nav>
@@ -89,7 +96,7 @@
                         <nav aria-label="breadcrumb">
     <ol class="breadcrumb m-0 p-0 bg-transparent">
         <li class="breadcrumb-item"><a href="index.html">Docs</a></li>
-            <li class="breadcrumb-item"><a href="modules.html">App Discos</a></li>
+            <li class="breadcrumb-item"><a href="modules.html">App Discos - Módulos del Sistema</a></li>
         <li class="breadcrumb-item active" aria-current="page">Módulo Principal</li>
     </ol>
 </nav>
@@ -102,7 +109,7 @@
                             <span class="dark-only"><i class="fas fa-sun"></i> Light mode</span>
                             <span class="light-only"><i class="fas fa-moon"></i> Dark mode</span>
                         </button>
-    <a class="btn btn-sm btn-light text-decoration-none" href="https://github.com/jciasenza/App-Discos/tree/dev/docs/main.rst" rel="nofollow">
+    <a class="btn btn-sm btn-light text-decoration-none" href="https://github.com/wagtail/sphinx_wagtail_theme/blob/main/docs/main.rst" rel="nofollow">
         <span class="btn-icon"><span class="fab fa-github"></span></span>
         <span class="btn-text">Edit on GitHub</span>
     </a>
@@ -121,35 +128,284 @@
                 <div class="row">
                     <div class="col-12 col-lg-9 order-last order-lg-first rst-content">
                         <main role="main" id="main">
-    <section id="module-main">
-<span id="modulo-principal"></span><h1>Módulo Principal<a class="headerlink" href="#module-main" title="Link to this heading">¶</a></h1>
-<section id="id1">
-<h2>Módulo Principal<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
-<p>Este módulo es el punto de entrada de la aplicación. Se encarga de inicializar
-la interfaz gráfica, los modelos de datos y conectar todo a través del controlador.</p>
-</section>
-<dl class="py function">
-<dt class="sig sig-object py" id="main.main">
-<span class="sig-prename descclassname"><span class="pre">main.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/main.html#main"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#main.main" title="Link to this definition">¶</a></dt>
-<dd><p>Inicializa la aplicación siguiendo el patrón MVC.</p>
-<ol class="arabic simple">
-<li><p>Crea la ventana raíz de Tkinter.</p></li>
-<li><p>Instancia los modelos de Disco, Canción y Artista.</p></li>
-<li><p>Inicializa la interfaz de usuario (Vista).</p></li>
-<li><p>Vincula los modelos y la vista mediante el Controlador.</p></li>
-<li><p>Arranca el bucle principal de la interfaz.</p></li>
-</ol>
-</dd></dl>
+    <section id="modulo-principal">
+<h1>Módulo Principal<a class="headerlink" href="#modulo-principal" title="Link to this heading">¶</a></h1>
+<section id="funcion-main">
+<h2>Función main()<a class="headerlink" href="#funcion-main" title="Link to this heading">¶</a></h2>
+<p>Punto de entrada principal de la aplicación.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Función principal que inicializa y ejecuta la aplicación&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Inicialización del sistema de logs</span>
+        <span class="n">inicializar_logs</span><span class="p">()</span>
 
+        <span class="c1"># Crear instancias de modelos con observadores</span>
+        <span class="n">model_artista</span> <span class="o">=</span> <span class="n">ArtistaModel</span><span class="p">()</span>
+        <span class="n">model_disco</span> <span class="o">=</span> <span class="n">DiscoModel</span><span class="p">()</span>
+        <span class="n">model_cancion</span> <span class="o">=</span> <span class="n">CancionModel</span><span class="p">()</span>
+
+        <span class="c1"># Configurar observadores</span>
+        <span class="n">configurar_observadores</span><span class="p">(</span><span class="n">model_artista</span><span class="p">,</span> <span class="n">model_disco</span><span class="p">,</span> <span class="n">model_cancion</span><span class="p">)</span>
+
+        <span class="c1"># Crear controlador</span>
+        <span class="n">controlador</span> <span class="o">=</span> <span class="n">Controlador</span><span class="p">()</span>
+
+        <span class="c1"># Crear vista principal</span>
+        <span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+        <span class="n">app</span> <span class="o">=</span> <span class="n">HomeView</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">controlador</span><span class="p">)</span>
+
+        <span class="c1"># Configurar cierre graceful</span>
+        <span class="n">root</span><span class="o">.</span><span class="n">protocol</span><span class="p">(</span><span class="s2">&quot;WM_DELETE_WINDOW&quot;</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">cerrar_aplicacion</span><span class="p">(</span><span class="n">root</span><span class="p">))</span>
+
+        <span class="c1"># Iniciar bucle de eventos</span>
+        <span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">critical</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error crítico en main(): </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="inicializacion-del-sistema-de-logs">
+<h2>Inicialización del Sistema de Logs<a class="headerlink" href="#inicializacion-del-sistema-de-logs" title="Link to this heading">¶</a></h2>
+<section id="inicializar-logs">
+<h3>inicializar_logs()<a class="headerlink" href="#inicializar-logs" title="Link to this heading">¶</a></h3>
+<p>Configura el sistema de logging distribuido cliente-servidor.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">inicializar_logs</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Inicializa el sistema de logs cliente-servidor&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Iniciar servidor de logs en hilo separado</span>
+        <span class="n">servidor_thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">iniciar_servidor_logs</span><span class="p">,</span> <span class="n">daemon</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">servidor_thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+        <span class="c1"># Pequeña pausa para que el servidor inicie</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+
+        <span class="c1"># Configurar cliente de logs</span>
+        <span class="k">global</span> <span class="n">cliente_logs</span>
+        <span class="n">cliente_logs</span> <span class="o">=</span> <span class="n">ClienteLogs</span><span class="p">()</span>
+
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Sistema de logs inicializado correctamente&quot;</span><span class="p">)</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error inicializando sistema de logs: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="c1"># Continuar sin logs remotos si falla</span>
+        <span class="k">pass</span>
+</pre></div>
+</div>
+<p><strong>Componentes inicializados:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Servidor TCP</strong>: Hilo daemon que acepta conexiones de logging</p></li>
+<li><p><strong>Cliente TCP</strong>: Instancia para enviar logs al servidor local</p></li>
+<li><p><strong>Logging básico</strong>: Configuración de logging de Python como respaldo</p></li>
+</ol>
+</section>
+<section id="iniciar-servidor-logs">
+<h3>iniciar_servidor_logs()<a class="headerlink" href="#iniciar-servidor-logs" title="Link to this heading">¶</a></h3>
+<p>Función que ejecuta el servidor de logs en un hilo separado.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">iniciar_servidor_logs</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Inicia el servidor de logs en puerto 9999&quot;&quot;&quot;</span>
+    <span class="n">servidor</span> <span class="o">=</span> <span class="n">ServidorLogs</span><span class="p">()</span>
+    <span class="n">servidor</span><span class="o">.</span><span class="n">iniciar</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Características:</strong>
+- Puerto fijo: 9999
+- Multihilo: Maneja múltiples conexiones simultáneas
+- Daemon thread: Se cierra automáticamente al terminar la aplicación</p>
+</section>
+</section>
+<section id="configuracion-de-observadores">
+<h2>Configuración de Observadores<a class="headerlink" href="#configuracion-de-observadores" title="Link to this heading">¶</a></h2>
+<section id="configurar-observadores-model-artista-model-disco-model-cancion">
+<h3>configurar_observadores(model_artista, model_disco, model_cancion)<a class="headerlink" href="#configurar-observadores-model-artista-model-disco-model-cancion" title="Link to this heading">¶</a></h3>
+<p>Configura el patrón observador para logging automático en todos los modelos.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">configurar_observadores</span><span class="p">(</span><span class="n">model_artista</span><span class="p">,</span> <span class="n">model_disco</span><span class="p">,</span> <span class="n">model_cancion</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Configura observadores para logging automático&quot;&quot;&quot;</span>
+
+    <span class="c1"># Crear observadores</span>
+    <span class="n">observador_log</span> <span class="o">=</span> <span class="n">ObservadorLog</span><span class="p">()</span>
+
+    <span class="c1"># Agregar observador local a todos los modelos</span>
+    <span class="n">model_artista</span><span class="o">.</span><span class="n">agregar_observador</span><span class="p">(</span><span class="n">observador_log</span><span class="p">)</span>
+    <span class="n">model_disco</span><span class="o">.</span><span class="n">agregar_observador</span><span class="p">(</span><span class="n">observador_log</span><span class="p">)</span>
+    <span class="n">model_cancion</span><span class="o">.</span><span class="n">agregar_observador</span><span class="p">(</span><span class="n">observador_log</span><span class="p">)</span>
+
+    <span class="c1"># Si hay cliente de logs disponible, agregar observador remoto</span>
+    <span class="k">if</span> <span class="n">cliente_logs</span> <span class="ow">and</span> <span class="n">cliente_logs</span><span class="o">.</span><span class="n">conectar</span><span class="p">():</span>
+        <span class="n">observador_cliente</span> <span class="o">=</span> <span class="n">ObservadorClienteLogs</span><span class="p">(</span><span class="n">cliente_logs</span><span class="p">)</span>
+        <span class="n">model_artista</span><span class="o">.</span><span class="n">agregar_observador</span><span class="p">(</span><span class="n">observador_cliente</span><span class="p">)</span>
+        <span class="n">model_disco</span><span class="o">.</span><span class="n">agregar_observador</span><span class="p">(</span><span class="n">observador_cliente</span><span class="p">)</span>
+        <span class="n">model_cancion</span><span class="o">.</span><span class="n">agregar_observador</span><span class="p">(</span><span class="n">observador_cliente</span><span class="p">)</span>
+
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Observador remoto configurado&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Cliente de logs no disponible, usando solo logging local&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Observadores configurados:</strong></p>
+<ul class="simple">
+<li><p><strong>ObservadorLog</strong>: Logging a archivo local (<code class="docutils literal notranslate"><span class="pre">app_discos.log</span></code>)</p></li>
+<li><p><strong>ObservadorClienteLogs</strong>: Logging remoto via TCP (opcional)</p></li>
+</ul>
+</section>
+</section>
+<section id="manejo-de-cierre-de-aplicacion">
+<h2>Manejo de Cierre de Aplicación<a class="headerlink" href="#manejo-de-cierre-de-aplicacion" title="Link to this heading">¶</a></h2>
+<section id="cerrar-aplicacion-root">
+<h3>cerrar_aplicacion(root)<a class="headerlink" href="#cerrar-aplicacion-root" title="Link to this heading">¶</a></h3>
+<p>Función para cerrar la aplicación de forma graceful.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">cerrar_aplicacion</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Cierra la aplicación limpiamente&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Cerrar conexión del cliente de logs</span>
+        <span class="k">if</span> <span class="n">cliente_logs</span><span class="p">:</span>
+            <span class="n">cliente_logs</span><span class="o">.</span><span class="n">cerrar</span><span class="p">()</span>
+
+        <span class="c1"># Cerrar ventana principal</span>
+        <span class="n">root</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Aplicación cerrada correctamente&quot;</span><span class="p">)</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error cerrando aplicación: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Operaciones de limpieza:</strong>
+1. Cierra conexiones TCP del cliente de logs
+2. Cierra la ventana Tkinter
+3. Registra el cierre en logs
+4. Sale del programa con código 0</p>
+</section>
+</section>
+<section id="arquitectura-general">
+<h2>Arquitectura General<a class="headerlink" href="#arquitectura-general" title="Link to this heading">¶</a></h2>
+<p><strong>Flujo de inicialización:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Configuración de logs</strong>: Servidor y cliente TCP</p></li>
+<li><p><strong>Modelos observables</strong>: Instancias con patrón observador</p></li>
+<li><p><strong>Controlador</strong>: Lógica de negocio con decoradores</p></li>
+<li><p><strong>Vista principal</strong>: Interfaz gráfica Tkinter</p></li>
+<li><p><strong>Bucle de eventos</strong>: Espera interacciones del usuario</p></li>
+</ol>
+<p><strong>Componentes principales:</strong></p>
+<ul class="simple">
+<li><p><strong>main.py</strong>: Punto de entrada y orquestación</p></li>
+<li><p><strong>model.py</strong>: Modelos de datos con observadores</p></li>
+<li><p><strong>controller.py</strong>: Lógica de negocio con decoradores</p></li>
+<li><p><strong>views/</strong>: Interfaces gráficas Tkinter</p></li>
+<li><p><strong>cliente_logs.py</strong>: Cliente TCP para logs remotos</p></li>
+<li><p><strong>servidor_logs.py</strong>: Servidor TCP para recepción de logs</p></li>
+<li><p><strong>config_logs.py</strong>: Configuraciones centralizadas</p></li>
+</ul>
+</section>
+<section id="sistema-de-logging-distribuido">
+<h2>Sistema de Logging Distribuido<a class="headerlink" href="#sistema-de-logging-distribuido" title="Link to this heading">¶</a></h2>
+<p>La aplicación implementa un sistema de logging de dos niveles:</p>
+<p><strong>Nivel Local:</strong>
+- Archivo: <code class="docutils literal notranslate"><span class="pre">app_discos.log</span></code>
+- Formato: timestamp - nivel - mensaje
+- Eventos: Todas las operaciones CRUD</p>
+<p><strong>Nivel Remoto (opcional):</strong>
+- Protocolo: TCP/IP
+- Puerto: 9999
+- Serialización: JSON personalizado
+- Eventos: Mismos que local, enviados al servidor</p>
+<p><strong>Beneficios del sistema distribuido:</strong>
+- <strong>Centralización</strong>: Logs de múltiples instancias en un servidor
+- <strong>Respaldo</strong>: Logging local como fallback
+- <strong>Monitoreo</strong>: Posibilidad de monitoreo en tiempo real
+- <strong>Escalabilidad</strong>: Arquitectura cliente-servidor extensible</p>
+</section>
+<section id="manejo-de-errores-global">
+<h2>Manejo de Errores Global<a class="headerlink" href="#manejo-de-errores-global" title="Link to this heading">¶</a></h2>
+<p><strong>Estrategias implementadas:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Try-catch en main()</strong>: Captura errores críticos de inicialización</p></li>
+<li><p><strong>Logging de errores</strong>: Todos los errores se registran</p></li>
+<li><p><strong>Cierre graceful</strong>: Limpieza de recursos al salir</p></li>
+<li><p><strong>Fallbacks</strong>: Continúa funcionando sin componentes opcionales</p></li>
+</ol>
+<p><strong>Ejemplo de manejo:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="c1"># Operación que puede fallar</span>
+    <span class="n">resultado</span> <span class="o">=</span> <span class="n">operacion_riesgosa</span><span class="p">()</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error en operacion_riesgosa: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="c1"># Continuar con operación alternativa</span>
+    <span class="n">resultado</span> <span class="o">=</span> <span class="n">operacion_alternativa</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="configuracion-de-entorno">
+<h2>Configuración de Entorno<a class="headerlink" href="#configuracion-de-entorno" title="Link to this heading">¶</a></h2>
+<p><strong>Dependencias requeridas:</strong></p>
+<ul class="simple">
+<li><p>Python 3.7+</p></li>
+<li><p>peewee (ORM)</p></li>
+<li><p>tkinter (interfaz gráfica)</p></li>
+<li><p>Módulos estándar: socket, threading, json, logging</p></li>
+</ul>
+<p><strong>Archivos de configuración:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">config_logs.py</span></code>: Configuraciones de logging</p></li>
+<li><p>Base de datos SQLite creada automáticamente</p></li>
+</ul>
+<p><strong>Variables globales:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">cliente_logs</span></code>: Instancia global del cliente TCP (None si no disponible)</p></li>
+</ul>
+</section>
+<section id="consideraciones-de-rendimiento">
+<h2>Consideraciones de Rendimiento<a class="headerlink" href="#consideraciones-de-rendimiento" title="Link to this heading">¶</a></h2>
+<p><strong>Optimizaciones implementadas:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Hilos separados</strong>: Servidor de logs no bloquea UI</p></li>
+<li><p><strong>Conexiones lazy</strong>: Cliente se conecta solo cuando hay observadores remotos</p></li>
+<li><p><strong>Logging asíncrono</strong>: Operaciones de logging no bloquean operaciones principales</p></li>
+<li><p><strong>Daemon threads</strong>: Threads se cierran automáticamente</p></li>
+</ol>
+<p><strong>Recomendaciones:</strong></p>
+<ul class="simple">
+<li><p>Monitorear uso de memoria en operaciones intensivas</p></li>
+<li><p>Considerar pool de conexiones para múltiples clientes</p></li>
+<li><p>Implementar timeouts en conexiones TCP</p></li>
+<li><p>Usar compresión para logs grandes si es necesario</p></li>
+</ul>
+</section>
+<section id="modo-de-desarrollo-vs-produccion">
+<h2>Modo de Desarrollo vs Producción<a class="headerlink" href="#modo-de-desarrollo-vs-produccion" title="Link to this heading">¶</a></h2>
+<p><strong>Modo Desarrollo:</strong>
+- Servidor de logs local incluido
+- Logging verbose activado
+- Errores mostrados en consola</p>
+<p><strong>Modo Producción:</strong>
+- Servidor de logs dedicado recomendado
+- Logging configurado según necesidades
+- Errores solo en archivos de log</p>
+<p><strong>Configuración por entorno:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;ENV&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;production&#39;</span><span class="p">:</span>
+    <span class="c1"># Configuración de producción</span>
+    <span class="n">configurar_logging_produccion</span><span class="p">()</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># Configuración de desarrollo</span>
+    <span class="n">configurar_logging_desarrollo</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
 </section>
 
 </main>
                         <nav aria-label="Page navigation" class="py-4 my-5 clearfix font-weight-bold border-top">
-    <a class="float-left" href="controller.html" title="Previous">
-        <span aria-hidden="true">←&nbsp;</span>Módulo Controlador
+    <a class="float-left" href="modules.html" title="Previous">
+        <span aria-hidden="true">←&nbsp;</span>App Discos - Módulos del Sistema
     </a>
     <a class="float-right" href="model.html" title="Next">
-        Módulo de Modelos <span aria-hidden="true">&nbsp;→</span>
+        Módulo de Modelos y Patrón Observador <span aria-hidden="true">&nbsp;→</span>
     </a>
 </nav>
                     </div>
@@ -159,8 +415,26 @@ la interfaz gráfica, los modelos de datos y conectar todo a través del control
                             <p class="font-weight-bold" id="page-toc-heading">Page contents</p>
                             <ul>
 <li><a class="reference internal" href="#">Módulo Principal</a><ul>
-<li><a class="reference internal" href="#id1">Módulo Principal</a></li>
-<li><a class="reference internal" href="#main.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li><a class="reference internal" href="#funcion-main">Función main()</a></li>
+<li><a class="reference internal" href="#inicializacion-del-sistema-de-logs">Inicialización del Sistema de Logs</a><ul>
+<li><a class="reference internal" href="#inicializar-logs">inicializar_logs()</a></li>
+<li><a class="reference internal" href="#iniciar-servidor-logs">iniciar_servidor_logs()</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configuracion-de-observadores">Configuración de Observadores</a><ul>
+<li><a class="reference internal" href="#configurar-observadores-model-artista-model-disco-model-cancion">configurar_observadores(model_artista, model_disco, model_cancion)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#manejo-de-cierre-de-aplicacion">Manejo de Cierre de Aplicación</a><ul>
+<li><a class="reference internal" href="#cerrar-aplicacion-root">cerrar_aplicacion(root)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#arquitectura-general">Arquitectura General</a></li>
+<li><a class="reference internal" href="#sistema-de-logging-distribuido">Sistema de Logging Distribuido</a></li>
+<li><a class="reference internal" href="#manejo-de-errores-global">Manejo de Errores Global</a></li>
+<li><a class="reference internal" href="#configuracion-de-entorno">Configuración de Entorno</a></li>
+<li><a class="reference internal" href="#consideraciones-de-rendimiento">Consideraciones de Rendimiento</a></li>
+<li><a class="reference internal" href="#modo-de-desarrollo-vs-produccion">Modo de Desarrollo vs Producción</a></li>
 </ul>
 </li>
 </ul>

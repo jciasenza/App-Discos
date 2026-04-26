@@ -6,7 +6,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-        <title>Módulo de Modelos &mdash; documentación de GestionMusical - 4.5.0</title>
+        <title>Módulo de Modelos y Patrón Observador &mdash; documentación de GestionMusical - 4.5.0</title>
     
     <link rel="stylesheet" type="text/css" href="_static/dist/fontawesome.css" />
       <link rel="stylesheet" type="text/css" href="_static/dist/theme.css?v=310cf088" />
@@ -14,8 +14,8 @@
             <link rel="index" title="Índice" href="genindex.html" />
             <link rel="search" title="Búsqueda" href="search.html" />
             <link rel="top" title="documentación de GestionMusical - 4.5.0" href="#" />
-            <link rel="up" title="App Discos" href="modules.html" />
-            <link rel="next" title="Módulo de Validaciones" href="validations.html" />
+            <link rel="up" title="App Discos - Módulos del Sistema" href="modules.html" />
+            <link rel="next" title="Módulo Controlador" href="controller.html" />
             <link rel="prev" title="Módulo Principal" href="main.html" />
     </head>
 <body>
@@ -61,14 +61,21 @@
     <nav class="toc mt-3" aria-label="Main menu">
         <p class="caption" role="heading"><span class="caption-text">Contenidos:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="modules.html">App Discos</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="controller.html">Módulo Controlador</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">App Discos - Módulos del Sistema</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="main.html">Módulo Principal</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Módulo de Modelos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="validations.html">Módulo de Validaciones</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Módulo de Modelos y Patrón Observador</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controller.html">Módulo Controlador</a></li>
 <li class="toctree-l2"><a class="reference internal" href="views.html">Módulo de Vistas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="validations.html">Módulo de Validaciones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cliente_logs.html">cliente_logs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="servidor_logs.html">servidor_logs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_logs.html">config_logs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_logs.html#configuracion-centralizada-del-sistema-de-logs">Configuración Centralizada del Sistema de Logs</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="sistema_logs.html">Sistema de Logs Cliente-Servidor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="patrones_dise%C3%B1o.html">Patrones de Diseño Implementados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guia_uso.html">Guía de Uso - App Discos</a></li>
 </ul>
 
     </nav>
@@ -89,8 +96,8 @@
                         <nav aria-label="breadcrumb">
     <ol class="breadcrumb m-0 p-0 bg-transparent">
         <li class="breadcrumb-item"><a href="index.html">Docs</a></li>
-            <li class="breadcrumb-item"><a href="modules.html">App Discos</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Módulo de Modelos</li>
+            <li class="breadcrumb-item"><a href="modules.html">App Discos - Módulos del Sistema</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Módulo de Modelos y Patrón Observador</li>
     </ol>
 </nav>
                     </div>
@@ -102,7 +109,7 @@
                             <span class="dark-only"><i class="fas fa-sun"></i> Light mode</span>
                             <span class="light-only"><i class="fas fa-moon"></i> Dark mode</span>
                         </button>
-    <a class="btn btn-sm btn-light text-decoration-none" href="https://github.com/jciasenza/App-Discos/tree/dev/docs/model.rst" rel="nofollow">
+    <a class="btn btn-sm btn-light text-decoration-none" href="https://github.com/wagtail/sphinx_wagtail_theme/blob/main/docs/model.rst" rel="nofollow">
         <span class="btn-icon"><span class="fab fa-github"></span></span>
         <span class="btn-text">Edit on GitHub</span>
     </a>
@@ -121,290 +128,333 @@
                 <div class="row">
                     <div class="col-12 col-lg-9 order-last order-lg-first rst-content">
                         <main role="main" id="main">
-    <section id="module-model">
-<span id="modulo-de-modelos"></span><h1>Módulo de Modelos<a class="headerlink" href="#module-model" title="Link to this heading">¶</a></h1>
-<section id="modulo-de-modelos-y-base-de-datos">
-<h2>Módulo de Modelos y Base de Datos<a class="headerlink" href="#modulo-de-modelos-y-base-de-datos" title="Link to this heading">¶</a></h2>
-<p>Este módulo define la estructura de la base de datos utilizando Peewee ORM
-y proporciona las clases encargadas de la lógica CRUD (Crear, Leer, Actualizar, Borrar).</p>
+    <section id="modulo-de-modelos-y-patron-observador">
+<h1>Módulo de Modelos y Patrón Observador<a class="headerlink" href="#modulo-de-modelos-y-patron-observador" title="Link to this heading">¶</a></h1>
+<section id="clases-de-base-de-datos">
+<h2>Clases de Base de Datos<a class="headerlink" href="#clases-de-base-de-datos" title="Link to this heading">¶</a></h2>
+<section id="basemodel">
+<h3>BaseModel<a class="headerlink" href="#basemodel" title="Link to this heading">¶</a></h3>
+<p>Clase base para todos los modelos de Peewee.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">BaseModel</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">database</span> <span class="o">=</span> <span class="n">db_discos</span>
+</pre></div>
+</div>
 </section>
-<dl class="py class">
-<dt class="sig sig-object py" id="model.Artista">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">model.</span></span><span class="sig-name descname"><span class="pre">Artista</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kw</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model.html#Artista"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#model.Artista" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#model.BaseModel" title="model.BaseModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></a></p>
-<p>Representa a un artista en la base de datos.</p>
-<dl class="simple">
-<dt>Attributes:</dt><dd><p>nombre (CharField): Nombre único del artista.
-tipo (CharField): Género o tipo de agrupación.
-info (TextField): Información biográfica adicional.
-foto (CharField): Ruta al archivo de imagen.</p>
-</dd>
-</dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="model.Artista.foto">
-<span class="sig-name descname"><span class="pre">foto</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;MagicMock</span> <span class="pre">id='2764400087712'&gt;</span></em><a class="headerlink" href="#model.Artista.foto" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<section id="artista">
+<h3>Artista<a class="headerlink" href="#artista" title="Link to this heading">¶</a></h3>
+<p>Modelo para artistas y bandas musicales.</p>
+<p><strong>Campos:</strong>
+- <code class="docutils literal notranslate"><span class="pre">id</span></code>: Identificador único (autoincremental)
+- <code class="docutils literal notranslate"><span class="pre">nombre</span></code>: Nombre del artista (único, obligatorio)
+- <code class="docutils literal notranslate"><span class="pre">tipo</span></code>: Tipo de artista (Solista, Banda, Dúo)
+- <code class="docutils literal notranslate"><span class="pre">info</span></code>: Información biográfica (opcional)
+- <code class="docutils literal notranslate"><span class="pre">foto</span></code>: Ruta a la imagen de perfil (opcional)</p>
+</section>
+<section id="discos">
+<h3>Discos<a class="headerlink" href="#discos" title="Link to this heading">¶</a></h3>
+<p>Modelo para discos musicales.</p>
+<p><strong>Campos:</strong>
+- <code class="docutils literal notranslate"><span class="pre">id</span></code>: Identificador único (autoincremental)
+- <code class="docutils literal notranslate"><span class="pre">artista</span></code>: ForeignKey al artista (con CASCADE)
+- <code class="docutils literal notranslate"><span class="pre">titulo</span></code>: Título del disco (obligatorio)
+- <code class="docutils literal notranslate"><span class="pre">anio</span></code>: Año de lanzamiento (opcional)
+- <code class="docutils literal notranslate"><span class="pre">formato</span></code>: Formato físico/digital (obligatorio)
+- <code class="docutils literal notranslate"><span class="pre">portada</span></code>: Ruta a la imagen de portada (opcional)</p>
+</section>
+<section id="cancion">
+<h3>Cancion<a class="headerlink" href="#cancion" title="Link to this heading">¶</a></h3>
+<p>Modelo para canciones individuales.</p>
+<p><strong>Campos:</strong>
+- <code class="docutils literal notranslate"><span class="pre">id</span></code>: Identificador único (autoincremental)
+- <code class="docutils literal notranslate"><span class="pre">numero_pista</span></code>: Número de pista en el disco
+- <code class="docutils literal notranslate"><span class="pre">titulo</span></code>: Título de la canción (obligatorio)
+- <code class="docutils literal notranslate"><span class="pre">duracion</span></code>: Duración en formato string (opcional)
+- <code class="docutils literal notranslate"><span class="pre">disco</span></code>: ForeignKey al disco (con CASCADE)</p>
+<p><strong>Restricciones:</strong>
+- UNIQUE(numero_pista, disco) - No puede haber dos pistas con mismo número en un disco</p>
+</section>
+</section>
+<section id="patron-observador">
+<h2>Patrón Observador<a class="headerlink" href="#patron-observador" title="Link to this heading">¶</a></h2>
+<p>El módulo implementa el patrón observador para logging automático de operaciones.</p>
+<section id="observable">
+<h3>Observable<a class="headerlink" href="#observable" title="Link to this heading">¶</a></h3>
+<p>Clase base que permite ser observada por múltiples observadores.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Observable</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_observadores</span> <span class="o">=</span> <span class="p">[]</span>
 
-<dl class="py attribute">
-<dt class="sig sig-object py" id="model.Artista.info">
-<span class="sig-name descname"><span class="pre">info</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;MagicMock</span> <span class="pre">id='2764400047008'&gt;</span></em><a class="headerlink" href="#model.Artista.info" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+    <span class="k">def</span><span class="w"> </span><span class="nf">agregar_observador</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">observador</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Agrega un observador a la lista&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_observadores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">observador</span><span class="p">)</span>
 
-<dl class="py attribute">
-<dt class="sig sig-object py" id="model.Artista.nombre">
-<span class="sig-name descname"><span class="pre">nombre</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;MagicMock</span> <span class="pre">id='2764399918672'&gt;</span></em><a class="headerlink" href="#model.Artista.nombre" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+    <span class="k">def</span><span class="w"> </span><span class="nf">eliminar_observador</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">observador</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Elimina un observador de la lista&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_observadores</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">observador</span><span class="p">)</span>
 
-<dl class="py attribute">
-<dt class="sig sig-object py" id="model.Artista.tipo">
-<span class="sig-name descname"><span class="pre">tipo</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;MagicMock</span> <span class="pre">id='2764400039328'&gt;</span></em><a class="headerlink" href="#model.Artista.tipo" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+    <span class="k">def</span><span class="w"> </span><span class="nf">notificar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evento</span><span class="p">,</span> <span class="n">datos</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Notifica a todos los observadores sobre un evento&quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">obs</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_observadores</span><span class="p">:</span>
+            <span class="n">obs</span><span class="o">.</span><span class="n">actualizar</span><span class="p">(</span><span class="n">evento</span><span class="p">,</span> <span class="n">datos</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="observadorlog">
+<h3>ObservadorLog<a class="headerlink" href="#observadorlog" title="Link to this heading">¶</a></h3>
+<p>Observador que registra eventos en archivo local usando logging de Python.</p>
+<p><strong>Niveles de log por evento:</strong></p>
+<ul class="simple">
+<li><p><strong>INFO</strong>: Eventos de creación (<code class="docutils literal notranslate"><span class="pre">*_agregado</span></code>, <code class="docutils literal notranslate"><span class="pre">*_agregada</span></code>)</p></li>
+<li><p><strong>WARNING</strong>: Eventos de actualización (<code class="docutils literal notranslate"><span class="pre">*_actualizado</span></code>, <code class="docutils literal notranslate"><span class="pre">*_actualizada</span></code>)</p></li>
+<li><p><strong>ERROR</strong>: Eventos de eliminación (<code class="docutils literal notranslate"><span class="pre">*_eliminado</span></code>, <code class="docutils literal notranslate"><span class="pre">*_eliminada</span></code>)</p></li>
+</ul>
+<p><strong>Archivo generado:</strong> <code class="docutils literal notranslate"><span class="pre">app_discos.log</span></code></p>
+</section>
+<section id="observadorclientelogs">
+<h3>ObservadorClienteLogs<a class="headerlink" href="#observadorclientelogs" title="Link to this heading">¶</a></h3>
+<p>Observador que envía eventos a un servidor TCP remoto para logging centralizado.</p>
+<p><strong>Características:</strong></p>
+<ul class="simple">
+<li><p>Conexión TCP automática al servidor de logs</p></li>
+<li><p>Serialización JSON personalizada para objetos complejos</p></li>
+<li><p>Conversión automática de modelos Peewee a diccionarios</p></li>
+<li><p>Manejo de tipos especiales (sets, datetime, etc.)</p></li>
+<li><p>Reconexión automática en caso de fallo</p></li>
+</ul>
+<p><strong>Método ``_convertir_datos()``:</strong></p>
+<p>Convierte objetos de cualquier tipo a formato serializable:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@staticmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_convertir_datos</span><span class="p">(</span><span class="n">datos</span><span class="p">):</span>
+    <span class="c1"># Maneja modelos Peewee</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">datos</span><span class="p">,</span> <span class="s1">&#39;_meta&#39;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">{</span><span class="n">campo</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">datos</span><span class="p">,</span> <span class="n">campo</span><span class="p">)</span> <span class="k">for</span> <span class="n">campo</span> <span class="ow">in</span> <span class="n">datos</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">fields</span><span class="p">}</span>
+    <span class="c1"># Maneja diccionarios con sets</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">datos</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">datos</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="nb">set</span><span class="p">)}</span>
+    <span class="c1"># Otros tipos</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">datos</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="clases-crud">
+<h2>Clases CRUD<a class="headerlink" href="#clases-crud" title="Link to this heading">¶</a></h2>
+<section id="artistamodel">
+<h3>ArtistaModel<a class="headerlink" href="#artistamodel" title="Link to this heading">¶</a></h3>
+<p>Modelo de negocio para operaciones CRUD con artistas.</p>
+<p><strong>Hereda de:</strong> <code class="docutils literal notranslate"><span class="pre">Observable</span></code></p>
+<p><strong>Métodos principales:</strong></p>
+<section id="agregar-data">
+<h4>agregar(data)<a class="headerlink" href="#agregar-data" title="Link to this heading">¶</a></h4>
+<p>Crea un nuevo artista y notifica a los observadores.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">artista</span> <span class="o">=</span> <span class="n">ArtistaModel</span><span class="p">()</span>
+<span class="n">nuevo_artista</span> <span class="o">=</span> <span class="n">artista</span><span class="o">.</span><span class="n">agregar</span><span class="p">({</span>
+    <span class="s1">&#39;nombre&#39;</span><span class="p">:</span> <span class="s1">&#39;The Beatles&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;tipo&#39;</span><span class="p">:</span> <span class="s1">&#39;Banda&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;info&#39;</span><span class="p">:</span> <span class="s1">&#39;Banda legendaria de rock&#39;</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+</section>
+<section id="listar">
+<h4>listar()<a class="headerlink" href="#listar" title="Link to this heading">¶</a></h4>
+<p>Retorna todos los artistas ordenados por nombre.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">artistas</span> <span class="o">=</span> <span class="n">ArtistaModel</span><span class="p">()</span><span class="o">.</span><span class="n">listar</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">artista</span> <span class="ow">in</span> <span class="n">artistas</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">artista</span><span class="o">.</span><span class="n">nombre</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="obtener-artista-id">
+<h4>obtener(artista_id)<a class="headerlink" href="#obtener-artista-id" title="Link to this heading">¶</a></h4>
+<p>Obtiene un artista específico por ID.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">artista</span> <span class="o">=</span> <span class="n">ArtistaModel</span><span class="p">()</span><span class="o">.</span><span class="n">obtener</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">artista</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Encontrado: </span><span class="si">{</span><span class="n">artista</span><span class="o">.</span><span class="n">nombre</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="actualizar-artista-id-data">
+<h4>actualizar(artista_id, data)<a class="headerlink" href="#actualizar-artista-id-data" title="Link to this heading">¶</a></h4>
+<p>Actualiza los datos de un artista.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">resultado</span> <span class="o">=</span> <span class="n">ArtistaModel</span><span class="p">()</span><span class="o">.</span><span class="n">actualizar</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;tipo&#39;</span><span class="p">:</span> <span class="s1">&#39;Super Banda&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+</section>
+<section id="eliminar-artista-id">
+<h4>eliminar(artista_id)<a class="headerlink" href="#eliminar-artista-id" title="Link to this heading">¶</a></h4>
+<p>Elimina un artista de la base de datos.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">resultado</span> <span class="o">=</span> <span class="n">ArtistaModel</span><span class="p">()</span><span class="o">.</span><span class="n">eliminar</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="buscar-texto">
+<h4>buscar(texto)<a class="headerlink" href="#buscar-texto" title="Link to this heading">¶</a></h4>
+<p>Busca artistas por nombre (búsqueda insensible a mayúsculas).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">resultados</span> <span class="o">=</span> <span class="n">ArtistaModel</span><span class="p">()</span><span class="o">.</span><span class="n">buscar</span><span class="p">(</span><span class="s1">&#39;beatles&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="discomodel">
+<h3>DiscoModel<a class="headerlink" href="#discomodel" title="Link to this heading">¶</a></h3>
+<p>Modelo de negocio para operaciones CRUD con discos.</p>
+<p><strong>Hereda de:</strong> <code class="docutils literal notranslate"><span class="pre">Observable</span></code></p>
+<p><strong>Métodos principales:</strong></p>
+<section id="id1">
+<h4>agregar(data)<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h4>
+<p>Crea un nuevo disco.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">disco</span> <span class="o">=</span> <span class="n">DiscoModel</span><span class="p">()</span>
+<span class="n">nuevo_disco</span> <span class="o">=</span> <span class="n">disco</span><span class="o">.</span><span class="n">agregar</span><span class="p">({</span>
+    <span class="s1">&#39;artista&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>  <span class="c1"># ID del artista</span>
+    <span class="s1">&#39;titulo&#39;</span><span class="p">:</span> <span class="s1">&#39;Abbey Road&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;anio&#39;</span><span class="p">:</span> <span class="mi">1969</span><span class="p">,</span>
+    <span class="s1">&#39;formato&#39;</span><span class="p">:</span> <span class="s1">&#39;Vinilo&#39;</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h4>listar()<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h4>
+<p>Retorna todos los discos con información del artista, ordenados por ID descendente.</p>
+</section>
+<section id="obtener-disco-id">
+<h4>obtener(disco_id)<a class="headerlink" href="#obtener-disco-id" title="Link to this heading">¶</a></h4>
+<p>Obtiene un disco específico con su artista relacionado.</p>
+</section>
+<section id="actualizar-disco-id-data">
+<h4>actualizar(disco_id, data)<a class="headerlink" href="#actualizar-disco-id-data" title="Link to this heading">¶</a></h4>
+<p>Actualiza los datos de un disco.</p>
+</section>
+<section id="eliminar-disco-id">
+<h4>eliminar(disco_id)<a class="headerlink" href="#eliminar-disco-id" title="Link to this heading">¶</a></h4>
+<p>Elimina un disco y todas sus canciones asociadas (CASCADE).</p>
+</section>
+<section id="id3">
+<h4>buscar(texto)<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h4>
+<p>Busca discos por título o nombre de artista.</p>
+</section>
+</section>
+<section id="cancionmodel">
+<h3>CancionModel<a class="headerlink" href="#cancionmodel" title="Link to this heading">¶</a></h3>
+<p>Modelo de negocio para operaciones CRUD con canciones.</p>
+<p><strong>Hereda de:</strong> <code class="docutils literal notranslate"><span class="pre">Observable</span></code></p>
+<p><strong>Métodos principales:</strong></p>
+<section id="id4">
+<h4>agregar(data)<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h4>
+<p>Crea una nueva canción.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cancion</span> <span class="o">=</span> <span class="n">CancionModel</span><span class="p">()</span>
+<span class="n">nueva_cancion</span> <span class="o">=</span> <span class="n">cancion</span><span class="o">.</span><span class="n">agregar</span><span class="p">({</span>
+    <span class="s1">&#39;numero_pista&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s1">&#39;titulo&#39;</span><span class="p">:</span> <span class="s1">&#39;Come Together&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;disco&#39;</span><span class="p">:</span> <span class="mi">1</span>  <span class="c1"># ID del disco</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+</section>
+<section id="listar-por-disco-disco-id">
+<h4>listar_por_disco(disco_id)<a class="headerlink" href="#listar-por-disco-disco-id" title="Link to this heading">¶</a></h4>
+<p>Obtiene todas las canciones de un disco específico, ordenadas por número de pista.</p>
+</section>
+<section id="listar-todas-con-disco">
+<h4>listar_todas_con_disco()<a class="headerlink" href="#listar-todas-con-disco" title="Link to this heading">¶</a></h4>
+<p>Obtiene todas las canciones con información de disco y artista.</p>
+</section>
+<section id="actualizar-cancion-id-data">
+<h4>actualizar(cancion_id, data)<a class="headerlink" href="#actualizar-cancion-id-data" title="Link to this heading">¶</a></h4>
+<p>Actualiza los datos de una canción.</p>
+</section>
+<section id="eliminar-cancion-id">
+<h4>eliminar(cancion_id)<a class="headerlink" href="#eliminar-cancion-id" title="Link to this heading">¶</a></h4>
+<p>Elimina una canción específica.</p>
+</section>
+<section id="id5">
+<h4>buscar(texto)<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h4>
+<p>Busca canciones por título, nombre de artista o título de disco.</p>
+</section>
+</section>
+</section>
+<section id="funciones-de-inicializacion">
+<h2>Funciones de Inicialización<a class="headerlink" href="#funciones-de-inicializacion" title="Link to this heading">¶</a></h2>
+<section id="inicializar-db">
+<h3>inicializar_db()<a class="headerlink" href="#inicializar-db" title="Link to this heading">¶</a></h3>
+<p>Función que inicializa la conexión a la base de datos y crea las tablas si no existen.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">inicializar_db</span><span class="p">()</span>  <span class="c1"># Se ejecuta automáticamente al importar el módulo</span>
+</pre></div>
+</div>
+<p><strong>Operaciones realizadas:</strong>
+1. Verifica si la conexión está cerrada
+2. Conecta a la base de datos SQLite
+3. Activa claves foráneas (PRAGMA foreign_keys = ON)
+4. Crea las tablas Artista, Discos y Cancion si no existen</p>
+</section>
+</section>
+<section id="configuracion-de-logging">
+<h2>Configuración de Logging<a class="headerlink" href="#configuracion-de-logging" title="Link to this heading">¶</a></h2>
+<p>El módulo configura logging global para toda la aplicación:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span>
+    <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;app_discos.log&#39;</span><span class="p">,</span>
+    <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
+    <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%(asctime)s</span><span class="s1"> - </span><span class="si">%(levelname)s</span><span class="s1"> - </span><span class="si">%(message)s</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="n">datefmt</span><span class="o">=</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1"> %H:%M:%S&#39;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Archivo generado:</strong> <code class="docutils literal notranslate"><span class="pre">app_discos.log</span></code></p>
+<p><strong>Ejemplo de salida:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2026</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">26</span> <span class="mi">10</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">45</span> <span class="o">-</span> <span class="n">INFO</span> <span class="o">-</span> <span class="n">Evento</span><span class="p">:</span> <span class="n">artista_agregado</span> <span class="o">|</span> <span class="n">Datos</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">Artista</span> <span class="nb">object</span><span class="o">&gt;</span>
+<span class="mi">2026</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">26</span> <span class="mi">10</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">12</span> <span class="o">-</span> <span class="n">WARNING</span> <span class="o">-</span> <span class="n">Evento</span><span class="p">:</span> <span class="n">disco_actualizado</span> <span class="o">|</span> <span class="n">Datos</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;anio&#39;</span><span class="p">:</span> <span class="mi">1969</span><span class="p">}}</span>
+<span class="mi">2026</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">26</span> <span class="mi">10</span><span class="p">:</span><span class="mi">32</span><span class="p">:</span><span class="mi">00</span> <span class="o">-</span> <span class="n">ERROR</span> <span class="o">-</span> <span class="n">Evento</span><span class="p">:</span> <span class="n">artista_eliminado</span> <span class="o">|</span> <span class="n">Datos</span><span class="p">:</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</section>
+<section id="integracion-con-sistema-de-logs">
+<h2>Integración con Sistema de Logs<a class="headerlink" href="#integracion-con-sistema-de-logs" title="Link to this heading">¶</a></h2>
+<p>Los modelos se integran automáticamente con el sistema de logs:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># En main.py</span>
+<span class="n">model_artista</span> <span class="o">=</span> <span class="n">ArtistaModel</span><span class="p">()</span>
 
-</dd></dl>
+<span class="c1"># Agregar observadores</span>
+<span class="n">observador_log</span> <span class="o">=</span> <span class="n">ObservadorLog</span><span class="p">()</span>
+<span class="n">model_artista</span><span class="o">.</span><span class="n">agregar_observador</span><span class="p">(</span><span class="n">observador_log</span><span class="p">)</span>
 
-<dl class="py class">
-<dt class="sig sig-object py" id="model.ArtistaModel">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">model.</span></span><span class="sig-name descname"><span class="pre">ArtistaModel</span></span><a class="reference internal" href="_modules/model.html#ArtistaModel"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#model.ArtistaModel" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Lógica de negocio para la gestión de Artistas.</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="model.ArtistaModel.actualizar">
-<span class="sig-name descname"><span class="pre">actualizar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">artista_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model.html#ArtistaModel.actualizar"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#model.ArtistaModel.actualizar" title="Link to this definition">¶</a></dt>
-<dd><p>Actualiza los datos de un artista existente.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="model.ArtistaModel.agregar">
-<span class="sig-name descname"><span class="pre">agregar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model.html#ArtistaModel.agregar"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#model.ArtistaModel.agregar" title="Link to this definition">¶</a></dt>
-<dd><p>Crea un nuevo artista.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>data (dict): Diccionario con los campos del artista.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="model.ArtistaModel.buscar">
-<span class="sig-name descname"><span class="pre">buscar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">texto</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model.html#ArtistaModel.buscar"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#model.ArtistaModel.buscar" title="Link to this definition">¶</a></dt>
-<dd><p>Busca artistas cuyo nombre contenga el texto proporcionado.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="model.ArtistaModel.eliminar">
-<span class="sig-name descname"><span class="pre">eliminar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">artista_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model.html#ArtistaModel.eliminar"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#model.ArtistaModel.eliminar" title="Link to this definition">¶</a></dt>
-<dd><p>Elimina un artista de la base de datos.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="model.ArtistaModel.listar">
-<span class="sig-name descname"><span class="pre">listar</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/model.html#ArtistaModel.listar"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#model.ArtistaModel.listar" title="Link to this definition">¶</a></dt>
-<dd><p>Retorna todos los artistas ordenados por nombre.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="model.ArtistaModel.obtener">
-<span class="sig-name descname"><span class="pre">obtener</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">artista_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model.html#ArtistaModel.obtener"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#model.ArtistaModel.obtener" title="Link to this definition">¶</a></dt>
-<dd><p>Obtiene un artista por su ID o None si no existe.</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="model.BaseModel">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">model.</span></span><span class="sig-name descname"><span class="pre">BaseModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kw</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model.html#BaseModel"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#model.BaseModel" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">MockModel</span></code></p>
-<p>Clase base para todos los modelos de la base de datos.</p>
-<dl class="py class">
-<dt class="sig sig-object py" id="model.BaseModel.Meta">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/model.html#BaseModel.Meta"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#model.BaseModel.Meta" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="model.BaseModel.Meta.database">
-<span class="sig-name descname"><span class="pre">database</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;MockSqliteDatabase</span> <span class="pre">spec='str'</span> <span class="pre">id='2764399914592'&gt;</span></em><a class="headerlink" href="#model.BaseModel.Meta.database" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="model.Cancion">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">model.</span></span><span class="sig-name descname"><span class="pre">Cancion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kw</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model.html#Cancion"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#model.Cancion" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#model.BaseModel" title="model.BaseModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></a></p>
-<p>Representa una pista individual dentro de un disco.</p>
-<dl class="simple">
-<dt>Attributes:</dt><dd><p>numero_pista (IntegerField): Orden de la canción en el disco.
-titulo (CharField): Título de la canción.
-duracion (CharField): Duración en formato MM:SS.
-disco (ForeignKeyField): Referencia al disco al que pertenece.</p>
-</dd>
-</dl>
-<dl class="py class">
-<dt class="sig sig-object py" id="model.Cancion.Meta">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/model.html#Cancion.Meta"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#model.Cancion.Meta" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="model.Cancion.Meta.indexes">
-<span class="sig-name descname"><span class="pre">indexes</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">((('numero_pista',</span> <span class="pre">'disco'),</span> <span class="pre">True),)</span></em><a class="headerlink" href="#model.Cancion.Meta.indexes" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="model.Cancion.disco">
-<span class="sig-name descname"><span class="pre">disco</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;MagicMock</span> <span class="pre">spec='Discos'</span> <span class="pre">id='2764400264384'&gt;</span></em><a class="headerlink" href="#model.Cancion.disco" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="model.Cancion.duracion">
-<span class="sig-name descname"><span class="pre">duracion</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;MagicMock</span> <span class="pre">id='2764400240064'&gt;</span></em><a class="headerlink" href="#model.Cancion.duracion" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="model.Cancion.numero_pista">
-<span class="sig-name descname"><span class="pre">numero_pista</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;MagicMock</span> <span class="pre">id='2764400224592'&gt;</span></em><a class="headerlink" href="#model.Cancion.numero_pista" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="model.Cancion.titulo">
-<span class="sig-name descname"><span class="pre">titulo</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;MagicMock</span> <span class="pre">id='2764400232336'&gt;</span></em><a class="headerlink" href="#model.Cancion.titulo" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="model.CancionModel">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">model.</span></span><span class="sig-name descname"><span class="pre">CancionModel</span></span><a class="reference internal" href="_modules/model.html#CancionModel"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#model.CancionModel" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Lógica de negocio para la gestión de Canciones.</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="model.CancionModel.actualizar">
-<span class="sig-name descname"><span class="pre">actualizar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cancion_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model.html#CancionModel.actualizar"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#model.CancionModel.actualizar" title="Link to this definition">¶</a></dt>
-<dd><p>Actualiza los datos de una canción.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="model.CancionModel.agregar">
-<span class="sig-name descname"><span class="pre">agregar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model.html#CancionModel.agregar"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#model.CancionModel.agregar" title="Link to this definition">¶</a></dt>
-<dd><p>Agrega una canción a un disco.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="model.CancionModel.buscar">
-<span class="sig-name descname"><span class="pre">buscar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">texto</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model.html#CancionModel.buscar"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#model.CancionModel.buscar" title="Link to this definition">¶</a></dt>
-<dd><p>Búsqueda global de canciones por título, artista o disco.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="model.CancionModel.eliminar">
-<span class="sig-name descname"><span class="pre">eliminar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cancion_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model.html#CancionModel.eliminar"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#model.CancionModel.eliminar" title="Link to this definition">¶</a></dt>
-<dd><p>Elimina una canción por su ID.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="model.CancionModel.listar_por_disco">
-<span class="sig-name descname"><span class="pre">listar_por_disco</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">disco_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model.html#CancionModel.listar_por_disco"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#model.CancionModel.listar_por_disco" title="Link to this definition">¶</a></dt>
-<dd><p>Retorna las canciones de un disco específico ordenadas por pista.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="model.CancionModel.listar_todas_con_disco">
-<span class="sig-name descname"><span class="pre">listar_todas_con_disco</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/model.html#CancionModel.listar_todas_con_disco"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#model.CancionModel.listar_todas_con_disco" title="Link to this definition">¶</a></dt>
-<dd><p>Lista todas las canciones con su información de disco y artista.</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="model.DiscoModel">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">model.</span></span><span class="sig-name descname"><span class="pre">DiscoModel</span></span><a class="reference internal" href="_modules/model.html#DiscoModel"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#model.DiscoModel" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Lógica de negocio para la gestión de Discos.</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="model.DiscoModel.actualizar">
-<span class="sig-name descname"><span class="pre">actualizar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">disco_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model.html#DiscoModel.actualizar"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#model.DiscoModel.actualizar" title="Link to this definition">¶</a></dt>
-<dd><p>Actualiza un disco existente.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="model.DiscoModel.agregar">
-<span class="sig-name descname"><span class="pre">agregar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model.html#DiscoModel.agregar"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#model.DiscoModel.agregar" title="Link to this definition">¶</a></dt>
-<dd><p>Crea un nuevo disco.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="model.DiscoModel.buscar">
-<span class="sig-name descname"><span class="pre">buscar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">texto</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model.html#DiscoModel.buscar"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#model.DiscoModel.buscar" title="Link to this definition">¶</a></dt>
-<dd><p>Busca discos por título o nombre del artista.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="model.DiscoModel.eliminar">
-<span class="sig-name descname"><span class="pre">eliminar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">disco_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model.html#DiscoModel.eliminar"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#model.DiscoModel.eliminar" title="Link to this definition">¶</a></dt>
-<dd><p>Elimina un disco de la base de datos.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="model.DiscoModel.listar">
-<span class="sig-name descname"><span class="pre">listar</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/model.html#DiscoModel.listar"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#model.DiscoModel.listar" title="Link to this definition">¶</a></dt>
-<dd><p>Lista todos los discos incluyendo la información de su artista.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="model.DiscoModel.obtener">
-<span class="sig-name descname"><span class="pre">obtener</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">disco_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model.html#DiscoModel.obtener"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#model.DiscoModel.obtener" title="Link to this definition">¶</a></dt>
-<dd><p>Obtiene un disco por su ID.</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="model.Discos">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">model.</span></span><span class="sig-name descname"><span class="pre">Discos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kw</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model.html#Discos"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#model.Discos" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#model.BaseModel" title="model.BaseModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></a></p>
-<p>Representa un álbum musical vinculado a un artista.</p>
-<dl class="simple">
-<dt>Attributes:</dt><dd><p>artista (ForeignKeyField): Referencia al artista creador.
-titulo (CharField): Título del disco.
-anio (IntegerField): Año de lanzamiento.
-formato (CharField): Formato físico o digital (CD, Vinilo, etc).
-portada (CharField): Ruta a la imagen de portada.</p>
-</dd>
-</dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="model.Discos.anio">
-<span class="sig-name descname"><span class="pre">anio</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;MagicMock</span> <span class="pre">id='2764400168432'&gt;</span></em><a class="headerlink" href="#model.Discos.anio" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="model.Discos.artista">
-<span class="sig-name descname"><span class="pre">artista</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;MagicMock</span> <span class="pre">spec='Artista'</span> <span class="pre">id='2764400095392'&gt;</span></em><a class="headerlink" href="#model.Discos.artista" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="model.Discos.formato">
-<span class="sig-name descname"><span class="pre">formato</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;MagicMock</span> <span class="pre">id='2764400176208'&gt;</span></em><a class="headerlink" href="#model.Discos.formato" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="model.Discos.portada">
-<span class="sig-name descname"><span class="pre">portada</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;MagicMock</span> <span class="pre">id='2764400216720'&gt;</span></em><a class="headerlink" href="#model.Discos.portada" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="model.Discos.titulo">
-<span class="sig-name descname"><span class="pre">titulo</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;MagicMock</span> <span class="pre">id='2764400095488'&gt;</span></em><a class="headerlink" href="#model.Discos.titulo" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="model.inicializar_db">
-<span class="sig-prename descclassname"><span class="pre">model.</span></span><span class="sig-name descname"><span class="pre">inicializar_db</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/model.html#inicializar_db"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#model.inicializar_db" title="Link to this definition">¶</a></dt>
-<dd><p>Conecta a la base de datos, activa claves foráneas y crea las tablas
-si estas no existen.</p>
-</dd></dl>
-
+<span class="c1"># Si hay servidor disponible</span>
+<span class="n">cliente_logs</span> <span class="o">=</span> <span class="n">ClienteLogs</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">cliente_logs</span><span class="o">.</span><span class="n">conectar</span><span class="p">():</span>
+    <span class="n">observador_cliente</span> <span class="o">=</span> <span class="n">ObservadorClienteLogs</span><span class="p">(</span><span class="n">cliente_logs</span><span class="p">)</span>
+    <span class="n">model_artista</span><span class="o">.</span><span class="n">agregar_observador</span><span class="p">(</span><span class="n">observador_cliente</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Flujo de notificación:</strong></p>
+<ol class="arabic simple">
+<li><p>Usuario ejecuta operación (ej: <code class="docutils literal notranslate"><span class="pre">agregar()</span></code>)</p></li>
+<li><p>Modelo ejecuta lógica de negocio</p></li>
+<li><p>Modelo llama <code class="docutils literal notranslate"><span class="pre">notificar(evento,</span> <span class="pre">datos)</span></code></p></li>
+<li><p>Todos los observadores reciben la notificación</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ObservadorLog</span></code> escribe en archivo local</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ObservadorClienteLogs</span></code> envía al servidor remoto</p></li>
+</ol>
+</section>
+<section id="consideraciones-de-rendimiento">
+<h2>Consideraciones de Rendimiento<a class="headerlink" href="#consideraciones-de-rendimiento" title="Link to this heading">¶</a></h2>
+<p><strong>Optimizaciones implementadas:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Lazy Loading</strong>: Peewee carga datos solo cuando se necesitan</p></li>
+<li><p><strong>Joins eficientes</strong>: Consultas con JOIN para evitar N+1 queries</p></li>
+<li><p><strong>Índices</strong>: Índice único en (numero_pista, disco) para Cancion</p></li>
+<li><p><strong>Conexión persistente</strong>: Reutilización de conexión a BD</p></li>
+<li><p><strong>Logging asíncrono</strong>: Los observadores no bloquean operaciones principales</p></li>
+</ol>
+<p><strong>Recomendaciones:</strong></p>
+<ul class="simple">
+<li><p>Usar <code class="docutils literal notranslate"><span class="pre">select()</span></code> en lugar de <code class="docutils literal notranslate"><span class="pre">get()</span></code> para múltiples registros</p></li>
+<li><p>Implementar paginación para listados grandes</p></li>
+<li><p>Considerar índices adicionales según patrones de consulta comunes</p></li>
+<li><p>Monitorear uso de memoria en operaciones con muchos datos</p></li>
+</ul>
+</section>
 </section>
 
 </main>
@@ -412,8 +462,8 @@ si estas no existen.</p>
     <a class="float-left" href="main.html" title="Previous">
         <span aria-hidden="true">←&nbsp;</span>Módulo Principal
     </a>
-    <a class="float-right" href="validations.html" title="Next">
-        Módulo de Validaciones <span aria-hidden="true">&nbsp;→</span>
+    <a class="float-right" href="controller.html" title="Next">
+        Módulo Controlador <span aria-hidden="true">&nbsp;→</span>
     </a>
 </nav>
                     </div>
@@ -422,69 +472,57 @@ si estas no existen.</p>
                         <div class="sticky-top toc page-toc" aria-labelledby="page-toc-heading">
                             <p class="font-weight-bold" id="page-toc-heading">Page contents</p>
                             <ul>
-<li><a class="reference internal" href="#">Módulo de Modelos</a><ul>
-<li><a class="reference internal" href="#modulo-de-modelos-y-base-de-datos">Módulo de Modelos y Base de Datos</a></li>
-<li><a class="reference internal" href="#model.Artista"><code class="docutils literal notranslate"><span class="pre">Artista</span></code></a><ul>
-<li><a class="reference internal" href="#model.Artista.foto"><code class="docutils literal notranslate"><span class="pre">Artista.foto</span></code></a></li>
-<li><a class="reference internal" href="#model.Artista.info"><code class="docutils literal notranslate"><span class="pre">Artista.info</span></code></a></li>
-<li><a class="reference internal" href="#model.Artista.nombre"><code class="docutils literal notranslate"><span class="pre">Artista.nombre</span></code></a></li>
-<li><a class="reference internal" href="#model.Artista.tipo"><code class="docutils literal notranslate"><span class="pre">Artista.tipo</span></code></a></li>
+<li><a class="reference internal" href="#">Módulo de Modelos y Patrón Observador</a><ul>
+<li><a class="reference internal" href="#clases-de-base-de-datos">Clases de Base de Datos</a><ul>
+<li><a class="reference internal" href="#basemodel">BaseModel</a></li>
+<li><a class="reference internal" href="#artista">Artista</a></li>
+<li><a class="reference internal" href="#discos">Discos</a></li>
+<li><a class="reference internal" href="#cancion">Cancion</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#model.ArtistaModel"><code class="docutils literal notranslate"><span class="pre">ArtistaModel</span></code></a><ul>
-<li><a class="reference internal" href="#model.ArtistaModel.actualizar"><code class="docutils literal notranslate"><span class="pre">ArtistaModel.actualizar()</span></code></a></li>
-<li><a class="reference internal" href="#model.ArtistaModel.agregar"><code class="docutils literal notranslate"><span class="pre">ArtistaModel.agregar()</span></code></a></li>
-<li><a class="reference internal" href="#model.ArtistaModel.buscar"><code class="docutils literal notranslate"><span class="pre">ArtistaModel.buscar()</span></code></a></li>
-<li><a class="reference internal" href="#model.ArtistaModel.eliminar"><code class="docutils literal notranslate"><span class="pre">ArtistaModel.eliminar()</span></code></a></li>
-<li><a class="reference internal" href="#model.ArtistaModel.listar"><code class="docutils literal notranslate"><span class="pre">ArtistaModel.listar()</span></code></a></li>
-<li><a class="reference internal" href="#model.ArtistaModel.obtener"><code class="docutils literal notranslate"><span class="pre">ArtistaModel.obtener()</span></code></a></li>
+<li><a class="reference internal" href="#patron-observador">Patrón Observador</a><ul>
+<li><a class="reference internal" href="#observable">Observable</a></li>
+<li><a class="reference internal" href="#observadorlog">ObservadorLog</a></li>
+<li><a class="reference internal" href="#observadorclientelogs">ObservadorClienteLogs</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#model.BaseModel"><code class="docutils literal notranslate"><span class="pre">BaseModel</span></code></a><ul>
-<li><a class="reference internal" href="#model.BaseModel.Meta"><code class="docutils literal notranslate"><span class="pre">BaseModel.Meta</span></code></a><ul>
-<li><a class="reference internal" href="#model.BaseModel.Meta.database"><code class="docutils literal notranslate"><span class="pre">BaseModel.Meta.database</span></code></a></li>
+<li><a class="reference internal" href="#clases-crud">Clases CRUD</a><ul>
+<li><a class="reference internal" href="#artistamodel">ArtistaModel</a><ul>
+<li><a class="reference internal" href="#agregar-data">agregar(data)</a></li>
+<li><a class="reference internal" href="#listar">listar()</a></li>
+<li><a class="reference internal" href="#obtener-artista-id">obtener(artista_id)</a></li>
+<li><a class="reference internal" href="#actualizar-artista-id-data">actualizar(artista_id, data)</a></li>
+<li><a class="reference internal" href="#eliminar-artista-id">eliminar(artista_id)</a></li>
+<li><a class="reference internal" href="#buscar-texto">buscar(texto)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#discomodel">DiscoModel</a><ul>
+<li><a class="reference internal" href="#id1">agregar(data)</a></li>
+<li><a class="reference internal" href="#id2">listar()</a></li>
+<li><a class="reference internal" href="#obtener-disco-id">obtener(disco_id)</a></li>
+<li><a class="reference internal" href="#actualizar-disco-id-data">actualizar(disco_id, data)</a></li>
+<li><a class="reference internal" href="#eliminar-disco-id">eliminar(disco_id)</a></li>
+<li><a class="reference internal" href="#id3">buscar(texto)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cancionmodel">CancionModel</a><ul>
+<li><a class="reference internal" href="#id4">agregar(data)</a></li>
+<li><a class="reference internal" href="#listar-por-disco-disco-id">listar_por_disco(disco_id)</a></li>
+<li><a class="reference internal" href="#listar-todas-con-disco">listar_todas_con_disco()</a></li>
+<li><a class="reference internal" href="#actualizar-cancion-id-data">actualizar(cancion_id, data)</a></li>
+<li><a class="reference internal" href="#eliminar-cancion-id">eliminar(cancion_id)</a></li>
+<li><a class="reference internal" href="#id5">buscar(texto)</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#model.Cancion"><code class="docutils literal notranslate"><span class="pre">Cancion</span></code></a><ul>
-<li><a class="reference internal" href="#model.Cancion.Meta"><code class="docutils literal notranslate"><span class="pre">Cancion.Meta</span></code></a><ul>
-<li><a class="reference internal" href="#model.Cancion.Meta.indexes"><code class="docutils literal notranslate"><span class="pre">Cancion.Meta.indexes</span></code></a></li>
+<li><a class="reference internal" href="#funciones-de-inicializacion">Funciones de Inicialización</a><ul>
+<li><a class="reference internal" href="#inicializar-db">inicializar_db()</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#model.Cancion.disco"><code class="docutils literal notranslate"><span class="pre">Cancion.disco</span></code></a></li>
-<li><a class="reference internal" href="#model.Cancion.duracion"><code class="docutils literal notranslate"><span class="pre">Cancion.duracion</span></code></a></li>
-<li><a class="reference internal" href="#model.Cancion.numero_pista"><code class="docutils literal notranslate"><span class="pre">Cancion.numero_pista</span></code></a></li>
-<li><a class="reference internal" href="#model.Cancion.titulo"><code class="docutils literal notranslate"><span class="pre">Cancion.titulo</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#model.CancionModel"><code class="docutils literal notranslate"><span class="pre">CancionModel</span></code></a><ul>
-<li><a class="reference internal" href="#model.CancionModel.actualizar"><code class="docutils literal notranslate"><span class="pre">CancionModel.actualizar()</span></code></a></li>
-<li><a class="reference internal" href="#model.CancionModel.agregar"><code class="docutils literal notranslate"><span class="pre">CancionModel.agregar()</span></code></a></li>
-<li><a class="reference internal" href="#model.CancionModel.buscar"><code class="docutils literal notranslate"><span class="pre">CancionModel.buscar()</span></code></a></li>
-<li><a class="reference internal" href="#model.CancionModel.eliminar"><code class="docutils literal notranslate"><span class="pre">CancionModel.eliminar()</span></code></a></li>
-<li><a class="reference internal" href="#model.CancionModel.listar_por_disco"><code class="docutils literal notranslate"><span class="pre">CancionModel.listar_por_disco()</span></code></a></li>
-<li><a class="reference internal" href="#model.CancionModel.listar_todas_con_disco"><code class="docutils literal notranslate"><span class="pre">CancionModel.listar_todas_con_disco()</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#model.DiscoModel"><code class="docutils literal notranslate"><span class="pre">DiscoModel</span></code></a><ul>
-<li><a class="reference internal" href="#model.DiscoModel.actualizar"><code class="docutils literal notranslate"><span class="pre">DiscoModel.actualizar()</span></code></a></li>
-<li><a class="reference internal" href="#model.DiscoModel.agregar"><code class="docutils literal notranslate"><span class="pre">DiscoModel.agregar()</span></code></a></li>
-<li><a class="reference internal" href="#model.DiscoModel.buscar"><code class="docutils literal notranslate"><span class="pre">DiscoModel.buscar()</span></code></a></li>
-<li><a class="reference internal" href="#model.DiscoModel.eliminar"><code class="docutils literal notranslate"><span class="pre">DiscoModel.eliminar()</span></code></a></li>
-<li><a class="reference internal" href="#model.DiscoModel.listar"><code class="docutils literal notranslate"><span class="pre">DiscoModel.listar()</span></code></a></li>
-<li><a class="reference internal" href="#model.DiscoModel.obtener"><code class="docutils literal notranslate"><span class="pre">DiscoModel.obtener()</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#model.Discos"><code class="docutils literal notranslate"><span class="pre">Discos</span></code></a><ul>
-<li><a class="reference internal" href="#model.Discos.anio"><code class="docutils literal notranslate"><span class="pre">Discos.anio</span></code></a></li>
-<li><a class="reference internal" href="#model.Discos.artista"><code class="docutils literal notranslate"><span class="pre">Discos.artista</span></code></a></li>
-<li><a class="reference internal" href="#model.Discos.formato"><code class="docutils literal notranslate"><span class="pre">Discos.formato</span></code></a></li>
-<li><a class="reference internal" href="#model.Discos.portada"><code class="docutils literal notranslate"><span class="pre">Discos.portada</span></code></a></li>
-<li><a class="reference internal" href="#model.Discos.titulo"><code class="docutils literal notranslate"><span class="pre">Discos.titulo</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#model.inicializar_db"><code class="docutils literal notranslate"><span class="pre">inicializar_db()</span></code></a></li>
+<li><a class="reference internal" href="#configuracion-de-logging">Configuración de Logging</a></li>
+<li><a class="reference internal" href="#integracion-con-sistema-de-logs">Integración con Sistema de Logs</a></li>
+<li><a class="reference internal" href="#consideraciones-de-rendimiento">Consideraciones de Rendimiento</a></li>
 </ul>
 </li>
 </ul>

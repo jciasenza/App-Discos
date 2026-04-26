@@ -1,11 +1,14 @@
-App Discos
-==================
+App Discos - Módulos del Sistema
+=================================
 
 .. toctree::
    :maxdepth: 4
 
-   controller
    main
    model
-   validations
+   controller
    views
+   validations
+   cliente_logs
+   servidor_logs
+   config_logs

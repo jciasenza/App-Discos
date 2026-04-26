@@ -56,14 +56,21 @@
     <nav class="toc mt-3" aria-label="Main menu">
         <p class="caption" role="heading"><span class="caption-text">Contenidos:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="modules.html">App Discos</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="controller.html">Módulo Controlador</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">App Discos - Módulos del Sistema</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="main.html">Módulo Principal</a></li>
-<li class="toctree-l2"><a class="reference internal" href="model.html">Módulo de Modelos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="validations.html">Módulo de Validaciones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model.html">Módulo de Modelos y Patrón Observador</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controller.html">Módulo Controlador</a></li>
 <li class="toctree-l2"><a class="reference internal" href="views.html">Módulo de Vistas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="validations.html">Módulo de Validaciones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cliente_logs.html">cliente_logs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="servidor_logs.html">servidor_logs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_logs.html">config_logs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_logs.html#configuracion-centralizada-del-sistema-de-logs">Configuración Centralizada del Sistema de Logs</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="sistema_logs.html">Sistema de Logs Cliente-Servidor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="patrones_dise%C3%B1o.html">Patrones de Diseño Implementados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guia_uso.html">Guía de Uso - App Discos</a></li>
 </ul>
 
     </nav>
@@ -96,7 +103,7 @@
                             <span class="dark-only"><i class="fas fa-sun"></i> Light mode</span>
                             <span class="light-only"><i class="fas fa-moon"></i> Dark mode</span>
                         </button>
-    <a class="btn btn-sm btn-light text-decoration-none" href="https://github.com/jciasenza/App-Discos/tree/dev/docs/genindex" rel="nofollow">
+    <a class="btn btn-sm btn-light text-decoration-none" href="https://github.com/wagtail/sphinx_wagtail_theme/blob/main/docs/genindex" rel="nofollow">
         <span class="btn-icon"><span class="fab fa-github"></span></span>
         <span class="btn-text">Edit on GitHub</span>
     </a>
@@ -119,17 +126,13 @@
             | <a href="#D"><strong>D</strong></a>
             | <a href="#E"><strong>E</strong></a>
             | <a href="#F"><strong>F</strong></a>
-            | <a href="#G"><strong>G</strong></a>
             | <a href="#H"><strong>H</strong></a>
             | <a href="#I"><strong>I</strong></a>
+            | <a href="#J"><strong>J</strong></a>
             | <a href="#L"><strong>L</strong></a>
             | <a href="#M"><strong>M</strong></a>
-            | <a href="#N"><strong>N</strong></a>
             | <a href="#O"><strong>O</strong></a>
-            | <a href="#P"><strong>P</strong></a>
-            | <a href="#R"><strong>R</strong></a>
             | <a href="#S"><strong>S</strong></a>
-            | <a href="#T"><strong>T</strong></a>
             | <a href="#V"><strong>V</strong></a>
             
     </div>
@@ -139,50 +142,7 @@
                     <td>
                         <ul>
                                 <li>
-                                    <a href="model.html#model.ArtistaModel.actualizar">actualizar() (método de model.ArtistaModel)</a>
-
-                                        <ul>
-                                                <li><a href="model.html#model.CancionModel.actualizar">(método de model.CancionModel)</a>
-</li>
-                                                <li><a href="model.html#model.DiscoModel.actualizar">(método de model.DiscoModel)</a>
-</li>
-                                        </ul></li>
-                                <li>
-                                    <a href="controller.html#controller.DiscoController.actualizar_dropdown_artistas">actualizar_dropdown_artistas() (método de controller.DiscoController)</a>
-</li>
-                                <li>
-                                    <a href="model.html#model.ArtistaModel.agregar">agregar() (método de model.ArtistaModel)</a>
-
-                                        <ul>
-                                                <li><a href="model.html#model.CancionModel.agregar">(método de model.CancionModel)</a>
-</li>
-                                                <li><a href="model.html#model.DiscoModel.agregar">(método de model.DiscoModel)</a>
-</li>
-                                        </ul></li>
-                        </ul>
-                    </td>
-                    <td>
-                        <ul>
-                                <li>
-                                    <a href="controller.html#controller.DiscoController.agregar_cancion">agregar_cancion() (método de controller.DiscoController)</a>
-</li>
-                                <li>
                                     <a href="views.html#views.View.al_buscar">al_buscar() (método de views.View)</a>
-</li>
-                                <li>
-                                    <a href="model.html#model.Discos.anio">anio (atributo de model.Discos)</a>
-</li>
-                                <li>
-                                    <a href="model.html#model.Discos.artista">artista (atributo de model.Discos)</a>
-</li>
-                                <li>
-                                    <a href="model.html#model.Artista">Artista (clase en model)</a>
-</li>
-                                <li>
-                                    <a href="controller.html#controller.DiscoController.artista_actual_id">artista_actual_id (atributo de controller.DiscoController)</a>
-</li>
-                                <li>
-                                    <a href="model.html#model.ArtistaModel">ArtistaModel (clase en model)</a>
 </li>
                         </ul>
                     </td>
@@ -192,25 +152,6 @@
         <h2 id="B">B</h2>
         <table class="indextable genindextable">
             <tr>
-                    <td>
-                        <ul>
-                                <li>
-                                    <a href="model.html#model.BaseModel">BaseModel (clase en model)</a>
-</li>
-                                <li>
-                                    <a href="model.html#model.BaseModel.Meta">BaseModel.Meta (clase en model)</a>
-</li>
-                                <li>
-                                    <a href="model.html#model.ArtistaModel.buscar">buscar() (método de model.ArtistaModel)</a>
-
-                                        <ul>
-                                                <li><a href="model.html#model.CancionModel.buscar">(método de model.CancionModel)</a>
-</li>
-                                                <li><a href="model.html#model.DiscoModel.buscar">(método de model.DiscoModel)</a>
-</li>
-                                        </ul></li>
-                        </ul>
-                    </td>
                     <td>
                         <ul>
                                 <li>
@@ -227,26 +168,7 @@
                     <td>
                         <ul>
                                 <li>
-                                    <a href="model.html#model.Cancion">Cancion (clase en model)</a>
-</li>
-                                <li>
-                                    <a href="model.html#model.Cancion.Meta">Cancion.Meta (clase en model)</a>
-</li>
-                                <li>
-                                    <a href="controller.html#controller.DiscoController.cancion_en_edicion_id">cancion_en_edicion_id (atributo de controller.DiscoController)</a>
-</li>
-                                <li>
                                     <a href="views.html#views.View.canciones_view">canciones_view (atributo de views.View)</a>
-</li>
-                                <li>
-                                    <a href="model.html#model.CancionModel">CancionModel (clase en model)</a>
-</li>
-                        </ul>
-                    </td>
-                    <td>
-                        <ul>
-                                <li>
-                                    <a href="controller.html#controller.DiscoController.cargar_canciones">cargar_canciones() (método de controller.DiscoController)</a>
 </li>
                                 <li>
                                     <a href="views.html#views.View.cargar_datos_artistas">cargar_datos_artistas() (método de views.View)</a>
@@ -255,16 +177,34 @@
                                     <a href="views.html#views.View.cargar_datos_canciones">cargar_datos_canciones() (método de views.View)</a>
 </li>
                                 <li>
-                                    <a href="views.html#views.View.configurar_ventana">configurar_ventana() (método de views.View)</a>
+                                    
+        cliente_logs
+
+                                        <ul>
+                                                <li><a href="cliente_logs.html#module-cliente_logs">module</a>
+</li>
+                                        </ul></li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                                <li>
+                                    <a href="cliente_logs.html#cliente_logs.ClienteLogs">ClienteLogs (clase en cliente_logs)</a>
+</li>
+                                <li>
+                                    <a href="cliente_logs.html#cliente_logs.ClienteLogs.conectar">conectar() (método de cliente_logs.ClienteLogs)</a>
 </li>
                                 <li>
                                     
-        controller
+        config_logs
 
                                         <ul>
-                                                <li><a href="controller.html#module-controller">module</a>
+                                                <li><a href="config_logs.html#module-config_logs">module</a>
 </li>
                                         </ul></li>
+                                <li>
+                                    <a href="views.html#views.View.configurar_ventana">configurar_ventana() (método de views.View)</a>
+</li>
                         </ul>
                     </td>
             </tr>
@@ -276,29 +216,17 @@
                     <td>
                         <ul>
                                 <li>
-                                    <a href="model.html#model.BaseModel.Meta.database">database (atributo de model.BaseModel.Meta)</a>
-</li>
-                                <li>
-                                    <a href="model.html#model.Cancion.disco">disco (atributo de model.Cancion)</a>
-</li>
-                                <li>
-                                    <a href="controller.html#controller.DiscoController.disco_actual_id">disco_actual_id (atributo de controller.DiscoController)</a>
+                                    <a href="cliente_logs.html#cliente_logs.JSONEncoderPersonalizado.default">default() (método de cliente_logs.JSONEncoderPersonalizado)</a>
 </li>
                         </ul>
                     </td>
                     <td>
                         <ul>
                                 <li>
-                                    <a href="controller.html#controller.DiscoController">DiscoController (clase en controller)</a>
+                                    <a href="cliente_logs.html#cliente_logs.ClienteLogs.desconectar">desconectar() (método de cliente_logs.ClienteLogs)</a>
 </li>
                                 <li>
-                                    <a href="model.html#model.DiscoModel">DiscoModel (clase en model)</a>
-</li>
-                                <li>
-                                    <a href="model.html#model.Discos">Discos (clase en model)</a>
-</li>
-                                <li>
-                                    <a href="model.html#model.Cancion.duracion">duracion (atributo de model.Cancion)</a>
+                                    <a href="servidor_logs.html#servidor_logs.ServidorLogs.detener">detener() (método de servidor_logs.ServidorLogs)</a>
 </li>
                         </ul>
                     </td>
@@ -311,40 +239,7 @@
                     <td>
                         <ul>
                                 <li>
-                                    <a href="controller.html#controller.DiscoController.editar">editar() (método de controller.DiscoController)</a>
-</li>
-                                <li>
-                                    <a href="controller.html#controller.DiscoController.editar_artista">editar_artista() (método de controller.DiscoController)</a>
-</li>
-                                <li>
-                                    <a href="controller.html#controller.DiscoController.ejecutar_busqueda">ejecutar_busqueda() (método de controller.DiscoController)</a>
-</li>
-                                <li>
-                                    <a href="controller.html#controller.DiscoController.ejecutar_busqueda_artistas">ejecutar_busqueda_artistas() (método de controller.DiscoController)</a>
-</li>
-                                <li>
-                                    <a href="controller.html#controller.DiscoController.ejecutar_busqueda_canciones">ejecutar_busqueda_canciones() (método de controller.DiscoController)</a>
-</li>
-                        </ul>
-                    </td>
-                    <td>
-                        <ul>
-                                <li>
-                                    <a href="controller.html#controller.DiscoController.eliminar">eliminar() (método de controller.DiscoController)</a>
-
-                                        <ul>
-                                                <li><a href="model.html#model.ArtistaModel.eliminar">(método de model.ArtistaModel)</a>
-</li>
-                                                <li><a href="model.html#model.CancionModel.eliminar">(método de model.CancionModel)</a>
-</li>
-                                                <li><a href="model.html#model.DiscoModel.eliminar">(método de model.DiscoModel)</a>
-</li>
-                                        </ul></li>
-                                <li>
-                                    <a href="controller.html#controller.DiscoController.eliminar_artista_accion">eliminar_artista_accion() (método de controller.DiscoController)</a>
-</li>
-                                <li>
-                                    <a href="controller.html#controller.DiscoController.eliminar_cancion">eliminar_cancion() (método de controller.DiscoController)</a>
+                                    <a href="cliente_logs.html#cliente_logs.ClienteLogs.enviar_log">enviar_log() (método de cliente_logs.ClienteLogs)</a>
 </li>
                         </ul>
                     </td>
@@ -359,38 +254,12 @@
                                 <li>
                                     <a href="views.html#views.View.form_artista_view">form_artista_view (atributo de views.View)</a>
 </li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
                                 <li>
                                     <a href="views.html#views.View.form_view">form_view (atributo de views.View)</a>
-</li>
-                        </ul>
-                    </td>
-                    <td>
-                        <ul>
-                                <li>
-                                    <a href="model.html#model.Discos.formato">formato (atributo de model.Discos)</a>
-</li>
-                                <li>
-                                    <a href="model.html#model.Artista.foto">foto (atributo de model.Artista)</a>
-</li>
-                        </ul>
-                    </td>
-            </tr>
-        </table>
-    
-        <h2 id="G">G</h2>
-        <table class="indextable genindextable">
-            <tr>
-                    <td>
-                        <ul>
-                                <li>
-                                    <a href="controller.html#controller.DiscoController.guardar">guardar() (método de controller.DiscoController)</a>
-</li>
-                        </ul>
-                    </td>
-                    <td>
-                        <ul>
-                                <li>
-                                    <a href="controller.html#controller.DiscoController.guardar_artista">guardar_artista() (método de controller.DiscoController)</a>
 </li>
                         </ul>
                     </td>
@@ -416,26 +285,27 @@
                     <td>
                         <ul>
                                 <li>
-                                    <a href="controller.html#controller.DiscoController.imagen_actual_path">imagen_actual_path (atributo de controller.DiscoController)</a>
-</li>
-                                <li>
-                                    <a href="model.html#model.Cancion.Meta.indexes">indexes (atributo de model.Cancion.Meta)</a>
-</li>
-                                <li>
-                                    <a href="model.html#model.Artista.info">info (atributo de model.Artista)</a>
+                                    <a href="servidor_logs.html#servidor_logs.ServidorLogs.iniciar">iniciar() (método de servidor_logs.ServidorLogs)</a>
 </li>
                         </ul>
                     </td>
                     <td>
                         <ul>
                                 <li>
-                                    <a href="controller.html#controller.DiscoController.inicializar_datos">inicializar_datos() (método de controller.DiscoController)</a>
-</li>
-                                <li>
-                                    <a href="model.html#model.inicializar_db">inicializar_db() (en el módulo model)</a>
-</li>
-                                <li>
                                     <a href="views.html#views.View.insertar_en_tabla">insertar_en_tabla() (método de views.View)</a>
+</li>
+                        </ul>
+                    </td>
+            </tr>
+        </table>
+    
+        <h2 id="J">J</h2>
+        <table class="indextable genindextable">
+            <tr>
+                    <td>
+                        <ul>
+                                <li>
+                                    <a href="cliente_logs.html#cliente_logs.JSONEncoderPersonalizado">JSONEncoderPersonalizado (clase en cliente_logs)</a>
 </li>
                         </ul>
                     </td>
@@ -450,28 +320,15 @@
                                 <li>
                                     <a href="views.html#views.View.limpiar_tabla">limpiar_tabla() (método de views.View)</a>
 </li>
-                                <li>
-                                    <a href="views.html#views.View.lista_artistas_view">lista_artistas_view (atributo de views.View)</a>
-</li>
-                                <li>
-                                    <a href="views.html#views.View.lista_discos_view">lista_discos_view (atributo de views.View)</a>
-</li>
                         </ul>
                     </td>
                     <td>
                         <ul>
                                 <li>
-                                    <a href="model.html#model.ArtistaModel.listar">listar() (método de model.ArtistaModel)</a>
-
-                                        <ul>
-                                                <li><a href="model.html#model.DiscoModel.listar">(método de model.DiscoModel)</a>
-</li>
-                                        </ul></li>
-                                <li>
-                                    <a href="model.html#model.CancionModel.listar_por_disco">listar_por_disco() (método de model.CancionModel)</a>
+                                    <a href="views.html#views.View.lista_artistas_view">lista_artistas_view (atributo de views.View)</a>
 </li>
                                 <li>
-                                    <a href="model.html#model.CancionModel.listar_todas_con_disco">listar_todas_con_disco() (método de model.CancionModel)</a>
+                                    <a href="views.html#views.View.lista_discos_view">lista_discos_view (atributo de views.View)</a>
 </li>
                         </ul>
                     </td>
@@ -484,34 +341,18 @@
                     <td>
                         <ul>
                                 <li>
-                                    
-        main
-
-                                        <ul>
-                                                <li><a href="main.html#module-main">module</a>
+                                    <a href="servidor_logs.html#servidor_logs.ServidorLogs.manejar_cliente">manejar_cliente() (método de servidor_logs.ServidorLogs)</a>
 </li>
-                                        </ul></li>
-                                <li>
-                                    <a href="main.html#main.main">main() (en el módulo main)</a>
-</li>
-                                <li>
-                                    
-        model
-
-                                        <ul>
-                                                <li><a href="model.html#module-model">module</a>
-</li>
-                                        </ul></li>
                                 <li>
                                     
         module
 
                                         <ul>
-                                                <li><a href="controller.html#module-controller">controller</a>
+                                                <li><a href="cliente_logs.html#module-cliente_logs">cliente_logs</a>
 </li>
-                                                <li><a href="main.html#module-main">main</a>
+                                                <li><a href="config_logs.html#module-config_logs">config_logs</a>
 </li>
-                                                <li><a href="model.html#module-model">model</a>
+                                                <li><a href="servidor_logs.html#module-servidor_logs">servidor_logs</a>
 </li>
                                                 <li><a href="validations.html#module-validations">validations</a>
 </li>
@@ -525,35 +366,6 @@
                                 <li>
                                     <a href="views.html#views.View.mostrar">mostrar() (método de views.View)</a>
 </li>
-                                <li>
-                                    <a href="controller.html#controller.DiscoController.mostrar_listado_canciones">mostrar_listado_canciones() (método de controller.DiscoController)</a>
-</li>
-                        </ul>
-                    </td>
-            </tr>
-        </table>
-    
-        <h2 id="N">N</h2>
-        <table class="indextable genindextable">
-            <tr>
-                    <td>
-                        <ul>
-                                <li>
-                                    <a href="model.html#model.Artista.nombre">nombre (atributo de model.Artista)</a>
-</li>
-                                <li>
-                                    <a href="controller.html#controller.DiscoController.nuevo">nuevo() (método de controller.DiscoController)</a>
-</li>
-                        </ul>
-                    </td>
-                    <td>
-                        <ul>
-                                <li>
-                                    <a href="controller.html#controller.DiscoController.nuevo_artista">nuevo_artista() (método de controller.DiscoController)</a>
-</li>
-                                <li>
-                                    <a href="model.html#model.Cancion.numero_pista">numero_pista (atributo de model.Cancion)</a>
-</li>
                         </ul>
                     </td>
             </tr>
@@ -565,61 +377,7 @@
                     <td>
                         <ul>
                                 <li>
-                                    <a href="model.html#model.ArtistaModel.obtener">obtener() (método de model.ArtistaModel)</a>
-
-                                        <ul>
-                                                <li><a href="model.html#model.DiscoModel.obtener">(método de model.DiscoModel)</a>
-</li>
-                                        </ul></li>
-                        </ul>
-                    </td>
-                    <td>
-                        <ul>
-                                <li>
                                     <a href="views.html#views.View.obtener_id_seleccionado">obtener_id_seleccionado() (método de views.View)</a>
-</li>
-                        </ul>
-                    </td>
-            </tr>
-        </table>
-    
-        <h2 id="P">P</h2>
-        <table class="indextable genindextable">
-            <tr>
-                    <td>
-                        <ul>
-                                <li>
-                                    <a href="model.html#model.Discos.portada">portada (atributo de model.Discos)</a>
-</li>
-                        </ul>
-                    </td>
-                    <td>
-                        <ul>
-                                <li>
-                                    <a href="controller.html#controller.DiscoController.preparar_edicion_cancion">preparar_edicion_cancion() (método de controller.DiscoController)</a>
-</li>
-                        </ul>
-                    </td>
-            </tr>
-        </table>
-    
-        <h2 id="R">R</h2>
-        <table class="indextable genindextable">
-            <tr>
-                    <td>
-                        <ul>
-                                <li>
-                                    <a href="controller.html#controller.DiscoController.refrescar">refrescar() (método de controller.DiscoController)</a>
-</li>
-                        </ul>
-                    </td>
-                    <td>
-                        <ul>
-                                <li>
-                                    <a href="controller.html#controller.DiscoController.refrescar_artistas">refrescar_artistas() (método de controller.DiscoController)</a>
-</li>
-                                <li>
-                                    <a href="controller.html#controller.DiscoController.refrescar_datos_silencioso">refrescar_datos_silencioso() (método de controller.DiscoController)</a>
 </li>
                         </ul>
                     </td>
@@ -632,39 +390,20 @@
                     <td>
                         <ul>
                                 <li>
-                                    <a href="controller.html#controller.DiscoController.seleccionar_foto_artista">seleccionar_foto_artista() (método de controller.DiscoController)</a>
-</li>
-                        </ul>
-                    </td>
-                    <td>
-                        <ul>
-                                <li>
-                                    <a href="controller.html#controller.DiscoController.seleccionar_imagen">seleccionar_imagen() (método de controller.DiscoController)</a>
-</li>
-                        </ul>
-                    </td>
-            </tr>
-        </table>
-    
-        <h2 id="T">T</h2>
-        <table class="indextable genindextable">
-            <tr>
-                    <td>
-                        <ul>
-                                <li>
-                                    <a href="model.html#model.Artista.tipo">tipo (atributo de model.Artista)</a>
-</li>
-                        </ul>
-                    </td>
-                    <td>
-                        <ul>
-                                <li>
-                                    <a href="model.html#model.Cancion.titulo">titulo (atributo de model.Cancion)</a>
+                                    
+        servidor_logs
 
                                         <ul>
-                                                <li><a href="model.html#model.Discos.titulo">(atributo de model.Discos)</a>
+                                                <li><a href="servidor_logs.html#module-servidor_logs">module</a>
 </li>
                                         </ul></li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                                <li>
+                                    <a href="servidor_logs.html#servidor_logs.ServidorLogs">ServidorLogs (clase en servidor_logs)</a>
+</li>
                         </ul>
                     </td>
             </tr>

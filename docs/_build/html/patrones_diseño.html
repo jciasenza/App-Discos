@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html class="no-js" lang="es" data-content_root="./">
+<head>
+    <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+        <title>Patrones de Diseño Implementados &mdash; documentación de GestionMusical - 4.5.0</title>
+    
+    <link rel="stylesheet" type="text/css" href="_static/dist/fontawesome.css" />
+      <link rel="stylesheet" type="text/css" href="_static/dist/theme.css?v=310cf088" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+            <link rel="index" title="Índice" href="genindex.html" />
+            <link rel="search" title="Búsqueda" href="search.html" />
+            <link rel="top" title="documentación de GestionMusical - 4.5.0" href="#" />
+            <link rel="next" title="Guía de Uso - App Discos" href="guia_uso.html" />
+            <link rel="prev" title="Sistema de Logs Cliente-Servidor" href="sistema_logs.html" />
+    </head>
+<body>
+    <script type="text/javascript" src="_static/dist/blocking.js"></script>
+    <header class="container-fluid bg-primary">
+        <a class="btn btn-sm btn-light skip-to-content-link" href="#main">Skip to content</a>
+        <div class="container-fluid">
+            <div class="navbar navbar-expand-lg navbar-dark font-weight-bold">
+                    <a href="index.html"
+                        title="Wagtail"
+                        class="logo navbar-brand"
+                    >
+                        <img src="_static/img/icono.ico" width="45" height="59" alt="Wagtail"
+                            class="logo-img"
+                        />
+                        Gestión Musical
+                    </a>
+                
+                
+                <button class="navbar-toggler btn btn-primary d-lg-none" type="button" data-toggle="collapse" data-target="#collapseSidebar" aria-expanded="false" aria-controls="collapseExample">
+                    <span class="navbar-toggler-icon"></span>
+                    <span class="sr-only">menu</span>
+                </button>
+            </div>
+        </div>
+    </header>
+    <div class="container-fluid">
+        <div class="row">
+            <aside class="col-12 col-lg-3 sidebar-container">
+                <div id="collapseSidebar" class="collapse sticky-top d-lg-block pt-5 pr-lg-4">
+<div id="searchbox" class="searchbox mb-6 px-1" role="search">
+    <form id="search-form" action="search.html" autocomplete="off" method="get" role="search">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text border-right-0 bg-white py-3 pl-3 pr-2"><span class="fas fa-search"></span></div>
+            </div>
+            <input class="form-control py-3 pr-3 pl-1 h-100 border-left-0" type="search" name="q" placeholder="Search documentation" aria-label="Search documentation" id="searchinput" />
+        </div>
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div><div class="site-toc">
+    <nav class="toc mt-3" aria-label="Main menu">
+        <p class="caption" role="heading"><span class="caption-text">Contenidos:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="modules.html">App Discos - Módulos del Sistema</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="main.html">Módulo Principal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model.html">Módulo de Modelos y Patrón Observador</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controller.html">Módulo Controlador</a></li>
+<li class="toctree-l2"><a class="reference internal" href="views.html">Módulo de Vistas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="validations.html">Módulo de Validaciones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cliente_logs.html">cliente_logs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="servidor_logs.html">servidor_logs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_logs.html">config_logs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_logs.html#configuracion-centralizada-del-sistema-de-logs">Configuración Centralizada del Sistema de Logs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sistema_logs.html">Sistema de Logs Cliente-Servidor</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Patrones de Diseño Implementados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guia_uso.html">Guía de Uso - App Discos</a></li>
+</ul>
+
+    </nav>
+    <template data-toggle-item-template>
+        <button class="btn btn-sm btn-link toctree-expand" type="button">
+            <span class="sr-only">Toggle menu contents</span>
+        </button>
+    </template>
+</div>
+                    <div class="d-lg-none border-bottom">
+                        
+                    </div>
+                </div>
+            </aside>
+            <div class="col-12 col-lg-9 pt-5">
+                <header class="row align-items-baseline">
+                    <div class="col">
+                        <nav aria-label="breadcrumb">
+    <ol class="breadcrumb m-0 p-0 bg-transparent">
+        <li class="breadcrumb-item"><a href="index.html">Docs</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Patrones de Diseño Implementados</li>
+    </ol>
+</nav>
+                    </div>
+                    <div class="col-sm-12 col-lg-auto mt-3 mt-lg-3">
+                        <noscript>
+                            <p>JavaScript is required to toggle light/dark mode..</p>
+                        </noscript>
+                        <button id="wagtail-theme" class="btn btn-sm btn-light text-decoration-none" type="button">
+                            <span class="dark-only"><i class="fas fa-sun"></i> Light mode</span>
+                            <span class="light-only"><i class="fas fa-moon"></i> Dark mode</span>
+                        </button>
+    <a class="btn btn-sm btn-light text-decoration-none" href="https://github.com/wagtail/sphinx_wagtail_theme/blob/main/docs/patrones_diseño.rst" rel="nofollow">
+        <span class="btn-icon"><span class="fab fa-github"></span></span>
+        <span class="btn-text">Edit on GitHub</span>
+    </a>
+    <a class="btn btn-sm btn-light text-decoration-none" href="_sources/patrones_diseño.rst.txt" rel="nofollow">
+        <span class="btn-icon"><span class="fas fa-code"></span></span>
+        <span class="btn-text">View source</span>
+    </a>
+                        
+                    </div>
+                </header>
+                <div class="row" >
+                    <div class="col-12">
+                        <hr class="w-100 my-4">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-lg-9 order-last order-lg-first rst-content">
+                        <main role="main" id="main">
+    <section id="patrones-de-diseno-implementados">
+<h1>Patrones de Diseño Implementados<a class="headerlink" href="#patrones-de-diseno-implementados" title="Link to this heading">¶</a></h1>
+<p>La aplicación implementa varios patrones de diseño modernos para lograr un código
+mantenible, extensible y bien estructurado.</p>
+<section id="patron-observador-observer-pattern">
+<h2>Patrón Observador (Observer Pattern)<a class="headerlink" href="#patron-observador-observer-pattern" title="Link to this heading">¶</a></h2>
+<p>El patrón observador permite que objetos interesados sean notificados automáticamente
+cuando ocurre un cambio en el estado de otro objeto.</p>
+<section id="implementacion-en-el-sistema-de-logs">
+<h3>Implementación en el Sistema de Logs<a class="headerlink" href="#implementacion-en-el-sistema-de-logs" title="Link to this heading">¶</a></h3>
+<p><strong>Clase Observable Base:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Observable</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_observadores</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">agregar_observador</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">observador</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_observadores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">observador</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">eliminar_observador</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">observador</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_observadores</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">observador</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">notificar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evento</span><span class="p">,</span> <span class="n">datos</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">obs</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_observadores</span><span class="p">:</span>
+            <span class="n">obs</span><span class="o">.</span><span class="n">actualizar</span><span class="p">(</span><span class="n">evento</span><span class="p">,</span> <span class="n">datos</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Modelos que Heredan de Observable:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">ArtistaModel</span><span class="p">(</span><span class="n">Observable</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="c1"># Agregar observadores automáticamente</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">agregar_observador</span><span class="p">(</span><span class="n">ObservadorLog</span><span class="p">())</span>
+        <span class="c1"># Agregar cliente de logs si está disponible</span>
+        <span class="k">if</span> <span class="n">cliente_logs</span><span class="o">.</span><span class="n">conectado</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">agregar_observador</span><span class="p">(</span><span class="n">ObservadorClienteLogs</span><span class="p">(</span><span class="n">cliente_logs</span><span class="p">))</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">agregar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="n">artista</span> <span class="o">=</span> <span class="n">Artista</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">**</span><span class="n">data</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">notificar</span><span class="p">(</span><span class="s2">&quot;artista_agregado&quot;</span><span class="p">,</span> <span class="n">artista</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">artista</span>
+</pre></div>
+</div>
+<p><strong>Observadores Concretos:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>ObservadorLog</strong>: Registra eventos en archivo local</p></li>
+<li><p><strong>ObservadorClienteLogs</strong>: Envía eventos a servidor remoto</p></li>
+</ol>
+</section>
+<section id="ventajas-del-patron-observador">
+<h3>Ventajas del Patrón Observador<a class="headerlink" href="#ventajas-del-patron-observador" title="Link to this heading">¶</a></h3>
+<p>✅ <strong>Desacoplamiento</strong>: Los modelos no conocen los detalles de logging
+✅ <strong>Extensibilidad</strong>: Fácil agregar nuevos tipos de observadores
+✅ <strong>Mantenibilidad</strong>: Cambios en logging no afectan la lógica de negocio
+✅ <strong>Reutilización</strong>: Múltiples observadores pueden coexistir</p>
+</section>
+</section>
+<section id="decoradores-de-logging">
+<h2>Decoradores de Logging<a class="headerlink" href="#decoradores-de-logging" title="Link to this heading">¶</a></h2>
+<p>Los decoradores permiten agregar funcionalidad transversal (logging) sin modificar
+el código de las funciones principales.</p>
+<section id="decorador-log-alta">
+<h3>Decorador &#64;log_alta<a class="headerlink" href="#decorador-log-alta" title="Link to this heading">¶</a></h3>
+<p>Registra automáticamente operaciones de creación (alta).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">log_alta</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">wrapper</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">resultado</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+            <span class="c1"># Logging exitoso</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ALTA - </span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">args</span><span class="si">}</span><span class="s2"> -&gt; </span><span class="si">{</span><span class="n">resultado</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">resultado</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="c1"># Logging de error</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ERROR ALTA - </span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">raise</span>
+    <span class="k">return</span> <span class="n">wrapper</span>
+</pre></div>
+</div>
+<p><strong>Uso en Controlador:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">DiscoController</span><span class="p">:</span>
+    <span class="nd">@log_alta</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">guardar_disco</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Lógica de guardar disco</span>
+        <span class="k">pass</span>
+</pre></div>
+</div>
+</section>
+<section id="decorador-log-actualizacion">
+<h3>Decorador &#64;log_actualizacion<a class="headerlink" href="#decorador-log-actualizacion" title="Link to this heading">¶</a></h3>
+<p>Registra operaciones de modificación.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">log_actualizacion</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">wrapper</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">resultado</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ACTUALIZACION - </span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">args</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">resultado</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ERROR ACTUALIZACION - </span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">raise</span>
+    <span class="k">return</span> <span class="n">wrapper</span>
+</pre></div>
+</div>
+</section>
+<section id="decorador-log-baja">
+<h3>Decorador &#64;log_baja<a class="headerlink" href="#decorador-log-baja" title="Link to this heading">¶</a></h3>
+<p>Registra operaciones de eliminación.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">log_baja</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">wrapper</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">resultado</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;BAJA - </span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">args</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">resultado</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">critical</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ERROR BAJA - </span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">raise</span>
+    <span class="k">return</span> <span class="n">wrapper</span>
+</pre></div>
+</div>
+</section>
+<section id="ventajas-de-los-decoradores">
+<h3>Ventajas de los Decoradores<a class="headerlink" href="#ventajas-de-los-decoradores" title="Link to this heading">¶</a></h3>
+<p>✅ <strong>No invasivo</strong>: No modifica la lógica de negocio
+✅ <strong>Reutilizable</strong>: Mismo decorador para múltiples funciones
+✅ <strong>Configurable</strong>: Fácil cambiar niveles de logging
+✅ <strong>Debugging</strong>: Trazabilidad automática de operaciones</p>
+</section>
+</section>
+<section id="patron-mvc-model-view-controller">
+<h2>Patrón MVC (Model-View-Controller)<a class="headerlink" href="#patron-mvc-model-view-controller" title="Link to this heading">¶</a></h2>
+<p>La aplicación sigue estrictamente el patrón MVC para separar responsabilidades.</p>
+<section id="model-modelo">
+<h3>Model (Modelo)<a class="headerlink" href="#model-modelo" title="Link to this heading">¶</a></h3>
+<p><strong>Responsabilidades:</strong>
+- Gestión de datos y lógica de negocio
+- Interacción con la base de datos
+- Validaciones de negocio
+- Notificación de cambios (patrón observador)</p>
+<p><strong>Clases principales:</strong>
+- <code class="docutils literal notranslate"><span class="pre">ArtistaModel</span></code>, <code class="docutils literal notranslate"><span class="pre">DiscoModel</span></code>, <code class="docutils literal notranslate"><span class="pre">CancionModel</span></code>
+- Heredan de <code class="docutils literal notranslate"><span class="pre">Observable</span></code> para logging
+- Usan Peewee ORM para persistencia</p>
+</section>
+<section id="view-vista">
+<h3>View (Vista)<a class="headerlink" href="#view-vista" title="Link to this heading">¶</a></h3>
+<p><strong>Responsabilidades:</strong>
+- Interfaz de usuario gráfica
+- Presentación de datos
+- Captura de eventos del usuario
+- Actualización visual</p>
+<p><strong>Clases principales:</strong>
+- <code class="docutils literal notranslate"><span class="pre">View</span></code>: Contenedor principal
+- <code class="docutils literal notranslate"><span class="pre">ArtistaFormView</span></code>, <code class="docutils literal notranslate"><span class="pre">DiscoFormView</span></code>: Formularios
+- <code class="docutils literal notranslate"><span class="pre">ArtistaListView</span></code>, <code class="docutils literal notranslate"><span class="pre">DiscoListView</span></code>: Listados</p>
+</section>
+<section id="controller-controlador">
+<h3>Controller (Controlador)<a class="headerlink" href="#controller-controlador" title="Link to this heading">¶</a></h3>
+<p><strong>Responsabilidades:</strong>
+- Coordinación entre modelo y vista
+- Manejo de eventos de usuario
+- Lógica de aplicación
+- Validaciones transversales
+- Logging automático con decoradores</p>
+<p><strong>Clases principales:</strong>
+- <code class="docutils literal notranslate"><span class="pre">DiscoController</span></code>: Controlador principal
+- Decoradores <code class="docutils literal notranslate"><span class="pre">&#64;log_alta</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;log_actualizacion</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;log_baja</span></code></p>
+</section>
+<section id="ventajas-del-patron-mvc">
+<h3>Ventajas del Patrón MVC<a class="headerlink" href="#ventajas-del-patron-mvc" title="Link to this heading">¶</a></h3>
+<p>✅ <strong>Separación clara</strong>: Cada capa tiene responsabilidades definidas
+✅ <strong>Mantenibilidad</strong>: Cambios en UI no afectan lógica de negocio
+✅ <strong>Testabilidad</strong>: Cada capa se puede probar independientemente
+✅ <strong>Reutilización</strong>: Modelos y controladores reutilizables</p>
+</section>
+</section>
+<section id="patron-singleton-configuracion">
+<h2>Patrón Singleton (Configuración)<a class="headerlink" href="#patron-singleton-configuracion" title="Link to this heading">¶</a></h2>
+<p>La configuración del sistema usa un patrón singleton implícito.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># config_logs.py - Configuración centralizada</span>
+<span class="n">SERVIDOR_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;host&#39;</span><span class="p">:</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;puerto&#39;</span><span class="p">:</span> <span class="mi">5000</span><span class="p">,</span>
+    <span class="s1">&#39;max_conexiones&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">CLIENTE_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;host&#39;</span><span class="p">:</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;puerto&#39;</span><span class="p">:</span> <span class="mi">5000</span><span class="p">,</span>
+    <span class="s1">&#39;nombre_cliente&#39;</span><span class="p">:</span> <span class="s1">&#39;App-Discos&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;timeout&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Ventajas:</strong>
+- Configuración centralizada
+- Fácil modificación
+- No instanciación accidental
+- Compartida entre módulos</p>
+</section>
+<section id="manejo-de-errores-robusto">
+<h2>Manejo de Errores Robusto<a class="headerlink" href="#manejo-de-errores-robusto" title="Link to this heading">¶</a></h2>
+<p>El sistema implementa manejo de errores en múltiples niveles.</p>
+<section id="try-except-en-operaciones-criticas">
+<h3>Try-Except en Operaciones Críticas<a class="headerlink" href="#try-except-en-operaciones-criticas" title="Link to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">guardar_artista</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">artista_actual_id</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">artista</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">artista_model</span><span class="o">.</span><span class="n">agregar</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+            <span class="n">messagebox</span><span class="o">.</span><span class="n">showinfo</span><span class="p">(</span><span class="s2">&quot;Éxito&quot;</span><span class="p">,</span> <span class="s2">&quot;Artista agregado correctamente&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">artista_model</span><span class="o">.</span><span class="n">actualizar</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">artista_actual_id</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+            <span class="n">messagebox</span><span class="o">.</span><span class="n">showinfo</span><span class="p">(</span><span class="s2">&quot;Éxito&quot;</span><span class="p">,</span> <span class="s2">&quot;Artista actualizado correctamente&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error guardando artista: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">messagebox</span><span class="o">.</span><span class="n">showerror</span><span class="p">(</span><span class="s2">&quot;Error&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;No se pudo guardar: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="validaciones-proactivas">
+<h3>Validaciones Proactivas<a class="headerlink" href="#validaciones-proactivas" title="Link to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">guardar_artista</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="c1"># Validación antes de procesar</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;nombre&quot;</span><span class="p">]:</span>
+        <span class="n">messagebox</span><span class="o">.</span><span class="n">showwarning</span><span class="p">(</span><span class="s2">&quot;Aviso&quot;</span><span class="p">,</span> <span class="s2">&quot;Nombre obligatorio.&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="c1"># Validación de unicidad</span>
+    <span class="k">if</span> <span class="n">Artista</span><span class="o">.</span><span class="n">select</span><span class="p">()</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">Artista</span><span class="o">.</span><span class="n">nombre</span> <span class="o">==</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;nombre&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+        <span class="n">messagebox</span><span class="o">.</span><span class="n">showwarning</span><span class="p">(</span><span class="s2">&quot;Aviso&quot;</span><span class="p">,</span> <span class="s2">&quot;Ya existe un artista con ese nombre.&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+</pre></div>
+</div>
+</section>
+<section id="manejo-de-conexiones-tcp">
+<h3>Manejo de Conexiones TCP<a class="headerlink" href="#manejo-de-conexiones-tcp" title="Link to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">enviar_log</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evento</span><span class="p">,</span> <span class="n">datos</span><span class="p">,</span> <span class="n">nivel</span><span class="o">=</span><span class="s1">&#39;INFO&#39;</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">conectado</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">conectar</span><span class="p">():</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;No se puede enviar log </span><span class="si">{</span><span class="n">evento</span><span class="si">}</span><span class="s2"> - no conectado&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Envío de datos</span>
+        <span class="n">mensaje</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">mensaje</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="n">JSONEncoderPersonalizado</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">socket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">mensaje</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span>
+
+        <span class="c1"># Confirmación de recepción</span>
+        <span class="n">respuesta</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">socket</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error enviando log: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">conectado</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1"># Marcar para reconexión</span>
+        <span class="k">return</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="beneficios-de-los-patrones-implementados">
+<h2>Beneficios de los Patrones Implementados<a class="headerlink" href="#beneficios-de-los-patrones-implementados" title="Link to this heading">¶</a></h2>
+<p>🔄 <strong>Observador</strong>: Logging automático sin acoplamiento
+🎨 <strong>Decoradores</strong>: Funcionalidad transversal no invasiva
+🏗️ <strong>MVC</strong>: Arquitectura clara y mantenible
+⚙️ <strong>Singleton</strong>: Configuración centralizada
+🛡️ <strong>Manejo de Errores</strong>: Robustez y recuperación automática</p>
+<p>Estos patrones hacen que el código sea:
+- <strong>Extensible</strong>: Fácil agregar nuevas funcionalidades
+- <strong>Mantenible</strong>: Cambios localizados
+- <strong>Testable</strong>: Separación clara de responsabilidades
+- <strong>Escalable</strong>: Arquitectura preparada para crecimiento</p>
+</section>
+</section>
+
+</main>
+                        <nav aria-label="Page navigation" class="py-4 my-5 clearfix font-weight-bold border-top">
+    <a class="float-left" href="sistema_logs.html" title="Previous">
+        <span aria-hidden="true">←&nbsp;</span>Sistema de Logs Cliente-Servidor
+    </a>
+    <a class="float-right" href="guia_uso.html" title="Next">
+        Guía de Uso - App Discos <span aria-hidden="true">&nbsp;→</span>
+    </a>
+</nav>
+                    </div>
+                    
+                    <nav class="col-12 col-lg-3 pb-4">
+                        <div class="sticky-top toc page-toc" aria-labelledby="page-toc-heading">
+                            <p class="font-weight-bold" id="page-toc-heading">Page contents</p>
+                            <ul>
+<li><a class="reference internal" href="#">Patrones de Diseño Implementados</a><ul>
+<li><a class="reference internal" href="#patron-observador-observer-pattern">Patrón Observador (Observer Pattern)</a><ul>
+<li><a class="reference internal" href="#implementacion-en-el-sistema-de-logs">Implementación en el Sistema de Logs</a></li>
+<li><a class="reference internal" href="#ventajas-del-patron-observador">Ventajas del Patrón Observador</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#decoradores-de-logging">Decoradores de Logging</a><ul>
+<li><a class="reference internal" href="#decorador-log-alta">Decorador &#64;log_alta</a></li>
+<li><a class="reference internal" href="#decorador-log-actualizacion">Decorador &#64;log_actualizacion</a></li>
+<li><a class="reference internal" href="#decorador-log-baja">Decorador &#64;log_baja</a></li>
+<li><a class="reference internal" href="#ventajas-de-los-decoradores">Ventajas de los Decoradores</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#patron-mvc-model-view-controller">Patrón MVC (Model-View-Controller)</a><ul>
+<li><a class="reference internal" href="#model-modelo">Model (Modelo)</a></li>
+<li><a class="reference internal" href="#view-vista">View (Vista)</a></li>
+<li><a class="reference internal" href="#controller-controlador">Controller (Controlador)</a></li>
+<li><a class="reference internal" href="#ventajas-del-patron-mvc">Ventajas del Patrón MVC</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#patron-singleton-configuracion">Patrón Singleton (Configuración)</a></li>
+<li><a class="reference internal" href="#manejo-de-errores-robusto">Manejo de Errores Robusto</a><ul>
+<li><a class="reference internal" href="#try-except-en-operaciones-criticas">Try-Except en Operaciones Críticas</a></li>
+<li><a class="reference internal" href="#validaciones-proactivas">Validaciones Proactivas</a></li>
+<li><a class="reference internal" href="#manejo-de-conexiones-tcp">Manejo de Conexiones TCP</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#beneficios-de-los-patrones-implementados">Beneficios de los Patrones Implementados</a></li>
+</ul>
+</li>
+</ul>
+
+                        </div>
+                    </nav>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="container-fluid bg-primary text-light">
+        <div class="container">
+            <div class="row">
+        <div class="col p-4">
+            
+                <nav aria-label="Footer">
+                    <ul class="nav justify-content-center mb-2">
+                            <li class="nav-item"><a class="nav-link text-light"  href="https://github.com/jciasenza"><span class="fab fa-github"></span></a></li>
+                            <li class="nav-item"><a class="nav-link text-light"  href="https://www.linkedin.com/in/juan-carlos-iasenza-8119501a9/"><span class="fab fa-linkedin"></span></a></li>
+                            <li class="nav-item"><a class="nav-link text-light"  href="mailto:iasenzajuancarlos@gmail.com"><span class="fas fa-envelope"></span></a></li>
+                    </ul>
+                </nav>
+            
+            <div class="text-center">
+                    &copy; Copyright 2026, Juan Carlos Iasenza
+            </div>
+            <div class="text-center text-white-50 font-italic mt-3">
+                <small>
+                    Created using
+                    <a class="text-white" href="https://github.com/wagtail/sphinx_wagtail_theme" rel="nofollow" target="_blank">
+                        Sphinx Wagtail Theme 6.5.0
+                    </a>
+                    and
+                    <a class="text-white" href="https://www.sphinx-doc.org/" rel="nofollow" target="_blank">
+                        Sphinx 8.1.3
+                    </a>
+                </small>
+            </div>
+        </div>
+    </div>
+        </div>
+    </footer>
+        <script src="_static/documentation_options.js?v=e56700d4"></script>
+        <script src="_static/doctools.js?v=9bcbadda"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="_static/copybutton.js?v=f281be69"></script>
+        <script src="_static/translations.js?v=f85f4cfb"></script>
+        <script type="text/javascript" src="_static/dist/theme.js"></script>
+        <script type="text/javascript" src="_static/dist/vendor.js"></script>
+        <script type="text/javascript" src="_static/searchtools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', function() { Search.loadIndex("searchindex.js"); });
+        </script>
+        <script type="text/javascript" id="searchindexloader"></script>
+    </body>
+</html>
