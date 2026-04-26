@@ -9,6 +9,7 @@ de menús superior y el mecanismo para intercambiar entre diferentes pantallas.
 
 import tkinter as tk
 import os
+import webbrowser
 from tkinter import messagebox
 
 # Importaciones de sub-vistas
@@ -77,6 +78,7 @@ class DiscoView:
 
         # Menú Ayuda
         menu_ayuda = tk.Menu(menubar, tearoff=0)
+        menu_ayuda.add_command(label="Documentación", command=self.mostrar_documentacion)
         menu_ayuda.add_command(label="Acerca de", command=self.mostrar_acerca_de)
         menubar.add_cascade(label="Ayuda", menu=menu_ayuda)
         
@@ -149,3 +151,23 @@ class DiscoView:
             "Acerca de", 
             f"{app_name} v{version}\n\nDesarrollado por: {author}"
         )
+
+    def mostrar_documentacion(self):
+        """Abre la documentación local en el navegador predeterminado."""
+        doc_path = os.path.join(
+            os.path.dirname(__file__),
+            os.pardir,
+            'docs',
+            '_build',
+            'html',
+            'index.html'
+        )
+        doc_path = os.path.normpath(doc_path)
+
+        if os.path.exists(doc_path):
+            webbrowser.open(f'file:///{doc_path}')
+        else:
+            messagebox.showwarning(
+                "Documentación no encontrada",
+                "No se encontró la documentación local. Asegúrate de que el archivo docs/_build/html/index.html exista."
+            )
