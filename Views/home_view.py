@@ -1,34 +1,11 @@
-"""
-Módulo de la Vista de Inicio
-============================
-
-Este módulo define la pantalla principal de bienvenida y navegación del sistema.
-Proporciona el acceso centralizado a los módulos de discos, artistas y canciones.
-"""
-
 import tkinter as tk
 from tkinter import ttk
 
 class HomeView(tk.Frame):
-    """
-    Clase que representa el menú principal de la aplicación.
-    
-    Hereda de :class:`tk.Frame` y organiza los botones de navegación 
-    utilizando un diseño centrado y efectos visuales interactivos.
-    """
-
     def __init__(self, parent, controlador):
-        """
-        Inicializa la vista de inicio.
-
-        Args:
-            parent (tk.Widget): El contenedor padre (usualmente el contenedor de vistas).
-            controlador: Referencia al objeto que gestiona la lógica de navegación.
-        """
         super().__init__(parent, bg="#d9d9d9")
         self.controlador = controlador
-        
-        #: Diccionario con parámetros estéticos comunes para los botones de la home.
+
         self.btn_params = {
             "font": ("Segoe UI", 12, "bold"),
             "width": 25,
@@ -41,11 +18,6 @@ class HomeView(tk.Frame):
         self.crear_widgets()
 
     def crear_widgets(self):
-        """
-        Crea y posiciona los elementos visuales en la pantalla.
-        
-        Incluye el título principal, los botones de acceso a módulos y el botón de salida.
-        """
         main_frame = tk.Frame(self, bg="#d9d9d9")
         main_frame.place(relx=0.5, rely=0.5, anchor="center")
 
@@ -83,19 +55,6 @@ class HomeView(tk.Frame):
         self.btn_salir.pack(pady=(30, 0))
 
     def crear_boton_hover(self, parent, texto, color_base, color_hover, comando):
-        """
-        Crea un botón personalizado con efectos de cambio de color al pasar el ratón.
-
-        Args:
-            parent (tk.Widget): Contenedor donde se alojará el botón.
-            texto (str): Texto que mostrará el botón.
-            color_base (str): Color de fondo normal (hex).
-            color_hover (str): Color de fondo cuando el mouse está encima (hex).
-            comando (callable): Función a ejecutar al hacer clic.
-
-        Returns:
-            tk.Button: El objeto botón creado.
-        """
         btn = tk.Button(parent, text=texto, bg=color_base, command=comando, **self.btn_params)
         btn.pack(pady=10)
 

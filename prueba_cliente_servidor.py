@@ -1,8 +1,3 @@
-"""
-Script de prueba para demostrar la comunicación cliente-servidor
-Ejecutar este script DESPUÉS de iniciar servidor_logs.py
-"""
-
 import time
 from cliente_logs import ClienteLogs
 

@@ -1,34 +1,12 @@
-"""
-Módulo de Formulario de Discos
-==============================
-
-Este módulo define :class:`DiscoFormView`, una vista detallada que permite
-la creación y edición de discos, incluyendo la gestión de pistas musicales
-y la visualización de la portada.
-"""
-
 import tkinter as tk
 from tkinter import ttk, StringVar, Listbox, Scrollbar
 from PIL import Image, ImageTk
 
 class DiscoFormView(ttk.Frame):
-    """
-    Clase que representa el formulario de detalles de un disco.
-    
-    Proporciona campos para metadatos (título, año, formato), un selector de 
-    artista, visualización de imagen de portada y una sub-interfaz para 
-    gestionar las canciones asociadas al disco.
-    """
-    #: Color de fondo por defecto para el formulario.
+
     COLOR_BACKGROUND = "#f0f0f0"
 
     def __init__(self, parent):
-        """
-        Inicializa el formulario y configura los estilos visuales.
-
-        Args:
-            parent (tk.Widget): El contenedor padre donde se alojará el frame.
-        """
         super().__init__(parent)
         self.parent = parent
 
@@ -38,21 +16,14 @@ class DiscoFormView(ttk.Frame):
         style.configure("TLabel", background=self.COLOR_BACKGROUND) 
         
         self.configure(style="Main.TFrame")
-
-        # Estilos específicos para botones de acción (CRUD de canciones)
         style.configure("Add.TButton", foreground="green", font=("Segoe UI", 12, "bold"))
         style.configure("Edit.TButton", foreground="blue", font=("Segoe UI", 12))
         style.configure("Delete.TButton", foreground="red", font=("Segoe UI", 12, "bold"))
 
-        #: Atributo para mantener la referencia de la imagen de portada y evitar el GC.
         self.img_tk = None
         self.crear_widgets()
 
     def crear_widgets(self):
-        """
-        Construye la arquitectura visual del formulario dividida en tres columnas:
-        1. Portada, 2. Datos del Disco, 3. Listado de Canciones.
-        """
         # --- Título Superior ---
         self.form_title = tk.Label(
             self, text="Nuevo Disco", font=("Segoe UI", 20, "bold"),
@@ -199,12 +170,6 @@ class DiscoFormView(ttk.Frame):
         self.img_tk = None
 
     def cargar_datos(self, disco):
-        """
-        Rellena el formulario con la información de un objeto disco existente.
-
-        Args:
-            disco (Disco): Instancia del modelo Disco a mostrar.
-        """
         self.id_var.set(str(disco.id))
         if disco.artista:
             self.artista_var.set(disco.artista.nombre)
@@ -217,23 +182,15 @@ class DiscoFormView(ttk.Frame):
             self.set_imagen(disco.portada)
 
     def set_titulo(self, texto):
-        """Cambia el texto de la cabecera del formulario."""
         self.form_title.config(text=texto)
 
     def set_imagen(self, path):
-        """
-        Carga, redimensiona y muestra una imagen de portada en el formulario.
-
-        Args:
-            path (str): Ruta local al archivo de imagen.
-        """
         if not path:
             self.label_imagen.config(image="", text="Sin Imagen")
             self.img_tk = None
             return
         try:
             img = Image.open(path)
-            # Redimensionado de alta calidad para la previsualización
             img = img.resize((300, 300), Image.Resampling.LANCZOS)
             self.img_tk = ImageTk.PhotoImage(img)
             self.label_imagen.config(image=self.img_tk, text="")

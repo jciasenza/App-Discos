@@ -4,7 +4,6 @@ import logging
 from datetime import datetime
 
 class JSONEncoderPersonalizado(json.JSONEncoder):
-    """Codificador JSON personalizado que maneja tipos especiales"""
     def default(self, o):
         # Manejar objetos Peewee
         if hasattr(o, '__dict__') and hasattr(o, '_meta'):
@@ -47,7 +46,6 @@ class ClienteLogs:
         self.logger = logging.getLogger(__name__)
         
     def conectar(self):
-        """Conecta al servidor de logs"""
         try:
             self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             self.socket.connect((self.host, self.puerto))
@@ -62,13 +60,6 @@ class ClienteLogs:
             return False
     
     def enviar_log(self, evento, datos, nivel='INFO'):
-        """Envía un evento de log al servidor
-        
-        Args:
-            evento (str): Nombre del evento (ej: 'artista_agregado')
-            datos (dict): Datos del evento
-            nivel (str): Nivel de log ('INFO', 'WARNING', 'ERROR')
-        """
         if not self.conectado:
             if not self.conectar():
                 self.logger.error(f"No se puede enviar log {evento} - no conectado")
@@ -106,7 +97,6 @@ class ClienteLogs:
             return False
     
     def desconectar(self):
-        """Desconecta del servidor"""
         try:
             if self.socket:
                 self.socket.close()

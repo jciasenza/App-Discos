@@ -1,20 +1,16 @@
-"""
-Configuración centralizada para el sistema de logs
-"""
-
 # Configuración del Servidor
 SERVIDOR_CONFIG = {
-    'host': 'localhost',      # Host del servidor
-    'puerto': 5000,           # Puerto del servidor
-    'max_conexiones': 5,      # Máximo número de conexiones simultáneas
+    'host': 'localhost',      
+    'puerto': 5000,           
+    'max_conexiones': 5,
 }
 
 # Configuración del Cliente
 CLIENTE_CONFIG = {
-    'host': 'localhost',           # Host del servidor (debe coincidir con SERVIDOR_CONFIG)
-    'puerto': 5000,                # Puerto del servidor (debe coincidir con SERVIDOR_CONFIG)
-    'nombre_cliente': 'App-Discos', # Nombre identificativo del cliente
-    'timeout': 5,                  # Timeout en segundos para conexión
+    'host': 'localhost',           
+    'puerto': 5000,                
+    'nombre_cliente': 'App-Discos',
+    'timeout': 5,
 }
 
 # Configuración de Logging

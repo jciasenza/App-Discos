@@ -22,7 +22,6 @@ class ServidorLogs:
         self.activo = True
         
     def iniciar(self):
-        """Inicia el servidor"""
         try:
             self.servidor.bind((self.host, self.puerto))
             self.servidor.listen(5)
@@ -54,7 +53,6 @@ class ServidorLogs:
             self.servidor.close()
             
     def manejar_cliente(self, cliente_socket, direccion_cliente):
-        """Maneja la comunicación con un cliente"""
         try:
             while self.activo:
                 # Recibir datos del cliente
@@ -102,7 +100,6 @@ class ServidorLogs:
             logger.info(f"Cliente desconectado: {direccion_cliente}")
     
     def detener(self):
-        """Detiene el servidor"""
         self.activo = False
         self.servidor.close()
         print("Servidor detenido")

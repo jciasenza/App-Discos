@@ -38,3 +38,5 @@
 2026-04-26 14:55:40 - ERROR - Error conectando al servidor: [WinError 10061] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
 2026-04-26 14:59:07 - ERROR - Error conectando al servidor: [WinError 10061] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
 2026-04-26 15:03:55 - ERROR - Error conectando al servidor: [WinError 10061] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+2026-04-26 15:35:41 - ERROR - Error conectando al servidor: [WinError 10061] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+2026-04-26 15:36:03 - WARNING - Evento: disco_actualizado | Datos: {'id': 7, 'data': {'artista': 2, 'titulo': 'Dinamo', 'anio': '1992', 'formato': 'CD', 'portada': 'C:/Users/curej/Desktop/UTN/App Discos/img/SS_D.jpg'}}

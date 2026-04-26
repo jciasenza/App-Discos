@@ -1,46 +1,16 @@
-"""
-Módulo de Listado de Artistas
-=============================
-
-Este módulo define la clase :class:`ArtistaListView`, que proporciona la interfaz 
-necesaria para visualizar, buscar y gestionar la colección de artistas y bandas.
-"""
-
 import tkinter as tk
 from tkinter import ttk, messagebox
 from PIL import Image, ImageTk
 import os
 
 class ArtistaListView(tk.Frame):
-    """
-    Vista que presenta la tabla de artistas con soporte para imágenes y CRUD.
-
-    Hereda de :class:`tk.Frame`. Utiliza un :class:`ttk.Treeview` personalizado 
-    con un estilo basado en 'clam' para mejorar la legibilidad de las filas 
-    que contienen miniaturas.
-    """
-
     def __init__(self, parent, controlador=None):
-        """
-        Inicializa la vista de artistas.
-
-        Args:
-            parent (tk.Widget): Contenedor padre.
-            controlador (Controller, opcional): Objeto que maneja la lógica de negocio.
-        """
         super().__init__(parent, bg="#d9d9d9")
         self.controlador = controlador
-        
-        #: Lista para mantener las referencias de las imágenes y evitar que sean eliminadas por el Garbage Collector.
         self.imagenes_refs = [] 
-        
         self.crear_widgets()
 
     def crear_widgets(self):
-        """
-        Configura los componentes visuales: cabecera con buscador, 
-        estilos del Treeview y panel de botones de acción.
-        """
         # 1. CABECERA
         self.header_frame = tk.Frame(self, bg="#d9d9d9")
         self.header_frame.pack(fill="x", padx=20, pady=10)
@@ -55,13 +25,11 @@ class ArtistaListView(tk.Frame):
         self.search_frame.pack(side="right")
 
         tk.Label(self.search_frame, text="Buscar:", bg="#d9d9d9").pack(side="left")
-        
-        #: Variable de control para la búsqueda de artistas.
         self.buscar_var = tk.StringVar()
         self.entry_buscar = tk.Entry(self.search_frame, textvariable=self.buscar_var)
         self.entry_buscar.pack(side="left", padx=5)
 
-        # 2. ESTILO (Uso del tema 'clam' para permitir personalización de colores)
+        # 2. ESTILO
         style = ttk.Style()
         style.theme_use("clam")
         style.configure("Treeview", rowheight=65, font=("Segoe UI", 11), background="white")
@@ -110,22 +78,15 @@ class ArtistaListView(tk.Frame):
             cursor="hand2", command=self.on_eliminar
         )
         self.btn_eliminar.pack(side="right", padx=5)
-
-        # Evento de doble clic para editar rápidamente
         self.tree.bind("<Double-1>", lambda e: self.on_editar())
 
     # --- MÉTODOS DE ACCIÓN (CALLBACKS) ---
 
     def on_nuevo(self):
-        """Invoca la acción de creación de un nuevo artista en el controlador."""
         if self.controlador and hasattr(self.controlador, 'nuevo_artista'):
             self.controlador.nuevo_artista()
 
     def on_editar(self):
-        """
-        Verifica la selección y solicita al controlador la edición del artista.
-        Muestra una advertencia si no hay ningún elemento seleccionado.
-        """
         id_sel = self.obtener_seleccionado()
         if id_sel:
             if self.controlador and hasattr(self.controlador, 'editar_artista'):
@@ -134,10 +95,6 @@ class ArtistaListView(tk.Frame):
             messagebox.showwarning("Atención", "Por favor, selecciona un artista de la lista.")
 
     def on_eliminar(self):
-        """
-        Solicita confirmación al usuario antes de proceder con la eliminación 
-        del artista seleccionado a través del controlador.
-        """
         id_sel = self.obtener_seleccionado()
         if id_sel:
             respuesta = messagebox.askyesno("Confirmar", f"¿Estás seguro de eliminar al artista #{id_sel}?\nEsta acción no se puede deshacer.")
@@ -148,25 +105,12 @@ class ArtistaListView(tk.Frame):
             messagebox.showwarning("Atención", "Selecciona el artista que deseas eliminar.")
 
     def obtener_seleccionado(self):
-        """
-        Recupera el ID (IID) del artista seleccionado en el Treeview.
-
-        Returns:
-            int or None: El ID del artista o None si no hay selección.
-        """
         item = self.tree.selection()
         if item:
             return int(item[0])
         return None
 
     def cargar_datos(self, artistas):
-        """
-        Limpia la tabla y la repuebla con la lista de artistas proporcionada.
-        Maneja la carga dinámica de miniaturas fotográficas.
-
-        Args:
-            artistas (list): Lista de objetos de modelo con los datos del artista.
-        """
         for item in self.tree.get_children():
             self.tree.delete(item)
         self.imagenes_refs = [] 

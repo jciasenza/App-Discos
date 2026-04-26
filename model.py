@@ -78,16 +78,14 @@ class ObservadorLog:
             logger.info(f"Evento: {evento} | Datos: {datos}")
 
 class ObservadorClienteLogs:
-    """Observador que envía eventos a un servidor remoto de logs"""
     def __init__(self, cliente_logs):
         self.cliente_logs = cliente_logs
     
     @staticmethod
     def _convertir_datos(datos):
-        """Convierte objetos Peewee y otros tipos a diccionarios serializables"""
         try:
             # Si es un modelo Peewee
-            if hasattr(datos, '_meta'):  # Tiene atributo _meta (típico de Peewee)
+            if hasattr(datos, '_meta'):
                 resultado = {}
                 for campo in datos._meta.fields:
                     valor = getattr(datos, campo)

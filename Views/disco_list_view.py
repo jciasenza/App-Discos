@@ -1,47 +1,18 @@
-"""
-Módulo de la Vista de Listado de Discos
-======================================
-
-Este módulo define :class:`DiscoListView`, un componente encargado de mostrar 
-la colección de discos en formato de tabla (Treeview), incluyendo las portadas.
-"""
-
 import os
 import tkinter as tk
 from tkinter import ttk
 from PIL import Image, ImageTk
 
 class DiscoListView(tk.Frame):
-    """
-    Vista que presenta los discos en un componente Treeview.
-    
-    Hereda de :class:`tk.Frame`. Permite la visualización, selección y 
-    búsqueda de discos, además de mostrar miniaturas de las portadas.
-    """
-
     def __init__(self, parent, controlador):
-        """
-        Inicializa la vista de listado.
-
-        Args:
-            parent (tk.Widget): El contenedor padre.
-            controlador: Referencia al controlador de la lógica de negocio.
-        """
         super().__init__(parent, bg="#d9d9d9")
         self.controlador = controlador
-        
-        #: Diccionario para mantener la referencia a las imágenes (evita el Garbage Collector).
+
         self.imagenes_tabla = {}
         
         self.crear_widgets()
 
     def crear_widgets(self):
-        """
-        Construye la interfaz del listado.
-        
-        Divide la vista en tres áreas: Superior (Título y Búsqueda), 
-        Central (Tabla Treeview) y Inferior (Acciones CRUD).
-        """
         # 1. FRAME SUPERIOR (Cabecera y Buscador)
         top_frame = tk.Frame(self, bg="#d9d9d9")
         top_frame.pack(fill="x", side="top", padx=20, pady=10)
@@ -105,25 +76,11 @@ class DiscoListView(tk.Frame):
         self.tree.pack(fill="both", expand=True)
 
     def limpiar_tabla(self):
-        """
-        Elimina todos los registros del Treeview y vacía la caché de imágenes.
-        """
         for i in self.tree.get_children():
             self.tree.delete(i)
         self.imagenes_tabla.clear()
 
     def insertar_en_tabla(self, id, artista, titulo, anio, formato, portada):
-        """
-        Inserta una fila en la tabla, procesando la imagen de portada si existe.
-
-        Args:
-            id (int): ID de la base de datos (usado como iid del Treeview).
-            artista (str): Nombre del artista.
-            titulo (str): Título del álbum.
-            anio (int): Año de lanzamiento.
-            formato (str): Formato físico/digital.
-            portada (str): Ruta al archivo de imagen en el disco.
-        """
         imagen = ""
         if portada and os.path.exists(portada):
             try:
@@ -147,12 +104,6 @@ class DiscoListView(tk.Frame):
         )
         
     def obtener_id_seleccionado(self):
-        """
-        Retorna el ID del registro seleccionado por el usuario.
-
-        Returns:
-            str or None: El identificador único de la fila seleccionada o None.
-        """
         seleccion = self.tree.selection()
         if not seleccion:
             return None

@@ -1,45 +1,15 @@
-"""
-Módulo de Formulario de Artistas
-================================
-
-Este módulo define :class:`ArtistaFormView`, la interfaz dedicada a la creación 
-y edición de perfiles de artistas o bandas, permitiendo gestionar su imagen, 
-categoría y biografía.
-"""
-
 import tkinter as tk
 from tkinter import ttk
 from PIL import Image, ImageTk
 import os
 
 class ArtistaFormView(tk.Frame):
-    """
-    Vista de formulario para la gestión de artistas.
-
-    Hereda de :class:`tk.Frame`. Utiliza un diseño de cuadrícula (grid) para 
-    organizar tres secciones principales: previsualización de imagen, 
-    campos de texto básicos y un área de biografía enriquecida.
-    """
-
     def __init__(self, parent, controlador):
-        """
-        Inicializa el formulario de artista.
-
-        Args:
-            parent (tk.Widget): Contenedor padre.
-            controlador: Referencia al controlador encargado de la persistencia.
-        """
         super().__init__(parent, bg="#d9d9d9")
         self.controlador = controlador
         self.crear_widgets()
 
     def crear_widgets(self):
-        """
-        Construye la arquitectura del formulario. 
-        
-        Organiza los elementos en un 'master_container' usando el gestor de 
-        geometría ``grid`` para mantener la alineación de las tres columnas.
-        """
         # 1. TÍTULO SUPERIOR
         tk.Label(
             self, text="Ficha del Artista", 
@@ -101,7 +71,6 @@ class ArtistaFormView(tk.Frame):
         text_scroll_frame = tk.Frame(self.frame_info, bg="#d9d9d9")
         text_scroll_frame.pack()
 
-        #: Widget de texto para información detallada o biografía.
         self.txt_info = tk.Text(text_scroll_frame, width=35, height=18, font=("Segoe UI", 10), 
                                 relief="flat", highlightthickness=1, highlightbackground="#ccc")
         
@@ -122,18 +91,11 @@ class ArtistaFormView(tk.Frame):
         self.btn_cancelar.pack(side="left", padx=15, ipadx=20, ipady=5)
 
     def set_foto(self, path):
-        """
-        Actualiza la imagen de perfil del artista en el formulario.
-
-        Args:
-            path (str): Ruta al archivo de imagen.
-        """
         if path and os.path.exists(path):
             img = Image.open(path)
             img = img.resize((250, 250), Image.Resampling.LANCZOS)
             foto = ImageTk.PhotoImage(img)
             self.lbl_foto.config(image=foto, text="")
-            # Referencia necesaria para evitar el recolector de basura
             self.lbl_foto.image = foto
             self.foto_path = path
         else:
@@ -141,17 +103,9 @@ class ArtistaFormView(tk.Frame):
             self.foto_path = None
 
     def cargar_datos(self, artista):
-        """
-        Carga la información de un objeto Artista en los widgets del formulario.
-
-        Args:
-            artista: Instancia del modelo Artista.
-        """
         self.id_var.set(str(artista.id))
         self.nombre_var.set(artista.nombre)
         self.tipo_var.set(artista.tipo)
-        
-        # Los widgets de texto requieren limpieza e inserción manual
         self.txt_info.delete("1.0", tk.END)
         self.txt_info.insert("1.0", artista.info if artista.info else "")
 
@@ -159,7 +113,6 @@ class ArtistaFormView(tk.Frame):
         self.set_foto(artista.foto)
 
     def limpiar_campos(self):
-        """Restablece el formulario para la creación de un nuevo registro."""
         self.id_var.set("-")
         self.nombre_var.set("")
         self.tipo_var.set("Solista")

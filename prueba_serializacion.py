@@ -1,7 +1,3 @@
-"""
-Prueba de serialización JSON con el nuevo JSONEncoderPersonalizado
-"""
-
 import json
 from cliente_logs import JSONEncoderPersonalizado
 from model import Artista, Discos, Cancion
