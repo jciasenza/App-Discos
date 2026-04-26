@@ -75,7 +75,58 @@ class ObservadorLog:
         elif "eliminado" in evento:
             logger.error(f"Evento: {evento} | Datos: {datos}")
         else:
-            logger.info(f"Evento: {evento} | Datos: {datos}")            
+            logger.info(f"Evento: {evento} | Datos: {datos}")
+
+class ObservadorClienteLogs:
+    """Observador que envía eventos a un servidor remoto de logs"""
+    def __init__(self, cliente_logs):
+        self.cliente_logs = cliente_logs
+    
+    @staticmethod
+    def _convertir_datos(datos):
+        """Convierte objetos Peewee y otros tipos a diccionarios serializables"""
+        try:
+            # Si es un modelo Peewee
+            if hasattr(datos, '_meta'):  # Tiene atributo _meta (típico de Peewee)
+                resultado = {}
+                for campo in datos._meta.fields:
+                    valor = getattr(datos, campo)
+                    # Evitar objetos complejos, convertir a string
+                    if isinstance(valor, (str, int, float, bool, type(None))):
+                        resultado[campo] = valor
+                    else:
+                        resultado[campo] = str(valor)
+                return resultado
+            # Si es un diccionario
+            elif isinstance(datos, dict):
+                return {k: v for k, v in datos.items() if not isinstance(v, set)}
+            # Si es una lista o tupla
+            elif isinstance(datos, (list, tuple)):
+                return str(datos)
+            # Si es un tipo primitivo (int, str, etc)
+            elif isinstance(datos, (str, int, float, bool, type(None))):
+                return datos
+            # Para otros tipos, convertir a string
+            else:
+                return str(datos)
+        except Exception as e:
+            return f"Error convertiendo datos: {str(e)}"
+    
+    def actualizar(self, evento, datos):
+        # Determinar nivel según el tipo de evento
+        if "agregado" in evento or "agregada" in evento:
+            nivel = "INFO"
+        elif "actualizado" in evento:
+            nivel = "WARNING"
+        elif "eliminado" in evento:
+            nivel = "ERROR"
+        else:
+            nivel = "INFO"
+        
+        # Convertir datos a formato serializable
+        datos_dict = self._convertir_datos(datos)
+        
+        self.cliente_logs.enviar_log(evento, datos_dict, nivel)
 
 # --- CLASES CRUD ---
 class ArtistaModel(Observable):

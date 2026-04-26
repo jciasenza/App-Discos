@@ -140,7 +140,7 @@ class DiscoController:
             "nombre": form.nombre_var.get().strip(),
             "tipo": form.tipo_var.get(),
             "info": form.txt_info.get("1.0", tk.END).strip(),
-            "foto": form.foto_path
+            "foto": getattr(form, 'foto_path', None)  # Usar getattr para evitar AttributeError
         }
         if not data["nombre"]:
             messagebox.showwarning("Aviso", "Nombre obligatorio.")
