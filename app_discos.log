@@ -28,3 +28,10 @@
 2026-04-26 12:32:37 - INFO - Conectado al servidor en localhost:5000
 2026-04-26 12:32:52 - INFO - Evento: artista_agregado | Datos: 4
 2026-04-26 12:32:52 - INFO - Log enviado: artista_agregado
+2026-04-26 14:34:46 - ERROR - Error conectando al servidor: [WinError 10061] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+2026-04-26 14:35:02 - ERROR - Evento: artista_eliminado | Datos: 4
+2026-04-26 14:35:46 - WARNING - Evento: artista_actualizado | Datos: {'id': 1, 'data': {'nombre': 'The Cure', 'tipo': 'Banda', 'info': 'The Cure 1977 easy cure', 'foto': 'C:/Users/curej/Desktop/UTN/App Discos/img/TC_BDC.jpg'}}
+2026-04-26 14:36:18 - INFO - Conectado al servidor en localhost:5000
+2026-04-26 14:36:37 - INFO - Evento: cancion_eliminada | Datos: 10
+2026-04-26 14:36:37 - INFO - Log enviado: cancion_eliminada
+2026-04-26 14:37:01 - INFO - Desconectado del servidor

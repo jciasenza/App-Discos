@@ -31,3 +31,7 @@
 2026-04-26 12:32:28 - INFO - Servidor iniciado en localhost:5000
 2026-04-26 12:32:37 - INFO - Cliente conectado desde ('127.0.0.1', 52705)
 2026-04-26 12:32:52 - INFO - [App-Discos] Evento: artista_agregado | Datos: {'id': 4, 'nombre': 'Queen', 'tipo': 'Banda', 'info': '', 'foto': None}
+2026-04-26 14:35:28 - INFO - Servidor iniciado en localhost:5000
+2026-04-26 14:36:18 - INFO - Cliente conectado desde ('127.0.0.1', 55370)
+2026-04-26 14:36:37 - INFO - [App-Discos] Evento: cancion_eliminada | Datos: 10
+2026-04-26 14:37:01 - INFO - Cliente desconectado: ('127.0.0.1', 55370)
